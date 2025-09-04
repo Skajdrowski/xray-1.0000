@@ -233,7 +233,7 @@ void CLocatorAPI::Register		(LPCSTR name, u32 vfs, u32 crc, u32 ptr, u32 size_re
 //		char* str		= LPSTR(I->name);
 //		xr_free			(str);
 		desc.name		= I->name;
-		*I				= desc;
+		const_cast<file&>(*I)	= desc;
 //		files.erase		(I);
 //		files.insert	(desc); 
 		return;
@@ -472,7 +472,7 @@ bool CLocatorAPI::Recurse		(const char* path)
 		strcpy(full_path, path);
 		strcat(full_path, sFile.name);
 
-		// загоняем в вектор для того *.db* приходили в сортированном порядке
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ *.db* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(!ignore_name(sFile.name) && !ignore_path(full_path))
 			rec_files.push_back(sFile);
 
@@ -486,7 +486,7 @@ bool CLocatorAPI::Recurse		(const char* path)
 	}
 	else
 	{
-		// загоняем в вектор для того *.db* приходили в сортированном порядке
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ *.db* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(!ignore_name(sFile.name))
 			rec_files.push_back(sFile);
 
@@ -733,7 +733,7 @@ xr_vector<char*>* CLocatorAPI::file_list_open			(const char* _path, u32 flags)
 {
 	R_ASSERT		(_path);
 	VERIFY			(flags);
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes	();
 
 	xr_string		N;
@@ -789,7 +789,7 @@ int CLocatorAPI::file_list(FS_FileSet& dest, LPCSTR path, u32 flags, LPCSTR mask
 {
 	R_ASSERT		(path);
 	VERIFY			(flags);
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     check_pathes	();
                
 	xr_string		N;
@@ -1075,7 +1075,7 @@ void CLocatorAPI::copy_file_to_build	(T *&r, LPCSTR source_name)
 
 bool CLocatorAPI::check_for_file	(LPCSTR path, LPCSTR _fname, LPSTR fname, const file *&desc)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     check_pathes			();
 
 	// correct path
@@ -1195,7 +1195,7 @@ void	CLocatorAPI::w_close(IWriter* &S)
 
 CLocatorAPI::files_it CLocatorAPI::file_find_it(LPCSTR fname)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     check_pathes	();
 
 	file			desc_f;
@@ -1230,7 +1230,7 @@ BOOL CLocatorAPI::dir_delete(LPCSTR path,LPCSTR nm,BOOL remove_files)
 			if ((*end_symbol) !='\\'){
 //		        const char* entry_begin = entry.name+base_len;
 				if (!remove_files) return FALSE;
-		    	unlink		(entry.name);
+		    	_unlink		(entry.name);
 				files.erase	(cur_item);
 	        }else{
             	folders.insert(entry);
@@ -1258,7 +1258,7 @@ void CLocatorAPI::file_delete(LPCSTR path, LPCSTR nm)
     const files_it I	= file_find_it(fname);
     if (I!=files.end()){
 	    // remove file
-    	unlink			(I->name);
+    	_unlink			(I->name);
 		char* str		= LPSTR(I->name);
 		xr_free			(str);
 	    files.erase		(I);
@@ -1287,7 +1287,7 @@ void CLocatorAPI::file_rename(LPCSTR src, LPCSTR dest, bool bOwerwrite)
 		files_it D		= file_find_it(dest);
 		if (D!=files.end()){ 
 	        if (!bOwerwrite) return;
-            unlink		(D->name);
+            _unlink		(D->name);
 			char* str	= LPSTR(D->name);
 			xr_free		(str);
 			files.erase	(D);
@@ -1350,7 +1350,7 @@ void CLocatorAPI::update_path(xr_string& dest, LPCSTR initial, LPCSTR src)
 
 u32 CLocatorAPI::get_file_age(LPCSTR nm)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     check_pathes	();
 
 	files_it I 		= file_find_it(nm);
@@ -1359,7 +1359,7 @@ u32 CLocatorAPI::get_file_age(LPCSTR nm)
 
 void CLocatorAPI::set_file_age(LPCSTR nm, u32 age)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     check_pathes	();
 
     // set file
@@ -1453,7 +1453,7 @@ BOOL CLocatorAPI::can_write_to_folder(LPCSTR path)
 		if (hf==0)		return FALSE;
         else{
         	fclose 		(hf);
-	    	unlink		(temp);
+	    	_unlink		(temp);
             return 		TRUE;
         }
     }else{

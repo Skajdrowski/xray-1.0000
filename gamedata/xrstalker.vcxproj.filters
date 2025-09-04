@@ -1,0 +1,4034 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="config">
+      <UniqueIdentifier>{34839cf9-284e-42ec-a39c-f8e6fa4b72b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\creatures">
+      <UniqueIdentifier>{19248b12-6ec5-4009-8078-edc24584d707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\creatures\custom_data">
+      <UniqueIdentifier>{1a2da908-1c1f-4ad2-8ca6-7b64b921c849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\gameplay">
+      <UniqueIdentifier>{5cd8cc0d-abb0-49a3-ae1c-89281721a0fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\gameplay\Dialogs">
+      <UniqueIdentifier>{61933c39-e05d-4c23-b82a-8f936729b3ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\gameplay\tasks">
+      <UniqueIdentifier>{28f2b242-e529-4599-8f71-de04c8e874ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\gameplay\Infoportions">
+      <UniqueIdentifier>{4c262955-0df4-4993-9a2c-9a72e770e86a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\gameplay\profiles">
+      <UniqueIdentifier>{614557e8-a425-48a2-85cd-717e2d848ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\misc">
+      <UniqueIdentifier>{dd99aec0-c339-4da2-8ca8-60994dc2c63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\misc\gulags">
+      <UniqueIdentifier>{3a4f1bb2-1fc7-4a1b-adb6-b1a387f15a50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\misc\gulags\Military">
+      <UniqueIdentifier>{4b9b0baa-d772-47ff-a9a1-459f178d92be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\misc\trade">
+      <UniqueIdentifier>{afa6c931-1cd3-4c37-a234-f4ab604799a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\mp">
+      <UniqueIdentifier>{c4da6a81-fb05-4692-a969-60f419bca8e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\mp\weapons_mp">
+      <UniqueIdentifier>{9c0f83d9-0c61-44b3-b4d1-154e1f480e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\mp\SoundMessages">
+      <UniqueIdentifier>{852486ae-e468-4934-9782-28d3aaa2e692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text">
+      <UniqueIdentifier>{c03d5d9e-f924-4976-8fde-a3e73cf753aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus">
+      <UniqueIdentifier>{673df579-c828-46c3-930f-da8fb7caffd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\UI">
+      <UniqueIdentifier>{6e3a34d9-e8fb-4616-b31f-a5e1790fbab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other">
+      <UniqueIdentifier>{db851330-8973-4865-8174-c4e248e6438e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l10_radar">
+      <UniqueIdentifier>{ba5bde81-347f-40a6-95dd-81a25d430b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\L12u_sarcofag">
+      <UniqueIdentifier>{5f40ea9a-0548-4aa1-85b1-53bbd278ce9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l12_aes">
+      <UniqueIdentifier>{af7b8962-e271-4445-9f2e-64cd37590b63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l01_escape">
+      <UniqueIdentifier>{d8ba028a-52be-4153-9ad1-0e1c177534ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l02_garbage">
+      <UniqueIdentifier>{b37bce3f-f280-4ca8-bf24-d6c572ae4fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l03_agroprom">
+      <UniqueIdentifier>{c0f2d6cf-b6a9-4410-a6b7-b450d19c3020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l04_darkvalley">
+      <UniqueIdentifier>{59d47fea-011b-4ae6-9140-c633e56292d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l05_bar-rostok">
+      <UniqueIdentifier>{60aa3c41-377b-4261-87bf-731da1dba2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l06_yantar">
+      <UniqueIdentifier>{77a5b130-5c82-477d-a4bc-9760a81172c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l07_military">
+      <UniqueIdentifier>{66cf1197-88de-4f82-a5f1-f40100584a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l08_deadcity">
+      <UniqueIdentifier>{e95c4f61-9a4c-449e-bed3-4a6d20edca9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\other\l11_pripyat">
+      <UniqueIdentifier>{abea0d15-8761-42ea-b44d-1db0974f0383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\eng">
+      <UniqueIdentifier>{65f0f40d-f10b-4893-9ca5-c795bd9e2ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\eng\UI">
+      <UniqueIdentifier>{f49e5a38-cbef-40c3-82e2-a00e2d61f9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\eng\other">
+      <UniqueIdentifier>{e5baf38a-939b-416f-abb1-a255e9f59d33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\map_desc">
+      <UniqueIdentifier>{5d8ceb84-ff76-416d-b12d-d848ba8c5ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui">
+      <UniqueIdentifier>{75b4258f-5e2b-41ea-98f0-0ee3b2c81c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\mapspots">
+      <UniqueIdentifier>{ed68451e-b268-4ce0-8b8d-edbafcb88589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\textures_desc">
+      <UniqueIdentifier>{ce5c935c-df1a-40f8-8abb-2c0caf40c024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\mm">
+      <UniqueIdentifier>{3b166e94-2381-4d96-995e-55f8ac91cea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\item_infos">
+      <UniqueIdentifier>{7baac8b9-2040-4b93-9952-80b37a9ed2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\character_desc">
+      <UniqueIdentifier>{e900c5c3-be38-4d1f-b5dd-b7c2e76cfea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\mp">
+      <UniqueIdentifier>{897c1df7-00c8-4c4d-8b17-d79bece3373b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\pda">
+      <UniqueIdentifier>{59ca1907-9440-49e4-97dc-0aacf2cb9587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\hud">
+      <UniqueIdentifier>{e8b830c6-6f40-449b-b4ae-0c01ad515d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\controls">
+      <UniqueIdentifier>{da38be00-d7a1-420c-ad2d-d3924512ddf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\weapons">
+      <UniqueIdentifier>{5ed28d66-570e-40a6-8996-c8ee786d3e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\weathers">
+      <UniqueIdentifier>{0a10965a-dd10-4b79-861a-5e0b593dee5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts">
+      <UniqueIdentifier>{d681874f-93f2-4abb-a93d-9e2d6feeb2b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Military">
+      <UniqueIdentifier>{f5cdfe6b-d77f-4e02-9f77-9281a2ca799b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\LabX18">
+      <UniqueIdentifier>{7174d36d-88fe-447c-916e-a67877d73ae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Rostok">
+      <UniqueIdentifier>{3c68fef6-4432-40f1-a294-699f4a3765ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Deadcity">
+      <UniqueIdentifier>{f09b56dc-f360-4afc-994c-7d18d4315702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\DarkValley">
+      <UniqueIdentifier>{61d39521-d24d-4700-8aa7-5174bdeb47eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Tests">
+      <UniqueIdentifier>{16e79948-1299-4a0d-a59d-2569eb27bce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Agroprom">
+      <UniqueIdentifier>{5eb43fd7-253a-44ed-b9da-d18b3a34beba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Pripyat">
+      <UniqueIdentifier>{1ba2022c-5e64-44a6-8aa2-76888a7ef6be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Radar">
+      <UniqueIdentifier>{59c3c871-736f-42e2-a407-f2edb87ac0a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\escape">
+      <UniqueIdentifier>{58be3466-4ba2-4099-8f4e-3dec8c18a929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\DarkScape">
+      <UniqueIdentifier>{fe23cbe9-d100-4a17-b0ce-f7b96ced85fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\Yantar">
+      <UniqueIdentifier>{9d7525aa-2c13-4034-b0eb-7fd7a7b8ce2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\sarcofag">
+      <UniqueIdentifier>{18f93369-2996-4abb-a55e-a9cfdb1190b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\Zones">
+      <UniqueIdentifier>{d578a1ef-5f3e-4b6f-8d90-ef64bd12313f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\Zones\old_and_unused">
+      <UniqueIdentifier>{8495b0f9-3fb6-48ab-ab1e-135fe7b002dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\Prefetch">
+      <UniqueIdentifier>{91801061-328e-48ea-b8a0-db48b04c1f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models">
+      <UniqueIdentifier>{c2b01163-42ca-4b47-8e04-6d4a14d093d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\objects">
+      <UniqueIdentifier>{945267ab-6239-4604-9828-3f0c75fc2912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\vehicles">
+      <UniqueIdentifier>{469d44d1-6caa-460c-b24b-6fd101e116f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\weapons">
+      <UniqueIdentifier>{cf174b17-0900-4514-9916-6f30fa5cacf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\capture">
+      <UniqueIdentifier>{60d09617-f6ef-49df-949e-47a32140e175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\alife">
+      <UniqueIdentifier>{d25f1682-ef5a-427e-a74c-bf82a9ac0e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{fd5eec89-9a0f-4d6f-ab7a-1bc8cae40a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\UI">
+      <UniqueIdentifier>{bf6d51ed-9734-4feb-88b4-3312dcbe0bfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\UI\multiplayer">
+      <UniqueIdentifier>{eca78c7d-65c2-4f25-8e2a-069584324439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\UI\options">
+      <UniqueIdentifier>{48e71d12-1d50-461e-9a74-100d3ce9bebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Tests">
+      <UniqueIdentifier>{2d73ffb0-19d6-4d12-8799-8fa13e4b7bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Unknown">
+      <UniqueIdentifier>{4cacc358-ce66-427d-9cbc-d4d676c3c897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP">
+      <UniqueIdentifier>{89755ab9-cd6f-4213-84a8-46a6e79b945e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Binders">
+      <UniqueIdentifier>{0addc70f-5233-49dc-aba2-d616c1663852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Binders\IDs">
+      <UniqueIdentifier>{9bf4aa60-0b67-4608-bdec-ee3b45ef63bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks">
+      <UniqueIdentifier>{08a9d4d5-17dd-493a-94fd-9812bf13b520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Stalker">
+      <UniqueIdentifier>{9f9db49c-4f91-427d-b52d-3702634ce609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Monster">
+      <UniqueIdentifier>{197dc2c7-1e02-4981-9a61-d8feeb163a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Physics">
+      <UniqueIdentifier>{6e8f6137-ef7f-45b7-a405-f6f2e11da536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Restrictors">
+      <UniqueIdentifier>{e27fee86-264f-49bd-ac09-773c1c395adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Misc">
+      <UniqueIdentifier>{5f207a5b-4b48-4082-8cc1-ca648417ca80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\BuildingBlocks\Helicopter">
+      <UniqueIdentifier>{d69ae736-9e5c-4493-bd47-d642a755a6fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes">
+      <UniqueIdentifier>{3a806e29-bcab-46a2-9f47-538bade308e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\Stalker">
+      <UniqueIdentifier>{3e0edce7-d3d0-4ae0-8207-bf1ed8baa307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\Monster">
+      <UniqueIdentifier>{ccc508fa-eb30-4ac5-aef1-eb408c6368f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\Physics">
+      <UniqueIdentifier>{ef8076ad-6b67-437c-a2e8-9aefe150e5a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\StateManager">
+      <UniqueIdentifier>{916e16c6-7433-49e3-aa26-8e76facdba74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\Gulags">
+      <UniqueIdentifier>{817f9232-1af4-4ecf-9fa6-71b1833ba6e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\GenericSchemes\SoundManager">
+      <UniqueIdentifier>{4d8a0671-9d5b-4bd9-92cd-0e8ec2ce56c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Libraries">
+      <UniqueIdentifier>{22188ade-108d-4109-9ad1-5fa329e1ab61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Deprecated">
+      <UniqueIdentifier>{a82b9f4a-4bba-4fc5-95e1-5ce818581ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Storyline">
+      <UniqueIdentifier>{74c78938-02b0-4698-8068-8dad39524760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Storyline\DialogSupport">
+      <UniqueIdentifier>{5b3f6d9c-fd9a-48fd-8a45-3be2af88e43e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Storyline\LevelTasks">
+      <UniqueIdentifier>{486ad8e6-df55-4b3c-9535-a5c9ef15f64f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\GP\Storyline\test_levels">
+      <UniqueIdentifier>{3968d96b-0938-40e5-83a3-34cb3a5119d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Multiplayer">
+      <UniqueIdentifier>{6d78caa4-b851-4a4d-a696-da05b2e3f08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects">
+      <UniqueIdentifier>{94ecae9b-c6e6-4c4d-92f0-54baac028f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\game_last_standing">
+      <UniqueIdentifier>{adbdb251-cc89-4ef0-a3e5-7da259d2b32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\switcher">
+      <UniqueIdentifier>{77aecdd4-ea9c-40cb-bc08-3ee8c4a27732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\stalker">
+      <UniqueIdentifier>{14aea44a-ab4a-4d4f-8c6d-0d24a3fbae79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\new_attachable_item">
+      <UniqueIdentifier>{a1741d5b-f5ac-460c-a578-386b15f8e62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\smart_terrain">
+      <UniqueIdentifier>{dbe748a1-8b61-468a-84f6-d75558dac603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\monster">
+      <UniqueIdentifier>{2c336b03-f4c4-4027-917b-de8a2a98af93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\physics">
+      <UniqueIdentifier>{48a6d7af-7c32-4904-82d8-bde76965ccb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\artefact">
+      <UniqueIdentifier>{ba4e6a6f-c689-48f3-a45e-b72a0fcdf339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\respawn">
+      <UniqueIdentifier>{6db7b2ea-6a44-474e-904f-2d3f7ca7f607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\items">
+      <UniqueIdentifier>{3db8af4b-6bec-4c9b-85ed-735d95f3e61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\objects\zones">
+      <UniqueIdentifier>{90a52487-3545-436b-ad88-0f956caadbe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\common">
+      <UniqueIdentifier>{aa369419-a91d-479c-889f-7c42d22b54db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Test">
+      <UniqueIdentifier>{f2739e8e-961b-4a87-927a-f66085f2a572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Test\Petruxa">
+      <UniqueIdentifier>{688ca6bb-33d5-4be8-a4d8-e4c8aae13d6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\Test\tasks">
+      <UniqueIdentifier>{df830bc8-4dc0-4370-bbac-e6313a81401c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\defines.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\evaluation.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\external.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\fonts.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_graphs.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_levels.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_levels_music.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_maps_mp.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_maps_single.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_spawn_story_ids.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\game_story_ids.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\rspec_default.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\rspec_extreme.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\rspec_high.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\rspec_low.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\rspec_minimum.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\script.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\System.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="Config\creatures\actor.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\damages.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\game_relations.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\helicopter.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\immunities.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Bloodsucker.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Boar.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_burer.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Cat.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Chimera.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_controller.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Crow.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Dog.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Flesh.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\m_fraction.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Fracture.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_giant.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\m_person.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="config\creatures\M_Phantom.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Poltergeist.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Pseudodog.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Rat.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Snork.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\m_stalker.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\m_stalker_monolith.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\m_stalker_zombied.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="config\creatures\M_tushkano.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\M_Zombie.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\monsters.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\spawn_sections.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\creatures\stalkers.ltx">
+      <Filter>config\creatures</Filter>
+    </None>
+    <None Include="Config\stalker_custom_data.ltx">
+      <Filter>config\creatures\custom_data</Filter>
+    </None>
+    <None Include="Config\misc\artefacts.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\death_generic.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\death_items_by_communities.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\death_items_by_levels.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\death_items_count.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\devices.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\dialog_manager.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\dream.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\effectors.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\items.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\monster_items.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\outfit.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\ph_box_generic.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\ph_box_items_by_communities.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\ph_box_items_by_levels.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\ph_box_items_count.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\postprocess.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\quest_items.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\respawn.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\script_sound.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\smart_terrain.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="config\misc\smart_terrain_presets.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\task_manager.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\treasure_manager.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\trigger.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\unique_items.ltx">
+      <Filter>config\misc</Filter>
+    </None>
+    <None Include="Config\misc\gulag_agroprom.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_bar.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_dark_valley.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_deadcity.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_escape.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_garbage.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_general.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_kishka.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_labx18.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_pripyat.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_radar.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_radar_u.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_sarcofag.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_tasks.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="Config\misc\gulag_yantar.ltx">
+      <Filter>config\misc\gulags</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_dolg.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_fblockpost.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_freedom1.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_freedom2.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_freedom3.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_freedom4.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_monolith.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_mutants.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_nblockpost.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_mil_village.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="config\misc\gulag_military.ltx">
+      <Filter>config\misc\gulags\Military</Filter>
+    </None>
+    <None Include="Config\misc\trade_barman.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\misc\trade_dolg.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\misc\trade_ecolog.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\misc\trade_freedom.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\misc\trade_generic.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\misc\trade_trader.ltx">
+      <Filter>config\misc\trade</Filter>
+    </None>
+    <None Include="Config\mp\artefacthunt_game.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\deathmatch_game.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\laststanding_game.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\map_list.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\mp_actor.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\mp_bonuses.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\mp_ranks.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\team_logo.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\teamdeathmatch_game.ltx">
+      <Filter>config\mp</Filter>
+    </None>
+    <None Include="Config\mp\weapons_mp\ammo_mp.ltx">
+      <Filter>config\mp\weapons_mp</Filter>
+    </None>
+    <None Include="Config\mp\weapons_mp\items_mp.ltx">
+      <Filter>config\mp\weapons_mp</Filter>
+    </None>
+    <None Include="Config\mp\weapons_mp\outfit_mp.ltx">
+      <Filter>config\mp\weapons_mp</Filter>
+    </None>
+    <None Include="Config\mp\weapons_mp\weapons_mp.ltx">
+      <Filter>config\mp\weapons_mp</Filter>
+    </None>
+    <None Include="Config\mp\SoundMessages\ahunt_snd_messages.ltx">
+      <Filter>config\mp\SoundMessages</Filter>
+    </None>
+    <None Include="Config\mp\SoundMessages\dm_snd_messages.ltx">
+      <Filter>config\mp\SoundMessages</Filter>
+    </None>
+    <None Include="Config\mp\SoundMessages\mp_snd_messages.ltx">
+      <Filter>config\mp\SoundMessages</Filter>
+    </None>
+    <None Include="Config\mp\SoundMessages\tdm_snd_messages.ltx">
+      <Filter>config\mp\SoundMessages</Filter>
+    </None>
+    <None Include="Config\weapons\delayed_action_fuse.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_abakan.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_ak74.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_ak74u.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_beretta.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_binoc.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_bm16.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_bolt.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_colt1911.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_desert_eagle.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_f1.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_fn2000.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_fort.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_g36.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_gauss.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_groza.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_hpsa.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_knife.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_l85.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_lr300.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_mac10.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_mounted.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_mp5.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_pb.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_pm.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_rg6.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_rgd5.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_rpg7.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_sig220.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_sig550.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_spas12.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_svd.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_svu.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_toz34.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_ups.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_val.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_vintorez.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_walther.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\w_wincheaster1300.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="Config\weapons\weapons.ltx">
+      <Filter>config\weapons</Filter>
+    </None>
+    <None Include="config\weathers\env_ambient.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\environment.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\flares.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\thunderbolt.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\weather_default.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_indoor.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_map.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\weather_mp.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\weather_prypyat.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\weather_radar.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_rain.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\weathers\weather_sarkofag.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_surge.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_test.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="config\weathers\weather_yantar.ltx">
+      <Filter>config\weathers</Filter>
+    </None>
+    <None Include="Config\scripts\deadcity_wake.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_metal_large.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_metal_large_unlocked.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_metal_small.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_metal_small_unlocked.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_wood_large.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_wood_large_unlocked.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_wood_small.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\door_wood_small_unlocked.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\dummy.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="config\scripts\earthshake.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\esc_trader.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\esc_trader_door.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\gar_dm_bandit1.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\gar_dm_bandit2.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\gar_dm_bandit3.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\gar_dm_novice.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\gar_dolg_pass_gates.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="config\scripts\postprocess.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="config\scripts\sincos.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\slide_box_small.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="config\scripts\teleport.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\test_hit_in_actor_dir1.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\test_hit_in_actor_dir2.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="Config\scripts\treasure_inventory_box.ltx">
+      <Filter>config\scripts</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_bandit1.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_bandit2.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_bandit3.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_bandit4.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_kamper2.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_kamper3.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_kamper4.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_kamper5.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_kamper6.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_dolg_zoneguard.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_freedom_bodyguard1.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_freedom_bodyguard2.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_freedom_bodyguard3.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\mil\mil_freedom_leader.ltx">
+      <Filter>config\scripts\Military</Filter>
+    </None>
+    <None Include="config\scripts\dar\dar_codelock1.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="config\scripts\dar\dar_codelock2.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="config\scripts\dar\dar_door1.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="config\scripts\dar\dar_door2.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="Config\scripts\dar\dar_door3.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="config\scripts\dar\dar_sound_zone.ltx">
+      <Filter>config\scripts\LabX18</Filter>
+    </None>
+    <None Include="config\scripts\arena_respawn_custom_data.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_combat_triger.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_door1.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_door2.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_door3.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_manager.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_spam.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_arena_sr.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_bar_room.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_barman.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_crush_danger_zone.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_crush_spam.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_dolg_megafone.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_entry_zone.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="config\scripts\bar_petrenko.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_psih.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_scared_novice.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\bar_territory_zone.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\rostok_tunel_deep.ltx">
+      <Filter>config\scripts\Rostok</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_doctor.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_heli.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_hunt_killer1.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_hunt_killer2.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_hunt_killer3.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_hunt_killer4.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_hunt_victim.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_jail_button.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_jail_door.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_jail_guard1.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_jail_guard2.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\cit\cit_jail_scene_zone.ltx">
+      <Filter>config\scripts\Deadcity</Filter>
+    </None>
+    <None Include="Config\scripts\val_ambush_t1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_ambush_t2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_ambush_t3.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_bs_killer1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_bs_killer2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_bs_victim.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_chase_heli.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_escort_captive.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_escort_guard1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_escort_guard2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_escort_nap1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_monolith_forget_zone.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_opendoor_monolith.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_opendoor_soldier.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_opendoor_start_zone.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_opendoor_victim.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_prisoner_button.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_prisoner_captive.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_prisoner_door.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_prisoner_guard.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val\val_respawn_custom_data_wt1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val\val_respawn_custom_data_wt2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val\val_respawn_custom_data_wt3.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val\val_respawn_custom_data_wt4.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val\val_respawn_custom_data_wt5.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_rob_leader.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_sacrifice_guard1.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_sacrifice_guard2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_sacrifice_victim.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_sos_bs.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_stairs_heli.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_stairs_victim2.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_suicide_and_escort_start_zone.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_suicide_stalker.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_tunnel_bandit.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_underground_door.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="Config\scripts\val_x18_exit_zone.ltx">
+      <Filter>config\scripts\DarkValley</Filter>
+    </None>
+    <None Include="config\scripts\test1.ltx">
+      <Filter>config\scripts\Tests</Filter>
+    </None>
+    <None Include="config\scripts\test_jumper.ltx">
+      <Filter>config\scripts\Tests</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_factory_assault_trigger.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_factory_radio_spammer.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_helicopter1.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_helicopter2.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_helicopter3.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_helicopter4.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_knockdown.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_krot.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_krot_combat_trigger.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_nii_heli.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_nii_rupor.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\agr\agr_ratcatcher.ltx">
+      <Filter>config\scripts\Agroprom</Filter>
+    </None>
+    <None Include="Config\scripts\pri_heli4.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\pri\pri_respawn_custom_data_dolg.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\pri\pri_respawn_custom_data_freedom.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\pri\pri_respawn_custom_data_military.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\pri\pri_respawn_custom_data_neutral.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\pri_wave3_btr.ltx">
+      <Filter>config\scripts\Pripyat</Filter>
+    </None>
+    <None Include="Config\scripts\bun_deactivate_radar.ltx">
+      <Filter>config\scripts\Radar</Filter>
+    </None>
+    <None Include="Config\scripts\bun_psy_timer.ltx">
+      <Filter>config\scripts\Radar</Filter>
+    </None>
+    <None Include="Config\scripts\bun_psy_zone.ltx">
+      <Filter>config\scripts\Radar</Filter>
+    </None>
+    <None Include="Config\scripts\esc_novice_attacker1.ltx">
+      <Filter>config\scripts\escape</Filter>
+    </None>
+    <None Include="Config\scripts\esc_novice_attacker2.ltx">
+      <Filter>config\scripts\escape</Filter>
+    </None>
+    <None Include="Config\scripts\esc_novice_attacker3.ltx">
+      <Filter>config\scripts\escape</Filter>
+    </None>
+    <None Include="config\scripts\ds\heli.ltx">
+      <Filter>config\scripts\DarkScape</Filter>
+    </None>
+    <None Include="config\scripts\yan\brain_system_message.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="config\scripts\yan\yan_ghost.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="config\scripts\yan\yan_grate.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="config\scripts\yan\yan_klyk.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="Config\scripts\yan_labx16_switcher1.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="Config\scripts\yan_labx16_switcher2.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="Config\scripts\yan_labx16_switcher3.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="Config\scripts\yan_labx16_switcher_primary.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="config\scripts\yan\yan_scientist.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="config\scripts\yan\yan_sleep_restrictor.ltx">
+      <Filter>config\scripts\Yantar</Filter>
+    </None>
+    <None Include="Config\scripts\sar_decoding.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_door.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_kristal_customdata.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_monolith.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_monolith_call.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_monolith_gen.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_monolith_gen_main.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\scripts\sar_monolith_noise.ltx">
+      <Filter>config\scripts\sarcofag</Filter>
+    </None>
+    <None Include="Config\misc\zone_burningfuzz.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_buzz.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_gravi.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_kampfire.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_mincer.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_minefield.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_monolith.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_mosquitobald.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_nogravity.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_radioactive.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_teleport.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_torrid.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_witchesgalantine.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_zharka_static.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zones.ltx">
+      <Filter>config\Zones</Filter>
+    </None>
+    <None Include="Config\misc\zone_ameba.ltx">
+      <Filter>config\Zones\old_and_unused</Filter>
+    </None>
+    <None Include="Config\misc\zone_rustyhair.ltx">
+      <Filter>config\Zones\old_and_unused</Filter>
+    </None>
+    <None Include="config\prefetch\prefetch.ltx">
+      <Filter>config\Prefetch</Filter>
+    </None>
+    <None Include="config\prefetch\prefetch_globals.ltx">
+      <Filter>config\Prefetch</Filter>
+    </None>
+    <None Include="config\prefetch\prefetch_mp.ltx">
+      <Filter>config\Prefetch</Filter>
+    </None>
+    <None Include="config\prefetch\prefetch_single.ltx">
+      <Filter>config\Prefetch</Filter>
+    </None>
+    <None Include="Config\models\objects\aes_zabor.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\artefact_monolit.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\box_lab_02.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\box_wood_01.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="config\models\objects\door_locker.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\light_night.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="config\models\objects\military_wall_brick_in.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\monolith_generator.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\sarcofag_hologram.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\wood_board_br_03.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\objects\wood_fence.ltx">
+      <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="Config\models\vehicles\niva_engine.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="Config\models\vehicles\veh_btr_script_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="Config\models\vehicles\veh_btr_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_kamaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_mi24_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_niva_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_tr13_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_uaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="Config\models\vehicles\veh_zaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="Config\models\vehicles\veh_zaz_u_01_part0.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\weapons\mounted_wpn_pkm.ltx">
+      <Filter>config\models\weapons</Filter>
+    </None>
+    <None Include="Config\models\capture\armor_helmet_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\burer_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\c_dog.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\cat_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\chimera_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\dog_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\exo_helmet_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\flesh_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\gilet_antigas_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\gilet_antigas_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\gilet_mask_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\gilet_mask_damage_no.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\izlom_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_antigas_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_antigas_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_helmet_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_helmet_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_kupol_damage_high.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_kupol_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_mask_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kombez_mask_damage_no.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\kontroler_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\krovosos_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kurtka_antigas_damage_low.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kurtka_kupol_damage_high.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\kurtka_mask_damage_no.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\mutant_boar_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\plasch_mask_damage_no.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\poltergeist_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\pseudodog_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\psevdogigant_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\snork_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\stalker_hero_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\tushkano_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="config\models\capture\zombi_captures.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\models\capture\zombied_damage_med.ltx">
+      <Filter>config\models\capture</Filter>
+    </None>
+    <None Include="Config\alife.ltx">
+      <Filter>config\alife</Filter>
+    </None>
+    <None Include="scripts\ui_base_dialog.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="Scripts\ui_game_over.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="scripts\ui_load_dialog.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="scripts\ui_main_menu.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="Scripts\ui_numpad.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="scripts\ui_registrator.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="scripts\ui_save_dialog.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="Scripts\ui_spawn_dialog.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="Scripts\ui_wpn_params.script">
+      <Filter>scripts\UI</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_mp_join.script">
+      <Filter>scripts\UI\multiplayer</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_mp_options.script">
+      <Filter>scripts\UI\multiplayer</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_mp_server.script">
+      <Filter>scripts\UI\multiplayer</Filter>
+    </None>
+    <None Include="Scripts\ui_mp_main.script">
+      <Filter>scripts\UI\multiplayer</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_controls.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_gameplay.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_main.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_sound.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_video.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="Scripts\ui_mm_opt_video_adv.script">
+      <Filter>scripts\UI\options</Filter>
+    </None>
+    <None Include="scripts\agro.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\andy_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\esc_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\jm_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\krondor_test1.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\krondor_test2.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\krondor_test3.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\mil_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\monster_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="Scripts\postprocess.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\pripyat.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\qa.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\radar_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\test_heli_2.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\test_utils.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\val_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\x18.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\yantar_test.script">
+      <Filter>scripts\Tests</Filter>
+    </None>
+    <None Include="scripts\_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\a1.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\a2.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\a3.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\alife_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\anomaly.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\arbug.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\bug7.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\bug_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\car.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\ce_new_game_dm.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\dbg_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\debug_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\del.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\del2.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\del_izlom.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\del_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\del_trader.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\dog_look1.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\enable.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\explode_zone.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\fs_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\h.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\info_pda.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\info_pda2.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\info_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\info_test1.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\kill.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\monster_script.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\particle_flame.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\particle_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\path.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\path_old.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\ph_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\ptr.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\script_object_registry.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\sound_megafon.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\stalker_test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_bug.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_cast.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_client_spawner.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_debugger.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_heli.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_heli_attack.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_id.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_ini.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_invisible.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_move.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_script.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_sound.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_trader.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_walk.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\test_zombie.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\vovan_script.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\walk.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="scripts\x2.script">
+      <Filter>scripts\Unknown</Filter>
+    </None>
+    <None Include="Scripts\level_weathers.script">
+      <Filter>scripts\GP</Filter>
+    </None>
+    <None Include="Scripts\phantom_manager.script">
+      <Filter>scripts\GP</Filter>
+    </None>
+    <None Include="Scripts\actor_proxy.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_heli.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_monster.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_physic_object.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="scripts\bind_respawn.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_restrictor.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_smart_terrain.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="Scripts\bind_stalker.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="scripts\modules.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="scripts\xr_motivator.script">
+      <Filter>scripts\GP\Binders</Filter>
+    </None>
+    <None Include="scripts\xr_actions_id.script">
+      <Filter>scripts\GP\Binders\IDs</Filter>
+    </None>
+    <None Include="scripts\xr_evaluators_id.script">
+      <Filter>scripts\GP\Binders\IDs</Filter>
+    </None>
+    <None Include="scripts\xr_sounds_id.script">
+      <Filter>scripts\GP\Binders\IDs</Filter>
+    </None>
+    <None Include="Scripts\xr_attendant.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_camper.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_combat_camper.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_heli_hunter.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_kamp.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_patrol.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_remark.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_sleeper.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_walker.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\mob_alife_control.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_camp.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="Scripts\mob_eluder.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_fake_death.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_home.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_jump.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_remark.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_trader.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_walker.script">
+      <Filter>scripts\GP\BuildingBlocks\Monster</Filter>
+    </None>
+    <None Include="Scripts\ph_appforce.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_button.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_camera.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="scripts\ph_car.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="scripts\ph_code.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="scripts\ph_door.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_gate.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_hit.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_idle.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_impulse.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_oscillate.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_sound.script">
+      <Filter>scripts\GP\BuildingBlocks\Physics</Filter>
+    </None>
+    <None Include="Scripts\sr_aes_deadzone.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="scripts\sr_cutscene.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="scripts\sr_danger.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_idle.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_light.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_mapspot.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_no_weapon.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_particle.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_psy_antenna.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_sleep.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_sound.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_sound2d.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="scripts\sr_teleport.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="scripts\sr_territory.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="scripts\sr_timer.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\sr_tip.script">
+      <Filter>scripts\GP\BuildingBlocks\Restrictors</Filter>
+    </None>
+    <None Include="Scripts\dream.script">
+      <Filter>scripts\GP\BuildingBlocks\Misc</Filter>
+    </None>
+    <None Include="scripts\fx_sound.script">
+      <Filter>scripts\GP\BuildingBlocks\Misc</Filter>
+    </None>
+    <None Include="scripts\heli_combat.script">
+      <Filter>scripts\GP\BuildingBlocks\Helicopter</Filter>
+    </None>
+    <None Include="Scripts\heli_move.script">
+      <Filter>scripts\GP\BuildingBlocks\Helicopter</Filter>
+    </None>
+    <None Include="Scripts\heli_snd.script">
+      <Filter>scripts\GP\BuildingBlocks\Helicopter</Filter>
+    </None>
+    <None Include="scripts\gulag_tasks.script">
+      <Filter>scripts\GP\GenericSchemes</Filter>
+    </None>
+    <None Include="scripts\stalker_generic.script">
+      <Filter>scripts\GP\GenericSchemes</Filter>
+    </None>
+    <None Include="scripts\xr_detector.script">
+      <Filter>scripts\GP\GenericSchemes</Filter>
+    </None>
+    <None Include="scripts\xr_gulag.script">
+      <Filter>scripts\GP\GenericSchemes</Filter>
+    </None>
+    <None Include="scripts\xr_logic.script">
+      <Filter>scripts\GP\GenericSchemes</Filter>
+    </None>
+    <None Include="scripts\xr_abuse.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_combat.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_combat_ignore.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_combat_monolith.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_combat_zombied.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_companion.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_danger.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_death.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_hit.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_meet.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_punch.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\xr_reach_task.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_reactions.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_sos.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_use.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_wounded.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="Scripts\mob_combat.script">
+      <Filter>scripts\GP\GenericSchemes\Monster</Filter>
+    </None>
+    <None Include="Scripts\mob_death.script">
+      <Filter>scripts\GP\GenericSchemes\Monster</Filter>
+    </None>
+    <None Include="scripts\mob_panic.script">
+      <Filter>scripts\GP\GenericSchemes\Monster</Filter>
+    </None>
+    <None Include="Scripts\mob_trade.script">
+      <Filter>scripts\GP\GenericSchemes\Monster</Filter>
+    </None>
+    <None Include="Scripts\ph_death.script">
+      <Filter>scripts\GP\GenericSchemes\Physics</Filter>
+    </None>
+    <None Include="Scripts\ph_on_hit.script">
+      <Filter>scripts\GP\GenericSchemes\Physics</Filter>
+    </None>
+    <None Include="scripts\state_lib.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animation.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animation_list.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animstate.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_bodystate.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_direction.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_goap.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_mental.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_movement.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="scripts\state_mgr_weapon.script">
+      <Filter>scripts\GP\GenericSchemes\StateManager</Filter>
+    </None>
+    <None Include="Scripts\gulag_agroprom.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_agroprom_underground.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_bar.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_dark_valley.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_deadcity.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_escape.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_garbage.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_general.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_kishka.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_labx18.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_military.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_pripyat.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_radar.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_radar_u.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="Scripts\gulag_sarcofag.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\gulag_yantar.script">
+      <Filter>scripts\GP\GenericSchemes\Gulags</Filter>
+    </None>
+    <None Include="scripts\sound_prefetch.script">
+      <Filter>scripts\GP\GenericSchemes\SoundManager</Filter>
+    </None>
+    <None Include="scripts\sound_theme.script">
+      <Filter>scripts\GP\GenericSchemes\SoundManager</Filter>
+    </None>
+    <None Include="scripts\xr_sound.script">
+      <Filter>scripts\GP\GenericSchemes\SoundManager</Filter>
+    </None>
+    <None Include="scripts\db.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="Scripts\mob_alife_mgr.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="scripts\mob_sound.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="Scripts\mob_state_mgr.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="scripts\move_mgr.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="scripts\news_manager.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="Scripts\ranks.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="Scripts\slowdown.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="scripts\utils.script">
+      <Filter>scripts\GP\Libraries</Filter>
+    </None>
+    <None Include="scripts\escape_heli.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\escape_patrol2.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\escape_raid.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\escape_raid_heli.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\escape_raids.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\escape_sound_events.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\gramofon.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\level_news.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="Scripts\level_psy_antenna.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_assistance.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_bodyguard.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_dialogs.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_guide.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_heli.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_radar.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_robbers.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_spawner.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_state.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_talker.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\xr_zones.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\zone_spawner.script">
+      <Filter>scripts\GP\Deprecated</Filter>
+    </None>
+    <None Include="scripts\avi_start.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="Scripts\death_manager.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\dialog_manager.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\sim_statistic.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\task_manager.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\trade_manager.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\treasure_manager.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="Scripts\xr_box.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\xr_conditions.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="Scripts\xr_conditions_impl.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\xr_effects.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\xr_info.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="scripts\xr_statistic.script">
+      <Filter>scripts\GP\Storyline</Filter>
+    </None>
+    <None Include="Scripts\agroprom_dialog.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\bar_dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\dar_dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\deadcity_dialog.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\dialogs_aes.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\dialogs_darkvalley.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\dialogs_military.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\dialogs_yantar.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\escape_dialog.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="scripts\garbage_dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\rad_dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\yantar_dialog.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
+    </None>
+    <None Include="Scripts\agroprom_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\bar_rostok_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\darkvalley_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="Scripts\deadcity_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\escape_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\garbage_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\level_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="Scripts\mil_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="Scripts\pripyat_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\radar_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\yantar_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\quest_aes.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_agroprom.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_bar.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_bar2.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="Scripts\quest_darkvalley.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_deadcity.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_escape2.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_escape3.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_garbage.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_garbage2.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_items.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_military.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_pripyat.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_radar.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_rostok.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\quest_yantar.script">
+      <Filter>scripts\GP\Storyline\test_levels</Filter>
+    </None>
+    <None Include="scripts\game_registrator.script">
+      <Filter>scripts\Multiplayer</Filter>
+    </None>
+    <None Include="scripts\game_types.script">
+      <Filter>scripts\Multiplayer</Filter>
+    </None>
+    <None Include="scripts\class_registrator.script">
+      <Filter>scripts\objects</Filter>
+    </None>
+    <None Include="scripts\game_last.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_charselect_dlg.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_cl.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_dialog.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_header_wnd.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_ps.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_sv.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_tmp.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="scripts\game_last_ui.script">
+      <Filter>scripts\objects\game_last_standing</Filter>
+    </None>
+    <None Include="Scripts\ce_switcher.script">
+      <Filter>scripts\objects\switcher</Filter>
+    </None>
+    <None Include="scripts\se_switcher.script">
+      <Filter>scripts\objects\switcher</Filter>
+    </None>
+    <None Include="scripts\se_stalker.script">
+      <Filter>scripts\objects\stalker</Filter>
+    </None>
+    <None Include="scripts\ce_new_attachable_item.script">
+      <Filter>scripts\objects\new_attachable_item</Filter>
+    </None>
+    <None Include="scripts\se_new_attachable_item.script">
+      <Filter>scripts\objects\new_attachable_item</Filter>
+    </None>
+    <None Include="scripts\smart_terrain.script">
+      <Filter>scripts\objects\smart_terrain</Filter>
+    </None>
+    <None Include="Scripts\smart_terrain_params.script">
+      <Filter>scripts\objects\smart_terrain</Filter>
+    </None>
+    <None Include="Scripts\se_monster.script">
+      <Filter>scripts\objects\monster</Filter>
+    </None>
+    <None Include="Scripts\se_car.script">
+      <Filter>scripts\objects\physics</Filter>
+    </None>
+    <None Include="Scripts\se_artefact.script">
+      <Filter>scripts\objects\artefact</Filter>
+    </None>
+    <None Include="scripts\se_respawn.script">
+      <Filter>scripts\objects\respawn</Filter>
+    </None>
+    <None Include="scripts\se_item.script">
+      <Filter>scripts\objects\items</Filter>
+    </None>
+    <None Include="scripts\se_zones.script">
+      <Filter>scripts\objects\zones</Filter>
+    </None>
+    <None Include="scripts\_G.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="Scripts\game_stats.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="scripts\lua_help.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="scripts\memusage.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="Scripts\p.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="scripts\profiler.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="scripts\version.script">
+      <Filter>scripts\common</Filter>
+    </None>
+    <None Include="Scripts\task_level1.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level2.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level3.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level4.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level5.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level6.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level7.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level8.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\task_level_x18.script">
+      <Filter>scripts\Test</Filter>
+    </None>
+    <None Include="Scripts\petruxa1.script">
+      <Filter>scripts\Test\Petruxa</Filter>
+    </None>
+    <None Include="Scripts\petruxa2.script">
+      <Filter>scripts\Test\Petruxa</Filter>
+    </None>
+    <None Include="Scripts\petruxa3.script">
+      <Filter>scripts\Test\Petruxa</Filter>
+    </None>
+    <None Include="Scripts\petruxa4.script">
+      <Filter>scripts\Test\Petruxa</Filter>
+    </None>
+    <None Include="Scripts\task_1.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_10.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_11.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_12.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_13.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_14.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_15.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_16.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_17.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_18.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_19.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_2.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_20.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_3.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_4.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_5.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_6.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_7.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_8.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_9.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\task_sim.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+    <None Include="Scripts\weap.script">
+      <Filter>scripts\Test\tasks</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config\gameplay\character_criticals_1.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_2.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_3.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_4.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_5.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_6.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_drugs.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_food.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_items.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_equipment.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_infos.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_mutants.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_social.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_tutorial.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_vehicles.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_weapons.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\encyclopedia_zone.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\npc_profile.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\stories.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_aes.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_bar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_darkvalley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_pripyat.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_sarcofag.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_taskmanager.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_to_diary.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\storyline_info_yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_dialogs.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_aes.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_agroprom.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_bar.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_darkvalley.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_deadcity.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_escape.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_garbage.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_labx18.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_military.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_pripyat.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_radar.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_test.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\dialogs_yantar.xml">
+      <Filter>config\gameplay\Dialogs</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\game_tasks.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\game_tasks_by_vendor.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_aes.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_agroprom.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_bar.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_darkvalley.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_deadcity.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_escape.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_garbage.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_military.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_radar.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_sarcofag.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\tasks_yantar.xml">
+      <Filter>config\gameplay\tasks</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_known_objects.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l01escape.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l02garbage.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l03agroprom.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l04agroprom_u.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l05dark_valley.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l06dark_valley_u.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l07rostok.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l08deadcity.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l08rostok_bar.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l08yantar.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l09marshes.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l09rostok_dolg.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l10military.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l10radar.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l11pripyat.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l11yantar.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l12u_sarcofag.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l12yantar_u.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l13deadcity.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l14swamp.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l16radar_antena.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l17monolith_control.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l18pripyat.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l19stanciya.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l20sarcofag.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l21generators.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_l22warlab.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_lchanger_ico.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_level_tips.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_portions.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_portions_light.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_portions_test.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\info_stories.xml">
+      <Filter>config\gameplay\Infoportions</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_aes.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_aes2.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_agroprom.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_bar.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_darkvalley.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_deadcity.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_escape.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_garbage.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_general.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_kishka.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_military.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_pripyat.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_radar.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_sarcofag.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_simulation.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\gameplay\character_desc_yantar.xml">
+      <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\mp_st_speechmenu.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_ui.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_mp_teamdesc.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_inventory.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_keybinding.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_mapdesc.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_mm.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_mm_mp.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_mp.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_other.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\ui_st_pda.xml">
+      <Filter>config\text\rus\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_bio_name.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialog_manager.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialog_manager_uni.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_test.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_generate_fnames.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_generate_snames.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_statistic_caption.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_stories.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_task_manager.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_treasure_manager.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_treasure_manager.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_enc_equipment.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_enc_mutants.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_enc_social.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_enc_weapons.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_enc_zone.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_general.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_includes.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_items.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_level_tips.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_outfit.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tutorial.xml">
+      <Filter>config\text\rus\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_radar.xml">
+      <Filter>config\text\rus\other\l10_radar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_radar.xml">
+      <Filter>config\text\rus\other\l10_radar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_radar.xml">
+      <Filter>config\text\rus\other\l10_radar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_radar.xml">
+      <Filter>config\text\rus\other\l10_radar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_radar.xml">
+      <Filter>config\text\rus\other\l10_radar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_sarcofag.xml">
+      <Filter>config\text\rus\other\L12u_sarcofag</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_sarcofag.xml">
+      <Filter>config\text\rus\other\L12u_sarcofag</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_sarcofag.xml">
+      <Filter>config\text\rus\other\L12u_sarcofag</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_sarcofag.xml">
+      <Filter>config\text\rus\other\L12u_sarcofag</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\stable_dialogs_aes.xml">
+      <Filter>config\text\rus\other\l12_aes</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\stable_storyline_info_aes.xml">
+      <Filter>config\text\rus\other\l12_aes</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\string_table_mapspots_aes.xml">
+      <Filter>config\text\rus\other\l12_aes</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\string_table_tasks_aes.xml">
+      <Filter>config\text\rus\other\l12_aes</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_escape.xml">
+      <Filter>config\text\rus\other\l01_escape</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_escape.xml">
+      <Filter>config\text\rus\other\l01_escape</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_escape.xml">
+      <Filter>config\text\rus\other\l01_escape</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_escape.xml">
+      <Filter>config\text\rus\other\l01_escape</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_escape.xml">
+      <Filter>config\text\rus\other\l01_escape</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_garbage.xml">
+      <Filter>config\text\rus\other\l02_garbage</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_garbage.xml">
+      <Filter>config\text\rus\other\l02_garbage</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_garbage.xml">
+      <Filter>config\text\rus\other\l02_garbage</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_garbage.xml">
+      <Filter>config\text\rus\other\l02_garbage</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_garbage.xml">
+      <Filter>config\text\rus\other\l02_garbage</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_agroprom.xml">
+      <Filter>config\text\rus\other\l03_agroprom</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_agroprom.xml">
+      <Filter>config\text\rus\other\l03_agroprom</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_agroprom.xml">
+      <Filter>config\text\rus\other\l03_agroprom</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_agroprom.xml">
+      <Filter>config\text\rus\other\l03_agroprom</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_agroprom.xml">
+      <Filter>config\text\rus\other\l03_agroprom</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_darkvalley.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\stable_dialogs_labx18.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_darkvalley.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_darkvalley.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_darkvalley.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_darkvalley.xml">
+      <Filter>config\text\rus\other\l04_darkvalley</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_bar.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_bar-rostok.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_bar.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_bar.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_bar.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_bar-rostok.xml">
+      <Filter>config\text\rus\other\l05_bar-rostok</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_yantar.xml">
+      <Filter>config\text\rus\other\l06_yantar</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\stable_storyline_info_yantar.xml">
+      <Filter>config\text\rus\other\l06_yantar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_yantar.xml">
+      <Filter>config\text\rus\other\l06_yantar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_yantar.xml">
+      <Filter>config\text\rus\other\l06_yantar</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_yantar.xml">
+      <Filter>config\text\rus\other\l06_yantar</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\stable_dialogs_military.xml">
+      <Filter>config\text\rus\other\l07_military</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_military.xml">
+      <Filter>config\text\rus\other\l07_military</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\string_table_mapspots_military.xml">
+      <Filter>config\text\rus\other\l07_military</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\string_table_tasks_military.xml">
+      <Filter>config\text\rus\other\l07_military</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tips_military.xml">
+      <Filter>config\text\rus\other\l07_military</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_deadcity.xml">
+      <Filter>config\text\rus\other\l08_deadcity</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_deadcity.xml">
+      <Filter>config\text\rus\other\l08_deadcity</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_deadcity.xml">
+      <Filter>config\text\rus\other\l08_deadcity</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_tasks_deadcity.xml">
+      <Filter>config\text\rus\other\l08_deadcity</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_dialogs_pripyat.xml">
+      <Filter>config\text\rus\other\l11_pripyat</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\stable_storyline_info_pripyat.xml">
+      <Filter>config\text\rus\other\l11_pripyat</Filter>
+    </Xml>
+    <Xml Include="Config\text\rus\string_table_mapspots_pripyat.xml">
+      <Filter>config\text\rus\other\l11_pripyat</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\mp_st_speechmenu.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_mm_team_desc.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_mp_teamdesc.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_inventory.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_keybinding.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_mapdesc.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_mm.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_mm_mp.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_mp.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_other.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\ui_st_pda.xml">
+      <Filter>config\text\eng\UI</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_bio_name.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialog_manager.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialog_manager_uni.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_aes.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_agroprom.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_bar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_darkvalley.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_deadcity.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_escape.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_garbage.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_labx18.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="config\text\eng\stable_dialogs_military.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_pripyat.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_radar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_test.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_uni.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_dialogs_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_generate_fnames.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_generate_snames.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_statistic_caption.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_stories.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_aes.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_agroprom.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_bar-rostok.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_bar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_darkvalley.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_deadcity.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_escape.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_garbage.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_military.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_pripyat.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_radar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_sarcofag.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_to_diary.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_storyline_info_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\stable_task_manager.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\storyline_info_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_artefacts.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_equipment.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_mutants.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_social.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_vehicles.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_weapons.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_enc_zone.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_general.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_includes.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_items.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_level_tips.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspot_deadcity.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_aes.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_agroprom.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_bar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_darkvalley.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_deadcity.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_escape.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_garbage.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_military.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_pripyat.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_radar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_sarcofag.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_mapspots_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_news.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_outfit.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_aes.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_agroprom.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_bar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_darkvalley.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_deadcity.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_escape.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_garbage.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_military.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_radar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_sarcofag.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tasks_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_agroprom.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_bar-rostok.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_darkvalley.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_escape.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_garbage.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_military.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_radar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_sarcofag.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tips_yantar.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_tutorial.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\string_table_ui.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\text\eng\test_string.xml">
+      <Filter>config\text\eng\other</Filter>
+    </Xml>
+    <Xml Include="Config\ui\car_panel.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\car_panel_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\carbody_new.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\carbody_new_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\color_defs.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\follower_panel.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\game_tutorials.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\grenade.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\hint_item.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventory_new.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventory_new_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\job_item.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\motion_icon.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\motion_icon_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\sleep_dialog_new.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\statisticwnd.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\talk.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\talk_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade_16.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_credits.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_movies.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_videoplayer.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\video_templ.xml">
+      <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_agroprom.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_bar.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_darkvalley.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_escape.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_garbage.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_lchangers.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_military.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_mp.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_radar.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_relations.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_spots_rostok.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_common.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_hud.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_icons_map.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_iconsTotal.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_ingame.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_inventory.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_inventory2.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mainMenu.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_map_description.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_models_multiplayer.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mp_icon_rank.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mp_main.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_numpad.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_old_textures.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_PDA.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_statistics.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_team_logo.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_team_logo_small.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_keybinding.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_load_dlg.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_main.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_mp.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_mp_tabclient.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_mp_taboptions.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_mp_tabserver.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_opt.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mm_save_dlg.xml">
+      <Filter>config\ui\mm</Filter>
+    </Xml>
+    <Xml Include="Config\ui\af_params.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\af_params_16.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\buy_menu_item.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\buy_mp_item.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\carbody_item.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\carbody_item_16.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventory_item.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventory_item_16.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade_item.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade_item_16.xml">
+      <Filter>config\ui\item_infos</Filter>
+    </Xml>
+    <Xml Include="Config\ui\follower_character.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventory_character.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda_dialog_character.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda_dialog_character_16.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\stalkers_ranking_character.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\stalkers_ranking_character_16.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade_character.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\trade_character_16.xml">
+      <Filter>config\ui\character_desc</Filter>
+    </Xml>
+    <Xml Include="Config\ui\inventoryMP.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\map_desc.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_desc_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\mp_buy_menu.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\mp_buy_menu_buttons.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\skin_selector.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\skin_selector_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\spawn.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\spawn_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\stats.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\stats_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_game_ahunt.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_game_ahunt_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_game_dm.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_game_dm_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_game_tdm.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_game_tdm_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_mapinfo.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\voting_category.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="config\ui\voting_category_16.xml">
+      <Filter>config\ui\mp</Filter>
+    </Xml>
+    <Xml Include="Config\ui\actor_statistic.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\encyclopedia.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\encyclopedia_item.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\events_new.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\news.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\news_templates.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda_character.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda_contacts_new.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\pda_events.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="config\ui\pda_map.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\stalkers_ranking.xml">
+      <Filter>config\ui\pda</Filter>
+    </Xml>
+    <Xml Include="Config\ui\maingame.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\maingame_16.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\maingame_pda_msg.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\messages_window.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_custom_msgs.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\ui_numpad_wnd.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\zone_map.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\zone_map_16.xml">
+      <Filter>config\ui\hud</Filter>
+    </Xml>
+    <Xml Include="Config\ui\message_box.xml">
+      <Filter>config\ui\controls</Filter>
+    </Xml>
+    <Xml Include="Config\ui\scroll_bar.xml">
+      <Filter>config\ui\controls</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Config\text\map_desc\fog_net.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_agroprom.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_atp.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_bath.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_factory.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_garbage.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_lost_village.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_military_1.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_military_2.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_pool.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_prypiat.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_railroad.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_rostok.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+    <Text Include="Config\text\map_desc\testers_mp_workshop.txt">
+      <Filter>config\text\map_desc</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
