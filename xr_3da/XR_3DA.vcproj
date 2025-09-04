@@ -15,8 +15,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="x:\binaries"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -100,8 +100,8 @@
 		</Configuration>
 		<Configuration
 			Name="Mixed|Win32"
-			OutputDirectory="x:\binaries\"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -181,8 +181,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="x:\binaries"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -227,7 +227,7 @@
 				AdditionalDependencies="msacm32.lib vfw32.lib ogg_static.lib theora_static.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="x:\libraries;&quot;..\3rd party\dxsdk\Lib&quot;"
+				AdditionalLibraryDirectories="&quot;..\libraries\$(ConfigurationName)&quot;;&quot;..\3rd party\dxsdk\Lib&quot;"
 				IgnoreDefaultLibraryNames="libcmt"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
@@ -236,7 +236,7 @@
 				SubSystem="0"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="x:\libraries\$(ProjectName).lib"
+				ImportLibrary="..\libraries\$(ConfigurationName)\$(ProjectName).lib"
 				FixedBaseAddress="1"/>
 			<Tool
 				Name="VCMIDLTool"
@@ -268,8 +268,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Dedicated|Win32"
-			OutputDirectory="x:\binaries\dedicated"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\dedicated\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\dedicated\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -351,8 +351,8 @@
 		</Configuration>
 		<Configuration
 			Name="Mixed_Dedicated|Win32"
-			OutputDirectory="x:\binaries\dedicated"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\dedicated\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\dedicated\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -431,8 +431,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Dedicated|Win32"
-			OutputDirectory="x:\binaries\dedicated"
-			IntermediateDirectory="x:\intermediate\$(ConfigurationName)\$(ProjectName)"
+			OutputDirectory="..\binaries\dedicated\$(ConfigurationName)"
+			IntermediateDirectory="..\intermediate\dedicated\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
