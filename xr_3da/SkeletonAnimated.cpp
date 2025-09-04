@@ -143,7 +143,7 @@ void	CKinematicsAnimated::LL_FadeCycle(u16 part, float falloff)
 		CBlend& B			= *Blend[I];
 		B.blend				= CBlend::eFalloff;
 		B.blendFalloff		= falloff;
-		if (B.stop_at_end)  B.playing = FALSE;		// callback не должен приходить!
+		if (B.stop_at_end)  B.playing = FALSE;		// callback пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
 	}
 }
 void	CKinematicsAnimated::LL_CloseCycle(u16 part)
@@ -491,7 +491,7 @@ void CKinematicsAnimated::IBlend_Startup	()
 		blend_pool.push_back(B);
 
 	// cycles+fx clear
-	for (i=0; i<MAX_PARTS; i++)
+	for (u32 i=0; i<MAX_PARTS; i++)
 		blend_cycles[i].clear();
 	blend_fx.clear		();
 }

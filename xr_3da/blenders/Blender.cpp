@@ -9,18 +9,20 @@
 
 #include "Blender.h"
 
-void CBlender_DESC::Setup	(LPCSTR N)
+void CBlender_DESC::Setup(LPCSTR N)
 {
 	// Name
-	VERIFY(xr_strlen(N)<128);
-	VERIFY(0==strchr(N,'.'));
-	strcpy(cName,N);
+	VERIFY(xr_strlen(N) < 128);
+	VERIFY(0 == strchr(N, '.'));
+	strcpy_s(cName, N);
 	strlwr(cName);
-	
-//	strcpy(cComputer,Core.CompName);			// Computer
-//	_tzset(); _time32( (__time32_t*)&cTime );	// Time
-	strcpy(cComputer,Core.CompName);			// Computer
-	_tzset(); time( (long*)&cTime );			// Time
+
+	strcpy_s(cComputer, Core.CompName);			// Computer
+#ifndef _EDITOR
+	_tzset(); _time32((__time32_t*)&cTime);	// Time
+#else
+	_tzset(); time((long*)&cTime);			// Time
+#endif
 };
 
 //////////////////////////////////////////////////////////////////////
