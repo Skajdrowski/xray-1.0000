@@ -1,0 +1,14 @@
+.vs/
+/xr_3da/.vs/
+*.user
+*.sdf
+*.opensdf
+*.htm
+*.suo
+*.tlog
+*.log
+*.obj
+*.pdb
+/binaries
+/intermediate
+/libraries
