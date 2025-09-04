@@ -36,11 +36,6 @@
 #include <ddraw.h>
 #include <mmsystem.h>
 
-#ifndef NO_DSHOW_STRSAFE
-#define NO_SHLWAPI_STRFCNS
-#include <strsafe.h>  
-#endif
-
 #ifndef NUMELMS
    #define NUMELMS(aa) (sizeof(aa)/sizeof((aa)[0]))
 #endif

@@ -20,11 +20,11 @@
 // application was built against the correct header files and lib files. 
 // This number is incremented whenever a header (or other) change would 
 // require applications to be rebuilt. If the version doesn't match, 
-// D3DXCheckVersion will return FALSE. (The number itself has no meaning.)
+// D3DXCreateVersion will return FALSE. (The number itself has no meaning.)
 ///////////////////////////////////////////////////////////////////////////
 
 #define D3DX_VERSION 0x0902
-#define D3DX_SDK_VERSION 23
+#define D3DX_SDK_VERSION 22
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,26 +37,6 @@ BOOL WINAPI
 }
 #endif //__cplusplus
 
-
-
-///////////////////////////////////////////////////////////////////////////
-// D3DXDebugMute
-//    Mutes D3DX and D3D debug spew (TRUE - mute, FALSE - not mute)
-//
-//  returns previous mute value
-//
-///////////////////////////////////////////////////////////////////////////
-
-#ifdef __cplusplus
-extern "C" {
-#endif //__cplusplus
-
-BOOL WINAPI
-    D3DXDebugMute(BOOL Mute);  
-
-#ifdef __cplusplus
-}
-#endif //__cplusplus
 
 
 ///////////////////////////////////////////////////////////////////////////

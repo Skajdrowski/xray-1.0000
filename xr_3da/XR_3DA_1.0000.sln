@@ -1,6 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XR_3DA", "XR_3DA.vcxproj", "{2578C6D8-660D-48AE-9322-7422F8664F06}"
 EndProject
@@ -56,7 +57,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrStalker", "..\gamedata\xr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Router", "..\xrOpenAL\OpenAL-Windows\Router\Router.vcxproj", "{566551F4-4EF1-4CB4-A131-F982E7606907}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C3BA440-AAD3-4D88-9B5C-2320274D9B15}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd party", "3rd party", "{3C3BA440-AAD3-4D88-9B5C-2320274D9B15}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvtt", "..\3rd party\nvtt\nvtt.vcxproj", "{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -315,9 +318,27 @@ Global
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release_Dedicated|Win32.Build.0 = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release|Win32.ActiveCfg = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release|Win32.Build.0 = Release|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Debug|Win32.Build.0 = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Mixed_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Mixed_Dedicated|Win32.Build.0 = Debug|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Mixed|Win32.ActiveCfg = Mixed|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Mixed|Win32.Build.0 = Mixed|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Release_Dedicated|Win32.Build.0 = Release|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Release|Win32.ActiveCfg = Release|Win32
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0EB257DC-5CFC-44B0-82C9-CE6B158BE473} = {3C3BA440-AAD3-4D88-9B5C-2320274D9B15}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35A5270A-6DF5-47FF-8D18-E4B6C2046018}
 	EndGlobalSection
 	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
