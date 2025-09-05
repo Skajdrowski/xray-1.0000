@@ -36,7 +36,7 @@ void				WeaponUsageStatistic::Save			(FILE* pFile)
 void				WeaponUsageStatistic::Write_Header				(FILE* pFile)
 {
 	if (!pFile) return;
-	fprintf(pFile, "Использованные файлы :\n");
+	fprintf(pFile, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ :\n");
 	for (u32 i=0; i<aUsedFiles.size(); i++)
 	{
 		Used_Name& UF = aUsedFiles[i];
@@ -47,8 +47,8 @@ void				WeaponUsageStatistic::Write_Header				(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_WeaponUsageFrequency	(FILE* pFile)
 {
-	fprintf(pFile, "------------- Частота покупки оружия -------------\n\n");
-	fprintf(pFile, "\tОбщая\t");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -------------\n\n");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -57,7 +57,7 @@ void				WeaponUsageStatistic::Write_WeaponUsageFrequency	(FILE* pFile)
 	}
 	fprintf(pFile, "\n");
 	//-----------------------------------------------------
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		u32 NumBoughtTotal = 0;
@@ -87,8 +87,8 @@ void				WeaponUsageStatistic::Write_WeaponUsageFrequency	(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_WeaponKills		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Количество убийств из оружия -------------\n\n");
-	fprintf(pFile, "\tОбщее\t");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -------------\n\n");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -97,7 +97,7 @@ void				WeaponUsageStatistic::Write_WeaponKills		(FILE* pFile)
 	}
 	fprintf(pFile, "\n");
 	//-----------------------------------------------------
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -128,8 +128,8 @@ void				WeaponUsageStatistic::Write_WeaponKills		(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_WeaponEfficiency		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Эффективность оружия, %%  ( Убийства/Попадания )-------------\n\n");
-	fprintf(pFile, "\tОбщая\t");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, %%  ( пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ )-------------\n\n");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -138,7 +138,7 @@ void				WeaponUsageStatistic::Write_WeaponEfficiency		(FILE* pFile)
 	}
 	fprintf(pFile, "\n");
 	//-----------------------------------------------------
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -175,8 +175,8 @@ void				WeaponUsageStatistic::Write_WeaponEfficiency		(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_WeaponAccuracy		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Точность оружия, %% ( Попадания/Выстрелы )-------------\n\n");
-	fprintf(pFile, "\tОбщая\t");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, %% ( пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ )-------------\n\n");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -185,7 +185,7 @@ void				WeaponUsageStatistic::Write_WeaponAccuracy		(FILE* pFile)
 	}
 	fprintf(pFile, "\n");
 	//-----------------------------------------------------
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -222,7 +222,7 @@ void				WeaponUsageStatistic::Write_WeaponAccuracy		(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_EffectiveRange		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Эффективность по дальности -------------\n\n");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------\n\n");
 	//-----------------------------------------------------
 	float MaxRange = 0.0f;
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
@@ -243,7 +243,7 @@ void				WeaponUsageStatistic::Write_EffectiveRange		(FILE* pFile)
 
 	MaxRange =  ceil(MaxRange);
 
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -284,7 +284,7 @@ void				WeaponUsageStatistic::Write_EffectiveRange		(FILE* pFile)
 
 void				WeaponUsageStatistic::Write_BonesHits		(FILE* pFile)
 {
-	fprintf(pFile, "------------- \tПопадания по костям\t -------------\n\n");
+	fprintf(pFile, "------------- \tпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\t -------------\n\n");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -308,7 +308,7 @@ void				WeaponUsageStatistic::Write_BonesHits		(FILE* pFile)
 	if (aBones.empty()) return;
 
 	fprintf(pFile, "\tTotal");
-	for (i=0; i<aBones.size(); i++)
+	for (u32 i=0; i<aBones.size(); i++)
 	{
 		Used_Name& UB = aBones[i];
 		
@@ -322,7 +322,7 @@ void				WeaponUsageStatistic::Write_BonesHits		(FILE* pFile)
 	u32 HitsOnBone[1024];
 	ZeroMemory(HitsOnBone, sizeof(HitsOnBone));
 	u32 TotalHits = 0;
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -376,7 +376,7 @@ void				WeaponUsageStatistic::Write_BonesHits		(FILE* pFile)
 }
 void				WeaponUsageStatistic::Write_BonesKills			(FILE* pFile)
 {
-	fprintf(pFile, "------------- \tСмертельные попадания по костям\t -------------\n\n");
+	fprintf(pFile, "------------- \tпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\t -------------\n\n");
 	//-----------------------------------------------------
 	aBones.clear();	
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
@@ -402,7 +402,7 @@ void				WeaponUsageStatistic::Write_BonesKills			(FILE* pFile)
 	if (aBones.empty()) return;
 
 	fprintf(pFile, "\tTotal");
-	for (i=0; i<aBones.size(); i++)
+	for (u32 i=0; i<aBones.size(); i++)
 	{
 		Used_Name& UB = aBones[i];
 		
@@ -416,7 +416,7 @@ void				WeaponUsageStatistic::Write_BonesKills			(FILE* pFile)
 	u32 HitsOnBone[1024];
 	ZeroMemory(HitsOnBone, sizeof(HitsOnBone));
 	u32 TotalHits = 0;
-	for (i=0; i<aWeapons.size(); i++)
+	for (u32 i=0; i<aWeapons.size(); i++)
 	{
 		Used_Name& UN = aWeapons[i];
 		if (!strstr(UN.Name, "wpn_")) continue;
@@ -470,9 +470,9 @@ void				WeaponUsageStatistic::Write_BonesKills			(FILE* pFile)
 }
 void				WeaponUsageStatistic::Write_AverageMoney		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Среднее количество заработанных денег, (Заработанные деньги/кол-во респавнов) -------------\n\n");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) -------------\n\n");
 	//-----------------------------------------------------------------------
-	fprintf(pFile, "\tОбщее\t");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{
@@ -504,7 +504,7 @@ void				WeaponUsageStatistic::Write_AverageMoney		(FILE* pFile)
 }
 void				WeaponUsageStatistic::Write_Basket		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Покупаемость предметов -------------\n\n");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------\n\n");
 	//-----------------------------------------------------
 	for (int t=0; t<3; t++)
 	{
@@ -535,7 +535,7 @@ void				WeaponUsageStatistic::Write_Basket		(FILE* pFile)
 		}
 		fprintf(pFile, "\n");
 
-		for (i=0; i<aWeapons.size(); i++)
+		for (u32 i=0; i<aWeapons.size(); i++)
 		{
 			Used_Name& UN = aWeapons[i];		
 
@@ -570,9 +570,9 @@ void				WeaponUsageStatistic::Write_Basket		(FILE* pFile)
 }
 void				WeaponUsageStatistic::Write_AverageLifeSpan		(FILE* pFile)
 {
-	fprintf(pFile, "------------- Среднее время жизни игрока, сек. -------------\n\n");
+	fprintf(pFile, "------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ. -------------\n\n");
 	//-----------------------------------------------------------------------
-	fprintf(pFile, "\tОбщее\t");
+	fprintf(pFile, "\tпїЅпїЅпїЅпїЅпїЅ\t");
 	//-----------------------------------------------------
 	for (u32 i=0; i<aPlayersStatistic.size(); i++)
 	{

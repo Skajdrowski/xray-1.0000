@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XR_3DA", "XR_3DA.vcxproj", "{2578C6D8-660D-48AE-9322-7422F8664F06}"
 EndProject
@@ -274,7 +274,6 @@ Global
 		{AF9ACB0D-451A-4878-A04C-0B9E221CC705}.Mixed|Win32.Build.0 = Debug|Win32
 		{AF9ACB0D-451A-4878-A04C-0B9E221CC705}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
 		{AF9ACB0D-451A-4878-A04C-0B9E221CC705}.Release|Win32.ActiveCfg = Release|Win32
-		{AF9ACB0D-451A-4878-A04C-0B9E221CC705}.Release|Win32.Build.0 = Release|Win32
 		{2EA2CBBA-16BD-4B97-80B3-3F824CFBD4F1}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
 		{2EA2CBBA-16BD-4B97-80B3-3F824CFBD4F1}.Debug|Win32.ActiveCfg = Debug|Win32
 		{2EA2CBBA-16BD-4B97-80B3-3F824CFBD4F1}.Debug|Win32.Build.0 = Debug|Win32

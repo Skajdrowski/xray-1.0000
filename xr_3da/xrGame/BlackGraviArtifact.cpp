@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////
 // BlackGraviArtifact.cpp
-// BlackGraviArtefact - гравитационный артефакт, 
-// такой же как и обычный, но при получении хита
+// BlackGraviArtefact - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -68,12 +68,12 @@ BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 }
 struct SRP
 {
-	CPhysicsShellHolder* obj;
-		SRP(CPhysicsShellHolder* O)
+	const CPhysicsShellHolder* obj;
+		SRP(const CPhysicsShellHolder* O)
 		{
 			obj=O;
 		}
-	bool operator	() (const CPhysicsShellHolder* &O)
+	bool operator	() (CPhysicsShellHolder* O) const
 	{
 		return obj==O;
 	}
@@ -127,7 +127,7 @@ void	CBlackGraviArtefact::Hit					(SHit* pHDS)
 	if(HDS.impulse>m_fImpulseThreshold)
 	{
 		m_bStrike = true;
-		//чтоб выстрел не повлиял на траекторию полета артефакта
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		HDS.impulse = 0;
 	}
 	
