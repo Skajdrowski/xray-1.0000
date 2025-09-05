@@ -7,7 +7,7 @@
 //. #define				ACTIVE_BACKGROUND_WIDTH		16
 //. #define				ACTIVE_BACKGROUND_HEIGHT	16
 
-// разделитель для интерактивных строк в листе
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 static const char	cSeparatorChar				= '%';
 
 CUIListWnd::CUIListWnd()
@@ -55,7 +55,7 @@ void CUIListWnd::Init(float x, float y, float width, float height, float item_he
 {
 	CUIWindow::Init(x, y, width, height);
 
-	//добавить полосу прокрутки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	m_ScrollBar = xr_new<CUIScrollBar>(); m_ScrollBar->SetAutoDelete(true);
 	AttachChild(m_ScrollBar);
 
@@ -126,7 +126,7 @@ void CUIListWnd::RemoveItem(int index)
 
 	LIST_ITEM_LIST_it it;
 
-	//выбрать нужный элемент
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	it = m_ItemList.begin();
 	for(int i=0; i<index;++i, ++it);
 
@@ -137,7 +137,7 @@ void CUIListWnd::RemoveItem(int index)
 
 	UpdateList();
 
-	//обновить полосу прокрутки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(m_ItemList.size()>0)
 		m_ScrollBar->SetRange(0,s16(m_ItemList.size()-1));
 	else
@@ -148,8 +148,8 @@ void CUIListWnd::RemoveItem(int index)
 	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
 	m_ScrollBar->Refresh();
 
-	//перенумеровать индексы заново
-	i=0;
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	int i=0;
 	for(LIST_ITEM_LIST_it it=m_ItemList.begin();  m_ItemList.end() != it; ++it,i++)
 	{
 		(*it)->SetIndex(i);
@@ -165,7 +165,7 @@ CUIListItem* CUIListWnd::GetItem(int index)
 
 	LIST_ITEM_LIST_it it;
 
-	//выбрать нужный элемент
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	it = m_ItemList.begin();
 	for(int i=0; i<index;++i, ++it);
 
@@ -202,7 +202,7 @@ void CUIListWnd::RemoveAll()
 	UpdateList();
 	Reset();
 
-	//обновить полосу прокрутки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	m_ScrollBar->SetRange(0,0);
 	m_ScrollBar->SetPageSize(0);
 	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
@@ -217,16 +217,16 @@ void CUIListWnd::UpdateList()
 {
 	LIST_ITEM_LIST_it it=m_ItemList.begin();
 	
-	//спрятать все элементы до участка 
-	//отображающейся в данный момент
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	for(int i=0; i<_min(m_ItemList.size(),m_iFirstShownIndex); ++i, ++it)
 	{
 		(*it)->Show(false);
 	}
 	   
 
-	//показать текущий список
-	for(i=m_iFirstShownIndex; 
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	for(int i=m_iFirstShownIndex; 
 			i<_min(m_ItemList.size(),m_iFirstShownIndex + m_iRowNum+1);
 			++i, ++it)
 	{
@@ -242,7 +242,7 @@ void CUIListWnd::UpdateList()
 
 	--it;
 
-	//спрятать все после
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	for(u32 k=m_iFirstShownIndex + m_iRowNum; 
 			k<m_ItemList.size(); ++k, ++it)
 	{
@@ -269,7 +269,7 @@ void CUIListWnd::SendMessage(CUIWindow *pWnd, s16 msg, void *pData)
 	}
 	else 
 	{
-		//если сообщение пришло от одного из элементов списка
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 		if( IsChild(pWnd) )
 		{
@@ -445,7 +445,7 @@ void CUIListWnd::Reset()
 }
 
 //////////////////////////////////////////////////////////////////////////
-//находит первый элемент с заданной pData, иначе -1
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ pData, пїЅпїЅпїЅпїЅпїЅ -1
 //////////////////////////////////////////////////////////////////////////
 
 int CUIListWnd::FindItem(void* pData)

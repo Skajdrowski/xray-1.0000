@@ -46,7 +46,8 @@ xrServer::xrServer():IPureServer(Device.GetTimerGlobal(), g_pGamePersistent->bDe
 
 xrServer::~xrServer()
 {
-	for (u32 it=0;it<net_Players.size(); it++) client_Destroy(net_Players[it]);
+	u32 it = 0;
+	for (it=0;it<net_Players.size(); it++) client_Destroy(net_Players[it]);
 	for (it=0;it<net_Players_disconnected.size(); it++) client_Destroy(net_Players_disconnected[it]);
 }
 

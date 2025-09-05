@@ -1,20 +1,20 @@
 ///////////////////////////////////////////////////////////////
 // ini_id_loader.h
-// темплейтовый класс, который загружает из ini файла 
-// строку с текстовыми id, потом присваивает каждому текстовому
-// id уникальный index
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ ini пїЅпїЅпїЅпїЅпїЅ 
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ id, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ index
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 
-//T_ID, T_INDEX -	тип индекса и id
+//T_ID, T_INDEX -	пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ id
 
-//ITEM_DATA		-	структура с полями id и index типа T_ID и T_INDEX,
-//					обязательно имеет конструктор с параметрами (T_INDEX index, T_ID id, LPCSTR r1, ..., LPCSTR rN)
-//					N = ITEM_REC_NUM - число доп. параметров в ITEM_DATA 
+//ITEM_DATA		-	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ id пїЅ index пїЅпїЅпїЅпїЅ T_ID пїЅ T_INDEX,
+//					пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (T_INDEX index, T_ID id, LPCSTR r1, ..., LPCSTR rN)
+//					N = ITEM_REC_NUM - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ITEM_DATA 
 
-//T_INIT		-	класс где определена статическая InitIdToIndex
-//					функция инициализации section_name и line_name
+//T_INIT		-	пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ InitIdToIndex
+//					пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ section_name пїЅ line_name
 
 #define TEMPLATE_SPECIALIZATION		template<u32 ITEM_REC_NUM, typename ITEM_DATA, typename T_ID, typename T_INDEX, typename T_INIT>
 #define CSINI_IdToIndex CIni_IdToIndex	<ITEM_REC_NUM, ITEM_DATA, T_ID, T_INDEX, T_INIT>
@@ -68,7 +68,7 @@ protected:
 		}
 	}
 
-	//имя секции и линии откуда будут загружаться id
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ id
 	static LPCSTR section_name;
 	static LPCSTR line_name;
 
@@ -93,7 +93,7 @@ public:
 
 	static const T_INDEX					GetMaxIndex					()					 {return m_pItemDataVector->size()-1;}
 
-	//удаление статичекого массива
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	static void								DeleteIdToIndexData			();
 };
 
@@ -122,8 +122,8 @@ CSINI_IdToIndex::~CSINI_IdToIndex()
 TEMPLATE_SPECIALIZATION
 const typename ITEM_DATA* CSINI_IdToIndex::GetById (const T_ID& str_id, bool no_assert)
 {
-	for(T_VECTOR::iterator it = m_pItemDataVector->begin();
-		m_pItemDataVector->end() != it; it++)
+	T_VECTOR::iterator it = m_pItemDataVector->begin();
+	for(; m_pItemDataVector->end() != it; it++)
 	{
 		if(!xr_strcmp((*it).id, str_id))
 			break;

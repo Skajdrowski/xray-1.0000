@@ -617,7 +617,7 @@ public:
 			  Console->Hide			();
 			  string_path			fn;
 			  u32		loops	=	0;
-			  LPSTR		comma	=	strchr(args,',');
+			  LPSTR		comma = strchr(const_cast<LPSTR>(args), ',');
 			  if (comma)	{
 				  loops			=	atoi	(comma+1);
 				  *comma		=	0;	//. :)
@@ -942,7 +942,7 @@ public:
 		u32 BanTime = 0;
 		bool BanByName = true;
 
-		if (Name[0] == '#') //индентификация по номеру клиента в списке
+		if (Name[0] == '#') //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			BanTime = atol(Time);
 			u32 Num = atol(Number);
@@ -954,7 +954,7 @@ public:
 		}
 		else
 		{
-			if (!_stricmp(Name, "ip"))	//Напрямую задается IP адрес
+			if (!_stricmp(Name, "ip"))	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ IP пїЅпїЅпїЅпїЅпїЅ
 			{
 				BanTime = atol(Time);
 
@@ -968,7 +968,7 @@ public:
 
 				BanByName = false;
 			}
-			else						// идентификация по имени игрока
+			else						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				BanTime = atol(Number);
 				u32	cnt = Level().Server->game->get_players_count();
