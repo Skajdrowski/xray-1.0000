@@ -16,7 +16,7 @@ struct CLoader {
 		template <bool a>
 		IC	static void load_data(T &data, M &stream, const P &p)
 		{
-			STATIC_CHECK				(!is_polymorphic<T>::result,Cannot_load_polymorphic_classes_as_binary_data);
+			STATIC_CHECK				(!std::is_polymorphic<T>::value,Cannot_load_polymorphic_classes_as_binary_data);
 			stream.r					(&data,sizeof(T));
 		}
 
@@ -36,7 +36,7 @@ struct CLoader {
 		{
 			CHelper1<T>::load_data<
 				object_type_traits::is_base_and_derived_or_same_from_template<
-					IPureLîadableObject,
+					IPureLoadableObject,
 					T
 				>::value
 			>(data,stream,p);

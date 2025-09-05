@@ -27,7 +27,7 @@ struct STorsoWpn{
 	MotionID	fire_idle;
 	MotionID	fire_end;
 
-	//анимации для атаки для всего тела (когда мы стоим на месте)
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
 	MotionID	all_attack_0;
 	MotionID	all_attack_1;
 	MotionID	all_attack_2;
@@ -88,7 +88,7 @@ struct	SVehicleAnimCollection
 };
 struct SActorVehicleAnims
 {
-	static const TYPES_NUMBER=2;
+	static const int TYPES_NUMBER=2;
 	SVehicleAnimCollection m_vehicles_type_collections	[TYPES_NUMBER];
 						SActorVehicleAnims				();
 	void				Create							(CKinematicsAnimated* K);

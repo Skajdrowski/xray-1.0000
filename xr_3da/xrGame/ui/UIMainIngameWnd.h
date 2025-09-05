@@ -1,4 +1,4 @@
-// UIMainIngameWnd.h:  окошки-информация в игре
+// UIMainIngameWnd.h:  пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 // 
 //////////////////////////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 #include "UICarPanel.h"
 #include "UIMotionIcon.h"
 #include "../hudsound.h"
-//для режима настройки HUD
+//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HUD
 extern int				g_bHudAdjustMode;
 extern float			g_fHudAdjustValue;
 
@@ -51,10 +51,10 @@ protected:
 	CUIMotionIcon		UIMotionIcon;	
 	CUIZoneMap*			UIZoneMap;
 
-	//иконка, показывающая количество активных PDA
+	//пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PDA
 	CUIStatic			UIPdaOnline;
 	
-	//изображение оружия
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIStatic			UIWeaponBack;
 	CUIStatic			UIWeaponSignAmmo;
 	CUIStatic			UIWeaponIcon;
@@ -64,12 +64,12 @@ public:
 protected:
 
 
-	// 5 статиков для отображения иконок:
-	// - сломанного оружия
-	// - радиации
-	// - ранения
-	// - голода
-	// - усталости
+	// 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:
+	// - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	// - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// - пїЅпїЅпїЅпїЅпїЅпїЅ
+	// - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIStatic			UIWeaponJammedIcon;
 	CUIStatic			UIRadiaitionIcon;
 	CUIStatic			UIWoundIcon;
@@ -87,7 +87,7 @@ public:
 	
 public:
 	
-	// Енумы соответсвующие предупреждающим иконкам 
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	enum EWarningIcons
 	{
 		ewiAll				= 0,
@@ -103,16 +103,16 @@ public:
 
 	void				SetMPChatLog					(CUIWindow* pChat, CUIWindow* pLog);
 
-	// Задаем цвет соответствующей иконке
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void				SetWarningIconColor				(EWarningIcons icon, const u32 cl);
 	void				TurnOffWarningIcon				(EWarningIcons icon);
 
-	// Пороги изменения цвета индикаторов, загружаемые из system.ltx
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ system.ltx
 	typedef				xr_map<EWarningIcons, xr_vector<float> >	Thresholds;
 	typedef				Thresholds::iterator						Thresholds_it;
 	Thresholds			m_Thresholds;
 
-	// Енум перечисления возможных мигающих иконок
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	enum EFlashingIcons
 	{
 		efiPdaTask	= 0,
@@ -133,19 +133,19 @@ protected:
 	void				UpdateFlashingIcons				();
 	void				UpdateActiveItemInfo			();
 
-	void				SetAmmoIcon						(const shared_str& seсt_name);
+	void				SetAmmoIcon						(const shared_str& sect_name);
 
-	// first - иконка, second - анимация
+	// first - пїЅпїЅпїЅпїЅпїЅпїЅ, second - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	DEF_MAP				(FlashingIcons, EFlashingIcons, CUIStatic*);
 	FlashingIcons		m_FlashingIcons;
 
-	//для текущего активного актера и оружия
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	CActor*				m_pActor;	
 	CWeapon*			m_pWeapon;
 	CMissile*			m_pGrenade;
 	CInventoryItem*		m_pItem;
 
-	// Отображение подсказок при наведении прицела на объект
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void				RenderQuickInfos();
 
 public:

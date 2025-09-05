@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////
 // AI_PhraseDialogManager.cpp
-// Класс, от которого наследуются NPC персонажи, ведущие диалог
-// с актером
+// пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ NPC пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+// пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //
 ///////////////////////////////////////////////////////////////
 
@@ -47,8 +47,8 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 
 		xr_vector<int> phrases;
 		CHARACTER_GOODWILL phrase_goodwill = NO_GOODWILL;
-		//если не найдем более подходяещей выводим фразу
-		//последнюю из списка (самую грубую)
+		//пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
 		int phrase_num = phrase_dialog->PhraseList().size()-1;
 		for(u32 i=0; i<phrase_dialog->PhraseList().size(); i++)
 		{
@@ -60,7 +60,7 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 			}
 		}
 
-		for(i=0; i<phrase_dialog->PhraseList().size(); i++)
+		for(u32 i=0; i<phrase_dialog->PhraseList().size(); i++)
 		{
 			if(phrase_goodwill == phrase_dialog->PhraseList()[phrase_num]->GoodwillLevel())
 				phrases.push_back(i);
