@@ -44,6 +44,9 @@ extern bool shared_str_initialized;
 #	define USE_OWN_ERROR_MESSAGE_WINDOW
 #endif // DEBUG
 
+#include <new.h>							// for _set_new_mode
+#include <signal.h>							// for signals
+#pragma comment(lib, "legacy_stdio_definitions.lib") // old DirectX SDK
 
 XRCORE_API	xrDebug		Debug;
 
@@ -680,7 +683,7 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 #else
     typedef int		(__cdecl * _PNH)( size_t );
     _CRTIMP int		__cdecl _set_new_mode( int );
-    _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
+//    _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
 
     void	xrDebug::_initialize		()
     {
