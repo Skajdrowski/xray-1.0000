@@ -238,8 +238,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\binaries\$(Configuration)\</OutDir>
-    <IntDir>..\intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\..\libraries\$(Configuration)\</OutDir>
+    <IntDir>..\..\intermediate\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>.\;include;include\nvtt;src;src\nvtt\squish;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
