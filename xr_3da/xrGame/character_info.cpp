@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// character_info.cpp			игровая информация для персонажей в игре
+// character_info.cpp			пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 // 
 //////////////////////////////////////////////////////////////////////////
 
@@ -16,6 +16,7 @@
 #ifdef XRGAME_EXPORTS
 
 #include "PhraseDialog.h"
+#include "alife_registry_container.h"
 #include "alife_registry_container_composition.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
