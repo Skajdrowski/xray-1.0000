@@ -3,7 +3,7 @@
 
 #include "xrdebug.h"
 
-#include "dxerr9.h"
+#include "dxerr.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)
@@ -27,7 +27,7 @@ extern bool shared_str_initialized;
 
 #ifndef _M_AMD64
 #	ifndef __BORLANDC__
-#		pragma comment(lib,"dxerr9.lib")
+#		pragma comment(lib,"dxerr.lib")
 #	endif
 #endif
 
@@ -39,6 +39,8 @@ extern bool shared_str_initialized;
 #	include "BugTrap.h"						// for BugTrap functionality
 #	pragma comment(lib,"BugTrap.lib")		// Link to ANSI DLL
 #endif // USE_BUG_TRAP
+
+#include <new.h>
 
 #ifdef DEBUG
 #	define USE_OWN_ERROR_MESSAGE_WINDOW
@@ -277,7 +279,7 @@ LPCSTR xrDebug::error2string	(long code)
 
 #ifdef _M_AMD64
 #else
-	result				= DXGetErrorDescription9	(code);
+	result				= DXGetErrorString		(code);
 #endif
 	if (0==result) 
 	{
@@ -680,7 +682,7 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 #else
     typedef int		(__cdecl * _PNH)( size_t );
     _CRTIMP int		__cdecl _set_new_mode( int );
-    _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
+    //_CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
 
     void	xrDebug::_initialize		()
     {

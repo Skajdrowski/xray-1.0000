@@ -1,6 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XR_3DA", "XR_3DA.vcxproj", "{2578C6D8-660D-48AE-9322-7422F8664F06}"
 EndProject
@@ -11,6 +12,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrSound", "..\xrSound\xrSound.vcxproj", "{CCCA7859-EB86-493E-9B53-C4235F45B3C5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCore", "..\xrCore\xrCore.vcxproj", "{A0F7D1FB-59A7-4717-A7E4-96F37E91998E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280} = {7A19CBB1-FF90-44BD-9112-C2A269D9C280}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCDB", "..\xrCDB\xrCDB.vcxproj", "{A19B1DF2-82EC-4364-8BDF-85D13A1C89B5}"
 EndProject
@@ -56,7 +60,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrStalker", "..\gamedata\xr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Router", "..\xrOpenAL\OpenAL-Windows\Router\Router.vcxproj", "{566551F4-4EF1-4CB4-A131-F982E7606907}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52ABB642-AAD0-4DCB-80C2-76C35245DF72}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd party", "3rd party", "{52ABB642-AAD0-4DCB-80C2-76C35245DF72}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dxerr", "..\3rd party\dxerr\dxerr.vcxproj", "{7A19CBB1-FF90-44BD-9112-C2A269D9C280}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -315,9 +321,24 @@ Global
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release_Dedicated|Win32.Build.0 = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release|Win32.ActiveCfg = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Release|Win32.Build.0 = Release|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Debug|Win32.Build.0 = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Mixed_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Mixed_Dedicated|Win32.Build.0 = Debug|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Mixed|Win32.ActiveCfg = Mixed|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Mixed|Win32.Build.0 = Mixed|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release_Dedicated|Win32.Build.0 = Release|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release|Win32.ActiveCfg = Release|Win32
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A19CBB1-FF90-44BD-9112-C2A269D9C280} = {52ABB642-AAD0-4DCB-80C2-76C35245DF72}
 	EndGlobalSection
 	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
