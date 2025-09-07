@@ -35,7 +35,7 @@ public:
 							{	VERIFY(1==n);
 								return (pointer) ui_allocator.create();	
 							};
-							char _FARQ *			_Charalloc		(size_type n)							
+							char*			_Charalloc		(size_type n)							
 							{	VERIFY	(1==n);
 								return	(char _FARQ *) ui_allocator.create();	
 							};
@@ -45,7 +45,7 @@ public:
 								_12b* p_ = (_12b*)p;
 								ui_allocator.destroy	(p_);				
 							}
-							void					deallocate		(void _FARQ* p, size_type n) const		
+							void					deallocate		(void* p, size_type n) const		
 							{	
 								VERIFY(1==n);
 								_12b* p_ = (_12b*)p;
@@ -79,11 +79,11 @@ public:
 	virtual		~CUIWindow						();
 
 	////////////////////////////////////
-	//инициализация
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			Init				(Frect* pRect);
 
 	////////////////////////////////////
-	//работа с дочерними и родительскими окнами
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			AttachChild			(CUIWindow* pChild);
 	virtual void			DetachChild			(CUIWindow* pChild);
 	virtual bool			IsChild				(CUIWindow* pChild) const;
@@ -93,17 +93,17 @@ public:
 	void					SetParent			(CUIWindow* pNewParent);
 	CUIWindow*				GetParent			()	const							{return m_pParentWnd;}
 	
-	//получить окно самого верхнего уровня
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIWindow*				GetTop				()								{if(m_pParentWnd == NULL) return  this; 
 																				else return  m_pParentWnd->GetTop();}
 	CUIWindow*				GetCurrentMouseHandler();
 	CUIWindow*				GetChildMouseHandler();
 
 
-	//поднять на вершину списка выбранное дочернее окно
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	bool					BringToTop			(CUIWindow* pChild);
 
-	//поднять на вершину списка всех родителей окна и его самого
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void					BringAllToTop		();
 	
 
@@ -118,41 +118,41 @@ public:
 	virtual void 			OnFocusLost			();
 			bool 			HasChildMouseHandler();
 
-	//захватить/освободить мышь окном
-	//сообщение посылается дочерним окном родительскому
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	void					SetCapture			(CUIWindow* pChildWindow, bool capture_status);
 	CUIWindow*				GetMouseCapturer	()													{return m_pMouseCapturer;}
 
-	//окошко, которому пересылаются сообщения,
-	//если NULL, то шлем на GetParent()
+	//пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+	//пїЅпїЅпїЅпїЅ NULL, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ GetParent()
 	void					SetMessageTarget	(CUIWindow* pWindow)								{m_pMessageTarget = pWindow;}
 	CUIWindow*				GetMessageTarget	();
 
-	//реакция на клавиатуру
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual bool			OnKeyboard			(int dik, EUIMessages keyboard_action);
 	virtual bool			OnKeyboardHold		(int dik);
 	virtual void			SetKeyboardCapture	(CUIWindow* pChildWindow, bool capture_status);
 
 	
 	
-	//обработка сообщений не предусмотреных стандартными обработчиками
-	//ф-ция должна переопределяться
-	//pWnd - указатель на окно, которое послало сообщение
-	//pData - указатель на дополнительные данные, которые могут понадобиться
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅ-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//pWnd - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//pData - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			SendMessage			(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 	
 	
 
-	//запрещение/разрешение на ввод с клавиатуры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			Enable				(bool status)									{m_bIsEnabled=status;}
 	virtual bool			IsEnabled			()												{return m_bIsEnabled;}
 
-	//убрать/показать окно и его дочерние окна
+	//пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	virtual void			Show				(bool status)									{SetVisible(status); Enable(status); }
 	IC		bool			IsShown				()												{return this->GetVisible();}
 			void			ShowChildren		(bool show);
 	
-	//абсолютные координаты
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IC void					GetAbsoluteRect		(Frect& r) ;
 	IC void					GetAbsolutePos		(Fvector2& p) 	{Frect abs; GetAbsoluteRect(abs); p.set(abs.x1,abs.y1);}
 
@@ -160,22 +160,22 @@ public:
 			void			SetWndRect_script(float x, float y, float width, float height)		{CUISimpleWindow::SetWndRect(x,y,width,height);}
 			void			SetWndRect_script(Frect rect)										{CUISimpleWindow::SetWndRect(rect);}
 
-	//прорисовка окна
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	virtual void			Draw				();
 	virtual void			Draw				(float x, float y);
-	//обновление окна передпрорисовкой
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			Update				();
 
 
 			void			SetPPMode			();
 			void			ResetPPMode			();
 	IC		bool			GetPPMode			()		{return m_bPP;};
-	//для перевода окна и потомков в исходное состояние
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	virtual void			Reset				();
 			void			ResetAll			();
 
 
-	//временно!!!! (а может уже и нет)
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!! (пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ)
 	virtual void			SetFont				(CGameFont* pFont)			{ m_pFont = pFont;}
 	CGameFont*				GetFont				()							{if(m_pFont) return m_pFont;
 																				if(m_pParentWnd== NULL)	
@@ -202,46 +202,46 @@ protected:
 	IC void					SafeRemoveChild(CUIWindow* child)				{WINDOW_LIST_it it = std::find(m_ChildWndList.begin(),m_ChildWndList.end(),child); if(it!=m_ChildWndList.end())m_ChildWndList.erase(it);};
 
 	shared_str				m_windowName;
-	//список дочерних окон
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	WINDOW_LIST				m_ChildWndList;
 	
-	//указатель на родительское окно
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	CUIWindow*				m_pParentWnd;
 
-	//дочернее окно которое, захватило ввод мыши
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	CUIWindow*				m_pMouseCapturer;
 	
-	//кто изначально иницировал
-	//захват фокуса, только он теперь
-	//может весь фокус и освободить
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIWindow*				m_pOrignMouseCapturer;
 
-	//дочернее окно которое, захватило ввод клавиатуры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIWindow*				m_pKeyboardCapturer;
 
-	//кому шлем сообщения
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	CUIWindow*				m_pMessageTarget;
 
 
 	CGameFont*				m_pFont;
 
-	// Последняя позиция мышки
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Fvector2 cursor_pos;
 
-	//время прошлого клика мышки
-	//для определения DoubleClick
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ DoubleClick
 	u32						m_dwLastClickTime;
 	u32						m_dwFocusReceiveTime;
 
-	//флаг автоматического удаления во время вызова деструктора
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool					m_bAutoDelete;
 
-	// Флаг разрешающий/запрещающий генерацию даблклика
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool					m_bPP;
-	//разрешен ли ввод пользователя
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool					m_bIsEnabled;
 
-	// Если курсор над окном
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	bool					m_bCursorOverWindow;
 	bool					m_bClickable;
 

@@ -359,10 +359,10 @@ void CActor::ActorUse()
 				{
 					TryToTalk();
 				}
-				//обыск трупа
+				//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				else  if(!Level().IR_GetKeyState(DIK_LSHIFT))
 				{
-					//только если находимся в режиме single
+					//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ single
 					CUIGameSP* pGameSP = smart_cast<CUIGameSP*>(HUD().GetUI()->UIGame());
 					if(pGameSP)pGameSP->StartCarBody(this, m_pPersonWeLookingAt );
 				}
@@ -424,7 +424,8 @@ void	CActor::OnNextWeaponSlot()
 	if (ActiveSlot == NO_ACTIVE_SLOT) return;
 	
 	u32 NumSlotsToCheck = sizeof(SlotsToCheck)/sizeof(u32);	
-	for (u32 CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
+	u32 CurSlot;
+	for (CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
 	{
 		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
 	};
@@ -451,7 +452,8 @@ void	CActor::OnPrevWeaponSlot()
 	if (ActiveSlot == NO_ACTIVE_SLOT) return;
 
 	u32 NumSlotsToCheck = sizeof(SlotsToCheck)/sizeof(u32);	
-	for (u32 CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
+	u32 CurSlot;
+	for (CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
 	{
 		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
 	};

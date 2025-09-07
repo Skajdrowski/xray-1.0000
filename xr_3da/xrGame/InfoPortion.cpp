@@ -57,7 +57,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 	XML_NODE* pNode			= pXML->NavigateToNode(id_to_index::tag_name, item_data.pos_in_file);
 	THROW3					(pNode, "info_portion id=", *item_data.id);
 
-	//список названий диалогов
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	int dialogs_num			= pXML->GetNodesNum(pNode, "dialog");
 	info_data()->m_DialogNames.clear();
 	for(int i=0; i<dialogs_num; ++i)
@@ -67,24 +67,24 @@ void CInfoPortion::load_shared	(LPCSTR)
 	}
 
 	
-	//список названий порций информации, которые деактивируются,
-	//после получения этой порции
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	int disable_num = pXML->GetNodesNum(pNode, "disable");
 	info_data()->m_DisableInfo.clear();
-	for(i=0; i<disable_num; ++i)
+	for(int i=0; i<disable_num; ++i)
 	{
 		shared_str info_id		= pXML->Read(pNode, "disable", i,"");
 		info_data()->m_DisableInfo.push_back(info_id);
 	}
 
-	//имена скриптовых функций
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	info_data()->m_PhraseScript.Load(pXML, pNode);
 
 
-	//индексы статей
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	info_data()->m_Articles.clear();
 	int articles_num	= pXML->GetNodesNum(pNode, "article");
-	for(i=0; i<articles_num; ++i)
+	for(int i=0; i<articles_num; ++i)
 	{
 		LPCSTR article_str_id = pXML->Read(pNode, "article", i, NULL);
 		THROW(article_str_id);
@@ -93,7 +93,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 
 	info_data()->m_ArticlesDisable.clear();
 	articles_num = pXML->GetNodesNum(pNode, "article_disable");
-	for(i=0; i<articles_num; ++i)
+	for(int i=0; i<articles_num; ++i)
 	{
 		LPCSTR article_str_id = pXML->Read(pNode, "article_disable", i, NULL);
 		THROW(article_str_id);
@@ -102,7 +102,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 	
 	info_data()->m_GameTasks.clear();
 	int task_num = pXML->GetNodesNum(pNode, "task");
-	for(i=0; i<task_num; ++i)
+	for(int i=0; i<task_num; ++i)
 	{
 		LPCSTR task_str_id = pXML->Read(pNode, "task", i, NULL);
 		THROW(task_str_id);

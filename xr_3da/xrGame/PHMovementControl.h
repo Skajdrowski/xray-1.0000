@@ -23,7 +23,7 @@ class CPHMovementControl
 {
 	collide::rq_results		storage;
 
-static const path_few_point=10;
+static const int path_few_point=10;
 
 public:
 CElevatorState			*ElevatorState  ();
@@ -128,9 +128,9 @@ public:
 	bool				bExernalImpulse;
 	BOOL				bSleep;
 
-	BOOL				gcontact_Was;			// Приземление
-	float				gcontact_Power;			// Насколько сильно ударились
-	float				gcontact_HealthLost;	// Скоко здоровья потеряли
+	BOOL				gcontact_Was;			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	float				gcontact_Power;			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	float				gcontact_HealthLost;	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 public:
 	void				AllocateCharacterObject			(CharacterType type)									;
