@@ -28,10 +28,8 @@
 #	include "ai/monsters/BaseMonster/base_monster.h"
 #endif
 
-#ifdef DEBUG
-	extern void try_change_current_entity();
-	extern void restore_actor();
-#endif
+extern void try_change_current_entity();
+extern void restore_actor();
 
 bool g_bDisableAllInput = false;
 extern	float	g_fTimeFactor;
@@ -189,6 +187,33 @@ void CLevel::IR_OnKeyboardPress	(int key)
 		Console->Execute			(command);
 		return;
 	}
+
+	case DIK_DIVIDE:
+		if( OnServer() ){
+//			float NewTimeFactor				= pSettings->r_float("alife","time_factor");
+			
+			if (GameID() == GAME_SINGLE)
+				Server->game->SetGameTimeFactor(g_fTimeFactor);
+			else
+			{
+				Server->game->SetEnvironmentGameTimeFactor(g_fTimeFactor);
+				Server->game->SetGameTimeFactor(g_fTimeFactor);
+			};
+		}
+		break;	
+	case DIK_MULTIPLY:
+		if( OnServer() ){
+			float NewTimeFactor				= 1000.f;
+			if (GameID() == GAME_SINGLE)
+				Server->game->SetGameTimeFactor(NewTimeFactor);
+			else
+			{
+				Server->game->SetEnvironmentGameTimeFactor(NewTimeFactor);
+//				Server->game->SetGameTimeFactor(NewTimeFactor);
+			};
+		}
+		break;
+
 #ifdef DEBUG
 	case DIK_F4: {
 		if (pInput->iGetAsyncKeyState(DIK_LALT))
@@ -269,33 +294,6 @@ void CLevel::IR_OnKeyboardPress	(int key)
 		break;
 	}
 	/**/
-
-
-	case DIK_DIVIDE:
-		if( OnServer() ){
-//			float NewTimeFactor				= pSettings->r_float("alife","time_factor");
-			
-			if (GameID() == GAME_SINGLE)
-				Server->game->SetGameTimeFactor(g_fTimeFactor);
-			else
-			{
-				Server->game->SetEnvironmentGameTimeFactor(g_fTimeFactor);
-				Server->game->SetGameTimeFactor(g_fTimeFactor);
-			};
-		}
-		break;	
-	case DIK_MULTIPLY:
-		if( OnServer() ){
-			float NewTimeFactor				= 1000.f;
-			if (GameID() == GAME_SINGLE)
-				Server->game->SetGameTimeFactor(NewTimeFactor);
-			else
-			{
-				Server->game->SetEnvironmentGameTimeFactor(NewTimeFactor);
-//				Server->game->SetGameTimeFactor(NewTimeFactor);
-			};
-		}
-		break;
 #endif
 #ifdef DEBUG
 	case DIK_NUMPAD5: 
