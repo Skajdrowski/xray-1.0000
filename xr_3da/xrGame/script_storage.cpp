@@ -159,7 +159,7 @@ int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType
 #	endif
 #endif
 
-#ifndef DEBUG
+#ifdef DEBUG
 	return		(0);
 #else
 
