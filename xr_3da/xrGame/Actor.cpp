@@ -820,6 +820,17 @@ void CActor::Die	(CObject* who)
 	xr_delete				(m_sndShockEffector);
 }
 
+void	CActor::TeleportActor()
+{
+	// Teleport to spawn
+	Fmatrix M = XFORM();
+	M.translate(0, 0, 0);
+	ForceTransform(M);
+
+	// Stop bleeding
+	conditions().ClearWounds();
+}
+
 void	CActor::SwitchOutBorder(bool new_border_state)
 {
 	if(new_border_state)
