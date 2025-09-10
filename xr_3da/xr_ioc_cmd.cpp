@@ -496,6 +496,7 @@ extern int			g_ErrorLineCount;
 
 
 ENGINE_API int			ps_r__Supersample			= 1;
+extern int FPS;
 void CCC_Register()
 {
 	// General
@@ -543,6 +544,7 @@ void CCC_Register()
 	CMD3(CCC_Mask,		"rs_render_statics",	&psDeviceFlags,		rsDrawStatic			);
 	CMD3(CCC_Mask,		"rs_render_dynamics",	&psDeviceFlags,		rsDrawDynamic			);
 #endif
+	CMD4(CCC_Integer,	"rs_fps",               &FPS,		        0, 9999			        );
 
 	// Render device states
 	CMD4(CCC_Integer,	"r__supersample",		&ps_r__Supersample,			1,		4		);

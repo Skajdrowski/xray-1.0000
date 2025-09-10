@@ -22,6 +22,7 @@ ENGINE_API BOOL g_bRendering = FALSE;
 BOOL		g_bLoaded = FALSE;
 ref_light	precache_light = 0;
 
+int FPS = 0;
 BOOL CRenderDevice::Begin	()
 {
 #ifndef DEDICATED_SERVER
@@ -99,6 +100,30 @@ void CRenderDevice::End		(void)
 	// end scene
 	RCache.OnFrameEnd	();
     CHK_DX				(HW.pDevice->EndScene());
+
+	// CPU based in-game FPS limiter
+	if (FPS >= 15 && !Device.Paused()) {
+			u64 current_ticks = TimerGlobal.GetElapsed_ticks();
+			u64 frame_time_ticks = CPU::qpc_freq / FPS;
+			u64 elapsed_ticks = current_ticks - m_dwLastPresentTime;
+
+			if (elapsed_ticks < frame_time_ticks) {
+				u64 target_end_tick = m_dwLastPresentTime + frame_time_ticks;
+				u64 remaining_ticks = target_end_tick - current_ticks;
+
+				u64 busy_wait_buffer_ticks = CPU::qpc_freq / 2000; 
+				if (busy_wait_buffer_ticks == 0) busy_wait_buffer_ticks = 1;
+
+				if (remaining_ticks > busy_wait_buffer_ticks) {
+					u64 sleep_ticks = remaining_ticks - busy_wait_buffer_ticks;
+					u64 sleep_ms = (sleep_ticks * 1000 / CPU::qpc_freq);
+					Sleep(static_cast<DWORD>(sleep_ms));
+				}
+
+				while (TimerGlobal.GetElapsed_ticks() < target_end_tick) {}
+			}
+	}
+	m_dwLastPresentTime = TimerGlobal.GetElapsed_ticks();
 
 	HRESULT _hr		= HW.pDevice->Present( NULL, NULL, NULL, NULL );
 	if				(D3DERR_DEVICELOST==_hr)	return;			// we will handle this later

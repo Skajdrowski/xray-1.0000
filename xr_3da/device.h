@@ -159,6 +159,7 @@ public:
 		if (I != seqParallel.end())
 			seqParallel.erase	(I);
 	}
+	u64	m_dwLastPresentTime; //idk why, but placing this variable dead last here, doesn't break rendering pipeline xD
 };
 
 extern		ENGINE_API		CRenderDevice		Device;
