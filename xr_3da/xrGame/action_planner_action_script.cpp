@@ -30,9 +30,6 @@ void CActionPlannerAction<CScriptGameObject>::script_register(lua_State *L)
 #ifdef LOG_ACTION
 			.def("show",						&CScriptActionPlannerAction::show)
 #endif
-			.def("weight",						&CScriptActionPlannerAction::weight,		&CScriptActionPlannerActionWrapper::weight_static),
-
-		def		("cast_action_to_planner",		&_dynamic_cast<CScriptActionPlanner,CScriptActionBase>,adopt(return_value) + adopt(_1)),
-		def		("cast_planner_to_action",		&_dynamic_cast<CScriptActionBase,CScriptActionPlanner>,adopt(return_value) + adopt(_1))
+			.def("weight",						&CScriptActionPlannerAction::weight,		&CScriptActionPlannerActionWrapper::weight_static)
 	];
 }
