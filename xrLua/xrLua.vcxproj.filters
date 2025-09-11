@@ -1,301 +1,216 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="core">
-      <UniqueIdentifier>{251e1ebc-9203-498d-ab1e-a46d21968d31}</UniqueIdentifier>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="luabind">
-      <UniqueIdentifier>{be6ce946-358d-4acd-81d1-1eed24fa122c}</UniqueIdentifier>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="etc">
-      <UniqueIdentifier>{945ab4a7-00a0-49af-baf7-51933eed7036}</UniqueIdentifier>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lapi.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lauxlib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lbaselib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lcoco.c">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lcocolib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lcode.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ldblib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ldebug.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ldo.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ldump.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lfunc.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lgc.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\linit.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\liolib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ljit_backend.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ljit_core.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ljit_dasm.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ljit_mem.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ljitlib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\llex.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lmathlib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lmem.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\loadlib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lobject.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lopcodes.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\loslib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lparser.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lstate.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lstring.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lstrlib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ltable.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ltablib.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ltm.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lundump.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lvm.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lzio.c">
-      <Filter>core</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="luabind\class.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\class_info.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\class_registry.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\class_rep.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\create_class.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\error.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\find_best_match.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\function.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\implicit_cast.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\link_compatibility.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\object.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\object_rep.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\open.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\pcall.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\ref.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\scope.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\stack_content_by_name.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\weak_ref.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="luabind\wrapper_base.cpp">
-      <Filter>luabind</Filter>
-    </ClCompile>
-    <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lapi.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lauxlib.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lcoco.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lcode.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ldebug.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ldo.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lfunc.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lgc.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ljit.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ljit_dasm.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ljit_hints.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ljit_x86.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\llex.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\llimits.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lmem.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lobject.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lopcodes.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lparser.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lstate.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lstring.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ltable.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ltm.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lua.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\luaconf.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\luajit.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lualib.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lundump.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lvm.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lzio.h">
-      <Filter>core</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dynasm\dasm_proto.h">
-      <Filter>etc</Filter>
-    </ClInclude>
-    <ClInclude Include="dynasm\dasm_x86.h">
-      <Filter>etc</Filter>
-    </ClInclude>
-    <ClInclude Include="StdAfx.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dynasm\dasm_x86.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="jitlib\dump.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="jitlib\dumphints.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="dynasm\dynasm.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="jitlib\opt.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="jitlib\opt_lib.lua">
-      <Filter>etc</Filter>
-    </None>
-    <None Include="jitlib\trace.lua">
-      <Filter>etc</Filter>
-    </None>
   </ItemGroup>
 </Project>

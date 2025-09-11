@@ -1,6 +1,6 @@
 /*
 ** Interface to DynASM engine.
-** Copyright (C) 2005 Mike Pall. See Copyright Notice in luajit.h
+** Copyright (C) 2005-2012 Mike Pall. See Copyright Notice in luajit.h
 */
 
 #ifndef ljit_dasm_h
@@ -14,6 +14,6 @@
 #define Dst_REF		(J->D)
 #define DASM_FDEF	LUAI_FUNC
 
-#include "dasm_proto.h"
+#include "../dynasm/dasm_proto.h"
 
 #endif

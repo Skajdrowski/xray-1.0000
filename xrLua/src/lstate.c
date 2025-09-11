@@ -1,5 +1,5 @@
 /*
-** $Id: lstate.c,v 2.33 2005/08/25 15:39:16 roberto Exp $
+** $Id: lstate.c,v 2.36.1.2 2008/01/03 15:20:39 roberto Exp $
 ** Global State
 ** See Copyright Notice in lua.h
 */
@@ -72,8 +72,8 @@ static void f_luaopen (lua_State *L, void *ud) {
   global_State *g = G(L);
   UNUSED(ud);
   stack_init(L, L);  /* init stack */
-  sethvalue(L, gt(L), luaH_new(L, 0, 20));  /* table of globals */
-  sethvalue(L, registry(L), luaH_new(L, 6, 20));  /* registry */
+  sethvalue(L, gt(L), luaH_new(L, 0, 2));  /* table of globals */
+  sethvalue(L, registry(L), luaH_new(L, 0, 2));  /* registry */
   luaS_resize(L, MINSTRTABSIZE);  /* initial size of string table */
   luaT_init(L);
   luaX_init(L);
@@ -182,6 +182,11 @@ LUA_API lua_State *lua_newstate (lua_Alloc f, void *ud) {
   g->gcstepmul = LUAI_GCMUL;
   g->gcdept = 0;
   g->jit_state = NULL;
+  
+  
+  // printf ( " lua_State %p dump: &status = %p, &l_G = %p, &nCcalls = %p, &allowhook = %p, &l_gt = %p, &errFunc = %p  ", (void*)L, &L->status, &L->l_G, &L->nCcalls, &L->allowhook, &L->l_gt, &L->errfunc );
+  
+
   for (i=0; i<NUM_TAGS; i++) g->mt[i] = NULL;
   if (luaD_rawrunprotected(L, f_luaopen, NULL) != 0) {
     /* memory allocation error: free partial state */
@@ -201,8 +206,8 @@ static void callallgcTM (lua_State *L, void *ud) {
 
 
 LUA_API void lua_close (lua_State *L) {
-  lua_lock(L);
   L = G(L)->mainthread;  /* only the main thread can be closed */
+  lua_lock(L);
   luaF_close(L, L->stack);  /* close all upvalues for this thread */
   luaC_separateudata(L, 1);  /* separate udata that have GC metamethods */
   L->errfunc = 0;  /* no error function during GC metamethods */
@@ -212,6 +217,7 @@ LUA_API void lua_close (lua_State *L) {
     L->nCcalls = 0;
   } while (luaD_rawrunprotected(L, callallgcTM, NULL) != 0);
   lua_assert(G(L)->tmudata == NULL);
+  luai_userstateclose(L);
   close_state(L);
 }
 
