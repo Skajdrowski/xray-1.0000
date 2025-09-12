@@ -252,6 +252,7 @@ bool bfDoFile(CLuaVirtualMachine *tpLuaVM, LPCSTR caScriptName, LPCSTR caNameSpa
 	strconcat		(l_caLuaFileName,"@",caScriptName);
 	
 	if (!bfLoadBuffer(tpLuaVM,static_cast<LPCSTR>(l_tpFileReader->pointer()),(size_t)l_tpFileReader->length(),l_caLuaFileName,caNameSpaceName)) {
+		Msg("bfLoadBuffer failed for '%s'", caScriptName);
 		lua_pop			(tpLuaVM,4);
 		FS.r_close		(l_tpFileReader);
 		return		(false);
@@ -259,15 +260,13 @@ bool bfDoFile(CLuaVirtualMachine *tpLuaVM, LPCSTR caScriptName, LPCSTR caNameSpa
 	FS.r_close		(l_tpFileReader);
 
 	if (bCall) {
-		lua_call	(tpLuaVM,0,0);
-//		int			l_iErrorCode = lua_pcall(tpLuaVM,0,0,0);
-//		if (l_iErrorCode) {
-//#ifdef DEBUG
-//			bfPrintOutput	(tpLuaVM,caScriptName,l_iErrorCode);
-//			vfPrintError	(tpLuaVM,l_iErrorCode);
-//#endif
-//			return	(false);
-//		}
+		int         l_iErrorCode = lua_pcall(tpLuaVM,0,0,0);
+		if (l_iErrorCode) {
+			const char* error_message = lua_tostring(tpLuaVM, -1);
+			lua_pop(tpLuaVM, 1);
+			Msg("Runtime error for '%s': %s", caScriptName, error_message);
+			return	(false);
+		}
 	}
 	else
 		lua_insert		(tpLuaVM,-4);

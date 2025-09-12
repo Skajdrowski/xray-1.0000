@@ -340,6 +340,10 @@ bool CScriptStorage::load_buffer	(CLuaVirtualMachine *L, LPCSTR caBuffer, size_t
 	}
 
 	if (l_iErrorCode) {
+		const char* error_message = lua_tostring(L, -1);
+		lua_pop(L, 1);
+		Msg("Error loading script '%s', error: %s", caScriptName, error_message);
+
 #ifdef DEBUG
 		print_output(L,caScriptName,l_iErrorCode);
 #endif
@@ -355,14 +359,13 @@ bool CScriptStorage::do_file	(LPCSTR caScriptName, LPCSTR caNameSpaceName)
 	IReader			*l_tpFileReader = FS.r_open(caScriptName);
 	if (!l_tpFileReader) {
 		script_log	(eLuaMessageTypeError,"Cannot open file \"%s\"",caScriptName);
+		Msg("Failed to open file '%s'", caScriptName);
 		return		(false);
 	}
 	strconcat		(l_caLuaFileName,"@",caScriptName);
 	
 	if (!load_buffer(lua(),static_cast<LPCSTR>(l_tpFileReader->pointer()),(size_t)l_tpFileReader->length(),l_caLuaFileName,caNameSpaceName)) {
-//		VERIFY		(lua_gettop(lua()) >= 4);
-//		lua_pop		(lua(),4);
-//		VERIFY		(lua_gettop(lua()) == start - 3);
+		Msg("load_buffer failed for '%s'", caScriptName);
 		lua_settop	(lua(),start);
 		FS.r_close	(l_tpFileReader);
 		return		(false);
@@ -390,6 +393,9 @@ bool CScriptStorage::do_file	(LPCSTR caScriptName, LPCSTR caNameSpaceName)
 		ai().script_engine().debugger()->UnPrepareLua(lua(),errFuncId);
 #endif
 	if (l_iErrorCode) {
+		const char* error_message = lua_tostring(lua(), -1);
+		lua_pop(lua(), 1);
+		Msg("Runtime error for '%s': %s", caScriptName, error_message);
 
 #ifdef DEBUG
 		print_output(lua(),caScriptName,l_iErrorCode);
