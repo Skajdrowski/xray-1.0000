@@ -210,7 +210,7 @@ void CGamePersistent::WeathersUpdate()
 		CEnvAmbient* env_amb		= _env->env_ambient;
 		if (env_amb){
 			// start sound
-			if (Device.dwTimeGlobal > ambient_sound_next_time){
+			if (psSoundAmbient && Device.dwTimeGlobal > ambient_sound_next_time){
 				ref_sound* snd			= env_amb->get_rnd_sound();
 				ambient_sound_next_time	= Device.dwTimeGlobal + env_amb->get_rnd_sound_time();
 				if (snd){

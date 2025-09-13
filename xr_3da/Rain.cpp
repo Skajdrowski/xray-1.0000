@@ -133,12 +133,13 @@ void	CEffect_Rain::OnFrame	()
 	{
 	case stIdle:		
 		if (factor<EPS_L)		return;
+		if (!psSoundAmbient)	return;
 		state					= stWorking;
 		snd_Ambient.play		(0,sm_Looped);
 		snd_Ambient.set_range	(source_offset,source_offset*2.f);
 	break;
 	case stWorking:
-		if (factor<EPS_L){
+		if (factor<EPS_L || !psSoundAmbient){
 			state				= stIdle;
 			snd_Ambient.stop	();
 			return;
@@ -147,7 +148,7 @@ void	CEffect_Rain::OnFrame	()
 	}
 
 	// ambient sound
-	if (snd_Ambient._feedback()){
+	if (psSoundAmbient && snd_Ambient._feedback()){
 		Fvector					sndP;
 		sndP.mad				(Device.vCameraPosition,Fvector().set(0,1,0),source_offset);
 		snd_Ambient.set_position(sndP);
@@ -199,7 +200,7 @@ void	CEffect_Rain::Render	()
 		if (one.dwTime_Hit<Device.dwTimeGlobal)		Hit (one.Phit);
 		if (one.dwTime_Life<Device.dwTimeGlobal)	Born(one,source_radius);
 
-// последняя дельта ??
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ??
 //.		float xdt		= float(one.dwTime_Hit-Device.dwTimeGlobal)/1000.f;
 //.		float dt		= Device.fTimeDelta;//xdt<Device.fTimeDelta?xdt:Device.fTimeDelta;
 		float dt		= Device.fTimeDelta;
