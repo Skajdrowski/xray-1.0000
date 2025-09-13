@@ -586,13 +586,14 @@ void CCC_Register()
 	// Sound
 	CMD2(CCC_Float,		"snd_volume_eff",		&psSoundVEffects);
 	CMD2(CCC_Float,		"snd_volume_music",		&psSoundVMusic);
-//.	CMD3(CCC_Token,		"snd_freq",				&psSoundFreq,		snd_freq_token			);
-//.	CMD3(CCC_Token,		"snd_model",			&psSoundModel,		snd_model_token			);
+	CMD4(CCC_Integer,	"snd_ambient",			&psSoundAmbient,	0, 1);
+//.	CMD3(CCC_Token,		"snd_freq",				&psSoundFreq,			snd_freq_token				);
+//.	CMD3(CCC_Token,		"snd_model",				&psSoundModel,		snd_model_token				);
 	CMD1(CCC_SND_Restart,"snd_restart"			);
 	CMD3(CCC_Mask,		"snd_acceleration",		&psSoundFlags,		ss_Hardware	);
 	CMD3(CCC_Mask,		"snd_efx",				&psSoundFlags,		ss_EAX		);
-	CMD4(CCC_Integer,	"snd_targets",			&psSoundTargets,	4,32		);
-	CMD4(CCC_Integer,	"snd_cache_size",		&psSoundCacheSizeMB,4,32		);
+	CMD4(CCC_Integer,	"snd_targets",			&psSoundTargets,	4,32			);
+	CMD4(CCC_Integer,	"snd_cache_size",		&psSoundCacheSizeMB,4,32			);
 
 #ifdef DEBUG
 	CMD3(CCC_Mask,		"snd_stats",			&g_stats_flags,		st_sound	);
@@ -602,7 +603,7 @@ void CCC_Register()
 	CMD3(CCC_Mask,		"snd_stats_info_name",	&g_stats_flags,		st_sound_info_name );
 	CMD3(CCC_Mask,		"snd_stats_info_object",&g_stats_flags,		st_sound_info_object );
 
-	CMD4(CCC_Integer,	"error_line_count",		&g_ErrorLineCount,	6,	1024	);
+	CMD4(CCC_Integer,	"error_line_count",	&g_ErrorLineCount,	6,	1024		);
 #endif // DEBUG
 
 	// Mouse
