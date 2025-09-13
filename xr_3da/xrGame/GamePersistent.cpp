@@ -208,7 +208,7 @@ void CGamePersistent::WeathersUpdate()
 		int data_set				= (Random.randF()<(1.f-Environment().CurrentEnv.weight))?0:1; 
 		CEnvDescriptor* _env		= Environment().Current[data_set]; VERIFY(_env);
 		CEnvAmbient* env_amb		= _env->env_ambient;
-		if (env_amb){
+		if (psSoundAmbient && env_amb){
 			// start sound
 			if (Device.dwTimeGlobal > ambient_sound_next_time){
 				ref_sound* snd			= env_amb->get_rnd_sound();
