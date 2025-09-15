@@ -494,6 +494,8 @@ extern float		r__dtex_range;
 
 extern int			g_ErrorLineCount;
 
+// Frame limiter (0 = unlimited)
+int					ps_fps_limit = 0;
 
 ENGINE_API int			ps_r__Supersample			= 1;
 void CCC_Register()
@@ -554,6 +556,10 @@ void CCC_Register()
 	CMD3(CCC_Mask,		"rs_refresh_60hz",		&psDeviceFlags,		rsRefresh60hz			);
 	CMD3(CCC_Mask,		"rs_stats",				&psDeviceFlags,		rsStatistic				);
 	CMD4(CCC_Float,		"rs_vis_distance",		&psVisDistance,		0.4f,	1.5f			);
+
+	// Frame limiter console commands
+	CMD4(CCC_Integer,	"rs_fps_limit",		&ps_fps_limit,		0,		1000			);
+	CMD4(CCC_Integer,	"fps_limit",			&ps_fps_limit,		0,		1000			);
 
 #ifdef DEBUG
 	CMD3(CCC_Mask,		"rs_cam_pos",			&psDeviceFlags,		rsCameraPos				);

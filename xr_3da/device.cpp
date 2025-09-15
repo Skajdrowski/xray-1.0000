@@ -15,6 +15,7 @@
 
 #include "x_ray.h"
 #include "render.h"
+#include <xmmintrin.h>
 
 ENGINE_API CRenderDevice Device;
 ENGINE_API BOOL g_bRendering = FALSE; 
@@ -179,6 +180,9 @@ void CRenderDevice::Run			()
 		Timer_MM_Delta		= time_system-time_local;
 	}
 
+	// Improve sleep granularity for high-FPS frame limiting
+	timeBeginPeriod(1);
+
 	// Start all threads
 //	InitializeCriticalSection	(&mt_csEnter);
 //	InitializeCriticalSection	(&mt_csLeave);
@@ -204,9 +208,32 @@ void CRenderDevice::Run			()
         else
         {
 			if (b_is_Ready) {
+				u64 frameStartQPC = CPU::QPC();
 
 #ifdef DEDICATED_SERVER
 				u32 FrameStartTime = TimerGlobal.GetElapsed_ms();
+#endif
+
+#ifndef DEDICATED_SERVER
+				// High-precision frame limiter (sleep + spin) for high caps
+				extern int ps_fps_limit;
+				if (ps_fps_limit > 0) {
+					u64 nowTicks = CPU::QPC();
+					u64 elapsedTicks = nowTicks - frameStartQPC;
+					u64 targetTicks = CPU::qpc_freq / (u64)ps_fps_limit;
+					if (elapsedTicks < targetTicks) {
+						u64 remainTicks = targetTicks - elapsedTicks;
+						u32 remainMs = (u32)((remainTicks * 1000u) / CPU::qpc_freq);
+						if (remainMs > 1) {
+							Sleep(remainMs - 1);
+						}
+						for (;;) {
+							u64 cur = CPU::QPC();
+							if (cur - frameStartQPC >= targetTicks) break;
+							_mm_pause();
+						}
+					}
+				}
 #endif
 				if (psDeviceFlags.test(rsStatistic))	g_bEnableStatGather	= TRUE;
 				else									g_bEnableStatGather	= FALSE;
@@ -316,6 +343,9 @@ void CRenderDevice::Run			()
 	while (mt_bMustExit)	Sleep(0);
 //	DeleteCriticalSection	(&mt_csEnter);
 //	DeleteCriticalSection	(&mt_csLeave);
+
+	// Restore timer resolution
+	timeEndPeriod(1);
 }
 
 void ProcessLoading(RP_FUNC *f);
