@@ -306,7 +306,6 @@ void CRenderDevice::Run			()
 #endif
 
 #ifndef DEDICATED_SERVER
-				// Precise frame limiter: maintain stable frame pacing using QPC
 				if (psFPS_Limit >= 15 && !psDeviceFlags.test(rsVSync)) {
 					static u64 target = 0;
 					const u64 freq = CPU::qpc_freq;
