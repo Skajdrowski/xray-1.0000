@@ -22,6 +22,9 @@ ENGINE_API BOOL g_bRendering = FALSE;
 BOOL		g_bLoaded = FALSE;
 ref_light	precache_light = 0;
 
+// Frame limiter (0 disables)
+int psFPS_Limit = 0;
+
 BOOL CRenderDevice::Begin	()
 {
 #ifndef DEDICATED_SERVER
@@ -300,6 +303,47 @@ void CRenderDevice::Run			()
 				}
 
 //				Msg(FPS_str);
+#endif
+
+#ifndef DEDICATED_SERVER
+				// Precise frame limiter: maintain stable frame pacing using QPC
+				if (psFPS_Limit > 0 && !psDeviceFlags.test(rsVSync))
+				{
+					Device.Statistic->FrameLimiter.Begin();
+					static u64 s_frameTargetQPC = 0;
+					const u64 qpcFreq = CPU::qpc_freq;
+					u64 nowQPC = CPU::QPC();
+					u64 interval = qpcFreq / u64(psFPS_Limit);
+					if (s_frameTargetQPC == 0)
+						s_frameTargetQPC = nowQPC + interval;
+
+					for (;;)
+					{
+						nowQPC = CPU::QPC();
+						if (nowQPC >= s_frameTargetQPC) break;
+						u64 ticksLeft = s_frameTargetQPC - nowQPC;
+						u32 msLeft = u32((ticksLeft * 1000u) / qpcFreq);
+						if (msLeft > 1)
+						{
+							Sleep(msLeft - 1);
+						}
+						else
+						{
+							if (!SwitchToThread()) Sleep(0);
+						}
+					}
+
+					// Schedule next target based on previous target to avoid drift
+					s_frameTargetQPC += interval;
+					u64 nowAfter = CPU::QPC();
+					if (s_frameTargetQPC < nowAfter)
+					{
+						u64 behind = nowAfter - s_frameTargetQPC;
+						u64 missed = behind / interval + 1;
+						s_frameTargetQPC += missed * interval;
+					}
+					Device.Statistic->FrameLimiter.End();
+				}
 #endif
 
 			} else {

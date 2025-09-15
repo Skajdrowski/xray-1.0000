@@ -15,6 +15,8 @@
 
 #include "xr_object.h"
 
+extern int psFPS_Limit;
+
 xr_token							snd_freq_token							[ ]={
 	{ "22khz",						sf_22K										},
 	{ "44khz",						sf_44K										},
@@ -548,7 +550,8 @@ void CCC_Register()
 	CMD4(CCC_Integer,	"r__supersample",		&ps_r__Supersample,			1,		4		);
 
 
-	CMD3(CCC_Mask,		"rs_v_sync",			&psDeviceFlags,		rsVSync				);
+	CMD3(CCC_Mask, 		"rs_v_sync", 			&psDeviceFlags, 		rsVSync				);
+	CMD4(CCC_Integer, 	"rs_fps_limit", 		&psFPS_Limit, 			0, 		1000	);
 //	CMD3(CCC_Mask,		"rs_disable_objects_as_crows",&psDeviceFlags,	rsDisableObjectsAsCrows	);
 	CMD3(CCC_Mask,		"rs_fullscreen",		&psDeviceFlags,		rsFullscreen			);
 	CMD3(CCC_Mask,		"rs_refresh_60hz",		&psDeviceFlags,		rsRefresh60hz			);
