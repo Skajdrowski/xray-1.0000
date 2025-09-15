@@ -307,41 +307,12 @@ void CRenderDevice::Run			()
 
 #ifndef DEDICATED_SERVER
 				// Precise frame limiter: maintain stable frame pacing using QPC
-				if (psFPS_Limit > 0 && !psDeviceFlags.test(rsVSync))
-				{
+				if (psFPS_Limit > 0 && !psDeviceFlags.test(rsVSync)) {
 					Device.Statistic->FrameLimiter.Begin();
-					static u64 s_frameTargetQPC = 0;
-					const u64 qpcFreq = CPU::qpc_freq;
-					u64 nowQPC = CPU::QPC();
-					u64 interval = qpcFreq / u64(psFPS_Limit);
-					if (s_frameTargetQPC == 0)
-						s_frameTargetQPC = nowQPC + interval;
-
-					for (;;)
-					{
-						nowQPC = CPU::QPC();
-						if (nowQPC >= s_frameTargetQPC) break;
-						u64 ticksLeft = s_frameTargetQPC - nowQPC;
-						u32 msLeft = u32((ticksLeft * 1000u) / qpcFreq);
-						if (msLeft > 1)
-						{
-							Sleep(msLeft - 1);
-						}
-						else
-						{
-							if (!SwitchToThread()) Sleep(0);
-						}
-					}
-
-					// Schedule next target based on previous target to avoid drift
-					s_frameTargetQPC += interval;
-					u64 nowAfter = CPU::QPC();
-					if (s_frameTargetQPC < nowAfter)
-					{
-						u64 behind = nowAfter - s_frameTargetQPC;
-						u64 missed = behind / interval + 1;
-						s_frameTargetQPC += missed * interval;
-					}
+					static u64 target = 0; const u64 freq = CPU::qpc_freq; const u64 step = freq / u64(psFPS_Limit);
+					u64 now = CPU::QPC(); if (!target) target = now + step;
+					for (;;) { now = CPU::QPC(); if (now >= target) break; u64 left = target - now; u32 ms = u32((left * 1000u) / freq); if (ms > 1) Sleep(ms - 1); else if (!SwitchToThread()) Sleep(0); }
+					target += step; now = CPU::QPC(); if (target < now) { u64 behind = now - target; target += ((behind / step) + 1) * step; }
 					Device.Statistic->FrameLimiter.End();
 				}
 #endif
