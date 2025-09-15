@@ -180,7 +180,6 @@ void CRenderDevice::Run			()
 		Timer_MM_Delta		= time_system-time_local;
 	}
 
-	// Improve sleep granularity for high-FPS frame limiting
 	timeBeginPeriod(1);
 
 	// Start all threads
@@ -215,12 +214,11 @@ void CRenderDevice::Run			()
 #endif
 
 #ifndef DEDICATED_SERVER
-				// High-precision frame limiter (sleep + spin) for high caps
-				extern int ps_fps_limit;
-				if (ps_fps_limit > 0) {
+				extern int FPSLimit;
+				if (FPSLimit > 0) {
 					u64 nowTicks = CPU::QPC();
 					u64 elapsedTicks = nowTicks - frameStartQPC;
-					u64 targetTicks = CPU::qpc_freq / (u64)ps_fps_limit;
+					u64 targetTicks = CPU::qpc_freq / (u64)FPSLimit;
 					if (elapsedTicks < targetTicks) {
 						u64 remainTicks = targetTicks - elapsedTicks;
 						u32 remainMs = (u32)((remainTicks * 1000u) / CPU::qpc_freq);
