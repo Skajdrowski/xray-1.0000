@@ -15,7 +15,6 @@
 
 #include "xr_object.h"
 
-extern int psFPS_Limit;
 
 xr_token							snd_freq_token							[ ]={
 	{ "22khz",						sf_22K										},
@@ -491,6 +490,7 @@ extern int			psNET_ServerUpdate;
 extern int			psNET_ServerPending;
 extern int			psNET_DedicatedSleep;
 extern char			psNET_Name[32];
+extern int			psFPS_Limit;
 extern Flags32		psEnvFlags;
 extern float		r__dtex_range;
 
@@ -550,8 +550,8 @@ void CCC_Register()
 	CMD4(CCC_Integer,	"r__supersample",		&ps_r__Supersample,			1,		4		);
 
 
-	CMD3(CCC_Mask, 		"rs_v_sync", 			&psDeviceFlags, 		rsVSync				);
-	CMD4(CCC_Integer, 	"rs_fps_limit", 		&psFPS_Limit, 			0, 		1000	);
+	CMD3(CCC_Mask, 		"rs_v_sync", 			&psDeviceFlags, 	rsVSync					);
+	CMD4(CCC_Integer, 	"rs_fps", 		        &psFPS_Limit, 		0, 		1000			);
 //	CMD3(CCC_Mask,		"rs_disable_objects_as_crows",&psDeviceFlags,	rsDisableObjectsAsCrows	);
 	CMD3(CCC_Mask,		"rs_fullscreen",		&psDeviceFlags,		rsFullscreen			);
 	CMD3(CCC_Mask,		"rs_refresh_60hz",		&psDeviceFlags,		rsRefresh60hz			);

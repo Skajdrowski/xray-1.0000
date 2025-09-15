@@ -307,12 +307,37 @@ void CRenderDevice::Run			()
 
 #ifndef DEDICATED_SERVER
 				// Precise frame limiter: maintain stable frame pacing using QPC
-				if (psFPS_Limit > 0 && !psDeviceFlags.test(rsVSync)) {
+				if (psFPS_Limit >= 15 && !psDeviceFlags.test(rsVSync)) {
 					Device.Statistic->FrameLimiter.Begin();
-					static u64 target = 0; const u64 freq = CPU::qpc_freq; const u64 step = freq / u64(psFPS_Limit);
-					u64 now = CPU::QPC(); if (!target) target = now + step;
-					for (;;) { now = CPU::QPC(); if (now >= target) break; u64 left = target - now; u32 ms = u32((left * 1000u) / freq); if (ms > 1) Sleep(ms - 1); else if (!SwitchToThread()) Sleep(0); }
-					target += step; now = CPU::QPC(); if (target < now) { u64 behind = now - target; target += ((behind / step) + 1) * step; }
+
+					static u64 target = 0;
+					const u64 freq = CPU::qpc_freq;
+					const u64 step = freq / u64(psFPS_Limit);
+					u64 now = CPU::QPC();
+
+					if (!target)
+						target = now + step;
+
+					for (;;) {
+						now = CPU::QPC();
+
+						if (now >= target)
+							break;
+
+						u64 left = target - now;
+						u32 ms = u32((left * 1000u) / freq);
+
+						if (ms > 1)
+							Sleep(ms - 1);
+						else if (!SwitchToThread())
+							Sleep(0);
+					}
+					target += step; now = CPU::QPC();
+					if (target < now) {
+						u64 behind = now - target;
+						target += ((behind / step) + 1) * step;
+					}
+
 					Device.Statistic->FrameLimiter.End();
 				}
 #endif
