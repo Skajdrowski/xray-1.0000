@@ -491,7 +491,7 @@ extern int			psNET_DedicatedSleep;
 extern char			psNET_Name[32];
 extern Flags32		psEnvFlags;
 extern float		r__dtex_range;
-extern int			FPSLimit = 0;
+extern int			FPSLimit;
 extern int			g_ErrorLineCount;
 
 ENGINE_API int			ps_r__Supersample			= 1;
