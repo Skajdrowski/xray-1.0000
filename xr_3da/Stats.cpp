@@ -98,7 +98,6 @@ void CStats::Show()
 		RenderDUMP_SKIN.FrameEnd	();	
 		RenderDUMP_Wait.FrameEnd	();	
 		RenderDUMP_Wait_S.FrameEnd	();	
-		FrameLimiter.FrameEnd		();
 		RenderDUMP_HUD.FrameEnd		();	
 		RenderDUMP_Glows.FrameEnd	();	
 		RenderDUMP_Lights.FrameEnd	();	
@@ -384,7 +383,6 @@ void CStats::Show()
 		RenderDUMP_SKIN.FrameStart	();	
 		RenderDUMP_Wait.FrameStart	();	
 		RenderDUMP_Wait_S.FrameStart();	
-		FrameLimiter.FrameStart		();
 		RenderDUMP_HUD.FrameStart	();	
 		RenderDUMP_Glows.FrameStart	();	
 		RenderDUMP_Lights.FrameStart();	
