@@ -214,7 +214,7 @@ void CRenderDevice::Run			()
 #endif
 
 #ifndef DEDICATED_SERVER
-				extern int FPSLimit;
+				int FPSLimit;
 				if (FPSLimit > 0) {
 					u64 nowTicks = CPU::QPC();
 					u64 elapsedTicks = nowTicks - frameStartQPC;
