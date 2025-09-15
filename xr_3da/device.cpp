@@ -157,6 +157,7 @@ void CRenderDevice::PreCache	(u32 amount)
 
 
 int g_svDedicateServerUpdateReate = 100;
+int FPSLimit = 0;
 
 ENGINE_API xr_list<LOADING_EVENT>			g_loading_events;
 
@@ -214,7 +215,6 @@ void CRenderDevice::Run			()
 #endif
 
 #ifndef DEDICATED_SERVER
-				int FPSLimit = 0;
 				if (FPSLimit >= 15) {
 					u64 nowTicks = CPU::QPC();
 					u64 elapsedTicks = nowTicks - frameStartQPC;
