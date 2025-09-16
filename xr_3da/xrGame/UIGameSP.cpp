@@ -28,6 +28,13 @@ CUIGameSP::CUIGameSP()
 	TalkMenu		= xr_new<CUITalkWnd>		();
 	UICarBodyMenu	= xr_new<CUICarBodyWnd>		();
 	UIChangeLevelWnd= xr_new<CChangeLevelWnd>		();
+
+	m_speedometerInitialized = false;
+	m_speedometerCaptionId = "speedometer";
+	m_lastActorPosition.set(0,0,0);
+	m_lastUpdateTimeSec = 0.0f;
+	m_totalPlanarDistance = 0.0f;
+	m_totalTimeSec = 0.0f;
 }
 
 CUIGameSP::~CUIGameSP() 
@@ -67,6 +74,64 @@ void CUIGameSP::SetClGame (game_cl_GameState* g)
 	R_ASSERT							(m_game);
 }
 
+void CUIGameSP::OnFrame()
+{
+	inherited::OnFrame();
+
+	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
+	if (!actor) return;
+
+	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerCaptionId) == NULL)
+	{
+		m_speedometerInitialized = false;
+	}
+
+	if (!m_speedometerInitialized)
+	{
+		// Create or fetch static from XML
+		SDrawStaticStruct* s = GetCustomStatic(*m_speedometerCaptionId);
+		if (!s)
+			s = AddCustomStatic(*m_speedometerCaptionId, true);
+		if (!s)
+			return;
+
+		m_lastActorPosition = actor->Position();
+		m_lastUpdateTimeSec = Device.fTimeGlobal;
+		m_speedometerInitialized = true;
+	}
+
+	Fvector currentPos = actor->Position();
+	float currentTime = Device.fTimeGlobal;
+	float dt = currentTime - m_lastUpdateTimeSec;
+
+	// Match framerate of the game
+	const float frame_dt = Device.fTimeDelta > 0.f ? Device.fTimeDelta : 0.0f;
+	if (dt >= frame_dt)
+	{
+		float distance = currentPos.distance_to(m_lastActorPosition);
+
+		Fvector planarDelta = currentPos; planarDelta.sub(m_lastActorPosition); planarDelta.y = 0.0f;
+		float planarDistance = planarDelta.magnitude();
+		m_totalPlanarDistance += planarDistance;
+		m_totalTimeSec += dt;
+
+		float ups = (dt > 0.0f) ? distance / dt : 0.0f;
+		float vups = (dt > 0.0f) ? (currentPos.y - m_lastActorPosition.y) / dt : 0.0f;
+		float avg_ups = (m_totalTimeSec > 0.0f) ? (m_totalPlanarDistance / m_totalTimeSec) : 0.0f;
+ 
+		float disp_ups = ups;
+		float disp_vups = vups;
+		float disp_avg = avg_ups;
+
+		char line[64];
+		sprintf(line, "ups %03.1f vups %03.1f avg ups %03.1f", disp_ups, disp_vups, disp_avg);
+		if (SDrawStaticStruct* s = GetCustomStatic(*m_speedometerCaptionId))
+			s->m_static->SetText(line);
+
+		m_lastActorPosition = currentPos;
+		m_lastUpdateTimeSec = currentTime;
+	}
+}
 
 bool CUIGameSP::IR_OnKeyboardPress(int dik) 
 {
