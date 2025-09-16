@@ -22,12 +22,21 @@ class CUIGameSP : public CUIGameCustom
 private:
 	game_cl_Single*		m_game;
 	typedef CUIGameCustom inherited;
+private:
+	// Speedometer state
+	bool				m_speedometerInitialized;
+	shared_str			m_speedometerCaptionId;
+	Fvector				m_lastActorPosition;
+	float				m_lastUpdateTimeSec;
+	float				m_totalPlanarDistance;
+	float				m_totalTimeSec;
 public:
 	CUIGameSP									();
 	virtual				~CUIGameSP				();
 
 	virtual	void		reset_ui				();
 	virtual	void		shedule_Update		(u32 dt);
+    virtual void        OnFrame                     ();
 	virtual void		SetClGame				(game_cl_GameState* g);
 	virtual bool		IR_OnKeyboardPress		(int dik);
 	virtual bool		IR_OnKeyboardRelease	(int dik);
