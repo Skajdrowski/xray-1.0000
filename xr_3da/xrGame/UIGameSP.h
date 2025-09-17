@@ -22,10 +22,13 @@ class CUIGameSP : public CUIGameCustom
 private:
 	game_cl_Single*		m_game;
 	typedef CUIGameCustom inherited;
-private:
-	// Speedometer state
+
 	bool				m_speedometerInitialized;
-	shared_str			m_speedometerCaptionId;
+
+	shared_str			m_speedometerUpsId;
+	shared_str			m_speedometerVupsId;
+	shared_str			m_speedometerAvgId;
+
 	Fvector				m_lastActorPosition;
 	float				m_lastUpdateTimeSec;
 	float				m_totalPlanarDistance;

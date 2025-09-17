@@ -30,7 +30,11 @@ CUIGameSP::CUIGameSP()
 	UIChangeLevelWnd= xr_new<CChangeLevelWnd>		();
 
 	m_speedometerInitialized = false;
-	m_speedometerCaptionId = "speedometer";
+
+	m_speedometerUpsId = "ups";
+	m_speedometerVupsId = "vups";
+	m_speedometerAvgId = "avg_ups";
+
 	m_lastActorPosition.set(0,0,0);
 	m_lastUpdateTimeSec = 0.0f;
 	m_totalPlanarDistance = 0.0f;
@@ -81,7 +85,9 @@ void CUIGameSP::OnFrame()
 	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
 	if (!actor) return;
 
-	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerCaptionId) == NULL)
+	SDrawStaticStruct* s, *s2, *s3;
+
+	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL && GetCustomStatic(*m_speedometerVupsId) == NULL && GetCustomStatic(*m_speedometerAvgId) == NULL)
 	{
 		m_speedometerInitialized = false;
 	}
@@ -89,10 +95,16 @@ void CUIGameSP::OnFrame()
 	if (!m_speedometerInitialized)
 	{
 		// Create or fetch static from XML
-		SDrawStaticStruct* s = GetCustomStatic(*m_speedometerCaptionId);
-		if (!s)
-			s = AddCustomStatic(*m_speedometerCaptionId, true);
-		if (!s)
+		s = GetCustomStatic(*m_speedometerUpsId);
+		s2 = GetCustomStatic(*m_speedometerVupsId);
+		s3 = GetCustomStatic(*m_speedometerAvgId);
+
+		if (!s && !s2 && !s3) {
+			s = AddCustomStatic(*m_speedometerUpsId, true);
+			s2 = AddCustomStatic(*m_speedometerVupsId, true);
+			s3 = AddCustomStatic(*m_speedometerAvgId, true);
+		}
+		if (!s || !s2 || !s3)
 			return;
 
 		m_lastActorPosition = actor->Position();
@@ -118,15 +130,19 @@ void CUIGameSP::OnFrame()
 		float ups = (dt > 0.0f) ? distance / dt : 0.0f;
 		float vups = (dt > 0.0f) ? (currentPos.y - m_lastActorPosition.y) / dt : 0.0f;
 		float avg_ups = (m_totalTimeSec > 0.0f) ? (m_totalPlanarDistance / m_totalTimeSec) : 0.0f;
- 
-		float disp_ups = ups;
-		float disp_vups = vups;
-		float disp_avg = avg_ups;
 
-		char line[64];
-		sprintf(line, "ups: %04.1f vups: %+03.1f avg: %03.1f", disp_ups, disp_vups, disp_avg);
-		if (SDrawStaticStruct* s = GetCustomStatic(*m_speedometerCaptionId))
-			s->m_static->SetText(line);
+		char Upsline[24], Vupsline[24], Avgline[24];
+
+		sprintf(Upsline, "ups: %04.1f", ups);
+		sprintf(Vupsline, "vups: %+03.1f", vups);
+		sprintf(Avgline, "avg: %03.1f", avg_ups);
+
+		if (s = GetCustomStatic(*m_speedometerUpsId))
+			s->m_static->SetText(Upsline);
+		if (s2 = GetCustomStatic(*m_speedometerVupsId))
+			s2->m_static->SetText(Vupsline);
+		if (s3 = GetCustomStatic(*m_speedometerAvgId))
+			s3->m_static->SetText(Avgline);
 
 		m_lastActorPosition = currentPos;
 		m_lastUpdateTimeSec = currentTime;
