@@ -89,6 +89,7 @@ void CUIGameSP::OnFrame()
 
 	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL && GetCustomStatic(*m_speedometerVupsId) == NULL && GetCustomStatic(*m_speedometerAvgId) == NULL)
 	{
+		m_totalPlanarDistance = m_totalTimeSec = 0.0f;
 		m_speedometerInitialized = false;
 	}
 
