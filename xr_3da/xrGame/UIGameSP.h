@@ -26,8 +26,6 @@ private:
 	bool				m_speedometerInitialized;
 
 	shared_str			m_speedometerUpsId;
-	shared_str			m_speedometerVupsId;
-	shared_str			m_speedometerAvgId;
 
 	Fvector				m_lastActorPosition;
 	float				m_lastUpdateTimeSec;

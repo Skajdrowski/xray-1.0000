@@ -31,9 +31,7 @@ CUIGameSP::CUIGameSP()
 
 	m_speedometerInitialized = false;
 
-	m_speedometerUpsId = "ups";
-	m_speedometerVupsId = "vups";
-	m_speedometerAvgId = "avg_ups";
+	m_speedometerUpsId = "speedometer";
 
 	m_lastActorPosition.set(0,0,0);
 	m_lastUpdateTimeSec = 0.0f;
@@ -85,9 +83,9 @@ void CUIGameSP::OnFrame()
 	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
 	if (!actor) return;
 
-	SDrawStaticStruct* s, *s2, *s3;
+	SDrawStaticStruct* s;
 
-	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL && GetCustomStatic(*m_speedometerVupsId) == NULL && GetCustomStatic(*m_speedometerAvgId) == NULL)
+	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL)
 	{
 		m_totalPlanarDistance = m_totalTimeSec = 0.0f;
 		m_speedometerInitialized = false;
@@ -95,21 +93,18 @@ void CUIGameSP::OnFrame()
 
 	if (!m_speedometerInitialized)
 	{
-		// Create or fetch static from XML
+		// Fetch static from XML
 		s = GetCustomStatic(*m_speedometerUpsId);
-		s2 = GetCustomStatic(*m_speedometerVupsId);
-		s3 = GetCustomStatic(*m_speedometerAvgId);
-
-		if (!s && !s2 && !s3) {
+		if (!s)
 			s = AddCustomStatic(*m_speedometerUpsId, true);
-			s2 = AddCustomStatic(*m_speedometerVupsId, true);
-			s3 = AddCustomStatic(*m_speedometerAvgId, true);
-		}
-		if (!s || !s2 || !s3)
+		if (!s)
 			return;
+
+		s->m_static->m_pLines->SetUseNewLineMode(true); //Ensures "\\n" is treated as newline
 
 		m_lastActorPosition = actor->Position();
 		m_lastUpdateTimeSec = Device.fTimeGlobal;
+
 		m_speedometerInitialized = true;
 	}
 
@@ -132,18 +127,12 @@ void CUIGameSP::OnFrame()
 		float vups = (dt > 0.0f) ? (currentPos.y - m_lastActorPosition.y) / dt : 0.0f;
 		float avg_ups = (m_totalTimeSec > 0.0f) ? (m_totalPlanarDistance / m_totalTimeSec) : 0.0f;
 
-		char Upsline[24], Vupsline[24], Avgline[24];
+		char Upsline[48];
 
-		sprintf(Upsline, "ups: %04.1f", ups);
-		sprintf(Vupsline, "vups: %+03.1f", vups);
-		sprintf(Avgline, "avg: %03.1f", avg_ups);
+		sprintf(Upsline, "ups: %04.1f\\nvups: %+03.1f\\navg: %03.1f", ups, vups, avg_ups);
 
 		if (s = GetCustomStatic(*m_speedometerUpsId))
 			s->m_static->SetText(Upsline);
-		if (s2 = GetCustomStatic(*m_speedometerVupsId))
-			s2->m_static->SetText(Vupsline);
-		if (s3 = GetCustomStatic(*m_speedometerAvgId))
-			s3->m_static->SetText(Avgline);
 
 		m_lastActorPosition = currentPos;
 		m_lastUpdateTimeSec = currentTime;
