@@ -19,6 +19,9 @@
 #include "ui/UICarBodyWnd.h"
 #include "ui/UIMessageBox.h"
 
+#include "script_engine.h"
+#include "ai_space.h"
+
 CUIGameSP::CUIGameSP()
 {
 	m_game			= NULL;
@@ -37,6 +40,7 @@ CUIGameSP::CUIGameSP()
 	m_lastUpdateTimeSec = 0.0f;
 	m_totalPlanarDistance = 0.0f;
 	m_totalTimeSec = 0.0f;
+	m_previousTimerSwitch = 0;
 }
 
 CUIGameSP::~CUIGameSP() 
@@ -83,12 +87,15 @@ void CUIGameSP::OnFrame()
 	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
 	if (!actor) return;
 
+	int currentTimerSwitch = ai().script_engine().get_timerSwitch();
+
 	SDrawStaticStruct* s;
 
-	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL)
+	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL || m_speedometerInitialized && currentTimerSwitch != m_previousTimerSwitch)
 	{
 		m_totalPlanarDistance = m_totalTimeSec = 0.0f;
 		m_speedometerInitialized = false;
+		m_previousTimerSwitch = currentTimerSwitch;
 	}
 
 	if (!m_speedometerInitialized)

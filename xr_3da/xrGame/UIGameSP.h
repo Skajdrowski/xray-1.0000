@@ -31,6 +31,7 @@ private:
 	float				m_lastUpdateTimeSec;
 	float				m_totalPlanarDistance;
 	float				m_totalTimeSec;
+	int			        m_previousTimerSwitch;
 public:
 	CUIGameSP									();
 	virtual				~CUIGameSP				();
