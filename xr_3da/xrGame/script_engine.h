@@ -56,6 +56,7 @@ protected:
 private:
 	string128					m_last_no_file;
 	u32							m_last_no_file_length;
+	int							m_timerSwitch;
 
 			bool				no_file_exists				(LPCSTR file_name, u32 string_length);
 			void				add_no_file					(LPCSTR file_name, u32 string_length);
@@ -93,6 +94,8 @@ public:
 #endif
 			void				collect_all_garbage			();
 
+			int					get_timerSwitch				() const { return m_timerSwitch; }
+			void				set_timerSwitch				(int value) { m_timerSwitch = value; }
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 add_to_type_list(CScriptEngine)

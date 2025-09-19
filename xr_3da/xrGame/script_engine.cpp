@@ -32,6 +32,7 @@ CScriptEngine::CScriptEngine			()
 	m_reload_modules		= false;
 	m_last_no_file_length	= 0;
 	*m_last_no_file			= 0;
+	m_timerSwitch			= 0;
 
 #ifdef USE_DEBUGGER
 	m_scriptDebugger		= NULL;

@@ -178,9 +178,13 @@ IC	std::ostream& operator<<(std::ostream &stream, profile_timer_script &timer)
 }
 
 #ifdef XRGAME_EXPORTS
-ICF	u32	script_time_global	()	{ return Device.dwTimeGlobal; }
+ICF	u32	script_time_global() { return Device.dwTimeGlobal; }
+ICF	int	script_get_timerSwitch	()	{ return ai().script_engine().get_timerSwitch(); }
+ICF	void script_set_timerSwitch	(int value) { ai().script_engine().set_timerSwitch(value); }
 #else
-ICF	u32	script_time_global	()	{ return 0; }
+ICF	u32	script_time_global() { return 0; }
+ICF	int	script_get_timerSwitch	()	{ return 0; }
+ICF	void script_set_timerSwitch	(int value) { }
 #endif
 
 #pragma optimize("s",on)
@@ -210,6 +214,8 @@ void CScriptEngine::script_register(lua_State *L)
 	function	(L,	"bit_not",						bit_not);
 	function	(L, "user_name",					user_name);
 	function	(L, "time_global",					script_time_global);
+	function	(L, "get_timerSwitch",				script_get_timerSwitch);
+	function	(L, "set_timerSwitch",				script_set_timerSwitch);
 #ifdef XRGAME_EXPORTS
 	function	(L,	"device",						get_device);
 #endif
