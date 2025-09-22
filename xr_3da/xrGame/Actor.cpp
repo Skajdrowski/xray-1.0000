@@ -826,9 +826,6 @@ void	CActor::TeleportActor()
 	Fmatrix M = XFORM();
 	M.translate(0, 0, 0);
 	ForceTransform(M);
-
-	// Stop bleeding
-	conditions().ClearWounds();
 }
 
 void	CActor::SwitchOutBorder(bool new_border_state)

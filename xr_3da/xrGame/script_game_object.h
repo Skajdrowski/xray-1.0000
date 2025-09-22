@@ -178,6 +178,7 @@ public:
 	_DECLARE_FUNCTION11	(SetRadiation,		void, float);
 	_DECLARE_FUNCTION11	(SetCircumspection,	void, float);
 	_DECLARE_FUNCTION11	(SetMorale,			void, float);
+	_DECLARE_FUNCTION10	(ClearWounds, 		void);
 
 			void				set_fov				(float new_fov);
 			void				set_range			(float new_range);
@@ -245,17 +246,17 @@ public:
 	// CProjector
 			Fvector				GetCurrentDirection		();
 			bool				IsInvBoxEmpty			();
-	//передача порции информации InventoryOwner
+	//РїРµСЂРµРґР°С‡Р° РїРѕСЂС†РёРё РёРЅС„РѕСЂРјР°С†РёРё InventoryOwner
 			bool				GiveInfoPortion		(LPCSTR info_id);
 			bool				DisableInfoPortion	(LPCSTR info_id);
 			bool				GiveGameNews		(LPCSTR news, LPCSTR texture_name, Frect tex_rect, int delay, int show_time);
 
 			void				AddIconedTalkMessage(LPCSTR text, LPCSTR texture_name, Frect tex_rect, LPCSTR templ_name);
-	//предикаты наличия/отсутствия порции информации у персонажа
+	//РїСЂРµРґРёРєР°С‚С‹ РЅР°Р»РёС‡РёСЏ/РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РїРѕСЂС†РёРё РёРЅС„РѕСЂРјР°С†РёРё Сѓ РїРµСЂСЃРѕРЅР°Р¶Р°
 			bool				HasInfo				(LPCSTR info_id);
 			bool				DontHasInfo			(LPCSTR info_id);
 			xrTime				GetInfoTime			(LPCSTR info_id);
-	//работа с заданиями
+	//СЂР°Р±РѕС‚Р° СЃ Р·Р°РґР°РЅРёСЏРјРё
 			ETaskState			GetGameTaskState	(LPCSTR task_id, int objective_num);
 			void				SetGameTaskState	(ETaskState state, LPCSTR task_id, int objective_num);
 			void				GiveTaskToActor		(CGameTask* t, u32 dt, bool bCheckExisting);
