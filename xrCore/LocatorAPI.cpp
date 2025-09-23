@@ -14,13 +14,11 @@
 #include "FS_internal.h"
 #include "stream_reader.h"
 #include "file_stream_reader.h"
+#include "../xr_3da/trivial_encryptor.h"
 
 const u32 BIG_FILE_READER_WINDOW_SIZE	= 1024*1024;
 
 #define PROTECTED_BUILD
-
-typedef void DUMMY_STUFF (const void*,const u32&,void*);
-XRCORE_API DUMMY_STUFF	*g_temporary_stuff = 0;
 
 #ifdef PROTECTED_BUILD
 #	pragma warning(push)
@@ -269,7 +267,7 @@ void CLocatorAPI::Register		(LPCSTR name, u32 vfs, u32 crc, u32 ptr, u32 size_re
 	}
 }
 
-IReader* open_chunk(void* ptr, u32 ID)	
+IReader* open_chunk(void* ptr, u32 ID, pcstr archiveName, u32 archiveSize)	
 {
 	BOOL			res;
 	u32				dwType, dwSize;
@@ -284,11 +282,21 @@ IReader* open_chunk(void* ptr, u32 ID)
 			u8* src_data	= xr_alloc<u8>(dwSize);
 			res				= ReadFile	(ptr,src_data,dwSize,&read_byte,0); VERIFY(res&&(read_byte==dwSize));
 			if (dwType&CFS_CompressMark) {
-				BYTE*			dest;
-				unsigned		dest_sz;
-				if (g_temporary_stuff)
-					g_temporary_stuff	(src_data,dwSize,src_data);
-				_decompressLZ	(&dest,&dest_sz,src_data,dwSize);
+				BYTE* dest = nullptr;
+                unsigned dest_sz = 0;
+
+				g_trivial_encryptor.decode(src_data, dwSize, src_data);
+
+                bool result = _decompressLZ(&dest, &dest_sz, src_data, dwSize, archiveSize);
+
+                if (!result)
+                {
+                    // Let's try to decode with RU key
+                    g_trivial_encryptor.encode(src_data, dwSize, src_data); // rollback
+                    g_trivial_encryptor.decode(src_data, dwSize, src_data, trivial_encryptor::key_flag::russian);
+                    result = _decompressLZ(&dest, &dest_sz, src_data, dwSize, archiveSize);
+                }
+                R_ASSERT3(result, "Can't decompress archive", archiveName);
 				xr_free			(src_data);
 				return xr_new<CTempReader>(dest,dest_sz,0);
 			} else {
@@ -328,7 +336,7 @@ void CLocatorAPI::ProcessArchive(const char* _path)
 	strcat				(base,"\\");
 
 	// Read headers
-	IReader* hdr		= open_chunk(A.hSrcFile,1); R_ASSERT(hdr);
+	IReader* hdr		= open_chunk(A.hSrcFile,1, A.path.c_str(), A.size); R_ASSERT(hdr);
 	RStringVec	fv;
 	while (!hdr->eof())
 	{
