@@ -108,6 +108,16 @@ CScriptIniFile *CScriptGameObject::spawn_ini			() const
 	return			((CScriptIniFile*)object().spawn_ini());
 }
 
+void CScriptGameObject::spawn_supplies()
+{
+	object().spawn_supplies_ex(object().spawn_ini(), "spawn");
+}
+
+void CScriptGameObject::spawn_supplies(LPCSTR section)
+{
+	object().spawn_supplies_ex(pSettings, section);
+}
+
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////

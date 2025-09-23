@@ -58,7 +58,7 @@ class CGameObject :
 	ALife::_STORY_ID		m_story_id;
 
 protected:
-	//время удаления объекта
+	//РІСЂРµРјСЏ СѓРґР°Р»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
 	bool					m_bObjectRemoved;
 
 public:
@@ -124,7 +124,7 @@ public:
 	virtual	BOOL			BonePassBullet		(int boneID) { return FALSE; }
 
 
-	//игровое имя объекта
+	//РёРіСЂРѕРІРѕРµ РёРјСЏ РѕР±СЉРµРєС‚Р°
 	virtual LPCSTR			Name                () const;
 	
 	//virtual void			OnH_A_Independent	();
@@ -223,6 +223,7 @@ public:
 	{
 		return				(m_ini_file);
 	}
+	void					spawn_supplies_ex(CInifile* ini, LPCSTR spawn_section);
 protected:
 	virtual	void			spawn_supplies		();
 

@@ -456,6 +456,8 @@ public:
 			const CCoverPoint	*best_cover				(const Fvector &position, const Fvector &enemy_position, float radius, float min_enemy_distance, float max_enemy_distance);
 			const CCoverPoint	*safe_cover				(const Fvector &position, float radius, float min_distance);
 			CScriptIniFile		*spawn_ini				() const;
+			void				spawn_supplies			();
+			void				spawn_supplies			(LPCSTR section);
 			bool				active_zone_contact		(u16 id);
 
 			///

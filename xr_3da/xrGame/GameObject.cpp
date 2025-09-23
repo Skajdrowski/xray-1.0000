@@ -10,7 +10,6 @@
 #include "CustomMonster.h" 
 #include "physicobject.h"
 #include "HangingLamp.h"
-#include "PhysicsShell.h"
 #include "game_sv_single.h"
 #include "level_graph.h"
 #include "game_level_cross_table.h"
@@ -444,12 +443,9 @@ void CGameObject::load			(IReader &input_packet)
 {
 }
 
-void CGameObject::spawn_supplies()
+void CGameObject::spawn_supplies_ex(CInifile* ini, LPCSTR spawn_section)
 {
-	if (!spawn_ini() || ai().get_alife())
-		return;
-
-	if (!spawn_ini()->section_exist("spawn"))
+	if (!ini || !ini->section_exist(spawn_section))
 		return;
 
 	LPCSTR					N,V;
@@ -458,7 +454,7 @@ void CGameObject::spawn_supplies()
 	bool bSilencer			=	false;
 	bool bLauncher			=	false;
 
-	for (u32 k = 0, j; spawn_ini()->r_line("spawn",k,&N,&V); k++) {
+	for (u32 k = 0, j; ini->r_line(spawn_section,k,&N,&V); k++) {
 		VERIFY				(xr_strlen(N));
 		j					= 1;
 		p					= 1.f;
@@ -484,6 +480,10 @@ void CGameObject::spawn_supplies()
 		for (u32 i=0; i<j; ++i)
 			if (::Random.randF(1.f) < p){
 				CSE_Abstract* A=Level().spawn_item	(N,Position(),ai_location().level_vertex_id(),ID(),true);
+				if (!A) {
+					Msg("! Failed to spawn item: %s", N);
+					continue;
+				}
 
 				CSE_ALifeInventoryItem*	pSE_InventoryItem = smart_cast<CSE_ALifeInventoryItem*>(A);
 				if(pSE_InventoryItem)
@@ -505,6 +505,15 @@ void CGameObject::spawn_supplies()
 				F_entity_Destroy			(A);
 		}
 	}
+}
+
+
+void CGameObject::spawn_supplies()
+{
+	if (ai().get_alife())
+		return;
+
+	spawn_supplies_ex(spawn_ini(), "spawn");
 }
 
 void CGameObject::setup_parent_ai_locations(bool assign_position)
@@ -786,7 +795,7 @@ void CGameObject::DestroyObject()
 
 void CGameObject::shedule_Update	(u32 dt)
 {
-	//уничтожить
+	//СѓРЅРёС‡С‚РѕР¶РёС‚СЊ
 	if(NeedToDestroyObject())
 		DestroyObject();
 
@@ -800,7 +809,7 @@ BOOL CGameObject::net_SaveRelevant	()
 	return	(CScriptBinder::net_SaveRelevant());
 }
 
-//игровое имя объекта
+//РёРіСЂРѕРІРѕРµ РёРјСЏ РѕР±СЉРµРєС‚Р°
 LPCSTR CGameObject::Name () const
 {
 	return	(*cName());
