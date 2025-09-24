@@ -38,6 +38,9 @@
 #include "sound_player.h"
 #include "stalker_decision_space.h"
 
+#include "level.h"
+#include "ai_object_location.h"
+#include "xrServer_Objects_ALife_Items.h"
 namespace MemorySpace {
 	struct CVisibleObject;
 	struct CSoundObject;
@@ -820,6 +823,134 @@ void CScriptGameObject::buy_supplies			(CScriptIniFile *ini_file, LPCSTR section
 		*ini_file,
 		section
 	);
+}
+
+void CScriptGameObject::spawn_supplies			(LPCSTR section)
+{
+    CInventoryOwner *inventory_owner = smart_cast<CInventoryOwner*>(&object());
+    if (!inventory_owner) {
+        ai().script_engine().script_log(ScriptStorage::eLuaMessageTypeError, "CInventoryOwner : cannot access class member spawn_supplies!");
+        return;
+    }
+
+    const CGameObject &game_object = object();
+    const Fvector &position = game_object.Position();
+    const u32 level_vertex_id = game_object.ai_location().level_vertex_id();
+    const ALife::_OBJECT_ID id = game_object.ID();
+
+    // Choose source INI: try pSettings first, then object spawn_ini()
+    CInifile::Sect *pSect = 0;
+    const char* source = 0;
+    if (pSettings && pSettings->section_exist(section)) {
+        pSect = &pSettings->r_section(section);
+        source = "pSettings";
+    } else {
+        CScriptIniFile* ini = spawn_ini();
+        if (ini && ini->section_exist(section)) {
+            pSect = &ini->r_section(section);
+            source = "spawn_ini";
+        }
+    }
+
+    if (!pSect) {
+        Msg("[spawn_supplies] object='%s' section='%s' not found in pSettings nor spawn_ini", *game_object.cName(), section);
+        ai().script_engine().script_log(ScriptStorage::eLuaMessageTypeError, "spawn_supplies: section '%s' does not exist", section);
+        return;
+    }
+
+    u32 total_entries = 0;
+    u32 total_spawned = 0;
+    for (CInifile::SectIt I = pSect->begin(), E = pSect->end(); I != E; ++I) {
+        ++total_entries;
+        const shared_str &item_sect = (*I).first;
+        const shared_str &values = (*I).second;
+
+        string256 temp;
+        u32 count = 1;
+        float probability = 1.0f;
+        bool add_scope = false;
+        bool add_silencer = false;
+        bool add_launcher = false;
+
+        if (values.size()) {
+            u32 param_count = _GetItemCount(*values);
+
+            // First token is count if numeric
+            if (param_count >= 1) {
+                LPCSTR t0 = _GetItem(*values, 0, temp);
+                if (t0 && t0[0])
+                    count = (u32)atoi(t0);
+            }
+
+            // Remaining tokens can be probability (numeric) or addon flags (scope/silencer/grenade_launcher)
+            for (u32 k = 1; k < param_count; ++k) {
+                LPCSTR tk = _GetItem(*values, k, temp);
+                if (!tk || !tk[0])
+                    continue;
+
+                // Detect numeric probability token
+                bool numeric = true;
+                for (LPCSTR p = tk; *p; ++p) {
+                    char c = *p;
+                    if ((c >= '0' && c <= '9') || c == '.' || c == '+' || c == '-')
+                        continue;
+                    numeric = false;
+                    break;
+                }
+
+                if (numeric) {
+                    float pr = (float)atof(tk);
+                    if (pr < 0.f) pr = 0.f; if (pr > 1.f) pr = 1.f;
+                    probability = pr;
+                    continue;
+                }
+
+                if (!xr_strcmp(tk, "scope")) {
+                    add_scope = true;
+                } else if (!xr_strcmp(tk, "silencer")) {
+                    add_silencer = true;
+                } else if (!xr_strcmp(tk, "grenade_launcher") || !xr_strcmp(tk, "gl")) {
+                    add_launcher = true;
+                } else {
+                    Msg("[spawn_supplies] item='%s' unknown token '%s' ignored", *item_sect, tk);
+                }
+            }
+        }
+
+        if (!count) {
+            Msg("[spawn_supplies] skip item='%s' due to zero count", *item_sect);
+            continue;
+        }
+
+        u32 spawned_here = 0;
+        for (u32 i = 0; i < count; ++i) {
+            if (::Random.randF(1.f) > probability)
+                continue;
+
+            // Create server entity, attach addons, then send spawn packet
+            CSE_Abstract* A = Level().spawn_item(*item_sect, position, level_vertex_id, id, true);
+            if (A) {
+                CSE_ALifeItemWeapon* W = smart_cast<CSE_ALifeItemWeapon*>(A);
+                if (W) {
+                    if (add_scope && W->m_scope_status == CSE_ALifeItemWeapon::eAddonAttachable)
+                        W->m_addon_flags.set(CSE_ALifeItemWeapon::eWeaponAddonScope, TRUE);
+                    if (add_silencer && W->m_silencer_status == CSE_ALifeItemWeapon::eAddonAttachable)
+                        W->m_addon_flags.set(CSE_ALifeItemWeapon::eWeaponAddonSilencer, TRUE);
+                    if (add_launcher && W->m_grenade_launcher_status == CSE_ALifeItemWeapon::eAddonAttachable)
+                        W->m_addon_flags.set(CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher, TRUE);
+                }
+
+                NET_Packet P;
+                A->Spawn_Write(P, TRUE);
+                Level().Send(P, net_flags(TRUE));
+                F_entity_Destroy(A);
+            }
+
+            ++total_spawned;
+            ++spawned_here;
+        }
+    }
+    Msg("[spawn_supplies] object='%s' section='%s' total entries=%u, total spawned=%u", *game_object.cName(), section, total_entries, total_spawned);
 }
 
 void sell_condition								(CScriptIniFile *ini_file, LPCSTR section)
