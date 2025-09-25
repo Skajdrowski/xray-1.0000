@@ -13,6 +13,7 @@
 #include "stalker_animation_data_storage.h"
 #include "client_spawn_manager.h"
 #include "seniority_hierarchy_holder.h"
+#include "script_vars_storage.h"
 
 const int max_objects_size			= 2*1024;
 const int max_objects_size_in_save	= 6*1024;
@@ -76,6 +77,8 @@ void CLevel::remove_objects	()
 #endif // DEBUG
 	VERIFY										(client_spawn_manager().registry().empty());
 	client_spawn_manager().clear				();
+
+	g_ScriptVars.clear();
 
 	xr_delete									(m_seniority_hierarchy_holder);
 	m_seniority_hierarchy_holder				= xr_new<CSeniorityHierarchyHolder>();
