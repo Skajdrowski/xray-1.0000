@@ -228,6 +228,22 @@ void prefetch_sound	(LPCSTR name)
 	Level().PrefetchSound(name);
 }
 
+void clear_ground_items()
+{
+	if (!g_pGameLevel)
+		return;
+
+	Level().ClearGroundItems(false);
+}
+
+void clear_ground_items(bool remove_quest_items)
+{
+	if (!g_pGameLevel)
+		return;
+
+	Level().ClearGroundItems(remove_quest_items);
+}
+
 
 CClientSpawnManager	&get_client_spawn_manager()
 {
@@ -561,6 +577,8 @@ void CLevel::script_register(lua_State *L)
 		def("vertex_position",					vertex_position),
 		def("name",								get_name),
 		def("prefetch_sound",					prefetch_sound),
+		def("clear_ground_items",               static_cast<void (*)()>(&clear_ground_items)),
+		def("clear_ground_items",               static_cast<void (*)(bool)>(&clear_ground_items)),
 
 		def("client_spawn_manager",				get_client_spawn_manager),
 

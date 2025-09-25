@@ -248,7 +248,8 @@ public:
 	// Save/Load/State
 	void						SLS_Load				(LPCSTR name);		// Game Load
 	void						SLS_Default				();					// Default/Editor Load
-	
+	void						ClearGroundItems		(bool remove_quest_items = false);
+
 	IC CSpaceRestrictionManager		&space_restriction_manager	();
 	IC CSeniorityHierarchyHolder	&seniority_holder			();
 	IC CClientSpawnManager			&client_spawn_manager		();

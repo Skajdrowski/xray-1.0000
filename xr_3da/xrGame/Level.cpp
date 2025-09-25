@@ -20,6 +20,7 @@
 #include "PHdynamicdata.h"
 #include "Physics.h"
 #include "ShootingObject.h"
+#include "inventory_item.h"
 //.#include "LevelFogOfWar.h"
 #include "Level_Bullet_Manager.h"
 #include "script_process.h"
@@ -406,6 +407,50 @@ void CLevel::ProcessGameEvents		()
 	}
 	if (OnServer() && GameID()!= GAME_SINGLE)
 		Game().m_WeaponUsageStatistic->Send_Check_Respond();
+}
+
+void CLevel::ClearGroundItems(bool remove_quest_items)
+{
+	xr_vector<u16> items_to_destroy;
+	items_to_destroy.reserve(Objects.o_count());
+
+	const u32 object_count = Objects.o_count();
+	for (u32 i = 0; i < object_count; ++i)
+	{
+		CObject *object = Objects.o_get_by_iterator(i);
+		if (!object)
+			continue;
+
+		if (object->H_Parent())
+			continue;
+
+		CInventoryItem *inventory_item = smart_cast<CInventoryItem *>(object);
+		if (!inventory_item)
+			continue;
+
+		if (!remove_quest_items && inventory_item->IsQuestItem())
+			continue;
+
+		if (inventory_item->m_pInventory)
+			continue;
+
+		items_to_destroy.push_back(static_cast<u16>(object->ID()));
+	}
+
+	if (items_to_destroy.empty())
+		return;
+
+	for (xr_vector<u16>::const_iterator it = items_to_destroy.begin(), it_end = items_to_destroy.end(); it != it_end; ++it)
+	{
+		NET_Packet packet;
+		packet.w_begin(M_EVENT);
+		packet.w_u32(timeServer());
+		packet.w_u16(GE_DESTROY);
+		packet.w_u16(*it);
+		game_events->insert(packet);
+	}
+
+	ProcessGameEvents();
 }
 
 #ifdef DEBUG_MEMORY_MANAGER
