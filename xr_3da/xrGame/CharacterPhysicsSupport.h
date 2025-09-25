@@ -62,7 +62,7 @@ private:
 	float								m_shot_up_factor																																	;
 	float								m_after_death_velocity_factor																														;
 	float								m_BonceDamageFactor																																	;
-	//gray_wolf>Переменные для поддержки изменяющегося трения у персонажей во время смерти
+	//gray_wolf>С•РµСЂРµРјРµРЅРЅС‹Рµ РґР»В¤ РїРѕРґРґРµСЂР¶РєРё РёР·РјРµРЅВ¤СЋС‰РµРіРѕСЃВ¤ С‚СЂРµРЅРёВ¤ Сѓ РїРµСЂСЃРѕРЅР°Р¶РµР№ РІРѕ РІСЂРµРјВ¤ СЃРјРµСЂС‚Рё
 	float								skeleton_skin_ddelay;
 	float								skeleton_skin_remain_time;
 	float								skeleton_skin_friction_start;
@@ -70,7 +70,7 @@ private:
 	float								skeleton_skin_ddelay_after_wound;
 	float								skeleton_skin_remain_time_after_wound;
 	bool								m_was_wounded;
-	float								m_Pred_Time;//Для вычисления дельта времени между пересчётами сопротивления в джоинтах и коэффициента NPC
+	float								m_Pred_Time;//Ж’Р»В¤ РІС‹С‡РёСЃР»РµРЅРёВ¤ РґРµР»СЊС‚Р° РІСЂРµРјРµРЅРё РјРµР¶РґСѓ РїРµСЂРµСЃС‡Р„С‚Р°РјРё СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёВ¤ РІ РґР¶РѕРёРЅС‚Р°С… Рё РєРѕСЌС„С„РёС†РёРµРЅС‚Р° NPC
 	float								m_time_delta;
 	float								pelvis_factor_low_pose_detect;
 	BOOL								character_have_wounded_state;

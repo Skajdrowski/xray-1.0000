@@ -3,7 +3,7 @@
 #pragma once
 
 
-//класс абстрактного диалога
+//РєР»Р°СЃСЃ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ РґРёР°Р»РѕРіР°
 //#include "ui/UIDialogWnd.h"
 
 //#include "ui/UIMultiTextStatic.h"

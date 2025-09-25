@@ -37,7 +37,7 @@ void CUITalkDialogWnd::Init(float x, float y, float width, float height)
 	AttachChild					(&UIStaticBottom);
 	CUIXmlInit::InitStatic		(*m_uiXml, "bottom_background", 0, &UIStaticBottom);
 
-	//иконки с изображение нас и партнера по торговле
+	//РёРєРѕРЅРєРё СЃ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РЅР°СЃ Рё РїР°СЂС‚РЅРµСЂР° РїРѕ С‚РѕСЂРіРѕРІР»Рµ
 	AttachChild					(&UIOurIcon);
 	CUIXmlInit::InitStatic		(*m_uiXml, "left_character_icon", 0, &UIOurIcon);
 	AttachChild					(&UIOthersIcon);
@@ -47,23 +47,23 @@ void CUITalkDialogWnd::Init(float x, float y, float width, float height)
 	UIOthersIcon.AttachChild	(&UICharacterInfoRight);
 	UICharacterInfoRight.Init	(0.0f, 0.0f, UIOthersIcon.GetWidth(), UIOthersIcon.GetHeight(), TRADE_CHARACTER_XML);
 
-	//основной фрейм диалога
+	//РѕСЃРЅРѕРІРЅРѕР№ С„СЂРµР№Рј РґРёР°Р»РѕРіР°
 	AttachChild					(&UIDialogFrame);
 	CUIXmlInit::InitFrameLine	(*m_uiXml, "frame_line_window", 0, &UIDialogFrame);
 	UIDialogFrame.UITitleText.SetElipsis(CUIStatic::eepEnd, 10);
-	// Фрейм с нащими фразами
+	// вЂСЂРµР№Рј СЃ РЅР°С‰РёРјРё С„СЂР°Р·Р°РјРё
 	AttachChild					(&UIOurPhrasesFrame);
 	CUIXmlInit::InitFrameLine	(*m_uiXml, "frame_line_window", 1, &UIOurPhrasesFrame);
 	UIOurPhrasesFrame.UITitleText.SetElipsis(CUIStatic::eepEnd, 10);
 
-	//Ответы
+	//СњС‚РІРµС‚С‹
 	UIAnswersList				= xr_new<CUIScrollView>();
 	UIAnswersList->SetAutoDelete(true);
 	UIDialogFrame.AttachChild	(UIAnswersList);
 	CUIXmlInit::InitScrollView	(*m_uiXml, "answers_list", 0, UIAnswersList);
 	UIAnswersList->SetWindowName("---UIAnswersList");
 
-	//Вопросы
+	//В¬РѕРїСЂРѕСЃС‹
 	UIQuestionsList				= xr_new<CUIScrollView>();
 	UIQuestionsList->SetAutoDelete(true);
 	UIOurPhrasesFrame.AttachChild(UIQuestionsList);
@@ -71,15 +71,15 @@ void CUITalkDialogWnd::Init(float x, float y, float width, float height)
 	UIQuestionsList->SetWindowName("---UIQuestionsList");
 
 
-	//кнопка перехода в режим торговли
+	//РєРЅРѕРїРєР° РїРµСЂРµС…РѕРґР° РІ СЂРµР¶РёРј С‚РѕСЂРіРѕРІР»Рё
 	AttachChild					(&UIToTradeButton);
 	CUIXmlInit::Init3tButton	(*m_uiXml, "button", 0, &UIToTradeButton);
 	UIToTradeButton.SetWindowName("trade_btn");
 
-	//Элементы автоматического добавления
+	//РЃР»РµРјРµРЅС‚С‹ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРіРѕ РґРѕР±Р°РІР»РµРЅРёВ¤
 	CUIXmlInit::InitAutoStatic	(*m_uiXml, "auto_static", this);
 
-	// шрифт для индикации имени персонажа в окне разговора
+	// С€СЂРёС„С‚ РґР»В¤ РёРЅРґРёРєР°С†РёРё РёРјРµРЅРё РїРµСЂСЃРѕРЅР°Р¶Р° РІ РѕРєРЅРµ СЂР°Р·РіРѕРІРѕСЂР°
 	CUIXmlInit::InitFont		(*m_uiXml, "font", 0, m_iNameTextColor, m_pNameTextFont);
 
 	CGameFont * pFont			= NULL;
@@ -122,8 +122,8 @@ void CUITalkDialogWnd::OnTradeClicked(CUIWindow* w, void*)
 		GetTop()->SendMessage(this, TALK_DIALOG_TRADE_BUTTON_CLICKED);
 }
 
-//пересылаем сообщение родительскому окну для обработки
-//и фильтруем если оно пришло от нашего дочернего окна
+//РїРµСЂРµСЃС‹Р»Р°РµРј СЃРѕРѕР±С‰РµРЅРёРµ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРјСѓ РѕРєРЅСѓ РґР»В¤ РѕР±СЂР°Р±РѕС‚РєРё
+//Рё С„РёР»СЊС‚СЂСѓРµРј РµСЃР»Рё РѕРЅРѕ РїСЂРёС€Р»Рѕ РѕС‚ РЅР°С€РµРіРѕ РґРѕС‡РµСЂРЅРµРіРѕ РѕРєРЅР°
 void CUITalkDialogWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);

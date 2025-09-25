@@ -15,7 +15,7 @@ private:
 //	CUIPointerGage		UITachometer;
 public: 
 
-	// Установить 
+	// вЂќСЃС‚Р°РЅРѕРІРёС‚СЊ 
 	void				SetCarHealth	(float value);
 	void				SetSpeed		(float speed);
 	void				SetRPM			(float rmp);

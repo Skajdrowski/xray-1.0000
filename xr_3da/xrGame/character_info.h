@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// character_info.h			шаблон, для представления абстрактного песонажа
+// character_info.h			С€Р°Р±Р»РѕРЅ, РґР»В¤ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёВ¤ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ РїРµСЃРѕРЅР°Р¶Р°
 // 
 //////////////////////////////////////////////////////////////////////////
 
@@ -25,18 +25,18 @@ class NET_Packet;
 
 
 //////////////////////////////////////////////////////////////////////////
-// SCharacterProfile: данные профиля персонажа
+// SCharacterProfile: РґР°РЅРЅС‹Рµ РїСЂРѕС„РёР»В¤ РїРµСЂСЃРѕРЅР°Р¶Р°
 //////////////////////////////////////////////////////////////////////////
 struct SCharacterProfile : CSharedResource
 {
 	SCharacterProfile ();
 	virtual ~SCharacterProfile ();
 
-    //если задано, то выбирается именно такой профиль,
-	//иначе ищется случайно,удовлетворяющее шаблону
+    //РµСЃР»Рё Р·Р°РґР°РЅРѕ, С‚Рѕ РІС‹Р±РёСЂР°РµС‚СЃВ¤ РёРјРµРЅРЅРѕ С‚Р°РєРѕР№ РїСЂРѕС„РёР»СЊ,
+	//РёРЅР°С‡Рµ РёС‰РµС‚СЃВ¤ СЃР»СѓС‡Р°Р№РЅРѕ,СѓРґРѕРІР»РµС‚РІРѕСЂВ¤СЋС‰РµРµ С€Р°Р±Р»РѕРЅСѓ
 	shared_str		m_CharacterId;	
 
-	//требуемые параметры персонажа
+	//С‚СЂРµР±СѓРµРјС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РїРµСЂСЃРѕРЅР°Р¶Р°
 	CHARACTER_CLASS					m_Class;
 	CHARACTER_RANK_VALUE			m_Rank;
 	CHARACTER_REPUTATION_VALUE		m_Reputation;
@@ -69,9 +69,9 @@ public:
 	void 						load				(IReader&);
 	void 						save				(NET_Packet&);
 
-	//инициализация профиля подразумевает
-	//загрузку соответствующего CSpecificCharacter, по 
-	//указанному индексу
+	//РёРЅРёС†РёР°Р»РёР·Р°С†РёВ¤ РїСЂРѕС„РёР»В¤ РїРѕРґСЂР°Р·СѓРјРµРІР°РµС‚
+	//Р·Р°РіСЂСѓР·РєСѓ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ CSpecificCharacter, РїРѕ 
+	//СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
 	void	Init				(CSE_ALifeTraderAbstract* trader);
 	void InitSpecificCharacter	(shared_str new_id);
 #endif
@@ -83,20 +83,20 @@ protected:
 	static void					InitXmlIdToIndex	();
 
 
-	//загрузка из XML файла
+	//Р·Р°РіСЂСѓР·РєР° РёР· XML С„Р°Р№Р»Р°
 	virtual void				load_shared			(LPCSTR);
 
-	//индекс загруженного профиля
+	//РёРЅРґРµРєСЃ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРіРѕ РїСЂРѕС„РёР»В¤
 	shared_str					m_ProfileId;
 	
-	//индекс данных о конкретном персонаже, который
-	//используется в данном экземпляре класса
+	//РёРЅРґРµРєСЃ РґР°РЅРЅС‹С… Рѕ РєРѕРЅРєСЂРµС‚РЅРѕРј РїРµСЂСЃРѕРЅР°Р¶Рµ, РєРѕС‚РѕСЂС‹Р№
+	//РёСЃРїРѕР»СЊР·СѓРµС‚СЃВ¤ РІ РґР°РЅРЅРѕРј СЌРєР·РµРјРїР»В¤СЂРµ РєР»Р°СЃСЃР°
 	shared_str		m_SpecificCharacterId;
 
 #ifdef XRGAME_EXPORTS
 	shared_str					m_StartDialog;
 
-	//загруженная информация о конкретном персонаже
+	//Р·Р°РіСЂСѓР¶РµРЅРЅР°В¤ РёРЅС„РѕСЂРјР°С†РёВ¤ Рѕ РєРѕРЅРєСЂРµС‚РЅРѕРј РїРµСЂСЃРѕРЅР°Р¶Рµ
 	CSpecificCharacter			m_SpecificCharacter;
 #endif
 
@@ -113,7 +113,7 @@ public:
 	const CHARACTER_RANK&		Rank()				const	{ return m_CurrentRank;};
 	const CHARACTER_REPUTATION&	Reputation()		const	{ return m_CurrentReputation;};
 
-	//доступут только у InventoryOwner
+	//РґРѕСЃС‚СѓРїСѓС‚ С‚РѕР»СЊРєРѕ Сѓ InventoryOwner
 protected:
 	void						SetRank				(CHARACTER_RANK_VALUE			rank);
 	void						SetReputation		(CHARACTER_REPUTATION_VALUE		reputation);

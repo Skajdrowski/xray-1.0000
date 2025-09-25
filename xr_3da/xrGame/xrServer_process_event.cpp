@@ -108,8 +108,8 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 		{
 			u16					id_parent=destination,id_entity;
 			P.r_u16				(id_entity);
-			CSE_Abstract*		e_parent	= game->get_entity_from_eid	(id_parent);	// êòî çàáèğàåò (äëÿ ñâîèõ íóæä)
-			CSE_Abstract*		e_entity	= game->get_entity_from_eid	(id_entity);	// êòî îòäàåò
+			CSE_Abstract*		e_parent	= game->get_entity_from_eid	(id_parent);	// ĞºÑ‚Ğ¾ Ğ·Ğ°Ğ±Ğ¸Ñ€Ğ°ĞµÑ‚ (Ğ´Ğ»Ñ ÑĞ²Ğ¾Ğ¸Ñ… Ğ½ÑƒĞ¶Ğ´)
+			CSE_Abstract*		e_entity	= game->get_entity_from_eid	(id_entity);	// ĞºÑ‚Ğ¾ Ğ¾Ñ‚Ğ´Ğ°ĞµÑ‚
 			if (!e_entity)		break;
 			if (0xffff != e_entity->ID_Parent)	break;						// this item already taken
 			xrClientData*		c_parent	= e_parent->owner;
@@ -140,7 +140,7 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 		u16							id_dest	= destination, id_src;
 		P.r_u16						(id_src);
 		
-		CSE_Abstract				*e_dest = game->get_entity_from_eid	(id_dest);	// êòî óìåğ
+		CSE_Abstract				*e_dest = game->get_entity_from_eid	(id_dest);	// ĞºÑ‚Ğ¾ ÑƒĞ¼ĞµÑ€
 		// this is possible when hit event is sent before destroy event
 		if (!e_dest)
 			break;
@@ -174,7 +174,7 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 				Msg					("* [%2d] killed by [%2d] - sended by [%s:%2d]", id_dest, id_src, game->get_option_s(*l_pC->Name,"name","Player"), l_pC->owner->ID);
 			}
 
-			CSE_Abstract*		e_dest		= game->get_entity_from_eid	(id_dest);	// êòî óìåğ
+			CSE_Abstract*		e_dest		= game->get_entity_from_eid	(id_dest);	// ĞºÑ‚Ğ¾ ÑƒĞ¼ĞµÑ€
 			// this is possible when hit event is sent before destroy event
 			if (!e_dest)
 				break;
@@ -182,7 +182,7 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 			if (game->Type() != GAME_SINGLE)
 				Msg				("* [%2d] is [%s:%s]", id_dest, *e_dest->s_name, e_dest->name_replace());
 
-			CSE_Abstract*		e_src		= game->get_entity_from_eid	(id_src	);	// êòî óáèë
+			CSE_Abstract*		e_src		= game->get_entity_from_eid	(id_src	);	// ĞºÑ‚Ğ¾ ÑƒĞ±Ğ¸Ğ»
 			if (!e_src) {
 				xrClientData*	C = (xrClientData*)	game->get_client(id_src);
 				if (C) e_src = C->owner;
@@ -194,7 +194,7 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 
 			game->on_death		(e_dest,e_src);
 
-			xrClientData*		c_src		= e_src->owner;				// êëèåíò, ÷åé şíèò óáèë
+			xrClientData*		c_src		= e_src->owner;				// ĞºĞ»Ğ¸ĞµĞ½Ñ‚, Ñ‡ĞµĞ¹ ÑĞ½Ğ¸Ñ‚ ÑƒĞ±Ğ¸Ğ»
 
 			if (c_src->owner->ID == id_src) {
 				// Main unit

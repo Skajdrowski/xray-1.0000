@@ -127,7 +127,7 @@ void CCharacterPhysicsSupport::in_Load(LPCSTR section)
 	skel_ddelay						= pSettings->r_float(section,"ph_skeleton_ddelay");
 	skel_remain_time				= skel_ddelay;
 	skel_fatal_impulse_factor		= pSettings->r_float(section,"ph_skel_fatal_impulse_factor");
-	//gray_wolf>Читаем из ltx параметры для поддержки изменяющегося трения у персонажей во время смерти
+	//gray_wolf>Р§РёС‚Р°РµРј РёР· ltx РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РёР·РјРµРЅСЏСЋС‰РµРіРѕСЃСЏ С‚СЂРµРЅРёСЏ Сѓ РїРµСЂСЃРѕРЅР°Р¶РµР№ РІРѕ РІСЂРµРјСЏ СЃРјРµСЂС‚Рё
 	skeleton_skin_ddelay			= pSettings->r_float(section,"ph_skeleton_skin_ddelay");
 	skeleton_skin_remain_time		= skeleton_skin_ddelay;
 	skeleton_skin_friction_start	= pSettings->r_float(section,"ph_skeleton_skin_friction_start");
@@ -329,7 +329,7 @@ void CCharacterPhysicsSupport::in_UpdateCL()
 	CalculateTimeDelta();
 	if(m_pPhysicsShell&&m_pPhysicsShell->isFullActive())
 	{
-		m_pPhysicsShell->SetRagDoll();//Теперь шела относиться к классу объектов cbClassRagDoll
+		m_pPhysicsShell->SetRagDoll();//РўРµРїРµСЂСЊ С€РµР»Р° РѕС‚РЅРѕСЃРёС‚СЊСЃСЏ Рє РєР»Р°СЃСЃСѓ РѕР±СЉРµРєС‚РѕРІ cbClassRagDoll
 		m_pPhysicsShell->InterpolateGlobalTransform(&mXFORM);
 	}
 
@@ -682,7 +682,7 @@ void CCharacterPhysicsSupport::TestForWounded()
 
 void CCharacterPhysicsSupport::UpdateFrictionAndJointResistanse()
 {
-	//Преобразование skel_ddelay из кадров в секунды и линейное нарастание сопротивления в джоинтах со временем от момента смерти 
+	//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ skel_ddelay РёР· РєР°РґСЂРѕРІ РІ СЃРµРєСѓРЅРґС‹ Рё Р»РёРЅРµР№РЅРѕРµ РЅР°СЂР°СЃС‚Р°РЅРёРµ СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёСЏ РІ РґР¶РѕРёРЅС‚Р°С… СЃРѕ РІСЂРµРјРµРЅРµРј РѕС‚ РјРѕРјРµРЅС‚Р° СЃРјРµСЂС‚Рё 
 
 	if(skel_remain_time!=0)
 	{

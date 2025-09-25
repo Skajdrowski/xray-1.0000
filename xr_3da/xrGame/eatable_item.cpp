@@ -66,7 +66,7 @@ bool CEatableItem::Useful() const
 {
 	if(!inherited::Useful()) return false;
 
-	//ïðîâåðèòü íå âñå ëè åùå ñúåäåíî
+	//Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ Ð½Ðµ Ð²ÑÐµ Ð»Ð¸ ÐµÑ‰Ðµ ÑÑŠÐµÐ´ÐµÐ½Ð¾
 	if(m_iPortionsNum == 0) return false;
 
 	return true;
@@ -102,7 +102,7 @@ void CEatableItem::UseBy (CEntityAlive* entity_alive)
 	
 	entity_alive->conditions().SetMaxPower( entity_alive->conditions().GetMaxPower()+m_fMaxPowerUpInfluence );
 	
-	//óìåíüøèòü êîëè÷åñòâî ïîðöèé
+	//ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ¸Ñ‚ÑŒ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ð¾Ñ€Ñ†Ð¸Ð¹
 	if(m_iPortionsNum > 0)
 		--(m_iPortionsNum);
 	else

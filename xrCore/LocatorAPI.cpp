@@ -1,4 +1,4 @@
-﻿// LocatorAPI.cpp: implementation of the CLocatorAPI class.
+// LocatorAPI.cpp: implementation of the CLocatorAPI class.
 //
 //////////////////////////////////////////////////////////////////////
 
