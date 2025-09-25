@@ -18,6 +18,7 @@
 #include "xrserver.h"
 #include "level.h"
 #include "../x_ray.h"
+#include "script_vars_storage.h"
 
 using namespace ALife;
 
@@ -49,6 +50,7 @@ void CALifeStorageManager::save	(LPCSTR save_name, bool update_name)
 		spawns().save			(stream);
 		objects().save			(stream);
 		registry().save			(stream);
+		g_ScriptVars.save		(stream);
 
 		source_count			= stream.tell();
 		void					*source_data = stream.pointer();
@@ -131,6 +133,8 @@ bool CALifeStorageManager::load	(LPCSTR save_name)
 		}
 
 		registry().load			(source);
+
+		g_ScriptVars.load		(source);
 
 		can_register_objects	(true);
 

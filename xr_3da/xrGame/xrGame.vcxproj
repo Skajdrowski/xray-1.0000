@@ -1250,6 +1250,7 @@
     <ClInclude Include="script_ui_registrator.h" />
     <ClInclude Include="script_value_container.h" />
     <ClInclude Include="script_value_container_impl.h" />
+    <ClInclude Include="script_vars_storage.h" />
     <ClInclude Include="script_watch_action.h" />
     <ClInclude Include="script_watch_action_inline.h" />
     <ClInclude Include="script_world_property.h" />
@@ -2357,6 +2358,7 @@
     <ClCompile Include="script_thread.cpp" />
     <ClCompile Include="script_token_list.cpp" />
     <ClCompile Include="script_token_list_script.cpp" />
+    <ClCompile Include="script_vars_storage.cpp" />
     <ClCompile Include="script_watch_action.cpp" />
     <ClCompile Include="script_watch_action_script.cpp" />
     <ClCompile Include="script_world_property_script.cpp" />
