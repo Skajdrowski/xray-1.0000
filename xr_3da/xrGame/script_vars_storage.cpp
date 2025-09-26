@@ -10,7 +10,6 @@
 extern "C" {
 	#include <lua.h>
 	#include <luajit.h>
-	#include <lcoco.h>
 };
 #include <luabind/luabind.hpp>
 #include <luabind/detail/class_rep.hpp>
