@@ -245,7 +245,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\xrCore;..\3rd party\dxsdk\Include;..\xrLua\src;..\3rd party\Xiph\libtheora\include;..\3rd party\Luabind;..\3rd party\Xiph\libogg\include;..\3rd party\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\xrCore;..\3rd party\dxsdk\Include;..\3rd party\LuaJIT\src;..\3rd party\Xiph\libtheora\include;..\3rd party\Luabind;..\3rd party\Xiph\libogg\include;..\3rd party\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;ENGINE_BUILD;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -768,8 +768,8 @@
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\xrLua\xrLua.vcxproj">
-      <Project>{9ace5473-6d68-4b96-ac42-b39eaba0fe1f}</Project>
+    <ProjectReference Include="..\3rd party\LuaJIT\src\LuaJIT.vcxproj">
+      <Project>{31995C7C-643B-41DA-8658-944476F66AC2}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\xrParticles\xrParticles.vcxproj">
