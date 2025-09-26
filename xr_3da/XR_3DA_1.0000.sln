@@ -9,9 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XR_3DA", "XR_3DA.vcxproj", 
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCPU_Pipe", "xrCPU_Pipe\xrCPU_Pipe.vcxproj", "{CA0649DD-D089-423A-981C-46B57A884EB9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{94BE3D19-23D3-4D15-8B5C-41193885648C} = {94BE3D19-23D3-4D15-8B5C-41193885648C}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrGame", "xrGame\xrGame.vcxproj", "{A15B9EF4-D198-45DE-8836-C736D09FF389}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -43,8 +40,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrNetServer", "..\xrNetServ
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrGameSpy", "xrGame\xrGameSpy\xrGameSpy.vcxproj", "{5535F6B4-7AE6-4B66-8AEA-CC31C14D7AB7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrLua", "..\xrLua\xrLua.vcxproj", "{94BE3D19-23D3-4D15-8B5C-41193885648C}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Router", "..\xrOpenAL\OpenAL-Windows\Router\Router.vcxproj", "{566551F4-4EF1-4CB4-A131-F982E7606907}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd party", "3rd party", "{52ABB642-AAD0-4DCB-80C2-76C35245DF72}"
@@ -53,9 +48,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dxerr", "..\3rd party\dxerr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Luabind", "..\3rd party\Luabind\Luabind.vcxproj", "{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}"
 	ProjectSection(ProjectDependencies) = postProject
-		{94BE3D19-23D3-4D15-8B5C-41193885648C} = {94BE3D19-23D3-4D15-8B5C-41193885648C}
+		{31995C7C-643B-41DA-8658-944476F66AC2} = {31995C7C-643B-41DA-8658-944476F66AC2}
 		{A0F7D1FB-59A7-4717-A7E4-96F37E91998E} = {A0F7D1FB-59A7-4717-A7E4-96F37E91998E}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaJIT", "..\3rd party\LuaJIT\src\LuaJIT.vcxproj", "{31995C7C-643B-41DA-8658-944476F66AC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -184,17 +181,6 @@ Global
 		{5535F6B4-7AE6-4B66-8AEA-CC31C14D7AB7}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
 		{5535F6B4-7AE6-4B66-8AEA-CC31C14D7AB7}.Release|Win32.ActiveCfg = Release|Win32
 		{5535F6B4-7AE6-4B66-8AEA-CC31C14D7AB7}.Release|Win32.Build.0 = Release|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Debug|Win32.Build.0 = Debug|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Mixed_Dedicated|Win32.ActiveCfg = Mixed|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Mixed_Dedicated|Win32.Build.0 = Mixed|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Mixed|Win32.ActiveCfg = Mixed|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Mixed|Win32.Build.0 = Mixed|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Release|Win32.ActiveCfg = Release|Win32
-		{94BE3D19-23D3-4D15-8B5C-41193885648C}.Release|Win32.Build.0 = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Debug_Dedicated|Win32.ActiveCfg = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Debug_Dedicated|Win32.Build.0 = Release|Win32
 		{566551F4-4EF1-4CB4-A131-F982E7606907}.Debug|Win32.ActiveCfg = Release|Win32
@@ -231,6 +217,18 @@ Global
 		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|Win32.Build.0 = Release|Win32
 		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.ActiveCfg = Release|Win32
 		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.Build.0 = Release|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Debug|Win32.Build.0 = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Mixed_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Mixed_Dedicated|Win32.Build.0 = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Mixed|Win32.ActiveCfg = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Mixed|Win32.Build.0 = Debug|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Release_Dedicated|Win32.Build.0 = Release|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Release|Win32.ActiveCfg = Release|Win32
+		{31995C7C-643B-41DA-8658-944476F66AC2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -238,6 +236,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7A19CBB1-FF90-44BD-9112-C2A269D9C280} = {52ABB642-AAD0-4DCB-80C2-76C35245DF72}
 		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {52ABB642-AAD0-4DCB-80C2-76C35245DF72}
+		{31995C7C-643B-41DA-8658-944476F66AC2} = {52ABB642-AAD0-4DCB-80C2-76C35245DF72}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C36A9C20-2D91-437E-9C98-4685B9190F10}
