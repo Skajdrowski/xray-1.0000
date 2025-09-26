@@ -12,7 +12,6 @@
 extern "C" {
 	#include <lua.h>
 	#include <luajit.h>
-	#include <lcoco.h>
 };
 
 #define LUA_TNETPACKET 0x00000100
