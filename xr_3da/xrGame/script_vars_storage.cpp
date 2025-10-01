@@ -13,6 +13,7 @@ extern "C" {
 };
 #include <luabind/luabind.hpp>
 #include <luabind/detail/class_rep.hpp>
+#include <luabind/raw_policy.hpp>
 
 #include "alife_space.h"
 #include "script_vars_storage.h"
@@ -656,32 +657,15 @@ int script_vars_import(lua_State* L) // загрузка таблицы пере
 
 int get_stored_vars(lua_State* L) { return lua_pushsvt(L, &g_ScriptVars); }
 
-#ifdef SCRIPT_VARS_OGSR_BINDING
 void CScriptVarsStorage::script_register(lua_State* L)
 {
     g_ScriptVars.set_name("g_ScriptVars");
 
     module(L)[
-        def("get_stored_vars", &get_stored_vars, raw<1>()),
-        def("vars_table_assign", &script_vars_assign, raw<1>()),
-        def("vars_table_create", &script_vars_create, raw<1>()),
-        def("vars_table_export", &script_vars_export, raw<1>()),
-        def("vars_table_import", &script_vars_import, raw<1>())
+        def("get_stored_vars", get_stored_vars, raw(_1)),
+        def("vars_table_assign", script_vars_assign, raw(_1)),
+        def("vars_table_create", script_vars_create, raw(_1)),
+        def("vars_table_export", script_vars_export, raw(_1)),
+        def("vars_table_import", script_vars_import, raw(_1))
     ];
 }
-#else
-void CScriptVarsStorage::script_register(lua_State* L)
-{
-    g_ScriptVars.set_name("g_ScriptVars");
-
-    module(L)[
-        def("get_stored_vars", &get_stored_vars), 
-        def("vars_table_assign", &script_vars_assign), 
-        def("vars_table_create", &script_vars_create),
-        def("vars_table_export", &script_vars_export), 
-        def("vars_table_import", &script_vars_import)
-    ];
-}
-#endif
-
-// I have no idea what is 'raw<1>()' for, but it seems it should work w/o that
