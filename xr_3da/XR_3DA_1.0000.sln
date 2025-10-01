@@ -44,8 +44,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Router", "..\xrOpenAL\OpenA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd party", "3rd party", "{52ABB642-AAD0-4DCB-80C2-76C35245DF72}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dxerr", "..\3rd party\dxerr\dxerr.vcxproj", "{7A19CBB1-FF90-44BD-9112-C2A269D9C280}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Luabind", "..\3rd party\Luabind\Luabind.vcxproj", "{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31995C7C-643B-41DA-8658-944476F66AC2} = {31995C7C-643B-41DA-8658-944476F66AC2}

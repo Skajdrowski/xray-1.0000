@@ -5,7 +5,7 @@
 #include "resource.h"
 #include "dbghelp.h"
  
-#include "dxerr9.h"
+#include "dxerr.h"
 
 #ifdef __BORLANDC__
 	#include "d3d9.h"

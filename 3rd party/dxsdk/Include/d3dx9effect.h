@@ -25,12 +25,18 @@
 // D3DXFX_DONOTSAVESAMPLERSTATE
 //   This flag is used as a parameter to ID3DXEffect::Begin(). When this flag
 //   is specified, sampler device state is not saved or restored in Begin/End.
+// D3DXFX_NOT_CLONEABLE
+//   This flag is used as a parameter to the D3DXCreateEffect family of APIs.
+//   When this flag is specified, the effect will be non-cloneable and will not
+//   contain any shader binary data.
+//   Furthermore, GetPassDesc will not return shader function pointers. 
+//   Setting this flag reduces effect memory usage by about 50%.
 //----------------------------------------------------------------------------
 
 #define D3DXFX_DONOTSAVESTATE         (1 << 0)
 #define D3DXFX_DONOTSAVESHADERSTATE   (1 << 1)
 #define D3DXFX_DONOTSAVESAMPLERSTATE  (1 << 2)
-
+#define D3DXFX_NOT_CLONEABLE          (1 << 11)
 
 //----------------------------------------------------------------------------
 // D3DX_PARAMETER_SHARED
@@ -48,7 +54,6 @@
 #define D3DX_PARAMETER_SHARED       (1 << 0)
 #define D3DX_PARAMETER_LITERAL      (1 << 1)
 #define D3DX_PARAMETER_ANNOTATION   (1 << 2)
-
 
 //----------------------------------------------------------------------------
 // D3DXEFFECT_DESC:
@@ -301,9 +306,9 @@ DECLARE_INTERFACE_(ID3DXEffectStateManager, IUnknown)
 typedef interface ID3DXEffect ID3DXEffect;
 typedef interface ID3DXEffect *LPD3DXEFFECT;
 
-// {D165CCB1-62B0-4a33-B3FA-A92300305A11}
+// {F6CEB4B3-4E4C-40dd-B883-8D8DE5EA0CD5}
 DEFINE_GUID(IID_ID3DXEffect, 
-0xd165ccb1, 0x62b0, 0x4a33, 0xb3, 0xfa, 0xa9, 0x23, 0x0, 0x30, 0x5a, 0x11);
+0xf6ceb4b3, 0x4e4c, 0x40dd, 0xb8, 0x83, 0x8d, 0x8d, 0xe5, 0xea, 0xc, 0xd5);
 
 #undef INTERFACE
 #define INTERFACE ID3DXEffect
@@ -416,9 +421,13 @@ DECLARE_INTERFACE_(ID3DXEffect, ID3DXBaseEffect)
     STDMETHOD(BeginParameterBlock)(THIS) PURE;
     STDMETHOD_(D3DXHANDLE, EndParameterBlock)(THIS) PURE;
     STDMETHOD(ApplyParameterBlock)(THIS_ D3DXHANDLE hParameterBlock) PURE;
+    STDMETHOD(DeleteParameterBlock)(THIS_ D3DXHANDLE hParameterBlock) PURE;
 
     // Cloning
     STDMETHOD(CloneEffect)(THIS_ LPDIRECT3DDEVICE9 pDevice, LPD3DXEFFECT* ppEffect) PURE;
+    
+    // Fast path for setting variables directly in ID3DXEffect
+    STDMETHOD(SetRawValue)(THIS_ D3DXHANDLE hParameter, LPCVOID pData, UINT ByteOffset, UINT Bytes) PURE;
 };
 
 
@@ -567,6 +576,14 @@ HRESULT WINAPI
 //      Size of the effect description in bytes
 //  pDefines
 //      Optional NULL-terminated array of preprocessor macro definitions.
+//  Flags
+//      See D3DXSHADER_xxx flags.
+//  pSkipConstants
+//      A list of semi-colon delimited variable names.  The effect will
+//      not set these variables to the device when they are referenced
+//      by a shader.  NOTE: the variables specified here must be
+//      register bound in the file and must not be used in expressions
+//      in passes or samplers or the file will not load.
 //  pInclude
 //      Optional interface pointer to use for handling #include directives.
 //      If this parameter is NULL, #includes will be honored when compiling
@@ -654,7 +671,86 @@ HRESULT WINAPI
         LPD3DXEFFECT*                   ppEffect,
         LPD3DXBUFFER*                   ppCompilationErrors);
 
+//
+// Ex functions that accept pSkipConstants in addition to other parameters
+//
 
+HRESULT WINAPI
+    D3DXCreateEffectFromFileExA(
+        LPDIRECT3DDEVICE9               pDevice,
+        LPCSTR                          pSrcFile,
+        CONST D3DXMACRO*                pDefines,
+        LPD3DXINCLUDE                   pInclude,
+        LPCSTR                          pSkipConstants, 
+        DWORD                           Flags,
+        LPD3DXEFFECTPOOL                pPool,
+        LPD3DXEFFECT*                   ppEffect,
+        LPD3DXBUFFER*                   ppCompilationErrors);
+
+HRESULT WINAPI
+    D3DXCreateEffectFromFileExW(
+        LPDIRECT3DDEVICE9               pDevice,
+        LPCWSTR                         pSrcFile,
+        CONST D3DXMACRO*                pDefines,
+        LPD3DXINCLUDE                   pInclude,
+        LPCSTR                          pSkipConstants, 
+        DWORD                           Flags,
+        LPD3DXEFFECTPOOL                pPool,
+        LPD3DXEFFECT*                   ppEffect,
+        LPD3DXBUFFER*                   ppCompilationErrors);
+
+#ifdef UNICODE
+#define D3DXCreateEffectFromFileEx D3DXCreateEffectFromFileExW
+#else
+#define D3DXCreateEffectFromFileEx D3DXCreateEffectFromFileExA
+#endif
+
+
+HRESULT WINAPI
+    D3DXCreateEffectFromResourceExA(
+        LPDIRECT3DDEVICE9               pDevice,
+        HMODULE                         hSrcModule,
+        LPCSTR                          pSrcResource,
+        CONST D3DXMACRO*                pDefines,
+        LPD3DXINCLUDE                   pInclude,
+        LPCSTR                          pSkipConstants, 
+        DWORD                           Flags,
+        LPD3DXEFFECTPOOL                pPool,
+        LPD3DXEFFECT*                   ppEffect,
+        LPD3DXBUFFER*                   ppCompilationErrors);
+
+HRESULT WINAPI
+    D3DXCreateEffectFromResourceExW(
+        LPDIRECT3DDEVICE9               pDevice,
+        HMODULE                         hSrcModule,
+        LPCWSTR                         pSrcResource,
+        CONST D3DXMACRO*                pDefines,
+        LPD3DXINCLUDE                   pInclude,
+        LPCSTR                          pSkipConstants, 
+        DWORD                           Flags,
+        LPD3DXEFFECTPOOL                pPool,
+        LPD3DXEFFECT*                   ppEffect,
+        LPD3DXBUFFER*                   ppCompilationErrors);
+
+#ifdef UNICODE
+#define D3DXCreateEffectFromResourceEx D3DXCreateEffectFromResourceExW
+#else
+#define D3DXCreateEffectFromResourceEx D3DXCreateEffectFromResourceExA
+#endif
+
+
+HRESULT WINAPI
+    D3DXCreateEffectEx(
+        LPDIRECT3DDEVICE9               pDevice,
+        LPCVOID                         pSrcData,
+        UINT                            SrcDataLen,
+        CONST D3DXMACRO*                pDefines,
+        LPD3DXINCLUDE                   pInclude,
+        LPCSTR                          pSkipConstants, 
+        DWORD                           Flags,
+        LPD3DXEFFECTPOOL                pPool,
+        LPD3DXEFFECT*                   ppEffect,
+        LPD3DXBUFFER*                   ppCompilationErrors);
 
 //----------------------------------------------------------------------------
 // D3DXCreateEffectCompiler:
