@@ -17,7 +17,6 @@
 #include "resource.h"
 #include "LightAnimLibrary.h"
 #include "ispatial.h"
-#include "CopyProtection.h"
 #include "Text_Console.h"
 #include <process.h>
 
@@ -63,7 +62,6 @@ void InitEngine		()
 	Engine.Initialize			( );
 	while (!g_bIntroFinished)	Sleep	(100);
 	Device.Initialize			( );
-	CheckCopyProtection			( );
 }
 
 #define CHECK_OR_EXIT(expression,message) do {if (!(expression)) do_exit(message);} while (0)
@@ -217,7 +215,6 @@ void Startup					( )
 	logoWindow					= NULL;
 
 	// Main cycle
-	CheckCopyProtection			( );
 Memory.mem_usage();
 	Device.Run					( );
 
@@ -849,8 +846,6 @@ void CApplication::LoadBegin	()
 		ll_hGeom2.create		(FVF::F_TL, RCache.Vertex.Buffer(),NULL);
 
 		load_stage			= 0;
-
-		CheckCopyProtection	();
 	}
 }
 
@@ -889,7 +884,6 @@ void CApplication::LoadDraw		()
 		load_draw_internal			();
 
 	Device.End					();
-	CheckCopyProtection			();
 }
 
 void CApplication::LoadTitleInt(LPCSTR str)
@@ -986,9 +980,6 @@ void CApplication::Level_Set(u32 L)
 		hLevelLogo.create	("font", temp);
 	else
 		hLevelLogo.create	("font", "intro\\intro_no_start_picture");
-		
-
-	CheckCopyProtection		();
 }
 
 int CApplication::Level_ID(LPCSTR name)

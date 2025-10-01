@@ -151,6 +151,7 @@
       <AdditionalLibraryDirectories>..\..\libraries\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>xrCore.lib;LuaJIT.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\libraries\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_CI|Win32'">
