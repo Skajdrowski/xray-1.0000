@@ -1282,9 +1282,9 @@ static GHIPostingResult ghiPostStateDoPosting
 			// Format the header.
 			/////////////////////
 			if(first)
-				sprintf(buffer, "%s=", state->data->name);
+				sprintf_s(buffer, sizeof(buffer), "%s=", state->data->name);
 			else
-				sprintf(buffer, "&%s=", state->data->name);
+				sprintf_s(buffer, sizeof(buffer), "&%s=", state->data->name);
 		}
 		else
 		{
@@ -1292,7 +1292,7 @@ static GHIPostingResult ghiPostStateDoPosting
 			/////////////////////////////////////////////
 			if(state->data->type == GHIString)
 			{
-				sprintf(buffer,
+				sprintf_s(buffer, sizeof(buffer),
 					"%s"
 					"Content-Disposition: form-data; "
 					"name=\"%s\"" CRLF
@@ -1325,7 +1325,7 @@ static GHIPostingResult ghiPostStateDoPosting
 					writePos += sizeof(GHIDimeHeader);
 
 					// id
-					strcpy(&buffer[writePos], GHI_DIME_SOAPID);
+					strcpy_s(&buffer[writePos], sizeof(&buffer[writePos]), GHI_DIME_SOAPID);
 					writePos += strlen(GHI_DIME_SOAPID);
 					padBytes = (int)(4-strlen(GHI_DIME_SOAPID)%4);
 					if (padBytes != 4)
@@ -1335,7 +1335,7 @@ static GHIPostingResult ghiPostStateDoPosting
 					}
 
 					// type
-					strcpy(&buffer[writePos], GHI_DIME_SOAPTYPE);
+					strcpy_s(&buffer[writePos], sizeof(&buffer[writePos]), GHI_DIME_SOAPTYPE);
 					writePos += strlen(GHI_DIME_SOAPTYPE);
 					padBytes = (int)(4-strlen(GHI_DIME_SOAPTYPE)%4);
 					if (padBytes != 4)
@@ -1391,7 +1391,7 @@ static GHIPostingResult ghiPostStateDoPosting
 					writePos += sizeof(GHIDimeHeader);
 
 					// id
-					strcpy(&buffer[writePos], state->data->name);
+					strcpy_s(&buffer[writePos], sizeof(&buffer[writePos]), state->data->name);
 					writePos += strlen(state->data->name);
 					padBytes = (int)(4-strlen(state->data->name)%4);
 					if (padBytes != 4)
@@ -1401,7 +1401,7 @@ static GHIPostingResult ghiPostStateDoPosting
 					}
 
 					// type
-					strcpy(&buffer[writePos], contentType);
+					strcpy_s(&buffer[writePos], sizeof(&buffer[writePos]), contentType);
 					writePos += strlen(contentType);
 					padBytes = (int)(4-strlen(contentType)%4);
 					if (padBytes != 4)
@@ -1415,7 +1415,7 @@ static GHIPostingResult ghiPostStateDoPosting
 				else
 				{
 					// use MIME header
-					sprintf(buffer,
+					sprintf_s(buffer, sizeof(buffer),
 						"%s"
 						"Content-Disposition: form-data; "
 						"name=\"%s\"; "

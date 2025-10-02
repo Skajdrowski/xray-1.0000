@@ -385,7 +385,7 @@ typedef int               gsi_bool;
 	#define _ftprintf   fprintf
 	#define _stprintf   sprintf
 	#define _tprintf    printf
-	#define _tcscpy     strcpy
+	#define _tcscpy     strcpy_s
 	#define _tcsncpy	strncpy
 	#define _tcscat     strcat
 	#define _tcslen     strlen
@@ -401,7 +401,7 @@ typedef int               gsi_bool;
 #endif // GSI_UNICODE
 
 #if defined(_WIN32)
-	#define snprintf _snprintf
+	#define snprintf _snprintf_s
 #endif // _WIN32
 
 #if defined(_WIN32) && !defined(GS_UNDER_CE)

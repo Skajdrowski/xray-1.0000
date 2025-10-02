@@ -154,8 +154,8 @@ qr2_error_t qr2_init_socketA(/*[out]*/qr2_t *qrec, SOCKET s, int boundport, cons
 		cr = *qrec;
 	}
 	srand((unsigned int)current_time());
-	strcpy(cr->gamename,gamename);
-	strcpy(cr->secret_key,secret_key);
+	strcpy_s(cr->gamename,sizeof(cr->gamename), gamename);
+	strcpy_s(cr->secret_key, sizeof(cr->secret_key), secret_key);
 	cr->qport = boundport;
 	cr->lastheartbeat = 0;
 	cr->lastka = 0;
@@ -194,7 +194,7 @@ qr2_error_t qr2_init_socketA(/*[out]*/qr2_t *qrec, SOCKET s, int boundport, cons
 	{
 		int override = qr2_hostname[0];
 		if(!override)
-			sprintf(hostname, "%s.master." GSI_DOMAIN_NAME, gamename);
+			sprintf_s(hostname, sizeof(hostname), "%s.master." GSI_DOMAIN_NAME, gamename);
 		ret = get_sockaddrin(override?qr2_hostname:hostname, MASTER_PORT, &(cr->hbaddr), NULL);
 
 		if (ret == 1)
@@ -584,7 +584,7 @@ gsi_bool qr2_keybuffer_add(qr2_keybuffer_t keybuffer, int keyid)
 gsi_bool qr2_buffer_add_int(qr2_buffer_t outbuf, int value)
 {
 	char temp[20];
-	sprintf(temp, "%d", value);
+	sprintf_s(temp, sizeof(temp), "%d", value);
 	return qr2_buffer_addA(outbuf, temp);
 }
 
@@ -752,7 +752,7 @@ static void compute_challenge_response(qr2_t qrec, qr2_buffer_t buf, char *chall
 	if (challenge[challengelen - 1] != 0)
 		return; //invalid - must be NTS
 	
-	strcpy(encrypted_val, challenge);
+	strcpy_s(encrypted_val, sizeof(encrypted_val), challenge);
 	gs_encrypt((uchar *)qrec->secret_key, (int)strlen(qrec->secret_key), (uchar *)encrypted_val, challengelen - 1);
 	gs_encode((uchar *)encrypted_val,challengelen - 1, (uchar *)(buf->buffer + buf->len));
 	buf->len += (int)strlen(buf->buffer + buf->len) + 1;
@@ -766,7 +766,7 @@ static void handle_public_address(qr2_t qrec, char * buffer)
 	unsigned short port;
 
 	// get the public ip and port as the master server sees it
-	sscanf(buffer, "%08X%04X", &ip, &portTemp);
+	sscanf_s(buffer, "%08X%04X", &ip, &portTemp);
 	port = (unsigned short)portTemp;
 	ip = htonl(ip);
 
@@ -1429,7 +1429,7 @@ void qr2_parse_queryA(qr2_t qrec, char *query, int len, struct sockaddr *sender)
 			unsigned int backendoptions;
 
 			// read options, then public address
-			sscanf(pos + len - (PUBLIC_ADDR_LEN + 3), "%02x", &backendoptions);
+			sscanf_s(pos + len - (PUBLIC_ADDR_LEN + 3), "%02x", &backendoptions);
 			qrec->backendoptions = (gsi_u8)backendoptions;
 			
 			#ifdef QR2_DEBUG_FORCE_USE_QUERY_CHALLENGE
@@ -1564,7 +1564,7 @@ static void send_heartbeat(qr2_t qrec, int statechanged)
 	//now we add our special keys
 	for (i = 0 ; i < num_local_ips ; i++)
 	{
-		sprintf(ipkey, "localip%d", i);
+		sprintf_s(ipkey, sizeof(ipkey), "localip%d", i);
 		qr2_buffer_addA(&buf, ipkey);
 		qr2_buffer_addA(&buf, inet_ntoa(local_ip_list[i]));
 	}

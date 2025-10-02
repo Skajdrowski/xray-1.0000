@@ -164,7 +164,7 @@ int gcd_init(int gameid)
 			return ret;
 
 		if (gcd_hostname[0] == 0)
-			strcpy(gcd_hostname, defaulthost);
+			strcpy_s(gcd_hostname, sizeof(gcd_hostname), defaulthost);
 		get_sockaddrin(gcd_hostname,VAL_PORT,&valaddr,NULL);
 	}
 
@@ -233,7 +233,7 @@ void gcd_authenticate_user(int gameid, int localid, unsigned int userip, const c
 		return;
 
 	 /* get the hashed key */
-	strncpy(hkey, response, 32);
+	strncpy_s(hkey, sizeof(hkey), response, 32);
 	hkey[32] = 0;
 
 	/* if response is bogus, lets kill them */
@@ -269,7 +269,7 @@ void gcd_authenticate_user(int gameid, int localid, unsigned int userip, const c
 	client->reauthq.next = NULL;
 	client->reauthq.object = NULL;
 	client->reauthq.prev = NULL;
-	strcpy(client->hkey, hkey);
+	strcpy_s(client->hkey, sizeof(client->hkey), hkey);
 	node = (gsnode_t *)gsimalloc(sizeof(gsnode_t));
 	gassert(node);
 	node->object = (void*)client;
@@ -547,7 +547,7 @@ static void cdkey_process_buf(char *buf, int len, struct sockaddr *fromaddr)
 		pos = strchr(buf+1,'\\');
 		if (pos && (pos - buf <= 32)) /* right size token */
 		{
-			strncpy(tok, buf+1,pos-buf-1);
+			strncpy_s(tok, sizeof(tok), buf + 1, pos - buf - 1);
 			tok[pos-buf-1] = 0;
 		}
 	}
@@ -652,7 +652,7 @@ static void process_oks(char *buf, int isok)
 \uok\\cd\fe6667736f0c8ed7ff5cd9c0e74f\skey\2342
 \unok\\cd\fe6667736f0c8ed7ff5cd9c0e74f\skey\23423\errmsg\Already playing on xyz server */
 	sesskey = atoi(value_for_key(buf,skey_t));
-	strncpy(keyhash,value_for_key(buf,cd_t),32);
+	strncpy_s(keyhash,sizeof(keyhash), value_for_key(buf, cd_t), 32);
 	keyhash[32] = 0;
 	
 	client = find_client(keyhash, sesskey, NULL);
@@ -693,7 +693,7 @@ static void process_ucount(char *buf, struct sockaddr_in *fromaddr)
 			count++;
 		} 	
 	}
-	len = sprintf(outbuf, ucountformat, count);
+	len = sprintf_s(outbuf, sizeof(outbuf), ucountformat, count);
 	xcode_buf(outbuf, len);
 	sendto(sock, outbuf, len, 0, (struct sockaddr *)fromaddr, sizeof(struct sockaddr_in));
 }
@@ -707,7 +707,7 @@ static void send_uon(int skey, const char* ignored, const char* proof, struct so
 /* \uon\\skey\32423\seed\\proof\ OR \un\skey\32423\proof\fe6667736f0c8ed7ff5cd9c0e74f OR \uoff\\skey\32423 */
 
 	// seed is ignored by server
-	len = snprintf(outbuf, 255, uonformat,skey, ignored, proof);
+	len = snprintf(outbuf, sizeof(outbuf), 255, uonformat, skey, ignored, proof);
 	outbuf[255] = '\0'; // snprintf doesn't null terminate in some cases
 	xcode_buf(outbuf, len);
 	sendto(sock, outbuf, len, 0, (struct sockaddr *)fromaddr, sizeof(struct sockaddr_in));
@@ -722,7 +722,7 @@ static void send_uoff(int skey, struct sockaddr_in *fromaddr)
 	char outbuf[64];
 	int len;
 	const char uoffformat[] = {'\\','u','o','f','f','\\','\\','s','k','e','y','\\','%','d','\0'}; //\\uoff\\\\skey\\%d
-	len = sprintf(outbuf, uoffformat,skey);
+	len = sprintf_s(outbuf, sizeof(outbuf), uoffformat, skey);
 	xcode_buf(outbuf, len);
 	sendto(sock, outbuf, len, 0, (struct sockaddr *)fromaddr, sizeof(struct sockaddr_in));
 }
@@ -797,7 +797,7 @@ static void send_disconnect_req(gsproduct_t *prod, gsclient_t *client)
 	const char discformat[] = {'\\','d','i','s','c','\\','\\','p','i','d','\\','%','d','\\','c','d','\\','%','s','\\','i','p','\\','%','d','\0'}; //\\disc\\\\pid\\%d\\cd\\%s\\ip\\%d
 	
 /* \disc\\pid\12\cd\fe6667736f0c8ed7ff5cd9c0e74f\ip\2342342 */
-	len = sprintf(buf,discformat,
+	len = sprintf_s(buf, sizeof(buf), discformat,
 					prod->pid, client->hkey,client->ip);
 	xcode_buf(buf, len);
 	sendto(sock, buf, len, 0, (struct sockaddr *)&valaddr, sizeof(valaddr));
@@ -814,7 +814,7 @@ static void send_auth_req(gsproduct_t *prod, gsclient_t *client, const char *cha
 	client->sttime = current_time();
 	client->ntries = 1;
 /* \auth\\pid\12\ch\efx3232\resp\fe6667736f0c8ed7ff5cd9c0e74f98fd69e4da39560b82f40a628522ed10f0165c1d44a0\ip\2342342\skey\132432 */
-	len = snprintf(buf, BUFSIZE, authformat,
+	len = snprintf(buf, sizeof(buf), BUFSIZE, authformat,
 			prod->pid, challenge, response, client->ip, client->sesskey);
 	buf[BUFSIZE-1] = '\0'; // sometimes snprintf doesn't null terminate
 	xcode_buf(buf, len);
@@ -841,7 +841,7 @@ static void send_keep_alive()
 		lastKeepAliveSent = current_time();
 	if (current_time() > lastKeepAliveSent + MAX_KEEP_ALIVE_INTERVAL)
 	{	
-		strcpy(buf, keepAlive);
+		strcpy_s(buf, sizeof(buf), keepAlive);
 		xcode_buf(buf, strlen(keepAlive));
 		sendto(sock, buf, strlen(keepAlive), 0, (struct sockaddr *)&valaddr, sizeof(struct sockaddr_in));
 		lastKeepAliveSent = current_time();
@@ -859,9 +859,9 @@ static char *value_for_key(const char *s, const char *key)
 	static char value[2][256];
 
 	valueindex ^= 1;
-	strcpy(keyspec, slash_t);
-	strcat(keyspec,key);
-	strcat(keyspec,slash_t);
+	strcpy_s(keyspec, sizeof(keyspec), slash_t);
+	strcat_s(keyspec, sizeof(keyspec), key);
+	strcat_s(keyspec, sizeof(keyspec), slash_t);
 	pos = strstr(s,keyspec);
 	if (!pos)
 		return "";

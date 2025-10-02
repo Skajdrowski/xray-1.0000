@@ -586,7 +586,7 @@ void ghiDoSendingRequest
 
 			// Add the content-length header.
 			/////////////////////////////////
-			sprintf(buf, "%d", connection->postingState.totalBytes);
+			sprintf_s(buf, sizeof(buf), "%d", connection->postingState.totalBytes);
 			ghiAppendHeaderToBuffer(writeBuffer, "Content-Length", buf);
 
 			// Add the content-type header.
@@ -798,7 +798,7 @@ static GHTTPBool ghiParseStatus
 
 	// Parse the string.
 	////////////////////
-	rcode = sscanf(connection->recvBuffer.data, "HTTP/%d.%d %d%n",
+	rcode = sscanf_s(connection->recvBuffer.data, "HTTP/%d.%d %d%n",
 		&majorVersion,
 		&minorVersion,
 		&statusCode,
@@ -1041,7 +1041,7 @@ static int ghiParseChunkSize
 	assert(len);
 	GSI_UNUSED(len);
 
-	rcode = sscanf(header, "%x", &num);
+	rcode = sscanf_s(header, "%x", &num);
 	if(rcode != 1)
 		return -1;
 
@@ -1465,7 +1465,7 @@ void ghiDoReceivingHeaders
 						connection->completed = GHTTPTrue;
 						connection->result = GHTTPOutOfMemory;
 					}
-					sprintf(connection->redirectURL, "http://%s:%d%s", connection->serverAddress, connection->serverPort, location);
+					sprintf_s(connection->redirectURL, sizeof(connection->redirectURL), "http://%s:%d%s", connection->serverAddress, connection->serverPort, location);
 				}
 				else
 				{

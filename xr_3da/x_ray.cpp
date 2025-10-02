@@ -6,6 +6,8 @@
 //	AlexMX		- Alexander Maksimchuk
 //-----------------------------------------------------------------------------
 #include "stdafx.h"
+#pragma warning(disable : 4995)
+#include <cmath>
 #include "igame_level.h"
 #include "igame_persistent.h"
 
@@ -988,7 +990,7 @@ int CApplication::Level_ID(LPCSTR name)
 	strconcat	(buffer,name,"\\");
 	for (u32 I=0; I<Levels.size(); I++)
 	{
-		if (0==stricmp(buffer,Levels[I].folder))	return int(I);
+		if (0==_stricmp(buffer,Levels[I].folder))	return int(I);
 	}
 	return -1;
 }
@@ -1061,7 +1063,7 @@ void doBenchmark(LPCSTR name)
 		strcpy				(g_sBenchmarkName, test_name);
 		
 		test_command		= ini.r_string_wb("benchmark",test_name);
-		strlwr				(strcpy(Core.Params,*test_command));
+		_strlwr				(strcpy(Core.Params,*test_command));
 		
 		InitInput					();
 		if(i){
@@ -1198,7 +1200,7 @@ u32 calc_progress_color(u32 idx, u32 total, int stage, int max_stage)
 
 
 	float kk			= (float(stage+1)/float(max_stage))*(total/2.0f);
-	float f				= 1/(exp((float(idx)-kk)*0.5f)+1.0f);
+	float f				= 1/(std::exp((float(idx)-kk)*0.5f)+1.0f);
 
 	return color_argb_f		(f,1.0f,1.0f,1.0f);
 }

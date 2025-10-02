@@ -372,9 +372,9 @@ void SBServerListInit(SBServerList *slist, const char *queryForGamename, const c
 	slist->state = sl_disconnected;
 	SBAllocateServerList(slist);
 	SBRefStrHash(slist); //make sure it's initialized
-	strcpy(slist->queryforgamename, queryForGamename);
-	strcpy(slist->queryfromgamename, queryFromGamename);
-	strcpy(slist->queryfromkey, queryFromKey);
+	strcpy_s(slist->queryforgamename, sizeof(slist->queryforgamename), queryForGamename);
+	strcpy_s(slist->queryfromgamename, sizeof(slist->queryfromgamename), queryFromGamename);
+	strcpy_s(slist->queryfromkey, sizeof(slist->queryfromkey), queryFromKey);
 	slist->ListCallback = callback;
 	slist->MaploopCallback = NULL; //populate when requested
 	assert(callback != NULL);
@@ -394,8 +394,8 @@ void SBServerListInit(SBServerList *slist, const char *queryForGamename, const c
 	_tcscpy(slist->currsortinfo.sortkey, (const unsigned short *)"");
 	_tcscpy(slist->prevsortinfo.sortkey, (const unsigned short *)"");
 #else
-	_tcscpy(slist->currsortinfo.sortkey, "");
-	_tcscpy(slist->prevsortinfo.sortkey, "");
+	_tcscpy(slist->currsortinfo.sortkey, sizeof(slist->currsortinfo.sortkey), "");
+	_tcscpy(slist->prevsortinfo.sortkey, sizeof(slist->prevsortinfo.sortkey), "");
 #endif
 	SBSetLastListErrorPtr(slist, "");
 	slist->mLanAdapterOverride = NULL;
@@ -450,9 +450,9 @@ static SBError ServerListConnect(SBServerList *slist)
 
 	masterIndex = StringHash(slist->queryforgamename, NUM_MASTER_SERVERS);
 	if (SBOverrideMasterServer != NULL)
-		strcpy(masterHostname, SBOverrideMasterServer);
+		strcpy_s(masterHostname, sizeof(masterHostname), SBOverrideMasterServer);
 	else //use the default format...
-		sprintf(masterHostname,"%s.ms%d." GSI_DOMAIN_NAME, slist->queryforgamename, masterIndex);
+		sprintf_s(masterHostname, sizeof(masterHostname), "%s.ms%d." GSI_DOMAIN_NAME, slist->queryforgamename, masterIndex);
 	saddr.sin_family = AF_INET;
 	saddr.sin_port = htons(MSPORT2);
 	saddr.sin_addr.s_addr = inet_addr(masterHostname);

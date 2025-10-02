@@ -263,7 +263,7 @@ static GHTTPBool ptaPatchCompletedCallback
 	value = ptaGetKeyValue(buffer, "\\newvername\\");
 	if(value)
 	{
-		strncpy(versionName, value, sizeof(versionName));
+		strncpy_s(versionName, sizeof(versionName), value, sizeof(versionName));
 		versionName[sizeof(versionName) - 1] = '\0';
 	}
 	else
@@ -274,7 +274,7 @@ static GHTTPBool ptaPatchCompletedCallback
 	value = ptaGetKeyValue(buffer, "\\dlurl\\");
 	if(value)
 	{
-		strncpy(downloadURL, value, sizeof(downloadURL));
+		strncpy_s(downloadURL, sizeof(downloadURL), value, sizeof(downloadURL));
 		downloadURL[sizeof(downloadURL) - 1] = '\0';
 	}
 	else
@@ -316,7 +316,7 @@ PTBool ptCheckForPatchA
 
 	// override hostname?
 	if (gPTAVercheckURL[0] == '\0')
-		sprintf(gPTAVercheckURL, PTA_DEFAULT_VERCHECK_URL);
+		sprintf_s(gPTAVercheckURL, sizeof(gPTAVercheckURL), PTA_DEFAULT_VERCHECK_URL);
 
 	// Store some data.
 	///////////////////
@@ -330,7 +330,7 @@ PTBool ptCheckForPatchA
 	// Build the URL.
 	/////////////////
 	charsWritten = 
-		snprintf(aURL, PTA_MAX_STRING_SIZE,
+		snprintf(aURL, sizeof(aURL), PTA_MAX_STRING_SIZE,
 		"%s?productid=%d&versionuniqueid=%s&distid=%d&gamename=%s",
 		gPTAVercheckURL, productID, versionUniqueID, distributionID,
 		__GSIACGamename);
@@ -387,11 +387,11 @@ PTBool ptTrackUsageA
 
 	// override hostname?
 	if (gPTAMOTDURL[0] == '\0')
-		sprintf(gPTAMOTDURL, PTA_DEFAULT_MOTD_URL);
+		sprintf_s(gPTAMOTDURL, sizeof(gPTAMOTDURL), PTA_DEFAULT_MOTD_URL);
 
 	// Build the URL.
 	/////////////////
-	charsWritten = snprintf(aURL, PTA_MAX_STRING_SIZE, 
+	charsWritten = snprintf(aURL, sizeof(aURL), PTA_MAX_STRING_SIZE,
 		"%s?userid=%d&productid=%d&versionuniqueid=%s&distid=%d&uniqueid=%s&gamename=%s",
 		gPTAMOTDURL, userID, productID, versionUniqueID,	distributionID,	GOAGetUniqueID(),
 		__GSIACGamename);
@@ -461,11 +461,11 @@ int ptCreateCheckPatchTrackUsageReqA
 
 	// override hostname?
 	if (gPTAVercheckURL[0] == '\0')
-		sprintf(gPTAVercheckURL, PTA_DEFAULT_VERCHECK_URL);
+		sprintf_s(gPTAVercheckURL, sizeof(gPTAVercheckURL), PTA_DEFAULT_VERCHECK_URL);
 
 	// Build the URL.
 	/////////////////
-	charsWritten = snprintf(aURL, PTA_MAX_STRING_SIZE,  
+	charsWritten = snprintf(aURL, sizeof(aURL), PTA_MAX_STRING_SIZE,
 		"%s?userid=%d&productid=%d&versionuniqueid=%s&distid=%d&uniqueid=%s&gamename=%s",
 		gPTAVercheckURL, userID, productID, versionUniqueID, distributionID,	GOAGetUniqueID(),
 		__GSIACGamename);
@@ -572,7 +572,7 @@ static GHTTPBool ptaFilePlanetCompletedCallback
 	if(len == EOF)
 		return ptaFilePlanetInfoFailed(data);
 	buffer += len;
-	strncpy(description, Line, sizeof(description));
+	strncpy_s(description, sizeof(description), Line, sizeof(description));
 	description[sizeof(description) - 1] = '\0';
 
 	// Get the size.
@@ -581,7 +581,7 @@ static GHTTPBool ptaFilePlanetCompletedCallback
 	if(len == EOF)
 		return ptaFilePlanetInfoFailed(data);
 	buffer += len;
-	strncpy(size, Line, sizeof(size));
+	strncpy_s(size, sizeof(size), Line, sizeof(size));
 	size[sizeof(size) - 1] = '\0';
 
 	// Get the mirrors.
@@ -617,7 +617,7 @@ static GHTTPBool ptaFilePlanetCompletedCallback
 			gsifree(mirrorNames[i]);
 			break;
 		}
-		strcpy(mirrorURLs[i], str);
+		strcpy_s(mirrorURLs[i], sizeof(mirrorURLs[i]), str);
 
 		// One more mirror.
 		///////////////////
@@ -652,7 +652,7 @@ PTBool ptLookupFilePlanetInfo
 
 	// override hostname?
 	if (gPTAFilePlanetURL[0] == '\0')
-		sprintf(gPTAFilePlanetURL, PTA_DEFAULT_FILEPLANET_URL);
+		sprintf_s(gPTAFilePlanetURL, sizeof(gPTAFilePlanetURL), PTA_DEFAULT_FILEPLANET_URL);
 
 	// Store some data.
 	///////////////////
@@ -670,7 +670,7 @@ PTBool ptLookupFilePlanetInfo
 	// Now using string size as limit for printing
 	// also null terminate string automatically
 	///////////////////////////////////////////////
-	snprintf(aURL, PTA_MAX_STRING_SIZE, 
+	snprintf(aURL, sizeof(aURL), PTA_MAX_STRING_SIZE,
 		"%s?file=%d&gamename=%s", gPTAFilePlanetURL, fileID, __GSIACGamename);
 	
 	

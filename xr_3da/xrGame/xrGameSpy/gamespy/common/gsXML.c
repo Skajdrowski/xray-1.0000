@@ -681,7 +681,7 @@ static gsi_bool gsiXmlUtilDecodeString(char * buffer, int * len)
 				return gsi_false; // too many digits before end
 
 			// scan digits into memory, do this as a block so that &#x165 = 01 65
-			sscanf(&buffer[readPos+3], "%08x", &digitValue);
+			sscanf_s(&buffer[readPos+3], "%08x", &digitValue);
 
 			// write the digit back as a character array
 			for (i=0; i < 4; i++)
@@ -935,7 +935,7 @@ gsi_bool gsXmlWriteIntElement(GSXmlStreamWriter stream, const char * namespaceNa
 	GS_ASSERT(tag != NULL);
 	GS_ASSERT(gsi_is_false(writer->mClosed));
 
-	sprintf(buf, "%d", value);
+	sprintf_s(buf, sizeof(buf), "%d", value);
 
 	if ( gsi_is_false(gsXmlWriteOpenTag(stream, namespaceName, tag)) ||
 		 gsi_is_false(gsiXmlUtilWriteString(writer, buf)) ||
@@ -961,7 +961,7 @@ gsi_bool gsXmlWriteFloatElement(GSXmlStreamWriter stream, const char * namespace
 	GS_ASSERT(tag != NULL);
 	GS_ASSERT(gsi_is_false(writer->mClosed));
 
-	sprintf(buf, "%f", value);
+	sprintf_s(buf, sizeof(buf), "%f", value);
 
 	if ( gsi_is_false(gsXmlWriteOpenTag(stream, namespaceName, tag)) ||
 		 gsi_is_false(gsiXmlUtilWriteString(writer, buf)) ||
@@ -999,7 +999,7 @@ gsi_bool gsXmlWriteHexBinaryElement(GSXmlStreamWriter stream, const char * names
 	while (pos < len)
 	{
 		temp = data[pos]; // sprintf requires an int parameter for %02x operation
-		sprintf(hex, "%02x", temp);
+		sprintf_s(hex, sizeof(hex), "%02x", temp);
 		pos++;
 		if (gsi_is_false(gsiXmlUtilWriteChar(writer, hex[0])))
 			return gsi_false;
@@ -1057,7 +1057,7 @@ gsi_bool gsXmlWriteDateTimeElement(GSXmlStreamWriter stream, const char * namesp
 
 	// convert the time to a string
 	timePtr = gmtime(&value);
-	sprintf(timeString, "%d-%02d-%02dT%02d:%02d:%02dZ",
+	sprintf_s(timeString, sizeof(timeString), "%d-%02d-%02dT%02d:%02d:%02dZ",
 		timePtr->tm_year + 1900, timePtr->tm_mon + 1, timePtr->tm_mday,
 		timePtr->tm_hour, timePtr->tm_min, timePtr->tm_sec);
 
@@ -1101,7 +1101,7 @@ gsi_bool gsXmlWriteLargeIntElement(GSXmlStreamWriter stream, const char * namesp
 	for (; readPos > 0; readPos--)
 	{
 		temp = readBuf[readPos-1]; // sprintf requires an int parameter for %02x operation
-		sprintf(hex, "%02x", temp);
+		sprintf_s(hex, sizeof(hex), "%02x", temp);
 		if (gsi_is_false(gsiXmlUtilWriteChar(writer, hex[0])))
 			return gsi_false;
 		if (gsi_is_false(gsiXmlUtilWriteChar(writer, hex[1])))
@@ -1154,7 +1154,7 @@ static gsi_bool gsiXmlUtilWriteString(GSIXmlStreamWriter * stream, const char * 
 			return gsi_false; // OOM
 	}
 
-	strcpy(&stream->mBuffer[stream->mLen], str);
+	strcpy_s(&stream->mBuffer[stream->mLen], sizeof(&stream->mBuffer[stream->mLen]), str);
 	stream->mLen += strLen;
 	return gsi_true;
 }
@@ -1218,7 +1218,7 @@ static gsi_bool gsiXmlUtilWriteXmlSafeString(GSIXmlStreamWriter * stream, const 
 		{
 			// write as hex
 			char numeric[7];
-			sprintf(numeric, "&#x%02x;", (unsigned char)str[pos]);
+			sprintf_s(numeric, sizeof(numeric), "&#x%02x;", (unsigned char)str[pos]);
 			numeric[6] = '\0';
 			result = gsiXmlUtilWriteString(stream, numeric);
 		}
@@ -1477,7 +1477,7 @@ gsi_bool gsXmlReadChildAsHexBinary(GSXmlStreamReader stream, const char * matcht
 				// 2 characters of hexbyte = 1 value byte
 				while(bytesleft > 1)
 				{
-					sscanf((char*)(&searchValueElem->mValue.mData[readpos]), "%02x", &temp); // sscanf requires a 4 byte dest
+					sscanf_s((char*)(&searchValueElem->mValue.mData[readpos]), "%02x", &temp); // sscanf requires a 4 byte dest
 					valueOut[writepos] = (gsi_u8)temp; // then we convert to byte, to ensure correct byte order
 					readpos += 2;
 					writepos += 1;
@@ -1485,7 +1485,7 @@ gsi_bool gsXmlReadChildAsHexBinary(GSXmlStreamReader stream, const char * matcht
 				}
 				if (bytesleft == 1)
 				{
-					sscanf((char*)(&searchValueElem->mValue.mData[readpos]), "%01x", &temp); // sscanf requires a 4 byte dest
+					sscanf_s((char*)(&searchValueElem->mValue.mData[readpos]), "%01x", &temp); // sscanf requires a 4 byte dest
 					valueOut[writepos] = (gsi_u8)temp; // then we convert to byte, to ensure correct byte order
 					readpos += 1;
 					writepos += 1;

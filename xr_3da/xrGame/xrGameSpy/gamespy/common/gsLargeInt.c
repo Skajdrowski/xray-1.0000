@@ -1306,13 +1306,13 @@ gsi_bool gsLargeIntSetFromHexString(gsLargeInt_t *lint, const char* hexstream)
 	
 	while(len>=2)
 	{
-		sscanf((char*)(hexstream+len-2), "%02x", &temp); // sscanf requires a 4 byte dest
+		sscanf_s((char*)(hexstream+len-2), "%02x", &temp); // sscanf requires a 4 byte dest
 		*writePos++ = (gsi_u8)temp; // then we convert to byte, to ensure correct byte order
 		len-=2;
 	}
 	if (len == 1)
 	{
-		sscanf((char*)(hexstream+len-1), "%01x", &temp); // sscanf requires a 4 byte dest
+		sscanf_s((char*)(hexstream+len-1), "%01x", &temp); // sscanf requires a 4 byte dest
 		*writePos++ = (gsi_u8)temp; // then we convert to byte, to ensure correct byte order
 		len-=1;
 	}

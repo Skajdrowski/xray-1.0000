@@ -102,7 +102,7 @@ void SBServerAddKeyValue(SBServer server, const char *keyname, const char *value
 void SBServerAddIntKeyValue(SBServer server, const char *keyname, int value)
 {
 	char stemp[20];
-	sprintf(stemp, "%d", value);
+	sprintf_s(stemp, sizeof(stemp), "%d", value);
 	SBServerAddKeyValue(server, keyname, stemp);
 }
 
@@ -253,7 +253,7 @@ SBBool SBServerGetBoolValueW(SBServer server, const unsigned short *key, SBBool 
 const char *SBServerGetPlayerStringValueA(SBServer server, int playernum, const char *key, const char *sdefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_%d", key, playernum);
+	sprintf_s(keyname, sizeof(keyname), "%s_%d", key, playernum);
 	return SBServerGetStringValueA(server, keyname, sdefault);
 }
 #ifdef GSI_UNICODE
@@ -284,7 +284,7 @@ const unsigned short *SBServerGetPlayerStringValueW(SBServer server, int playern
 int SBServerGetPlayerIntValueA(SBServer server, int playernum, const char *key, int idefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_%d", key, playernum);
+	sprintf_s(keyname, sizeof(keyname), "%s_%d", key, playernum);
 	return SBServerGetIntValueA(server, keyname, idefault);
 }
 #ifdef GSI_UNICODE
@@ -299,7 +299,7 @@ int SBServerGetPlayerIntValueW(SBServer server, int playernum, const unsigned sh
 double SBServerGetPlayerFloatValueA(SBServer server, int playernum, const char *key, double fdefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_%d", key, playernum);
+	sprintf_s(keyname, sizeof(keyname), "%s_%d", key, playernum);
 	return SBServerGetFloatValueA(server, keyname, fdefault);
 }
 #ifdef GSI_UNICODE
@@ -314,7 +314,7 @@ double SBServerGetPlayerFloatValueW(SBServer server, int playernum, const unsign
 const char *SBServerGetTeamStringValueA(SBServer server, int teamnum, const char *key, const char *sdefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_t%d", key, teamnum);
+	sprintf_s(keyname, sizeof(keyname), "%s_t%d", key, teamnum);
 	return SBServerGetStringValueA(server, keyname, sdefault);
 }
 #ifdef GSI_UNICODE
@@ -345,7 +345,7 @@ const unsigned short *SBServerGetTeamStringValueW(SBServer server, int teamnum, 
 int SBServerGetTeamIntValueA(SBServer server, int teamnum, const char *key, int idefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_t%d", key, teamnum);
+	sprintf_s(keyname, sizeof(keyname), "%s_t%d", key, teamnum);
 	return SBServerGetIntValueA(server, keyname, idefault);
 }
 #ifdef GSI_UNICODE
@@ -360,7 +360,7 @@ int SBServerGetTeamIntValueW(SBServer server, int teamnum, const unsigned short 
 double SBServerGetTeamFloatValueA(SBServer server, int teamnum, const char *key, double fdefault)
 {
 	char keyname[128];
-	sprintf(keyname, "%s_t%d", key, teamnum);
+	sprintf_s(keyname, sizeof(keyname), "%s_t%d", key, teamnum);
 	return SBServerGetFloatValueA(server, keyname, fdefault);
 }
 #ifdef GSI_UNICODE
@@ -587,7 +587,7 @@ void SBServerParseQR2FullKeysSingle(SBServer server, char *data, int len)
 				dlen = NTSLengthSB(data, len);
 				if (dlen < 0)
 					return; //not all there
-				sprintf(tempkey, "%s%d", k, i);
+				sprintf_s(tempkey, sizeof(tempkey), "%s%d", k, i);
 				SBServerAddKeyValue(server, tempkey, data);
 				data += dlen;
 				len -= dlen;
@@ -722,7 +722,7 @@ void SBServerParseQR2FullKeysSplit(SBServer server, char *data, int len)
 					data += dlen;
 					len -= dlen;
 					// append team or player index before adding
-					sprintf(tempkey, "%s%d", k, nindex);
+					sprintf_s(tempkey, sizeof(tempkey), "%s%d", k, nindex);
 					SBServerAddKeyValue(server, tempkey, v);
 					nindex++; // index increments from start
 				}

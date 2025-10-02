@@ -1049,7 +1049,7 @@ void NvStripifier::SplitUpStripsAndOptimize(NvStripInfoVec &allStrips, NvStripIn
 			bestNumHits = -1.0f;
 			
 			//find best strip to add next, given the current cache
-			for(int i = 0; i < tempStrips2.size(); i++)
+			for(i = 0; i < tempStrips2.size(); i++)
 			{
 				if(tempStrips2[i]->visited)
 					continue;
@@ -1305,7 +1305,7 @@ void NvStripifier::FindAllStrips(NvStripInfoVec &allStrips,
 			
 			// build the first strip of the list
 			experiments[i][0]->Build(allEdgeInfos, allFaceInfos);
-			int experimentId = experiments[i][0]->m_experimentId;
+			experimentId = experiments[i][0]->m_experimentId;
 			
 			NvStripInfo *stripIter = experiments[i][0];
 			NvStripStartInfo startInfo(NULL, NULL, false);

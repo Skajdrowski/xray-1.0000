@@ -543,7 +543,7 @@ void ServerBrowserSortA(ServerBrowser sb, SBBool ascending, const char *sortkey,
 	_tcscpy(info.sortkey, (const unsigned short *)sortkey);
 #else
 	GS_ASSERT(sortkey != NULL && _tcslen(sortkey) <= SORTKEY_LENGTH);
-	_tcscpy(info.sortkey, sortkey);
+	_tcscpy(info.sortkey, sizeof(info.sortkey), sortkey);
 #endif
 	SBServerListSort(&sb->list, ascending, info);
 }
@@ -602,20 +602,20 @@ SBBool SBServerGetConnectionInfo(ServerBrowser gSB, SBServer server, gsi_u16 Por
 	{
 
 		//directly connect to private IP (LAN)
-		sprintf(ipstring,"%s:%d", SBServerGetPrivateAddress(server),PortToConnectTo );
+		sprintf_s(ipstring, sizeof(ipstring), "%s:%d", SBServerGetPrivateAddress(server), PortToConnectTo);
  
 	}
 	else
 	if ((SBServerDirectConnect(server) == SBTrue )&& (SBServerHasPrivateAddress(server) == SBFalse))
 	{
             //can directly connect to public IP, no negotiation required
-			sprintf(ipstring,"%s:%d", SBServerGetPrivateAddress(server),	PortToConnectTo );
+			sprintf_s(ipstring, sizeof(ipstring), "%s:%d", SBServerGetPrivateAddress(server), PortToConnectTo);
 	}
 	else
 	{
 		//Nat Negotiation required
 		natneg = SBTrue;
-		sprintf(ipstring,"%s:%d", SBServerGetPublicAddress(server),	SBServerGetPublicQueryPort	(server) );
+		sprintf_s(ipstring, sizeof(ipstring), "%s:%d", SBServerGetPublicAddress(server), SBServerGetPublicQueryPort(server));
 	}
 	return natneg;
 }

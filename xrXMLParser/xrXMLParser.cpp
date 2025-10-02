@@ -43,8 +43,8 @@ void ParseFile(LPCSTR path, CMemoryWriter& W, IReader *F, CXml* xml )
 					I 	= FS.r_open(path, inc_name);
 
 				if(!I){
-					string1024 str;
-					sprintf(str,"XML file[%s] parsing failed. Can't find include file:[%s]",path,inc_name);
+					string1024 errStr;
+					sprintf(errStr,"XML file[%s] parsing failed. Can't find include file:[%s]",path,inc_name);
 					R_ASSERT2(false,str);
 				}
 				ParseFile(path, W, I, xml);
