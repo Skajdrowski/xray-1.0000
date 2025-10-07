@@ -95,7 +95,7 @@ public:
 
 	virtual void			Die					(CObject* who);
 //			void			KillEntity			(CObject* who);
-			void			KillEntity			(u16 whoID);
+			void			KillEntity			(u16 whoID, BOOL bypass_actor_check = FALSE /*AVO: added for actor_before_death callback*/);
 		
 	// Events
 	virtual void			OnEvent				( NET_Packet& P, u16 type		);

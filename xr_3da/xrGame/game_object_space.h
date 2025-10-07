@@ -35,6 +35,7 @@ namespace GameObject {
 		eActionTypeObject,
 
 		eActorSleep,
+		eActorBeforeDeath,
 
 		eHelicopterOnPoint,
 		eHelicopterOnHit,

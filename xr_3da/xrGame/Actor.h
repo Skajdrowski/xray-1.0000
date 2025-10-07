@@ -78,7 +78,6 @@ private:
 	// General fucntions
 	//////////////////////////////////////////////////////////////////////////
 public:
-	void TeleportActor();
 										CActor				();
 	virtual								~CActor				();
 
@@ -155,7 +154,7 @@ public:
 //	CGameTaskRegistryWrapper		*game_task_registry;
 	CGameNewsRegistryWrapper		*game_news_registry;
 	CCharacterPhysicsSupport		*m_pPhysics_support;
-	//������� ��� 
+	//игровое им¤ 
 	virtual LPCSTR	Name        () const {return CInventoryOwner::Name();}
 
 public:
@@ -205,16 +204,16 @@ public:
 	//Actor condition
 	////////////////////////////////////////////////////////////////////
 public:
-	//���
+	//сон
 //			void		UpdateSleep			();
 
-	//�������� ����������
+	//свойства артефактов
 	virtual void		UpdateArtefactsOnBelt	();
 	virtual void		MoveArtefactBelt		(const CArtefact* artefact, bool on_belt);
 	virtual float		HitArtefactsOnBelt		(float hit_power, ALife::EHitType hit_type);
 	const xr_vector<const CArtefact*>& ArtefactsOnBelt() {return m_ArtefactsOnBelt;}
 protected:
-	//���� �������� �������
+	//звук т¤желого дыхани¤
 	ref_sound			m_HeavyBreathSnd;
 	ref_sound			m_BloodSnd;
 
@@ -222,7 +221,7 @@ protected:
 
 protected:
 	//Sleep params
-	//����� ����� ������ ���� ���������
+	//врем¤ когда актера надо разбудить
 	ALife::_TIME_ID			m_dwWakeUpTime;
 	float					m_fOldTimeFactor;
 	float					m_fOldOnlineRadius;
@@ -250,17 +249,17 @@ protected:
 	BOOL					b_DropActivated;
 	float					f_DropPower;
 
-	//random seed ��� Zoom mode
+	//random seed дл¤ Zoom mode
 	s32						m_ZoomRndSeed;
-	//random seed ��� Weapon Effector Shot
+	//random seed дл¤ Weapon Effector Shot
 	s32						m_ShotRndSeed;
 
 	bool					m_bOutBorder;
-	//��������� ������� �������� � feel_touch, ��� ������� ���������� ��������� ������ �������� � ������� 
+	//сохран¤ет счетчик объектов в feel_touch, дл¤ которых необходимо обновл¤ть размер колижена с актером 
 	u32						m_feel_touch_characters;
-	//���������� �� �������� ����� ������ 
-	//����� ���� ��� �������������� ��� ����� ������������� ������. 
-	//��������������� � game
+	//разрешени¤ на удаление трупа актера 
+	//после того как контролирующий его игрок зареспавнилс¤ заново. 
+	//устанавливаетс¤ в game
 private:
 	void					SwitchOutBorder(bool new_border_state);
 public:
@@ -302,10 +301,10 @@ protected:
 	// Rotation
 	SRotation				r_torso;
 	float					r_torso_tgt_roll;
-	//��������� ����� ��� ����������� ������� ������ ������
+	//положение торса без воздействи¤ эффекта отдачи оружи¤
 	SRotation				unaffected_r_torso;
 
-	//���������� ������
+	//ориентаци¤ модели
 	float					r_model_yaw_dest;
 	float					r_model_yaw;			// orientation of model
 	float					r_model_yaw_delta;		// effect on multiple "strafe"+"something"
@@ -322,7 +321,7 @@ public:
 	MotionID				m_current_torso;
 	MotionID				m_current_head;
 
-	// callback �� �������� ������ ������
+	// callback на анимации модели актера
 	void					SetCallbacks		();
 	void					ResetCallbacks		();
 	static void				Spin0Callback		(CBoneInstance*);
@@ -379,12 +378,12 @@ protected:
 	SSleepEffector*			m_pSleepEffector;
 	CSleepEffectorPP*		m_pSleepEffectorPP;
 
-	//�������� ����������, ���� � ������� �������
+	//менеджер эффекторов, есть у каждого актрера
 	CCameraManager*			m_pActorEffector;
 	static float			f_Ladder_cam_limit;
 	////////////////////////////////////////////
-	// ��� �������������� � ������� ����������� 
-	// ��� ����������
+	// дл¤ взаимодействи¤ с другими персонажами 
+	// или предметами
 	///////////////////////////////////////////
 public:
 	virtual void			feel_touch_new				(CObject* O);
@@ -418,9 +417,9 @@ protected:
 	shared_str				m_sInventoryItemUseAction;
 	shared_str				m_sInventoryBoxUseAction;
 
-	//����� ���������� ���������
+	//режим подбирани¤ предметов
 	bool					m_bPickupMode;
-	//���������� ��������� ���������
+	//рассто¤ние подсветки предметов
 	float					m_fPickupInfoRadius;
 
 	void					PickupModeUpdate	();
@@ -434,7 +433,7 @@ public:
 
 
 	//////////////////////////////////////////////////////////////////////////
-	// Motions (������������ �������)
+	// Motions (передвижени¤ актрера)
 	//////////////////////////////////////////////////////////////////////////
 public:
 	void					g_cl_CheckControls		(u32 mstate_wf, Fvector &vControlAccel, float &Jump, float dt);
@@ -486,7 +485,7 @@ public:
 	virtual	float			GetLookFactor			();
 
 	//////////////////////////////////////////////////////////////////////////
-	// Weapon fire control (������ �������)
+	// Weapon fire control (оружие актрера)
 	//////////////////////////////////////////////////////////////////////////
 public:
 	virtual void						g_WeaponBones		(int &L, int &R1, int &R2);
@@ -496,31 +495,31 @@ public:
 			bool						IsZoomAimingMode	() const {return m_bZoomAimingMode;}
 
 protected:
-	//���� ����� ������� � ������
+	//если актер целитс¤ в прицел
 	bool								m_bZoomAimingMode;
 
-	//��������� ������������ ��������
-	//������� ��������� (����� ����� ����� �� �����)
+	//настройки аккуратности стрельбы
+	//базова¤ дисперси¤ (когда игрок стоит на месте)
 	float								m_fDispBase;
 	float								m_fDispAim;
-	//������������ �� ������� ��������� ���������� ������� ���������
-	//��������� �������� ������ 
+	//коэффициенты на сколько процентов увеличитс¤ базова¤ дисперси¤
+	//учитывает скорость актера 
 	float								m_fDispVelFactor;
-	//���� ����� �����
+	//если актер бежит
 	float								m_fDispAccelFactor;
-	//���� ����� �����
+	//если актер сидит
 	float								m_fDispCrouchFactor;
 	//crouch+no acceleration
 	float								m_fDispCrouchNoAccelFactor;
-	//�������� firepoint ������������ default firepoint ��� �������� ������ � ������
+	//смещение firepoint относительно default firepoint дл¤ бросани¤ болтов и гранат
 	Fvector								m_vMissileOffset;
 public:
-	// ���������, � ������ �������� ��� ������
+	// ѕолучение, и запись смещени¤ дл¤ гранат
 	Fvector								GetMissileOffset	() const;
 	void								SetMissileOffset	(const Fvector &vNewOffset);
 
 protected:
-	//�������� ������������ ��� ��������
+	//косточки используемые при стрельбе
 	int									m_r_hand;
 	int									m_l_finger1;
     int									m_r_finger2;
@@ -571,15 +570,15 @@ protected:
 ////////////////////////////////////////////////////////////////////////////
 virtual	bool				can_validate_position_on_spawn	(){return false;}
 	///////////////////////////////////////////////////////
-	// ������ � ������� ������
+	// апдайт с данными физики
 	xr_deque<net_update_A>	NET_A;
 	
 	//---------------------------------------------
 //	bool					m_bHasUpdate;	
 	/// spline coeff /////////////////////
-	float			SCoeff[3][4];			//������������ ��� ������� �����
-	float			HCoeff[3][4];			//������������ ��� ������� ������
-	Fvector			IPosS, IPosH, IPosL;	//��������� ������ ����� ������������ �����, ������, ��������
+	float			SCoeff[3][4];			//коэффициэнты дл¤ сплайна Ѕизье
+	float			HCoeff[3][4];			//коэффициэнты дл¤ сплайна Ёрмита
+	Fvector			IPosS, IPosH, IPosL;	//положение актера после интерпол¤ции Ѕизье, Ёрмита, линейной
 
 #ifdef DEBUG
 	DEF_DEQUE		(VIS_POSITION, Fvector);

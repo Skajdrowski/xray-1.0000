@@ -6,8 +6,9 @@
 #include "hudmanager.h"
 #include "Entity.h"
 #include "actor.h"
+#include "game_object_space.h"
+#include "script_callback_ex.h"
 #include "xrserver_objects_alife_monsters.h"
-#include "entity.h"
 #include "level.h"
 #include "seniority_hierarchy_holder.h"
 #include "team_hierarchy_holder.h"
@@ -258,8 +259,17 @@ void CEntity::net_Destroy	()
 	set_ready_to_save		();
 }
 
-void CEntity::KillEntity(u16 whoID)
+void CEntity::KillEntity(u16 whoID, BOOL bypass_actor_check /*AVO: added for actor_before_death callback*/)
 {
+	//AVO: allow scripts to process actor condition and prevent actor's death or kill him if desired.
+//IMPORTANT: if you wish to kill actor you need to call db.actor:kill(level:object_by_id(whoID), true) in actor_before_death callback, to ensure all objects are properly destroyed
+// this will bypass below if block and go to normal KillEntity routine.
+	if (ID() == Actor()->ID() && !bypass_actor_check)
+	{
+		Actor()->callback(GameObject::eActorBeforeDeath)(whoID);
+		return;
+	}
+	//-AVO
 	if (whoID != ID()) {
 #ifdef DEBUG
 		if (m_killer_id != ALife::_OBJECT_ID(-1)) {
@@ -275,10 +285,12 @@ void CEntity::KillEntity(u16 whoID)
 		}
 #endif
 	}
+	/* Alundaio: Should not matter who kills self. CScripGameObject::Kill sets self as killer if nil passed
 	else {
 		if (m_killer_id != ALife::_OBJECT_ID(-1))
 			return;
 	}
+	*/
 
 	m_killer_id			= whoID;
 
