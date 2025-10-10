@@ -59,6 +59,23 @@ protected:
 	// movement restriction manager
 	CSpaceRestrictionManager	*m_space_restriction_manager;
 	// seniority hierarchy holder
+	struct SBufferedInputEvent
+	{
+		enum EType
+		{
+			eiKeyboardPress,
+			eiKeyboardRelease
+		} type;
+
+		int						param1;
+	};
+
+	void						BufferDisabledInputEvent	(SBufferedInputEvent::EType type, int param1);
+	void						ReplayBufferedInputEvents	();
+	bool						IsInputDisabled			() const;
+	xr_deque<SBufferedInputEvent>	m_disabled_input_buffer;
+	bool						m_replay_buffer_pending;
+	bool						m_prev_input_disabled;
 	CSeniorityHierarchyHolder	*m_seniority_hierarchy_holder;
 	// client spawn_manager
 	CClientSpawnManager			*m_client_spawn_manager;
@@ -230,6 +247,8 @@ public:
 	virtual void				IR_OnMouseStop			( int, int);
 	virtual void				IR_OnMouseWheel			( int direction);
 	virtual void				IR_OnActivate			(void);
+	void						OnInputDisable			();
+	void						OnInputEnable			();
 	
 			int					get_RPID				(LPCSTR name);
 

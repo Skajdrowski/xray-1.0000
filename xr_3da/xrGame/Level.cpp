@@ -54,6 +54,7 @@
 #endif
 
 extern BOOL	g_bDebugDumpPhysicsStep;
+extern bool g_bDisableAllInput;
 
 CPHWorld	*ph_world			= 0;
 float		g_cl_lvInterp		= 0;
@@ -124,6 +125,8 @@ CLevel::CLevel():IPureClient	(Device.GetTimerGlobal())
 	pActors4CrPr.clear();
 	//---------------------------------------------------------
 	pCurrentControlEntity = NULL;
+	m_replay_buffer_pending = false;
+	m_prev_input_disabled = IsInputDisabled();
 
 #ifdef DEBUG
 	m_level_debug	= xr_new<CLevelDebug>();
@@ -453,6 +456,59 @@ void CLevel::ClearGroundItems(bool remove_quest_items)
 	ProcessGameEvents();
 }
 
+void CLevel::BufferDisabledInputEvent(SBufferedInputEvent::EType type, int param1) {
+	if (!IsInputDisabled())
+		return;
+
+	static const size_t kMaxBufferedEvents = 16;
+	if (m_disabled_input_buffer.size() >= kMaxBufferedEvents)
+		return;
+
+	SBufferedInputEvent event;
+	event.type = type;
+	event.param1 = param1;
+
+	m_disabled_input_buffer.push_back(event);
+}
+
+void CLevel::ReplayBufferedInputEvents() {
+	if (IsInputDisabled() || m_disabled_input_buffer.empty())
+		return;
+
+	const SBufferedInputEvent event = m_disabled_input_buffer.front();
+	m_disabled_input_buffer.pop_front();
+
+	switch (event.type)
+	{
+	case SBufferedInputEvent::eiKeyboardPress:   IR_OnKeyboardPress(event.param1); break;
+	case SBufferedInputEvent::eiKeyboardRelease: IR_OnKeyboardRelease(event.param1); break;
+	default: break;
+	}
+
+	if (!m_disabled_input_buffer.empty())
+		m_replay_buffer_pending = true;
+}
+
+bool CLevel::IsInputDisabled() const {
+	return g_bDisableAllInput;
+}
+
+void CLevel::OnInputDisable() {
+	m_disabled_input_buffer.clear();
+	m_replay_buffer_pending = false;
+}
+
+void CLevel::OnInputEnable() {
+	if (m_disabled_input_buffer.empty())
+		return;
+
+	if (!IsInputDisabled())
+		ReplayBufferedInputEvents();
+
+	if (!m_disabled_input_buffer.empty())
+		m_replay_buffer_pending = true;
+}
+
 #ifdef DEBUG_MEMORY_MANAGER
 	extern Flags32				psAI_Flags;
 	extern float				debug_on_frame_gather_stats_frequency;
@@ -501,6 +557,19 @@ void CLevel::OnFrame	()
 
 	ProcessGameEvents	();
 
+	const bool input_disabled = IsInputDisabled();
+	if (input_disabled != m_prev_input_disabled) {
+		if (input_disabled)
+			OnInputDisable();
+		else
+			OnInputEnable();
+	}
+	m_prev_input_disabled = input_disabled;
+
+	if (!IsInputDisabled() && m_replay_buffer_pending) {
+		m_replay_buffer_pending = false;
+		ReplayBufferedInputEvents();
+	}
 
 	if (m_bNeed_CrPr)					make_NetCorrectionPrediction();
 
