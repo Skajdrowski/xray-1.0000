@@ -92,6 +92,9 @@ _action  actions[]		= {
 	{ "speech_menu_7",		kSPEECH_MENU_7			,_mp},		
 	{ "speech_menu_8",		kSPEECH_MENU_8			,_mp},		
 	{ "speech_menu_9",		kSPEECH_MENU_9			,_mp},		
+
+	{ "time_accelerate",	kTIME_FACTOR_ACCEL		,_sp},		
+	{ "time_reset",			kTIME_FACTOR_RESET		,_sp},		
 																
 	{ "use_bandage",		kUSE_BANDAGE			,_sp},		
 	{ "use_medkit",			kUSE_MEDKIT				,_sp},		

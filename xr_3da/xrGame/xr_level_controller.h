@@ -83,7 +83,10 @@ enum	EGameActions
 	kSPEECH_MENU_7,		
 	kSPEECH_MENU_8,		
 	kSPEECH_MENU_9,
-						
+					
+	kTIME_FACTOR_ACCEL,
+	kTIME_FACTOR_RESET,
+					
 	kUSE_BANDAGE,
 	kUSE_MEDKIT,		
 						

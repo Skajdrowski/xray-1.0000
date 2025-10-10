@@ -138,6 +138,32 @@ void CLevel::IR_OnKeyboardPress	(int key)
 		}
 		return;
 		break;
+
+	case kTIME_FACTOR_RESET:
+		if (OnServer()) {
+			//			float NewTimeFactor				= pSettings->r_float("alife","time_factor");
+
+			if (GameID() == GAME_SINGLE)
+				Server->game->SetGameTimeFactor(g_fTimeFactor);
+			else
+			{
+				Server->game->SetEnvironmentGameTimeFactor(g_fTimeFactor);
+				Server->game->SetGameTimeFactor(g_fTimeFactor);
+			};
+		}
+		break;
+	case kTIME_FACTOR_ACCEL:
+		if (OnServer()) {
+			float NewTimeFactor = 1000.f;
+			if (GameID() == GAME_SINGLE)
+				Server->game->SetGameTimeFactor(NewTimeFactor);
+			else
+			{
+				Server->game->SetEnvironmentGameTimeFactor(NewTimeFactor);
+				//				Server->game->SetGameTimeFactor(NewTimeFactor);
+			};
+		}
+		break;
 	};
 
 	if(	g_bDisableAllInput ) {
@@ -190,32 +216,6 @@ void CLevel::IR_OnKeyboardPress	(int key)
 		Console->Execute			(command);
 		return;
 	}
-
-	case DIK_DIVIDE:
-		if( OnServer() ){
-//			float NewTimeFactor				= pSettings->r_float("alife","time_factor");
-			
-			if (GameID() == GAME_SINGLE)
-				Server->game->SetGameTimeFactor(g_fTimeFactor);
-			else
-			{
-				Server->game->SetEnvironmentGameTimeFactor(g_fTimeFactor);
-				Server->game->SetGameTimeFactor(g_fTimeFactor);
-			};
-		}
-		break;	
-	case DIK_MULTIPLY:
-		if( OnServer() ){
-			float NewTimeFactor				= 1000.f;
-			if (GameID() == GAME_SINGLE)
-				Server->game->SetGameTimeFactor(NewTimeFactor);
-			else
-			{
-				Server->game->SetEnvironmentGameTimeFactor(NewTimeFactor);
-//				Server->game->SetGameTimeFactor(NewTimeFactor);
-			};
-		}
-		break;
 
 #ifdef DEBUG
 	case DIK_F4: {
