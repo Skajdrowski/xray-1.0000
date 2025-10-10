@@ -668,6 +668,12 @@ public:
 			return;
 		}
 
+		if (ai().script_engine().get_timerSwitch() == 1)
+		{
+			Msg("You can't save the game, while timer is running.");
+			return;
+		}
+
 		string_path				S,S1;
 		S[0]					= 0;
 		sscanf					(args ,"%s",S);
@@ -733,6 +739,12 @@ public:
 		sscanf						(args,"%s",saved_game);
 		if (!xr_strlen(saved_game)) {
 			Log						("! Specify file name!");
+			return;
+		}
+
+		if (ai().script_engine().get_timerSwitch() == 1)
+		{
+			Msg("You can't load the game, while timer is running.");
 			return;
 		}
 
