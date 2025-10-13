@@ -50,7 +50,7 @@ public:
 	PHDynamicData();
 	virtual ~PHDynamicData();
 	void GetWorldMX(Fmatrix& aTransform){
-			dMatrix3 R;
+			R;
 			dQtoR(dBodyGetQuaternion(body),R);
 			DMXPStoFMX(R,dBodyGetPosition(body),aTransform);
 			}

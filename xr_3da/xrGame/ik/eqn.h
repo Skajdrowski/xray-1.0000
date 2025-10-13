@@ -36,6 +36,7 @@
 
 
 #include "aint.h"
+#include <cmath>
 
 //
 // Evaluate alpha*cos(x) + beta*sin(x) efficiently

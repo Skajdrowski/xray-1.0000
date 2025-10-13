@@ -197,16 +197,16 @@ void CGameTaskManager::UpdateTasks						()
 	for (I = tasks; I != E; ++I)
 	{
 		CGameTask		*t = (*I).game_task;
-		for(u16 i=0; i<t->m_Objectives.size() ;++i)
+		for(u16 _i=0; _i<t->m_Objectives.size() ;++_i)
 		{
-			SGameTaskObjective& obj = t->Objective(i);
-			if(obj.TaskState()!=eTaskStateInProgress && i==0) break;
+			SGameTaskObjective& obj = t->Objective(_i);
+			if(obj.TaskState()!=eTaskStateInProgress && _i==0) break;
 			if(obj.TaskState()!=eTaskStateInProgress) continue;
 
 			ETaskState state = obj.UpdateState();
 
 			if( (state==eTaskStateFail || state==eTaskStateCompleted))
-				SetTaskState(t, i, state);
+				SetTaskState(t, _i, state);
 		}
 	}
 	

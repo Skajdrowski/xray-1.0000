@@ -628,8 +628,6 @@ void CStalkerActionLookOut::execute		()
 //	}
 
 	if (object().memory().enemy().selected()) {
-		CMemoryInfo					mem_object = object().memory().memory(object().memory().enemy().selected());
-
 		if (mem_object.m_object) {
 			object().best_cover		(mem_object.m_object_params.m_position);
 		}
@@ -706,8 +704,6 @@ void CStalkerActionHoldPosition::execute		()
 	}
 
 	if (object().memory().enemy().selected()) {
-		CMemoryInfo					mem_object = object().memory().memory(object().memory().enemy().selected());
-
 		if (mem_object.m_object) {
 			object().best_cover		(mem_object.m_object_params.m_position);
 		}

@@ -394,7 +394,7 @@ bool CUIMapWnd::OnKeyboard				(int dik, EUIMessages keyboard_action)
 bool CUIMapWnd::OnMouse(float x, float y, EUIMessages mouse_action)
 {
 	if(inherited::OnMouse(x,y,mouse_action)) return true;
-	Fvector2 cursor_pos = GetUICursor()->GetPos();
+	cursor_pos = GetUICursor()->GetPos();
 
 	if(GlobalMap() && !GlobalMap()->Locked() && ActiveMapRect().in( cursor_pos ) ){
 		switch (mouse_action)

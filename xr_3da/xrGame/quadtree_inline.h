@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <cmath>
+
 #define TEMPLATE_SPECIALIZATION template <typename _object_type>
 #define CSQuadTree				CQuadTree<_object_type>
 

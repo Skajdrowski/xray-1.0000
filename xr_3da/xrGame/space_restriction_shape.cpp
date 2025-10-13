@@ -110,8 +110,8 @@ void CSpaceRestrictionShape::build_border	()
 		fill_shape					(*I);
 	
 	{
-		xr_vector<u32>::iterator	I = remove_if(m_border.begin(),m_border.end(),CBorderMergePredicate(this));
-		m_border.erase				(I,m_border.end());
+		xr_vector<u32>::iterator	_I = remove_if(m_border.begin(),m_border.end(),CBorderMergePredicate(this));
+		m_border.erase				(_I,m_border.end());
 	}
 
 	process_borders					();

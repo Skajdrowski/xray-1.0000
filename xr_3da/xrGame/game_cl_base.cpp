@@ -353,11 +353,11 @@ bool game_cl_GameState::IR_OnMouseWheel			(int direction)
 	return false;
 }
 
-void game_cl_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
+void game_cl_GameState::u_EventGen(NET_Packet& P, u16 _type, u16 dest)
 {
 	P.w_begin	(M_EVENT);
 	P.w_u32		(Level().timeServer());
-	P.w_u16		(type);
+	P.w_u16		(_type);
 	P.w_u16		(dest);
 }
 

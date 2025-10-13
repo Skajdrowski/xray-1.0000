@@ -19,7 +19,7 @@ extern "C" {
 #endif // __cplusplus
 
 
-// DirectSound Private Component GUID {11AB3EC0-25EC-11d1-A4D8-00C04FC28ACA}
+// DirectSound Configuration Component GUID {11AB3EC0-25EC-11d1-A4D8-00C04FC28ACA}
 DEFINE_GUID(CLSID_DirectSoundPrivate, 0x11ab3ec0, 0x25ec, 0x11d1, 0xa4, 0xd8, 0x0, 0xc0, 0x4f, 0xc2, 0x8a, 0xca);
 
 
@@ -192,4 +192,5 @@ typedef struct _DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA
 #endif // __cplusplus
 
 #endif  // __DSCONF_INCLUDED__
+
 

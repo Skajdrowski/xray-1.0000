@@ -107,7 +107,7 @@ void CConsole::OnRender	()
 	VERIFY	(HW.pDevice);
 
 	//*** Shadow
-	D3DRECT R = { 0,0,Device.dwWidth,Device.dwHeight};
+	D3DRECT R = { 0,0,static_cast<LONG>(Device.dwWidth),static_cast<LONG>(Device.dwHeight)};
 	if		(bGame) R.y2 /= 2;
 
 	CHK_DX	(HW.pDevice->Clear(1,&R,D3DCLEAR_TARGET,D3DCOLOR_XRGB(32,32,32),1,0));
@@ -509,8 +509,8 @@ BOOL CConsole::GetBool(LPCSTR cmd, BOOL& val)
 		if(cf){
 			val = cf->GetValue();
 		}else{
-			CCC_Integer* cf = dynamic_cast<CCC_Integer*>(C);
-			val = !!cf->GetValue();
+			CCC_Integer* _cf = dynamic_cast<CCC_Integer*>(C);
+			val = !!_cf->GetValue();
 		}
 	}
 	return val;

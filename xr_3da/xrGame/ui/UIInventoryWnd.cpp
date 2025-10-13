@@ -333,7 +333,6 @@ void CUIInventoryWnd::Hide()
 
 	if (!IsGameTypeSingle())
 	{
-		CActor *pActor		= smart_cast<CActor*>(Level().CurrentEntity());
 		if(!pActor)			return;
 
 		pActor->SetWeaponHideState(INV_STATE_INV_WND, false);

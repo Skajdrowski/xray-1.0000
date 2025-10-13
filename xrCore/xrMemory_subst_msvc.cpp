@@ -221,25 +221,25 @@ void*	xrMemory::mem_realloc	(void* P, size_t size
 		u32		s_dest			= (u32)size;
 		void*	p_old			= P;
 
-		void*	p_new			= mem_alloc(size
+		void*	vp_new			= mem_alloc(size
 #ifdef DEBUG_MEMORY_NAME
 			,_name
 #endif // DEBUG_MEMORY_NAME
 		);
-		mem_copy				(p_new,p_old,_min(s_current,s_dest));
+		mem_copy				(vp_new,p_old,_min(s_current,s_dest));
 		mem_free				(p_old);
-		_ptr					= p_new;
+		_ptr					= vp_new;
 	} else if (2==p_mode)		{
 		// relocate into another mmgr(pooled) from real
-		void*	p_old			= P;
-		void*	p_new			= mem_alloc(size
+		void*	p__old			= P;
+		void*	p__new			= mem_alloc(size
 #	ifdef DEBUG_MEMORY_NAME
 			,_name
 #	endif // DEBUG_MEMORY_NAME
 		);
-		mem_copy				(p_new,p_old,(u32)size);
-		mem_free				(p_old);
-		_ptr					= p_new;
+		mem_copy				(p__new,p__old,(u32)size);
+		mem_free				(p__old);
+		_ptr					= p__new;
 	}
 
 #ifdef DEBUG_MEMORY_MANAGER

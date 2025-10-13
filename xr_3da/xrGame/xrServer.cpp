@@ -350,7 +350,6 @@ u32 xrServer::OnMessage	(NET_Packet& P, ClientID sender)			// Non-Zero means bro
 		}break;
 	case M_CL_UPDATE:
 		{
-			xrClientData* CL		= ID_to_client	(sender);
 			if (!CL)				break;
 			CL->net_Ready			= TRUE;
 

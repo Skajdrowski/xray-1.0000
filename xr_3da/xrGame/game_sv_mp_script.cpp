@@ -144,9 +144,9 @@ void game_sv_mp_script::net_Export_State (NET_Packet& P, ClientID id_to)
 	inherited::net_Export_State(P,id_to);
 };
 
-void game_sv_mp_script::OnEvent (NET_Packet &P, u16 type, u32 time, ClientID sender )
+void game_sv_mp_script::OnEvent (NET_Packet &P, u16 _type, u32 time, ClientID sender )
 {
-	inherited::OnEvent(P,type,time,sender);
+	inherited::OnEvent(P,_type,time,sender);
 };
 void game_sv_mp_script::OnPlayerConnect (ClientID id_who)
 {

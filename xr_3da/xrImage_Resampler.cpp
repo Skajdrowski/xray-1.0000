@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "xrImage_Resampler.h"
+#include <cmath>
 
 typedef	u32	Pixel;
 struct Image

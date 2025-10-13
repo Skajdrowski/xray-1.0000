@@ -248,13 +248,13 @@ void CLightProjector::calculate	()
 		// Select slot, set viewport
 		int		s_x				=	c_it%P_o_line;
 		int		s_y				=	c_it/P_o_line;
-		D3DVIEWPORT9 VP			=	{s_x*P_o_size,s_y*P_o_size,P_o_size,P_o_size,0,1 };
+		D3DVIEWPORT9 VP			= {static_cast<DWORD>(s_x * P_o_size), static_cast<DWORD>(s_y * P_o_size), static_cast<DWORD>(P_o_size), static_cast<DWORD>(P_o_size), 0.0f, 1.0f};
 		CHK_DX					(HW.pDevice->SetViewport(&VP));
 
 		// Clear color to ambience
 		Fvector&	cap			=	LT->get_approximate();
 		CHK_DX					(HW.pDevice->Clear(0,0, D3DCLEAR_TARGET, color_rgba_f(cap.x,cap.y,cap.z, (cap.x+cap.y+cap.z)/4.f), 1, 0 ));
-
+		
 		// calculate uv-gen matrix and clamper
 		Fmatrix					mCombine;		mCombine.mul	(mProject,mView);
 		Fmatrix					mTemp;

@@ -40,8 +40,8 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 
 #pragma warning(pop)
 
-void game_cl_mp_script::EventGen	( NET_Packet* P, u16 type, u16 dest)
-{ u_EventGen(*P,type,dest); }
+void game_cl_mp_script::EventGen	( NET_Packet* P, u16 _type, u16 dest)
+{ u_EventGen(*P,_type,dest); }
 
 void game_cl_mp_script::GameEventGen	( NET_Packet* P, u16 dest)
 { u_EventGen(*P,u16(GE_GAME_EVENT&0xffff),dest); }

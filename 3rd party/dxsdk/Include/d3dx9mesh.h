@@ -129,6 +129,16 @@ typedef enum _D3DXIMT
     D3DXIMT_WRAP_UV =                   0x03,
 } D3DXIMT;
 
+// These options are only valid for UVAtlasCreate and UVAtlasPartition, we may add more for UVAtlasPack if necessary
+// D3DXUVATLAS_DEFAULT - Meshes with more than 25k faces go through fast, meshes with fewer than 25k faces go through quality
+// D3DXUVATLAS_GEODESIC_FAST - Uses approximations to improve charting speed at the cost of added stretch or more charts.
+// D3DXUVATLAS_GEODESIC_QUALITY - Provides better quality charts, but requires more time and memory than fast.
+typedef enum _D3DXUVATLAS
+{
+    D3DXUVATLAS_DEFAULT               = 0x00,
+    D3DXUVATLAS_GEODESIC_FAST         = 0x01,
+    D3DXUVATLAS_GEODESIC_QUALITY      = 0x02,
+} D3DXUVATLAS;
 
 typedef struct ID3DXBaseMesh *LPD3DXBASEMESH;
 typedef struct ID3DXMesh *LPD3DXMESH;
@@ -1162,6 +1172,16 @@ typedef HRESULT (WINAPI *LPD3DXUVATLASCB)(FLOAT fPercentDone,  LPVOID lpUserCont
 //                   if your vertex has multiple texture coordinates.
 //  pdwAdjacency - a pointer to an array with 3 DWORDs per face, indicating
 //                 which triangles are adjacent to each other.
+//  pdwFalseEdgeAdjacency - a pointer to an array with 3 DWORDS per face, indicating
+//                          at each face, whether an edge is a false edge or not (using
+//                          the same ordering as the adjacency data structure). If this
+//                          is NULL, then it is assumed that there are no false edges. If
+//                          not NULL, then a non-false edge is indicated by -1 and a false
+//                          edge is indicated by any other value (it is not required, but
+//                          it may be useful for the caller to use the original adjacency
+//                          value). This allows you to parameterize a mesh of quads, and
+//                          the edges down the middle of each quad will not be cut when
+//                          parameterizing the mesh.
 //  pfIMTArray - a pointer to an array with 3 FLOATs per face, describing the
 //               integrated metric tensor for that face. This lets you control
 //               the way this triangle may be stretched in the atlas. The IMT
@@ -1183,13 +1203,14 @@ typedef HRESULT (WINAPI *LPD3DXUVATLASCB)(FLOAT fPercentDone,  LPVOID lpUserCont
 //               letting S be the direction from the first to the second
 //               vertex, and T be the cross product between the normal and S.
 //               
-//  pCallback - Since the atlas creation process can be very CPU intensive,
-//              this allows the programmer to specify a function to be called
-//              periodically, similarly to how it is done in the PRT simulation
-//              engine.
+//  pStatusCallback - Since the atlas creation process can be very CPU intensive,
+//                    this allows the programmer to specify a function to be called
+//                    periodically, similarly to how it is done in the PRT simulation
+//                    engine.
 //  fCallbackFrequency - This lets you specify how often the callback will be
 //                       called. A decent default should be 0.0001f.
 //  pUserContext - a void pointer to be passed back to the callback function
+//  dwOptions - A combination of flags in the D3DXUVATLAS enum
 //  ppMeshOut - A pointer to a location to store a pointer for the newly created
 //              mesh.
 //  ppFacePartitioning - A pointer to a location to store a pointer for an array,
@@ -1212,10 +1233,12 @@ HRESULT WINAPI D3DXUVAtlasCreate(LPD3DXMESH pMesh,
                                  FLOAT fGutter,
                                  DWORD dwTextureIndex,
                                  CONST DWORD *pdwAdjacency,
-                                 FLOAT *pfIMTArray,
-                                 LPD3DXUVATLASCB pCallback,
+                                 CONST DWORD *pdwFalseEdgeAdjacency,
+                                 CONST FLOAT *pfIMTArray,
+                                 LPD3DXUVATLASCB pStatusCallback,
                                  FLOAT fCallbackFrequency,
                                  LPVOID pUserContext,
+                                 DWORD dwOptions,
                                  LPD3DXMESH *ppMeshOut,
                                  LPD3DXBUFFER *ppFacePartitioning,
                                  LPD3DXBUFFER *ppVertexRemapArray,
@@ -1227,31 +1250,63 @@ HRESULT WINAPI D3DXUVAtlasCreate(LPD3DXMESH pMesh,
 // modify it before sending it to be repacked. Note that if you change the
 // partitioning, you'll also need to calculate new texture coordinates for any faces
 // that have switched charts.
+//
+// The partition result adjacency output parameter is meant to be passed to the
+// UVAtlasPack function, this adjacency cuts edges that are between adjacent
+// charts, and also can include cuts inside of a chart in order to make it
+// equivalent to a disc. For example:
+//
+// _______
+// | ___ |
+// | |_| |
+// |_____|
+//
+// In order to make this equivalent to a disc, we would need to add a cut, and it
+// Would end up looking like:
+// _______
+// | ___ |
+// | |_|_|
+// |_____|
+//
+// The resulting partition adjacency parameter cannot be NULL, because it is
+// required for the packing step.
+
+
+
 HRESULT WINAPI D3DXUVAtlasPartition(LPD3DXMESH pMesh,
                                     UINT uMaxChartNumber,
                                     FLOAT fMaxStretch,
                                     DWORD dwTextureIndex,
                                     CONST DWORD *pdwAdjacency,
-                                    FLOAT *pfIMTArray,
-                                    LPD3DXUVATLASCB pCallback,
+                                    CONST DWORD *pdwFalseEdgeAdjacency,
+                                    CONST FLOAT *pfIMTArray,
+                                    LPD3DXUVATLASCB pStatusCallback,
                                     FLOAT fCallbackFrequency,
                                     LPVOID pUserContext,
+                                    DWORD dwOptions,
                                     LPD3DXMESH *ppMeshOut,
                                     LPD3DXBUFFER *ppFacePartitioning,
                                     LPD3DXBUFFER *ppVertexRemapArray,
+                                    LPD3DXBUFFER *ppPartitionResultAdjacency,
                                     FLOAT *pfMaxStretchOut,
                                     UINT *puNumChartsOut);
 
 // This takes the face partitioning result from Partition and packs it into an
-// atlas of the given size.
+// atlas of the given size. pdwPartitionResultAdjacency should be derived from
+// the adjacency returned from the partition step. This value cannot be NULL
+// because Pack needs to know where charts were cut in the partition step in
+// order to find the edges of each chart.
+// The options parameter is currently reserved.
 HRESULT WINAPI D3DXUVAtlasPack(ID3DXMesh *pMesh,
                                UINT uWidth,
                                UINT uHeight,
                                FLOAT fGutter,
                                DWORD dwTextureIndex,
-                               LPD3DXUVATLASCB pCallback,
+                               CONST DWORD *pdwPartitionResultAdjacency,
+                               LPD3DXUVATLASCB pStatusCallback,
                                FLOAT fCallbackFrequency,
                                LPVOID pUserContext,
+                               DWORD dwOptions,
                                LPD3DXBUFFER pFacePartitioning);
 
 
@@ -1271,15 +1326,17 @@ HRESULT WINAPI D3DXUVAtlasPack(ID3DXMesh *pMesh,
 
 // This callback is used by D3DXComputeIMTFromSignal.
 //
-// uv               - The texture coordinate for the vertex
-// uSignalDimension - The number of floats to store in pfSignalOut
-// pUserData        - The pUserData pointer passed in to ComputeIMTFromSignal
+// uv               - The texture coordinate for the vertex.
+// uPrimitiveID     - Face ID of the triangle on which to compute the signal.
+// uSignalDimension - The number of floats to store in pfSignalOut.
+// pUserData        - The pUserData pointer passed in to ComputeIMTFromSignal.
 // pfSignalOut      - A pointer to where to store the signal data.
 typedef HRESULT (WINAPI* LPD3DXIMTSIGNALCALLBACK)
-     (CONST D3DXVECTOR2 *uv,
-      UINT uSignalDimension,
-      VOID *pUserData,
-      FLOAT *pfSignalOut);
+    (CONST D3DXVECTOR2 *uv,
+     UINT uPrimitiveID,
+     UINT uSignalDimension,
+     VOID *pUserData,
+     FLOAT *pfSignalOut);
 
 // This function is used to calculate the IMT from per vertex data. It sets
 // up a linear system over the triangle, solves for the jacobian J, then
@@ -1298,12 +1355,14 @@ typedef HRESULT (WINAPI* LPD3DXIMTSIGNALCALLBACK)
 // ppIMTData        - Where to store the buffer holding the IMT data
 
 HRESULT WINAPI D3DXComputeIMTFromPerVertexSignal (
-	LPD3DXMESH pMesh,
-	CONST FLOAT *pfVertexSignal, // uSignalDimension floats per vertex
-	UINT uSignalDimension,
-	UINT uSignalStride,         // stride of signal in bytes
+    LPD3DXMESH pMesh,
+    CONST FLOAT *pfVertexSignal, // uSignalDimension floats per vertex
+    UINT uSignalDimension,
+    UINT uSignalStride,         // stride of signal in bytes
     DWORD dwOptions,            // reserved for future use
-	LPD3DXBUFFER *ppIMTData);
+    LPD3DXUVATLASCB pStatusCallback,
+    LPVOID pUserContext,
+    LPD3DXBUFFER *ppIMTData);
 
 // This function is used to calculate the IMT from data that varies over the
 // surface of the mesh (generally at a higher frequency than vertex data).
@@ -1322,14 +1381,16 @@ HRESULT WINAPI D3DXComputeIMTFromPerVertexSignal (
 // pUserData        - A pointer that will be passed in to the callback.
 // ppIMTData        - Where to store the buffer holding the IMT data
 HRESULT WINAPI D3DXComputeIMTFromSignal(
-     LPD3DXMESH pMesh,
-     DWORD dwTextureIndex,
-     UINT uSignalDimension,
-     FLOAT fMaxUVDistance,
-     DWORD dwOptions, // reserved for future use
-     LPD3DXIMTSIGNALCALLBACK pSignalCallback,
-     VOID *pUserData,
-     LPD3DXBUFFER *ppIMTData);
+    LPD3DXMESH pMesh,
+    DWORD dwTextureIndex,
+    UINT uSignalDimension,
+    FLOAT fMaxUVDistance,
+    DWORD dwOptions, // reserved for future use
+    LPD3DXIMTSIGNALCALLBACK pSignalCallback,
+    VOID *pUserData,
+    LPD3DXUVATLASCB pStatusCallback,
+    LPVOID pUserContext,
+    LPD3DXBUFFER *ppIMTData);
 
 // This function is used to calculate the IMT from texture data. Given a texture
 // that maps over the surface of the mesh, the algorithm computes the IMT for
@@ -1344,11 +1405,13 @@ HRESULT WINAPI D3DXComputeIMTFromSignal(
 // dwOptions        - Combination of one or more D3DXIMT flags.
 // ppIMTData        - Where to store the buffer holding the IMT data
 HRESULT WINAPI D3DXComputeIMTFromTexture (
-     LPD3DXMESH pMesh,
-     LPDIRECT3DTEXTURE9 pTexture,
-     DWORD dwTextureIndex,
-     DWORD dwOptions,
-     LPD3DXBUFFER *ppIMTData);
+    LPD3DXMESH pMesh,
+    LPDIRECT3DTEXTURE9 pTexture,
+    DWORD dwTextureIndex,
+    DWORD dwOptions,
+    LPD3DXUVATLASCB pStatusCallback,
+    LPVOID pUserContext,
+    LPD3DXBUFFER *ppIMTData);
 
 // This function is very similar to ComputeIMTFromTexture, but it uses a
 // float array to pass in the data, and it can calculate higher dimensional
@@ -1365,15 +1428,18 @@ HRESULT WINAPI D3DXComputeIMTFromTexture (
 // uComponents      - The number of floats in each texel
 // dwOptions        - Combination of one or more D3DXIMT flags
 // ppIMTData        - Where to store the buffer holding the IMT data
-HRESULT WINAPI D3DXComputeIMTFromPerTexelSignal(LPD3DXMESH pMesh,
-                                                DWORD dwTextureIndex,
-                                                FLOAT *pfTexelSignal,
-                                                UINT uWidth,
-                                                UINT uHeight,
-                                                UINT uSignalDimension,
-                                                UINT uComponents,
-                                                DWORD dwOptions,
-                                                LPD3DXBUFFER *ppIMTData);
+HRESULT WINAPI D3DXComputeIMTFromPerTexelSignal(
+    LPD3DXMESH pMesh,
+    DWORD dwTextureIndex,
+    FLOAT *pfTexelSignal,
+    UINT uWidth,
+    UINT uHeight,
+    UINT uSignalDimension,
+    UINT uComponents,
+    DWORD dwOptions,
+    LPD3DXUVATLASCB pStatusCallback,
+    LPVOID pUserContext,
+    LPD3DXBUFFER *ppIMTData);
 
 HRESULT WINAPI
     D3DXConvertMeshSubsetToSingleStrip(

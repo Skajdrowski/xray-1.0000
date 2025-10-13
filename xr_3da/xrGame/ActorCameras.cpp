@@ -74,7 +74,7 @@ void CActor::camUpdateLadder(float dt)
 	{
 		float &cam_pitch					= cameras[eacFirstEye]->pitch;
 		const float ldown_pitch				= cameras[eacFirstEye]->lim_pitch.y;
-		float delta							= angle_difference_signed(ldown_pitch,cam_pitch);
+		delta								= angle_difference_signed(ldown_pitch,cam_pitch);
 		if(delta>0.f)
 			cam_pitch						+= delta* _min(dt*10.f,1.f) ;
 	}

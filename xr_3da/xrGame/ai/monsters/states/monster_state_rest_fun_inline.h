@@ -55,7 +55,6 @@ void CStateMonsterRestFunAbstract::execute()
 		CPhysicsShellHolder	*target = smart_cast<CPhysicsShellHolder *>	(corpse);
 
 		if  (target && target->m_pPhysicsShell) {
-			Fvector			dir;
 			dir.add			(Fvector().sub(target->Position(), object->Position()), object->Direction());
 			
 			float			h,p;
