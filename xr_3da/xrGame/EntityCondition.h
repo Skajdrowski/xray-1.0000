@@ -84,11 +84,10 @@ public:
 	IC void 				SetCanBeHarmedState		(bool CanBeHarmed) 			{m_bCanBeHarmed = CanBeHarmed;}
 	IC bool					CanBeHarmed				() const					{return OnServer() && m_bCanBeHarmed;};
 	
-	void					ClearWounds();
+	void					ClearWounds				();
 protected:
 	void					UpdateHealth			();
 	void					UpdatePower				();
-	void					UpdateSatiety			(float k=1.0f);
 	void					UpdateRadiation			(float k=1.0f);
 	void					UpdatePsyHealth			(float k=1.0f);
 

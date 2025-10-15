@@ -81,6 +81,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 
 		.def("get_bleeding",				&CScriptGameObject::GetBleeding)
 		.def("clear_wounds",				&CScriptGameObject::ClearWounds)
+		.def("set_satiety",					&CScriptGameObject::SetSatiety)
 		.def("center",						&CScriptGameObject::Center)
 		.def("position",					&CScriptGameObject::Position)
 		.def("direction",					&CScriptGameObject::Direction)
