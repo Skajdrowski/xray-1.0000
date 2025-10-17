@@ -315,13 +315,13 @@ void game_sv_GameState::Create					(shared_str &options)
 			{
 				RPoint					R;
 				u8						team;
-				u8						type;
+				u8						_type;
 				u8						GameType;
 
 				O->r_fvector3			(R.P);
 				O->r_fvector3			(R.A);
 				team					= O->r_u8	();	VERIFY(team>=0 && team<4);
-				type					= O->r_u8	();
+				_type					= O->r_u8	();
 				GameType				= O->r_u8	();
 				//u16 res					= 
 				O->r_u8	();
@@ -336,7 +336,7 @@ void game_sv_GameState::Create					(shared_str &options)
 						continue;
 					};
 				};
-				switch (type)
+				switch (_type)
 				{
 				case rptActorSpawn:
 					{
@@ -517,11 +517,11 @@ void game_sv_GameState::GenerateGameMessage (NET_Packet &P)
 	P.w_begin(M_GAMEMESSAGE); 
 };
 
-void game_sv_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
+void game_sv_GameState::u_EventGen(NET_Packet& P, u16 _type, u16 dest)
 {
 	P.w_begin	(M_EVENT);
 	P.w_u32		(Level().timeServer());//Device.TimerAsync());
-	P.w_u16		(type);
+	P.w_u16		(_type);
 	P.w_u16		(dest);
 }
 
@@ -610,9 +610,9 @@ void game_sv_GameState::OnHit (u16 id_hitter, u16 id_hitted, NET_Packet& P)
 	};
 };
 
-void game_sv_GameState::OnEvent (NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender )
+void game_sv_GameState::OnEvent (NET_Packet &tNetPacket, u16 _type, u32 time, ClientID sender )
 {
-	switch	(type)
+	switch	(_type)
 	{	
 	case GAME_EVENT_PLAYER_CONNECTED:
 		{
@@ -746,10 +746,10 @@ void game_sv_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 	signal_Syncronize	(); 
 }
 
-void game_sv_GameState::AddDelayedEvent(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender )
+void game_sv_GameState::AddDelayedEvent(NET_Packet &tNetPacket, u16 _type, u32 time, ClientID sender )
 {
 //	OnEvent(tNetPacket,type,time,sender);
-	m_event_queue->Create(tNetPacket,type,time,sender);
+	m_event_queue->Create(tNetPacket,_type,time,sender);
 }
 
 void game_sv_GameState::ProcessDelayedEvent		()

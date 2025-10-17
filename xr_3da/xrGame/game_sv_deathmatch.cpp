@@ -1773,7 +1773,7 @@ BOOL	game_sv_Deathmatch::Is_Anomaly_InLists		(CSE_Abstract* E)
 	for (u32 j=0; j<m_AnomalySetsList.size(); j++)
 	{
 		ANOMALIES* Anomalies = &(m_AnomalySetsList[j]);
-		ANOMALIES_it It = std::find(Anomalies->begin(), Anomalies->end(),E->name_replace());
+		It = std::find(Anomalies->begin(), Anomalies->end(),E->name_replace());
 		if (It != Anomalies->end())
 		{
 			return TRUE;

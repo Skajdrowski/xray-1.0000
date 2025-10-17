@@ -69,7 +69,7 @@ bool CUIKickPlayer::OnKeyboard(int dik, EUIMessages keyboard_action){
 void CUIKickPlayer::SendMessage(CUIWindow* pWnd, s16 msg, void* pData){
 	if (LIST_ITEM_SELECT == msg && pWnd == lst)
 	{		
-		CUIListBox* lst			= smart_cast<CUIListBox*>	(pWnd);
+		lst			= smart_cast<CUIListBox*>	(pWnd);
 		CUIListBoxItem* itm		= lst->GetItemByID			( *((u32*)(pData)) );
 		selected_item_id		= itm->GetID				();
 		selected_item_text		= itm->GetText				();

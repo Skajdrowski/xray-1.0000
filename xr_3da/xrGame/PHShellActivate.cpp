@@ -29,7 +29,7 @@ void CPHShell::Activate(const Fmatrix &m0,float dt01,const Fmatrix &m2,bool disa
 	if(!CPHObject::is_active()) vis_update_deactivate();
 	if(!disable)EnableObject(0);
 
-	ELEMENT_I i;
+	ELEMENT_I i,e;
 	mXFORM.set(m0);
 	//for(i=elements.begin();elements.end() != i;++i){
 
@@ -37,13 +37,14 @@ void CPHShell::Activate(const Fmatrix &m0,float dt01,const Fmatrix &m2,bool disa
 	//}
 	
 	{		
-		ELEMENT_I i=elements.begin(),e=elements.end();
+		i=elements.begin();
+		e=elements.end();
 		for(;i!=e;++i)(*i)->Activate(mXFORM,disable);
 	}
 
 	{
-		JOINT_I i=joints.begin(),e=joints.end();
-		for(;i!=e;++i) (*i)->Activate();
+		JOINT_I jointi=joints.begin(),jointe=joints.end();
+		for(;jointi!=jointe;++jointi) (*jointi)->Activate();
 	}	
 	
 	Fmatrix m;
@@ -89,8 +90,8 @@ void CPHShell::Activate(const Fmatrix &transform,const Fvector& lin_vel,const Fv
 	}
 	
 	{
-		JOINT_I i=joints.begin(),e=joints.end();
-		for(;i!=e;++i) (*i)->Activate();
+		JOINT_I jointi=joints.begin(),e=joints.end();
+		for(;jointi!=e;++jointi) (*jointi)->Activate();
 	}	
 
 	if(PKinematics())

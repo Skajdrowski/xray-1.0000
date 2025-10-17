@@ -150,7 +150,7 @@ void CUIListWnd::RemoveItem(int index)
 
 	//�������������� ������� ������
 	int i=0;
-	for(LIST_ITEM_LIST_it it=m_ItemList.begin();  m_ItemList.end() != it; ++it,i++)
+	for(it=m_ItemList.begin();  m_ItemList.end() != it; ++it,i++)
 	{
 		(*it)->SetIndex(i);
 	}

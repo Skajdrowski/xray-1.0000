@@ -222,7 +222,7 @@ void CBulletManager::UpdateWorkload()
 	m_Lock.Leave		();
 }
 
-bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISpatial*>& rq_spatial, SBullet* bullet, u32 delta_time)
+bool CBulletManager::CalcBullet (collide::rq_results & _rq_storage, xr_vector<ISpatial*>& _rq_spatial, SBullet* bullet, u32 delta_time)
 {
 	VERIFY					(bullet);
 
@@ -243,8 +243,8 @@ bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISp
 	collide::ray_defs RD			(bullet->pos, bullet->dir, range, CDB::OPT_CULL, collide::rqtBoth);
 	BOOL result						= FALSE;
 	VERIFY							(!fis_zero(RD.dir.square_magnitude()));
-	result							= Level().ObjectSpace.RayQuery(rq_storage, RD, firetrace_callback, bullet, test_callback, NULL);
-	if (result) range				= (rq_storage.r_begin()+rq_storage.r_count()-1)->range;
+	result							= Level().ObjectSpace.RayQuery(_rq_storage, RD, firetrace_callback, bullet, test_callback, NULL);
+	if (result) range				= (_rq_storage.r_begin()+_rq_storage.r_count()-1)->range;
 	range		= _max				(EPS_L,range);
 
 	bullet->flags.skipped_frame = (Device.dwFrame >= bullet->frame_num);

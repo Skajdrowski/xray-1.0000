@@ -39,17 +39,17 @@ void SStatSectionData::load(IReader &stream)
 	load_data			(total_points,	stream);
 };
 
-SStatDetailData&	SStatSectionData::GetData	(const shared_str& key)
+SStatDetailData&	SStatSectionData::GetData	(const shared_str& _key)
 {
 	vStatDetailData::iterator it		= data.begin();
 	vStatDetailData::iterator it_e		= data.end();
 
 	for(;it!=it_e;++it){
-		if((*it).key == key)
+		if((*it).key == _key)
 			return *it;
 	}
 	data.resize				(data.size()+1);
-	data.back				().key		= key;
+	data.back				().key		= _key;
 	data.back				().count	= 0;
 	data.back				().points	= 0;
 	return data.back		();

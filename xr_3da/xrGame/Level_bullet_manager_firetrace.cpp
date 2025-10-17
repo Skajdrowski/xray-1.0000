@@ -431,7 +431,7 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 		//уменьшить скорость в зависимости от простреливаемости
 		bullet->speed *= (1-mtl->fShootFactor)*scale;
 		//сколько энергии в процентах потеряла пуля при столкновении
-		float energy_lost = 1.f - bullet->speed/old_speed;
+		energy_lost = 1.f - bullet->speed/old_speed;
 		//импульс переданный объекту равен прямопропорционален потерянной энергии
 		impulse = bullet->hit_impulse*speed_factor*energy_lost;
 

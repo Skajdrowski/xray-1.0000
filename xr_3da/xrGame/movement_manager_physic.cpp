@@ -214,7 +214,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	// Физика устанавливает позицию в соответствии с нулевой скоростью 
 	if (detail().completed(dest_position,true)) {
 		if(!movement_control->PhyssicsOnlyMode()) {
-			Fvector velocity				= {0.f,0.f,0.f};
+			velocity				= {0.f,0.f,0.f};
 			movement_control->SetVelocity	(velocity);
 			m_speed							= 0.f;
 		}

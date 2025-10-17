@@ -381,7 +381,7 @@ void			CLevel::SendPingMessage				()
 {
 	u32 CurTime = timeServer_Async();
 	if (CurTime < (m_dwCL_PingLastSendTime + m_dwCL_PingDeltaSend)) return;
-	u32 m_dwCL_PingLastSendTime = CurTime;
+	m_dwCL_PingLastSendTime = CurTime;
 	NET_Packet P;
 	P.w_begin		(M_CL_PING_CHALLENGE);
 	P.w_u32			(m_dwCL_PingLastSendTime);

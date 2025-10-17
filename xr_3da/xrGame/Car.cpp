@@ -1656,7 +1656,6 @@ void CCar::OnEvent(NET_Packet& P, u16 type)
 			else 
 			{
 				if (!O || !O->H_Parent() || (this != O->H_Parent())) return;
-				NET_Packet P;
 				u_EventGen(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16(u16(O->ID()));
 				u_EventSend(P);

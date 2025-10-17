@@ -804,7 +804,7 @@ bool CPHSimpleCharacter::ValidateWalkOnObject()
 }
 bool CPHSimpleCharacter::ValidateWalkOnMesh()
 {
-	Fvector AABB,AABB_forbid,center,center_forbid,accel_add,accel;
+	Fvector AABB_forbid,center,center_forbid,accel_add,accel;
 	
 	AABB.x=m_radius;
 	AABB.y=m_radius;

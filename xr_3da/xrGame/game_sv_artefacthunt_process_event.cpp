@@ -3,10 +3,10 @@
 #include "xrMessages.h"
 #include "../../xrNetServer/net_utils.h"
 
-void	game_sv_ArtefactHunt::OnEvent (NET_Packet &P, u16 type, u32 time, ClientID sender )
+void	game_sv_ArtefactHunt::OnEvent (NET_Packet &P, u16 _type, u32 time, ClientID sender )
 {
 
-	switch	(type)
+	switch	(_type)
 	{
 	case GAME_EVENT_PLAYER_ENTER_TEAM_BASE:
 		{
@@ -23,6 +23,6 @@ void	game_sv_ArtefactHunt::OnEvent (NET_Packet &P, u16 type, u32 time, ClientID 
 		}break;
 
 	default:
-		inherited::OnEvent(P, type, time, sender);
+		inherited::OnEvent(P, _type, time, sender);
 	}
 }

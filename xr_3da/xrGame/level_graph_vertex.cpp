@@ -259,7 +259,6 @@ u32	 CLevelGraph::check_position_in_direction_slow	(u32 start_vertex_id, const F
 				if (dest_xz == v->position().xz()) {
 					return	(is_accessible(next_vertex_id) ? next_vertex_id : u32(-1));
 				}
-				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
 				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
@@ -312,7 +311,6 @@ bool CLevelGraph::check_vertex_in_direction_slow	(u32 start_vertex_id, const Fve
 				if (next_vertex_id == finish_vertex_id) {
 					return		(is_accessible(next_vertex_id));
 				}
-				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
 				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
@@ -388,7 +386,6 @@ bool CLevelGraph::create_straight_path(u32 start_vertex_id, const Fvector2 &star
 			box.min			= box.max = temp;
 			box.grow		(identity);
 			if (box.pick_exact(start,dir)) {
-				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
 				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
@@ -503,7 +500,6 @@ bool CLevelGraph::neighbour_in_direction	(const Fvector &direction, u32 start_ve
 		box.min				= box.max = temp;
 		box.grow			(identity);
 		if (box.pick_exact(start,dir)) {
-			Fvector2		temp;
 			temp.add		(box.min,box.max);
 			temp.mul		(.5f);
 			float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);

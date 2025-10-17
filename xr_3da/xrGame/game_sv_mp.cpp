@@ -160,9 +160,9 @@ void	game_sv_mp::KillPlayer				(ClientID id_who, u16 GameID)
 };
 
 
-void	game_sv_mp::OnEvent (NET_Packet &P, u16 type, u32 time, ClientID sender )
+void	game_sv_mp::OnEvent (NET_Packet &P, u16 _type, u32 time, ClientID sender )
 {
-	switch	(type)
+	switch	(_type)
 	{	
 	case GAME_EVENT_PLAYER_KILLED:  //playerKillPlayer
 		{
@@ -215,7 +215,7 @@ void	game_sv_mp::OnEvent (NET_Packet &P, u16 type, u32 time, ClientID sender )
 //			OnPlayerSelectSpectator(P, sender);
 		}break;
 	default:
-		inherited::OnEvent(P, type, time, sender);
+		inherited::OnEvent(P, _type, time, sender);
 	};//switch
 
 }
@@ -989,7 +989,7 @@ void	game_sv_mp::OnPlayerChangeName		(NET_Packet& P, ClientID sender)
 		for(u32 it=0; it<cnt; it++)	
 		{
 			xrClientData *l_pC = (xrClientData*)	m_server->client_Get	(it);
-			game_PlayerState* ps	= l_pC->ps;
+			ps	= l_pC->ps;
 			if (!l_pC || !l_pC->net_Ready || !ps) continue;
 			m_server->SendTo(l_pC->ID, P);
 		};
@@ -1025,7 +1025,7 @@ void		game_sv_mp::OnPlayerSpeechMessage	(NET_Packet& P, ClientID sender)
 		for(u32 it=0; it<cnt; it++)	
 		{
 			xrClientData *l_pC = (xrClientData*)	m_server->client_Get	(it);
-			game_PlayerState* ps	= l_pC->ps;
+			ps	= l_pC->ps;
 			if (!l_pC || !l_pC->net_Ready || !ps) continue;
 			m_server->SendTo(l_pC->ID, NP, net_flags(TRUE, TRUE, TRUE));
 		};

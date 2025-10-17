@@ -54,7 +54,6 @@ void CAI_Stalker::OnEvent		(NET_Packet& P, u16 type)
 			}
 			else {
 //				DropItemSendMessage(O);
-				NET_Packet				P;
 				u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16					(u16(O->ID()));
 				u_EventSend				(P);

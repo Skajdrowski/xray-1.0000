@@ -21,6 +21,7 @@
 #include "../skeletoncustom.h"
 #include "ai_object_location.h"
 #include "object_broker.h"
+#include <algorithm>
 
 #ifdef DEBUG
 #	include "debug_renderer.h"
@@ -717,7 +718,7 @@ void CInventoryItem::CalculateInterpolationParams()
 	if (( lV0 + lV1) > 0.000001 && g_cl_lvInterp == 0)
 	{
 		u32		CulcTime = iCeil(TotalLen*2000/( lV0 + lV1));
-		p->m_dwIEndTime = p->m_dwIStartTime + min(CulcTime, ConstTime);
+		p->m_dwIEndTime = p->m_dwIStartTime + std::min(CulcTime, ConstTime);
 	}
 	else
 		p->m_dwIEndTime = p->m_dwIStartTime + ConstTime;

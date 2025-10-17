@@ -441,7 +441,6 @@ IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvector2 &
 			box.min			= box.max = temp;
 			box.grow		(identity);
 			if (box.pick_exact(start,dir)) {
-				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
 				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);

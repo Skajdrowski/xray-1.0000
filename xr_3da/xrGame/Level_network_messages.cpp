@@ -131,7 +131,7 @@ void CLevel::ClientReceive()
 				u8 Count = P->r_u8();
 				for (u8 i=0; i<Count; i++)
 				{
-					u16 ID = P->r_u16();					
+					ID = P->r_u16();					
 					Fvector NewPos, NewDir;
 					P->r_vec3(NewPos);
 					P->r_vec3(NewDir);

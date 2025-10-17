@@ -77,11 +77,11 @@ void CPsyDogAura::update_schedule()
 		if ((*it)->EnemyMan.get_enemy() == m_actor)
 			m_time_phantom_saw_actor = time();
 		else {
-			ENEMIES_MAP::const_iterator I = (*it)->EnemyMemory.get_memory().begin();
-			ENEMIES_MAP::const_iterator E = (*it)->EnemyMemory.get_memory().end();
-			for (; I != E; ++I) {
-				if (I->first == m_actor) {
-					m_time_phantom_saw_actor = I->second.time;
+			ENEMIES_MAP::const_iterator mapI = (*it)->EnemyMemory.get_memory().begin();
+			ENEMIES_MAP::const_iterator mapE = (*it)->EnemyMemory.get_memory().end();
+			for (; mapI != mapE; ++mapI) {
+				if (mapI->first == m_actor) {
+					m_time_phantom_saw_actor = mapI->second.time;
 					break;
 				}
 			}

@@ -264,8 +264,8 @@ void CGameTaskManager::UpdateActiveTask				()
 	if( !bHasSpotPointer )
 	{
 		bool bDone								=false;
-		GameTasks::iterator it			= GameTasks().begin();
-		GameTasks::iterator it_e		= GameTasks().end();
+		it			= GameTasks().begin();
+		it_e		= GameTasks().end();
 
 		for( ;(it!=it_e)&&(!bDone); ++it )
 		{

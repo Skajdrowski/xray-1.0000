@@ -462,7 +462,7 @@ void CUIMainIngameWnd::Update()
 
 			// Если его нет, то берем последнее меньшее значение ()
 			if (rit == m_Thresholds[i].rend())
-				rit = std::find_if(m_Thresholds[i].rbegin(), m_Thresholds[i].rend(), std::bind2nd(std::less<float>(), value));
+				rit = std::find_if(m_Thresholds[i].rbegin(), m_Thresholds[i].rend(), [value](float threshold) { return threshold < value; });
 
 			// Минимальное и максимальное значения границы
 			float min = m_Thresholds[i].front();
