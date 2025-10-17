@@ -690,7 +690,6 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
         _set_new_mode					(1);					// gen exception if can't allocate memory
         _set_new_handler				(_out_of_memory	);		// exception-handler for 'out of memory' condition
 		std::set_terminate				(_terminate);
-		std::set_unexpected				(_terminate);
 #ifdef USE_BUG_TRAP
 		SetupExceptionHandler			();
 #endif // USE_BUG_TRAP

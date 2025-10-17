@@ -487,15 +487,15 @@ if(ph_dbg_draw_mask.test(phDbgCharacterControl))
 				CParticlesPlayer::MakeXFORM(this,HDS.bone(),HDS.dir,HDS.p_in_bone_space,pos);
 
 				// ���������� particles
-				CParticlesObject* ps = NULL;
+				CParticlesObject* _ps = NULL;
 
 				if (eacFirstEye == cam_active && this == Level().CurrentEntity())
-					ps = CParticlesObject::Create(invincibility_fire_shield_1st,TRUE);
+					_ps = CParticlesObject::Create(invincibility_fire_shield_1st,TRUE);
 				else
-					ps = CParticlesObject::Create(invincibility_fire_shield_3rd,TRUE);
+					_ps = CParticlesObject::Create(invincibility_fire_shield_3rd,TRUE);
 
-				ps->UpdateParent(pos,Fvector().set(0.f,0.f,0.f));
-				GamePersistent().ps_needtoplay.push_back(ps);
+				_ps->UpdateParent(pos,Fvector().set(0.f,0.f,0.f));
+				GamePersistent().ps_needtoplay.push_back(_ps);
 			};
 		};
 		 

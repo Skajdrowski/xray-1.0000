@@ -179,7 +179,7 @@ public:
 #ifndef BOOST_NO_AUTO_PTR
 
     template<class Y>
-    explicit shared_ptr(std::auto_ptr<Y> & r): px(r.get()), pn()
+    explicit shared_ptr(std::unique_ptr<Y> & r): px(r.get()), pn()
     {
         Y * tmp = r.get();
         pn = detail::shared_count(r);
@@ -203,7 +203,7 @@ public:
 #ifndef BOOST_NO_AUTO_PTR
 
     template<class Y>
-    shared_ptr & operator=(std::auto_ptr<Y> & r)
+    shared_ptr & operator=(std::unique_ptr<Y> & r)
     {
         this_type(r).swap(*this);
         return *this;

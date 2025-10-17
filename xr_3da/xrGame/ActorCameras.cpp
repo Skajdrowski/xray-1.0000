@@ -245,7 +245,6 @@ void CActor::cam_Update(float dt, float fFOV)
 		}
 		else
 		{
-			xr_vector<ISpatial*> ISpatialResult;
 			g_SpatialSpacePhysic->q_box(ISpatialResult, 0, STYPE_PHYSIC, point, Fvector().set(VIEWPORT_NEAR,VIEWPORT_NEAR,VIEWPORT_NEAR));
 			for (u32 o_it=0; o_it<ISpatialResult.size(); o_it++)
 			{
