@@ -859,6 +859,7 @@ void CApplication::LoadEnd		()
 		Msg						("* phase cmem: %d K", Memory.mem_usage()/1024);
 		Console->Execute		("stat_memory");
 		g_appLoaded				= TRUE;
+		Levels[Level_Current].intro_logo_variant = 0;
 //		DUMP_PHASE;
 	}
 }
@@ -946,6 +947,7 @@ void CApplication::Level_Append		(LPCSTR folder)
 		sLevelInfo			LI;
 		LI.folder			= xr_strdup(folder);
 		LI.name				= 0;
+		LI.intro_logo_variant = 0;
 		Levels.push_back	(LI);
 	}
 }
@@ -974,12 +976,35 @@ void CApplication::Level_Set(u32 L)
 	FS.get_path	("$level$")->_set	(Levels[L].folder);
 
 
-	string_path					temp;
-	string_path					temp2;
-	strconcat					(temp,"intro\\intro_",Levels[L].folder);
-	temp[xr_strlen(temp)-1] = 0;
-	if (FS.exist(temp2, "$game_textures$", temp, ".dds"))
-		hLevelLogo.create	("font", temp);
+	string_path				base_name;
+	string_path				temp2;
+	strconcat				(base_name,"intro\\intro_",Levels[L].folder);
+	base_name[xr_strlen(base_name)-1] = 0;
+
+	unsigned int variant_count = 0;
+	for (unsigned int idx = 1;; ++idx)
+	{
+		string_path			check_name;
+		sprintf_s			(check_name, "%s_%u", base_name, idx);
+		if (!FS.exist(temp2, "$game_textures$", check_name, ".dds"))
+			break;
+		variant_count = idx;
+	}
+
+	if (variant_count)
+	{
+		unsigned int stored_variant = Levels[L].intro_logo_variant;
+		if (stored_variant == 0)
+		{
+			stored_variant = (::Random.randI(1, variant_count + 1));
+			Levels[L].intro_logo_variant = stored_variant;
+		}
+		string_path			selected_name;
+		sprintf_s			(selected_name, "%s_%u", base_name, stored_variant);
+		hLevelLogo.create	("font", selected_name);
+	}
+	else if (FS.exist(temp2, "$game_textures$", base_name, ".dds"))
+		hLevelLogo.create	("font", base_name);
 	else
 		hLevelLogo.create	("font", "intro\\intro_no_start_picture");
 }

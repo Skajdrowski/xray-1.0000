@@ -14,6 +14,7 @@ class ENGINE_API CApplication	:
 	{
 		char*				folder;
 		char*				name;
+		unsigned int		intro_logo_variant;
 	};
 	string256				app_title;
 private:
