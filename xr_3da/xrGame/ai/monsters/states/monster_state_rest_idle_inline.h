@@ -5,6 +5,7 @@
 #include "state_custom_action.h"
 #include "../../../cover_point.h"
 #include "../monster_cover_manager.h"
+#include "../ai_monster_squad_manager.h"
 
 
 #define TEMPLATE_SPECIALIZATION template <\

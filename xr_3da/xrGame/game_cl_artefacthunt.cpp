@@ -568,7 +568,7 @@ bool game_cl_ArtefactHunt::CanBeReady				()
 	return true;
 };
 
-char*	game_cl_ArtefactHunt::getTeamSection(int Team)
+const char*	game_cl_ArtefactHunt::getTeamSection(int Team)
 {
 	switch (Team)
 	{

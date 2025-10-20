@@ -134,7 +134,7 @@ void LogWinErr			(const char *msg, long err_code)	{
 	Msg					("%s: %s",msg,Debug.error2string(err_code)	);
 }
 
-static char *month[12] = {
+static const char *month[12] = {
 	"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
 };
 static int day_in_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };

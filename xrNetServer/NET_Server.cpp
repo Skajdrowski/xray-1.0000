@@ -502,7 +502,7 @@ HRESULT	IPureServer::net_Handler(u32 dwMessageType, PVOID pMessage)
 			if (GetBannedClient(HAddr)) 
 			{
 				msg->dwReplyDataSize = xr_strlen(BANNED_STR);
-				msg->pvReplyData = BANNED_STR;
+				msg->pvReplyData = (PVOID)BANNED_STR;
 				return S_FALSE;
 			};
 		}break;

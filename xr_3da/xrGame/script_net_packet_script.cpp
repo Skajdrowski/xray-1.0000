@@ -58,7 +58,7 @@ void CScriptNetPacket::script_register(lua_State *L)
 			.def(					constructor<>()				)
 			.def("value",			&ClientID::value			)
 			.def("set",				&ClientID::set				)
-			.def(m_self == other<ClientID>()),
+			.def(self == other<ClientID>()),
 
 		class_<NET_Packet>("net_packet")
 			.def(					constructor<>()				)
@@ -95,7 +95,7 @@ void CScriptNetPacket::script_register(lua_State *L)
 //			.def("r",				&NET_Packet::r				)
 			.def("r_seek",			&NET_Packet::r_seek			)
 			.def("r_tell",			&NET_Packet::r_tell			)
-			.def("r_vec3",			(void (NET_Packet::*)(Fvector&))(&NET_Packet::r_vec3)			,pure_out_value(_2))
+			.def("r_vec3",			(void (NET_Packet::*)(Fvector&))(&NET_Packet::r_vec3)			,pure_out_value<2>())
 			.def("r_float",			(void (NET_Packet::*)(float&))(&NET_Packet::r_float		))
 			.def("r_u64",			(void (NET_Packet::*)(u64&	))(&NET_Packet::r_u64		))
 			.def("r_s64",			(void (NET_Packet::*)(s64&	))(&NET_Packet::r_s64		))

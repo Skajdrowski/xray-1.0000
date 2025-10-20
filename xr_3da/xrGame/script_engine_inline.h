@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include "script_space.h"
+
 IC	void CScriptEngine::add_script_process		(const EScriptProcessors &process_id, CScriptProcess *script_process)
 {
 	CScriptProcessStorage::const_iterator	I = m_script_processes.find(process_id);
@@ -48,13 +50,7 @@ IC	bool CScriptEngine::functor(LPCSTR function_to_call, luabind::functor<_result
 	if (!function_object(function_to_call,object))
 		return				(false);
 
-	try {
-		lua_function		= luabind::object_cast<luabind::functor<_result_type> >(object);
-	}
-	catch(...) {
-		return				(false);
-	}
-
+	lua_function = luabind::object_cast<luabind::functor<_result_type>>(object);
 	return					(true);
 }
 

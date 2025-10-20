@@ -43,6 +43,9 @@ protected:
 		_iteration_type
 	> inherited;
 
+	using inherited::goal_node_index;
+	using inherited::graph;
+
 protected:
 	const _Graph::CVertex	*goal_vertex;
 

@@ -604,8 +604,8 @@ void game_sv_mp::OnPrevMap				()
 };
 
 struct _votecommands		{
-	char *	name;
-	char *	command;
+	const char *	name;
+	const char *	command;
 };
 
 _votecommands	votecommands[] = {
@@ -977,7 +977,6 @@ void	game_sv_mp::OnPlayerChangeName		(NET_Packet& P, ClientID sender)
 
 	if (pClient->owner)
 	{
-		NET_Packet			P;
 		GenerateGameMessage(P);
 		P.w_u32(GAME_EVENT_PLAYER_NAME);
 		P.w_u16(pClient->owner->ID);

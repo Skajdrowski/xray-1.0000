@@ -6,6 +6,13 @@ class CStateMonsterAttackMoveToHomePoint : public CState<_Object> {
 protected:
 	typedef CState<_Object>		inherited;
 	typedef CState<_Object>*	state_ptr;
+	using	inherited::add_state;
+	using	inherited::object;
+	using	inherited::time_state_started;
+	using	inherited::select_state;
+	using	inherited::prev_substate;
+	using	inherited::get_state_current;
+	using	inherited::current_substate;
 
 	u32					m_target_node;
 	bool				m_skip_camp;

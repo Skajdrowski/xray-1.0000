@@ -20,51 +20,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-#ifndef LUABIND_CLASS_REP_HPP_INCLUDED
-#define LUABIND_CLASS_REP_HPP_INCLUDED
-
-#include <boost/limits.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+#pragma once
 
 #include <utility>
 #include <list>
+#include <functional>
 
 #include <luabind/config.hpp>
-
-#include <luabind/detail/object_rep.hpp>
+#include <luabind/detail/primitives.hpp>
 #include <luabind/detail/construct_rep.hpp>
-#include <luabind/detail/garbage_collector.hpp>
 #include <luabind/detail/operator_id.hpp>
-#include <luabind/detail/signature_match.hpp>
-#include <luabind/detail/class_registry.hpp>
-#include <luabind/detail/find_best_match.hpp>
-#include <luabind/detail/get_overload_signature.hpp>
-#include <luabind/error.hpp>
-#include <luabind/detail/method_rep.hpp>
-
-#include <luabind/detail/lua_strings.h>
-
-#ifdef USE_NATIVE_LUA_STRINGS
-#	include <hash_map>
-#endif
-
-#ifndef USE_XRAY_ALLOCATOR
-#	define	custom_allocator_type	std::allocator
-#else
-#	define	custom_allocator_type	xr_allocator_t
-#endif
+#include <luabind/detail/ref.hpp>
 
 namespace luabind
 {
 
-	template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(LUABIND_MAX_BASES, class A, detail::null_type)>
+	template<typename... Ts>
 	struct bases {};
-	typedef bases<detail::null_type> no_bases;
+    using no_bases = bases<>;
 }
 
 namespace luabind { namespace detail
 {
+	class object_rep;
 	struct method_rep;
 	LUABIND_API string_class stack_content_by_name(lua_State* L, int start_index);
 	int construct_lua_class_callback(lua_State* L);
@@ -89,8 +67,9 @@ namespace luabind { namespace detail
 	friend int lua_class_settable(lua_State*);
 	friend int static_class_gettable(lua_State*);
 	public:
+		std::pair<void*, void*> allocate(lua_State* L) const;
 
-		enum class_type
+		enum class_type: unsigned
 		{
 			cpp_class = 0,
 			lua_class = 1
@@ -132,9 +111,7 @@ namespace luabind { namespace detail
 		// INSTANTIATED!
 		class_rep(lua_State* L, const char* name);
 
-		~class_rep();
-
-		std::pair<void*,void*> allocate(lua_State* L) const;
+		~class_rep() = default;
 
 		// called from the metamethod for __index
 		// the object pointer is passed on the lua stack
@@ -158,13 +135,13 @@ namespace luabind { namespace detail
 
 		struct base_info
 		{
-			int pointer_offset; // the offset added to the pointer to obtain a basepointer (due to multiple-inheritance)
+			ptrdiff_t pointer_offset; // the offset added to the pointer to obtain a basepointer (due to multiple-inheritance)
 			class_rep* base;
 		};
 
 		void add_base_class(const base_info& binfo);
 
-		const std::vector<base_info>& bases() const throw() { return m_bases; }
+		const vector_class<base_info>& bases() const throw() { return m_bases; }
 
 		void set_type(LUABIND_TYPE_INFO t) { m_type = t; }
 		LUABIND_TYPE_INFO type() const throw() { return m_type; }
@@ -195,7 +172,7 @@ namespace luabind { namespace detail
 		class_type get_class_type() const { return m_class_type; }
 
 		void add_static_constant(const char* name, int val);
-		void add_method(detail::method_rep const& m);
+		void add_method(detail::method_rep&& m);
 		void register_methods(lua_State* L);
 
 		// takes a pointer to the instance object
@@ -227,24 +204,64 @@ namespace luabind { namespace detail
 		// this is used to describe setters and getters
 		struct callback
 		{
-			boost::function2<int, lua_State*, int> func;
-#ifndef LUABIND_NO_ERROR_CHECKING3
+		public:
+
+            callback(): func(),
+#ifndef LUABIND_NO_ERROR_CHECKING
+                  match(nullptr),
+                  sig(nullptr),
+#endif
+                  pointer_offset(0)
+            {
+            }
+
+            callback(const callback&) = default;
+
+            callback(callback&& that):
+                  func(std::move(that.func)),
+#ifndef LUABIND_NO_ERROR_CHECKING
+                  match(that.match),
+                  sig(that.sig),
+#endif
+                  pointer_offset(that.pointer_offset)
+            {
+#ifndef LUABIND_NO_ERROR_CHECKING
+                that.match = nullptr;
+                that.sig = nullptr;
+#endif
+                that.pointer_offset = 0;
+            }
+
+            callback& operator= (const callback&) = delete;
+
+            callback& operator= (callback&& that)
+            {
+                func = std::move(that.func);
+#ifndef LUABIND_NO_ERROR_CHECKING
+                match = that.match;
+                that.match = nullptr;
+                sig = that.sig;
+                that.sig = nullptr;
+#endif
+                pointer_offset = that.pointer_offset;
+                that.pointer_offset = 0;
+
+                return *this;
+            }
+
+            std::function<int(lua_State*, ptrdiff_t)> func;
+
+#ifndef LUABIND_NO_ERROR_CHECKING
 			int (*match)(lua_State*, int);
 
 			typedef void(*get_sig_ptr)(lua_State*, string_class&);
 			get_sig_ptr sig;
 #endif
-			int pointer_offset;
+			ptrdiff_t pointer_offset;
 		};
 
-#ifndef USE_NATIVE_LUA_STRINGS
-		const std::map<const char*, callback, ltstr>& properties() const;
-		const std::map<const char*, callback, ltstr>& properties_rw() const;
-		typedef std::map<const char*, callback, ltstr> property_map;
-#else
-		typedef std::hash_map<lua_string_holder, callback, TString_hash_compare, custom_allocator_type<std::pair<lua_string_holder, callback> > > property_map;
-		const property_map& properties() const;
-#endif
+		const map_class<const char*, callback, ltstr>& properties() const;
+		typedef map_class<const char*, callback, ltstr> property_map;
 
 		int holder_alignment() const
 		{
@@ -255,7 +272,6 @@ namespace luabind { namespace detail
 		{
 			return m_holder_size;
 		}
-
 
 		void set_holder_alignment(int n)
 		{
@@ -292,11 +308,28 @@ namespace luabind { namespace detail
 			int(*func)(lua_State*);
 		};
 		
-#ifndef USE_NATIVE_LUA_STRINGS
-		typedef std::map<const char*, int, ltstr> STATIC_CONSTANTS;
-#else
-		typedef std::hash_map<lua_string_holder, int, TString_hash_compare,custom_allocator_type<std::pair<lua_string_holder,int> > > STATIC_CONSTANTS;
-#endif
+		typedef map_class<const char*, int, ltstr> STATIC_CONSTANTS;
+
+#pragma warning(push)
+#pragma warning(disable:4251)
+		// ***** the maps below contains all members in this class *****
+		// FX: Moved to public for make debug printing functional (IXR 18.08.2025)
+
+		// list of methods. pointers into this list is put
+		// in the m_table_ref and m_default_table_ref
+		// for access. The struct contains the function-
+		// signatures for every overload
+		list_class<method_rep> m_methods;
+
+
+		// datamembers, some members may be readonly, and
+		// only have a getter function
+		map_class<const char*, callback, ltstr> m_getters;
+		map_class<const char*, callback, ltstr> m_setters;
+
+		vector_class<operator_callback> m_operators[number_of_operators]; // the operators in lua
+#pragma warning(pop)
+
 	private:
 
 		void cache_operators(lua_State*);
@@ -345,7 +378,10 @@ namespace luabind { namespace detail
 		// a list of info for every class this class derives from
 		// the information stored here is sufficient to do
 		// type casts to the base classes
-		std::vector<base_info> m_bases;
+#pragma warning(push)
+#pragma warning(disable:4251)
+		vector_class<base_info> m_bases;
+#pragma warning(pop)
 
 		// the class' name (as given when registered to lua with class_)
 		const char* m_name;
@@ -358,54 +394,46 @@ namespace luabind { namespace detail
 		// is kept inside lua (to let lua collect it when lua_close()
 		// is called) we need to lock it to prevent collection.
 		// the actual reference is not currently used.
+#pragma warning(push)
+#pragma warning(disable:4251)
 		detail::lua_reference m_self_ref;
+#pragma warning(pop)
 
 		// this should always be used when accessing
 		// members in instances of a class.
 		// this table contains c closures for all
 		// member functions in this class, they
 		// may point to both static and virtual functions
+#pragma warning(push)
+#pragma warning(disable:4251)
 		detail::lua_reference m_table_ref;
+#pragma warning(pop)
 
 		// this table contains default implementations of the
 		// virtual functions in m_table_ref.
+#pragma warning(push)
+#pragma warning(disable:4251)
 		detail::lua_reference m_default_table_ref;
+#pragma warning(pop)
 
 		// the type of this class.. determines if it's written in c++ or lua
+#pragma warning(push)
+#pragma warning(disable:4251)
 		class_type m_class_type;
+#pragma warning(pop)
 
 		// this is a lua reference that points to the lua table
 		// that is to be used as meta table for all instances
 		// of this class.
 		int m_instance_metatable;
 
-		// ***** the maps below contains all members in this class *****
-
-		// list of methods. pointers into this list is put
-		// in the m_table_ref and m_default_table_ref
-		// for access. The struct contains the function-
-		// signatures for every overload
-		std::list<method_rep> m_methods;
-
-		// datamembers, some members may be readonly, and
-		// only have a getter function
-#ifndef USE_NATIVE_LUA_STRINGS
-		std::map<const char*, callback, ltstr> m_getters;
-		std::map<const char*, callback, ltstr> m_setters;
-#else
-public:
-	typedef std::hash_map<lua_string_holder, detail::class_rep::callback, TString_hash_compare, custom_allocator_type<std::pair<lua_string_holder, detail::class_rep::callback> > >	callback_map;
-private:
-		callback_map m_getters;
-        callback_map m_setters;
-#endif
-
-		std::vector<operator_callback> m_operators[number_of_operators]; // the operators in lua
-
 		void(*m_destructor)(void*);
 		void(*m_const_holder_destructor)(void*);
 
+#pragma warning(push)
+#pragma warning(disable:4251)
 		STATIC_CONSTANTS m_static_constants;
+#pragma warning(pop)
 
 		// the first time an operator is invoked
 		// we check the associated lua table
@@ -420,7 +448,3 @@ private:
 	bool is_class_rep(lua_State* L, int index);
 
 }}
-
-#include <luabind/detail/overload_rep_impl.hpp>
-
-#endif // LUABIND_CLASS_REP_HPP_INCLUDED

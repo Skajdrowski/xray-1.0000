@@ -20,9 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-#ifndef LUABIND_REF_HPP_INCLUDED
-#define LUABIND_REF_HPP_INCLUDED
+#pragma once
 
 #include <cassert>
 #include <algorithm>
@@ -108,12 +106,11 @@ namespace luabind { namespace detail
 			std::swap(r.m_ref, m_ref);
 		}
 
+		int get_ref() const { return m_ref; }
+
 	private:
 		lua_State* L;
 		int m_ref;
 	};
 
 }}
-
-#endif // LUABIND_REF_HPP_INCLUDED
-

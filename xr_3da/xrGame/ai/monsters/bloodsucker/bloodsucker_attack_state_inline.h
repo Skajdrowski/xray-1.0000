@@ -24,21 +24,21 @@ CBloodsuckerStateAttackAbstract::~CBloodsuckerStateAttack()
 TEMPLATE_SPECIALIZATION
 void CBloodsuckerStateAttackAbstract::initialize()
 {
-	inherited::initialize	();
+	__super::initialize	();
 	m_time_stop_invis		= 0;
 }
 
 TEMPLATE_SPECIALIZATION
 void CBloodsuckerStateAttackAbstract::finalize()
 {
-	inherited::finalize();
+	__super::finalize();
 	object->stop_invisible_predator();
 }
 
 TEMPLATE_SPECIALIZATION
 void CBloodsuckerStateAttackAbstract::critical_finalize()
 {
-	inherited::critical_finalize();
+	__super::critical_finalize();
 	object->stop_invisible_predator();
 }
 
@@ -175,7 +175,7 @@ bool CBloodsuckerStateAttackAbstract::check_hiding()
 TEMPLATE_SPECIALIZATION
 void CBloodsuckerStateAttackAbstract::setup_substates()
 {
-	state_ptr state = get_state_current();
+	auto state = get_state_current();
 
 	if (current_substate == eStateAttack_Hide) {
 
