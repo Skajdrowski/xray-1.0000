@@ -30,7 +30,7 @@ enum EFC_Visible {
 
 #define FRUSTUM_SAFE		(FRUSTUM_MAXPLANES*4)
 typedef svector<Fvector,FRUSTUM_SAFE>		sPoly;
-ENGINE_API		extern	u32	frustum_aabb_remap[8][6];
+extern	u32	frustum_aabb_remap[8][6];
 
 class ENGINE_API	CFrustum
 {

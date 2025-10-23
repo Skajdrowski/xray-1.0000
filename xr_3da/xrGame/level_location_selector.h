@@ -34,6 +34,11 @@ class
 		_vertex_id_type
 	> inherited;
 
+	using						inherited::selector_manager;
+	using						inherited::m_evaluator;
+	using						inherited::m_graph;
+	using						inherited::m_restricted_object;
+
 public:
 	IC							CBaseLocationSelector		(CRestrictedObject *object);
 

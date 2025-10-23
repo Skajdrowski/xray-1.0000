@@ -121,7 +121,7 @@ void CSoundRender_Source::load(LPCSTR name)
 {
 	string256			fn,N;
 	strcpy				(N,name);
-	_strlwr				(N);
+	_strlwr_s				(N);
 	if (strext(N))		*strext(N) = 0;
 
 	fname				= N;

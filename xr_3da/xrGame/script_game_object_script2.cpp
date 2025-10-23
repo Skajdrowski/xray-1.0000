@@ -40,9 +40,9 @@ using namespace luabind;
 
 extern CScriptActionPlanner *script_action_planner(CScriptGameObject *obj);
 
-class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject> &instance)
+class_<CScriptGameObject> script_register_game_object1(class_<CScriptGameObject> &&instance)
 {
-	instance
+	return std::move(instance)
 		.enum_("relation")
 		[
 			value("friend",					int(ALife::eRelationTypeFriend)),
@@ -123,7 +123,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		
 		.def("rank",						&CScriptGameObject::GetRank)
 		.def("command",						&CScriptGameObject::AddAction)
-		.def("action",						&CScriptGameObject::GetCurrentAction, adopt(m_result))
+		.def("action",						&CScriptGameObject::GetCurrentAction, adopt<result>())
 		.def("object_count",				&CScriptGameObject::GetInventoryObjectCount)
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(LPCSTR))(&CScriptGameObject::GetObjectByName))
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(int))(&CScriptGameObject::GetObjectByIndex))
@@ -168,7 +168,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("get_enemy_strength",			&CScriptGameObject::GetEnemyStrength)
 		.def("get_sound_info",				&CScriptGameObject::GetSoundInfo)
 		.def("get_monster_hit_info",		&CScriptGameObject::GetMonsterHitInfo)
-		.def("bind_object",					&CScriptGameObject::bind_object,adopt(_2))
+		.def("bind_object",					&CScriptGameObject::bind_object,adopt<2>())
 		.def("motivation_action_manager",	&script_action_planner)
 
 		// bloodsucker
@@ -253,10 +253,11 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 
 		.def("item_in_slot",				&CScriptGameObject::item_in_slot)
 		.def("active_slot",					&CScriptGameObject::active_slot)
-		.def("activate_slot",				&CScriptGameObject::activate_slot)
-
 #ifdef DEBUG
-		.def("debug_planner",				&CScriptGameObject::debug_planner)
-#endif		
-	;return	(instance);
+		.def("activate_slot", &CScriptGameObject::activate_slot)
+		.def("debug_planner", &CScriptGameObject::debug_planner);
+#else	
+		.def("activate_slot",				&CScriptGameObject::activate_slot);	
+#endif
+
 }

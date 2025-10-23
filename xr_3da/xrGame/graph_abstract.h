@@ -13,7 +13,7 @@
 #include "object_broker.h"
 
 template <
-	typename _data_type = Loki::EmptyType,
+	typename _data_type,
 	typename _edge_weight_type = float,
 	typename _vertex_id_type = u32
 >
@@ -71,12 +71,18 @@ public:
 };
 
 template <
-	typename _data_type = Loki::EmptyType,
+	typename _data_type,
 	typename _edge_weight_type = float,
 	typename _vertex_id_type = u32
 >
 class CGraphAbstractSerialize : public CGraphAbstract<_data_type,_edge_weight_type,_vertex_id_type>, public IPureSerializeObject<IReader,IWriter> {
+	using inherited = CGraphAbstract<_data_type, _edge_weight_type, _vertex_id_type>;
 public:
+	using inherited::add_edge;
+	using inherited::add_vertex;
+	using inherited::clear;
+	using inherited::vertices;
+
 	virtual void						save			(IWriter &stream);
 	virtual void						load			(IReader &stream);
 };

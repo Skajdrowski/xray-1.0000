@@ -13,6 +13,8 @@
 #include "script_process.h"
 #include "script_space.h"
 
+#include "..\ai_script_lua_extension.h"
+
 #ifdef USE_DEBUGGER
 #	include "script_debugger.h"
 #endif

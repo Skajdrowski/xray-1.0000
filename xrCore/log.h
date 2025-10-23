@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef logH
 #define logH
 

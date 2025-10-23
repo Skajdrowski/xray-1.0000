@@ -36,6 +36,13 @@ class
 		_vertex_id_type,
 		_index_type
 	> inherited;
+
+public:
+	using inherited::dest_vertex_id;
+	using inherited::m_intermediate_index;
+	using inherited::m_object;
+	using inherited::path;
+
 protected:
 	IC	virtual	void	before_search				(const _vertex_id_type start_vertex_id, const _vertex_id_type dest_vertex_id);
 	IC	virtual	void	after_search				();

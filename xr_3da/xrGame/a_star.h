@@ -94,7 +94,7 @@ template <
 		_vertex_allocator,
 		euclidian_heuristics,
 		_data_storage_base,
-		AStar::_Vertex<_dist_type,_vertex>::_vertex,
+		typename AStar::_Vertex<_dist_type,_vertex>::_vertex,
 		_builder_allocator_constructor,
 		_manager_builder_allocator_constructor,
 		_data_storage_constructor,
@@ -109,7 +109,7 @@ protected:
 		_vertex_allocator,
 		euclidian_heuristics,
 		_data_storage_base,
-		AStar::_Vertex<_dist_type,_vertex>::_vertex,
+		typename AStar::_Vertex<_dist_type,_vertex>::_vertex,
 		_builder_allocator_constructor,
 		_manager_builder_allocator_constructor,
 		_data_storage_constructor,
@@ -118,6 +118,11 @@ protected:
 	typedef typename inherited::CGraphVertex CGraphVertex;
 	typedef typename CGraphVertex::_dist_type	_dist_type;
 	typedef typename CGraphVertex::_index_type	_index_type;
+
+public:
+	using inherited::data_storage;
+	using inherited::finalize;
+	using inherited::m_search_started;
 
 protected:
 	template <typename _PathManager>

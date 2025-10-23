@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "_types.h"
 #include "alife_space.h"
 
 class CSE_Abstract;

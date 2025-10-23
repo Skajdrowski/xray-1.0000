@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "_stl_extensions.h"
 #include "game_graph_space.h"
 #include "script_export_space.h"
 

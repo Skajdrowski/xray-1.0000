@@ -53,7 +53,7 @@ public:
 
 	virtual		void				LoadTeams				();
 
-	virtual		char*				GetAnomalySetBaseName	()	{return "teamdeathmatch_game_anomaly_sets";};	
+	virtual		const char*				GetAnomalySetBaseName	()	{return "teamdeathmatch_game_anomaly_sets";};	
 	virtual		BOOL				CanHaveFriendlyFire		()	{return TRUE;}
 	virtual		void				OnFraglimitExceed		();
 	virtual		void				OnTimelimitExceed		();

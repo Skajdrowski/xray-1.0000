@@ -20,86 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef LUA_CC
-#   define LUA_CC LUA_API
-#endif
+#pragma once
+#include <luabind/lua_include.hpp>
 
-#ifndef LUABIND_CONFIG_HPP_INCLUDED
-#define LUABIND_CONFIG_HPP_INCLUDED
-
-#if !defined(DEBUG) || defined(FORCE_NO_EXCEPTIONS)
-	// release: no error checking, no exceptions
-	#define LUABIND_NO_EXCEPTIONS
-//	#define BOOST_THROW_EXCEPTION_HPP_INCLUDED
-
-	namespace std	{	class exception; }
-//	namespace boost {	void  throw_exception(const std::exception &A);	};
-#endif
 #define LUABIND_DONT_COPY_STRINGS
 
-#include "xrCore.h"
-#include <boost/config.hpp>
+#ifndef LUA_DEBUG
 
-//namespace std {
-//	void terminate();
-//}
+#	ifndef LUABIND_NO_ERROR_CHECKING
+#		define LUABIND_NO_ERROR_CHECKING
+#	endif // LUABIND_NO_ERROR_CHECKING
 
-#ifdef BOOST_MSVC
-	#define LUABIND_ANONYMOUS_FIX static
+#	pragma warning(disable: 4251 577 297)
+#   define LUABIND_DTOR_NOEXCEPT noexcept
 #else
-	#define LUABIND_ANONYMOUS_FIX
-#endif
-
-#if defined (BOOST_MSVC) && (BOOST_MSVC <= 1200)
-
-#define for if (false) {} else for
-
-#include <cstring>
-
-namespace std
-{
-	using ::strlen;
-	using ::strcmp;
-	using ::type_info;
-}
-
-#endif
-
-// #define string_class std::string
-#define string_class xr_string
-
-#if defined (BOOST_MSVC) && (BOOST_MSVC <= 1300)
-	#define LUABIND_MSVC_TYPENAME
-#else
-	#define LUABIND_MSVC_TYPENAME typename
-#endif
-
-// the maximum number of arguments of functions that's
-// registered. Must at least be 2
-#ifndef LUABIND_MAX_ARITY
-	#define LUABIND_MAX_ARITY 10
-#elif LUABIND_MAX_ARITY <= 1
-	#undef LUABIND_MAX_ARITY
-	#define LUABIND_MAX_ARITY 2
-#endif
-
-// the maximum number of classes one class
-// can derive from
-// max bases must at least be 1
-#ifndef LUABIND_MAX_BASES
-	#define LUABIND_MAX_BASES 10
-#elif LUABIND_MAX_BASES <= 0
-	#undef LUABIND_MAX_BASES
-	#define LUABIND_MAX_BASES 1
-#endif
-
-#if _SECURE_SCL > 0 || _ITERATOR_DEBUG_LEVEL > 0
-#error "Это не работает в X-Ray!"
-#endif
-
-
+#   define LUABIND_DTOR_NOEXCEPT
+#endif // LUA_DEBUG
 // LUABIND_NO_ERROR_CHECKING
-#define LUABIND_NO_ERROR_CHECKING2
 // define this to remove all error checks
 // this will improve performance and memory
 // footprint.
@@ -133,11 +70,11 @@ namespace std
 // for all classes that you have type-info for.
 
 #ifndef LUABIND_TYPE_INFO
-	#define LUABIND_TYPE_INFO const std::type_info*
-	#define LUABIND_TYPEID(t) &typeid(t)
-	#define LUABIND_TYPE_INFO_EQUAL(i1, i2) *i1 == *i2
-	#define LUABIND_INVALID_TYPE_INFO &typeid(detail::null_type)
-#include <typeinfo>
+#	define LUABIND_TYPE_INFO const std::type_info*
+#	define LUABIND_TYPEID(t) &typeid(t)
+#	define LUABIND_TYPE_INFO_EQUAL(i1, i2) *i1 == *i2
+#	define LUABIND_INVALID_TYPE_INFO &typeid(std::in_place_t)
+#	include <typeinfo>
 #endif
 
 // LUABIND_NO_EXCEPTIONS
@@ -150,27 +87,19 @@ namespace std
 // C code has undefined behavior, lua is written in C).
 // #define LUABIND_NO_EXCEPTIONS
 
-#define LUABIND_EXPORT __declspec(dllexport)
-#define LUABIND_IMPORT __declspec(dllimport)
 // If you're building luabind as a dll on windows with devstudio
 // you can set LUABIND_EXPORT to __declspec(dllexport)
 // and LUABIND_IMPORT to __declspec(dllimport)
 
 // this define is set if we're currently building a luabind file
 // select import or export depending on it
-#ifdef LUABIND_BUILDING
-	#ifdef LUABIND_EXPORT
-		#define LUABIND_API LUABIND_EXPORT
-	#else
-		#define LUABIND_API
-	#endif
-#else
-	#ifdef LUABIND_IMPORT
-		#define LUABIND_API LUABIND_IMPORT
-	#else
-		#define LUABIND_API
-	#endif
-#endif
+#include "luabind_api.h"
+#include <luabind/luabind_memory.h>
 
-#endif // LUABIND_CONFIG_HPP_INCLUDED
-
+using	string_class =	luabind::internal_string;
+#define vector_class	luabind::internal_vector
+#define list_class		luabind::internal_list
+#define map_class				luabind::internal_map
+#define set_class				luabind::internal_set
+#define multimap_class			luabind::internal_multimap
+#define multiset_class			luabind::internal_multiset

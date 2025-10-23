@@ -75,20 +75,12 @@
     <OutDir>..\..\..\binaries\$(Configuration)\</OutDir>
     <IntDir>..\..\..\intermediate\$(Configuration)\$(ProjectName)\</IntDir>
     <NMakeBuildCommandLine>if not exist "..\bin\LuaJIT.dll" if not exist "..\bin\LuaJIT.lib" (
-	call msvcbuild.bat $(Platform) static
+	call msvcbuild.bat
 )
 
 if not exist "$(OutDir)LuaJIT.dll" if exist "..\bin\LuaJIT.dll" (
 	copy /Y "..\bin\LuaJIT.dll" "$(OutDir)LuaJIT.dll"
 	copy /Y "..\bin\LuaJIT.lib" "..\..\..\libraries\$(Configuration)\LuaJIT.lib"
-)
-
-if exist "..\bin\LuaJIT.pdb" (
-	copy /Y "..\bin\LuaJIT.pdb" "$(OutDir)LuaJIT.pdb"
-)
-
-if exist "..\bin\LuaJIT.exp" (
-	copy /Y "..\bin\LuaJIT.exp" "$(OutDir)LuaJIT.exp"
 )</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>DEL /Q *.exe *.lib *.exp *.dll *.obj *.so *.manifest
 DEL /Q "..\bin\LuaJIT.*"
@@ -96,20 +88,12 @@ DEL /Q $(OutDir)LuaJIT.*
 DEL /Q "..\..\..\libraries\$(Configuration)\LuaJIT.lib"
 
 if not exist "..\bin\LuaJIT.dll" if not exist "..\bin\LuaJIT.lib" (
-	call msvcbuild.bat $(Platform) static
+	call msvcbuild.bat
 )
 
 if not exist "$(OutDir)LuaJIT.dll" if exist "..\bin\LuaJIT.dll" (
 	copy /Y "..\bin\LuaJIT.dll" "$(OutDir)LuaJIT.dll"
 	copy /Y "..\bin\LuaJIT.lib" "..\..\..\libraries\$(Configuration)\LuaJIT.lib"
-)
-
-if exist "..\bin\LuaJIT.pdb" (
-	copy /Y "..\bin\LuaJIT.pdb" "$(OutDir)LuaJIT.pdb"
-)
-
-if exist "..\bin\LuaJIT.exp" (
-	copy /Y "..\bin\LuaJIT.exp" "$(OutDir)LuaJIT.exp"
 )</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>DEL /Q *.exe *.lib *.exp *.dll *.obj *.so *.manifest
 DEL /Q "..\bin\LuaJIT.*"

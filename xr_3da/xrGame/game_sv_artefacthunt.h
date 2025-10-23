@@ -93,7 +93,7 @@ public:
 
 	virtual		void				LoadTeams				();
 
-	virtual		char*				GetAnomalySetBaseName	() {return "artefacthunt_game_anomaly_sets";};
+	virtual		const char*				GetAnomalySetBaseName	() {return "artefacthunt_game_anomaly_sets";};
 
 //	virtual		void				OnPlayerBuyFinished		(u32 id_who, NET_Packet& P);
 

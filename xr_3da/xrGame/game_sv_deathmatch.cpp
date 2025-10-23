@@ -863,7 +863,6 @@ void	game_sv_Deathmatch::OnPlayerBuyFinished		(ClientID id_who, NET_Packet& P)
 		xr_vector<u16>::iterator	EDI = ItemsToDelete.end();
 		for ( ; IDI != EDI; ++IDI) 
 		{
-			NET_Packet			P;
 			u_EventGen			(P,GE_DESTROY,*IDI);
 			Level().Send(P,net_flags(TRUE,TRUE));
 		};
@@ -1057,7 +1056,7 @@ void	game_sv_Deathmatch::LoadTeams			()
 	LoadTeamData("deathmatch_team0");
 };
 
-s32		game_sv_Deathmatch::GetMoneyAmount			(const shared_str& caSection, char* caMoneyStr)
+s32		game_sv_Deathmatch::GetMoneyAmount			(const shared_str& caSection, const char* caMoneyStr)
 {
 	if (pSettings->line_exist(caSection, caMoneyStr))
 		return pSettings->r_s32(caSection, caMoneyStr);
@@ -1280,7 +1279,7 @@ void	game_sv_Deathmatch::LoadAnomalySets			()
 	//-----------------------------------------------------------
 	if (!g_pGameLevel || !Level().pLevel) return;
 
-	char* ASetBaseName = GetAnomalySetBaseName();
+	const char* ASetBaseName = GetAnomalySetBaseName();
 
 	string1024 SetName, AnomaliesNames, AnomalyName;
 	ANOMALIES		AnomalySingleSet;
