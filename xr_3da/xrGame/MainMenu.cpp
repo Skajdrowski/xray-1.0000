@@ -622,3 +622,11 @@ void		CMainMenu::Hide_CTMS_Dialog				()
 	if (!m_pMSB_ConnectToMasterServer->IsShown()) return;
 	StartStopMenu(m_pMSB_ConnectToMasterServer, false);
 }
+
+LPCSTR CMainMenu::GetGSVer()
+{
+	static string32 buff;
+	snprintf(buff, sizeof(buff), "1.0000rc1 %s", __DATE__);
+
+	return buff;
+}

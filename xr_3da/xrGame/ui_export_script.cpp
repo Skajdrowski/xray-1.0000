@@ -37,6 +37,7 @@ void UIRegistrator::script_register(lua_State *L)
 			.def("GetPatchProgress",		&CMainMenu::GetPatchProgress)
 			.def("CancelDownload",			&CMainMenu::CancelDownload)
 			.def("ValidateCDKey",			&CMainMenu::ValidateCDKey)
+			.def("GetGSVer",				&CMainMenu::GetGSVer)
 	],
 	module(L,"main_menu")
 	[

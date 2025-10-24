@@ -154,6 +154,7 @@ public:
 	void			Hide_CTMS_Dialog				();
 	void			SetNeedVidRestart				();
 	virtual void	OnDeviceReset					();
+	LPCSTR			GetGSVer						();
 
 		bool		ValidateCDKey					();
 		bool		IsCDKeyIsValid();
