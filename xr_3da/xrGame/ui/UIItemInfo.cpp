@@ -196,7 +196,7 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 												0.0f, 
 												float(iGridWidth*INV_GRID_WIDTH),	
 												float(iGridHeight*INV_GRID_HEIGHT)};
-		if(UI()->is_16_9_mode())
+		if(UI()->get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9 || UI()->get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10)
 			v_r.x2 /= 1.328f;
 
 		UIItemImage->GetUIStaticItem().SetRect	(v_r);

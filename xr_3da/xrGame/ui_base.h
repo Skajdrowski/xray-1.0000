@@ -30,12 +30,11 @@ struct S2DVert{
 	void		set			(const Fvector2& _pt, const Fvector2& _uv){pt.set(_pt);uv.set(_uv);}
 	void		rotate_pt	(const Fvector2& pivot, float cosA, float sinA);
 };
-#define UI_FRUSTUM_MAXPLANES	12
-#define UI_FRUSTUM_SAFE			(UI_FRUSTUM_MAXPLANES*4)
+#define UI_FRUSTUM_SAFE			(12*4)
 typedef svector<S2DVert,UI_FRUSTUM_SAFE>		sPoly2D;
 
 class C2DFrustum{//only rect form
-	svector<Fplane2,FRUSTUM_MAXPLANES> planes;
+	svector<Fplane2,12> planes;
 	Frect						m_rect;
 public:
 	void		CreateFromRect	(const Frect& rect);
@@ -80,7 +79,15 @@ public:
 	void			RenderFont						();
 
 	virtual void	OnDeviceReset					();
-	static	bool	is_16_9_mode					();
+	enum class EAspectMode { Aspect_16_9, Aspect_16_10, Aspect_4_3, Aspect_5_4 };
+	IC static EAspectMode get_aspect_mode			()
+	{
+		const float ar				= float(Device.dwWidth) / float(Device.dwHeight);
+		if (ar > 1.7f)				return EAspectMode::Aspect_16_9;
+		else if (ar > 1.5f)			return EAspectMode::Aspect_16_10;
+		else if (ar > 1.3f)			return EAspectMode::Aspect_4_3;
+		else						return EAspectMode::Aspect_5_4;
+	}
 	shared_str		get_xml_name					(LPCSTR fn);
 };
 

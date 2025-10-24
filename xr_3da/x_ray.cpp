@@ -21,6 +21,7 @@
 #include "ispatial.h"
 #include "Text_Console.h"
 #include <process.h>
+#include "xrGame/ui_base.h"
 
 //---------------------------------------------------------------------
 ENGINE_API CInifile* pGameIni		= NULL;
@@ -844,7 +845,9 @@ void CApplication::LoadBegin	()
 		phase_timer.Start	();
 //.		::Sound->mute		(true);
 		ll_hGeom.create		(FVF::F_TL, RCache.Vertex.Buffer(), RCache.QuadIB);
-		sh_progress.create	("hud\\default","ui\\ui_load");
+		if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9) sh_progress.create("hud\\default", "ui\\ui_load_16_9");
+		else if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10) sh_progress.create("hud\\default", "ui\\ui_load_16_10");
+		else sh_progress.create("hud\\default", "ui\\ui_load");
 		ll_hGeom2.create		(FVF::F_TL, RCache.Vertex.Buffer(),NULL);
 
 		load_stage			= 0;
@@ -1124,7 +1127,10 @@ void CApplication::load_draw_internal()
 		FVF::TL* pv					= NULL;
 
 //progress
-		float bw					= 1024.0f;
+		float bw;
+		if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9) bw = 1365.33f;
+		else if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10) bw = 1228.8f;
+		else bw						= 1024.0f;
 		float bh					= 768.0f;
 		Fvector2					k; k.set(float(_w)/bw, float(_h)/bh);
 
@@ -1137,9 +1143,11 @@ void CApplication::load_draw_internal()
 		Fvector2					back_size;
 
 //progress background
-		static float offs			= -0.5f;
+		static float offs			= -0.2f;
+		if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9) back_size.set (1365, 768);
+		else if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10) back_size.set (1229, 768);
+		else back_size.set			(1024, 768);
 
-		back_size.set				(1024,768);
 		back_text_coords.lt.set		(0,0);back_text_coords.rb.add(back_text_coords.lt,back_size);
 		back_coords.lt.set			(offs, offs); back_coords.rb.add(back_coords.lt,back_size);
 
@@ -1159,7 +1167,10 @@ void CApplication::load_draw_internal()
 //progress bar
 		back_size.set				(268,37);
 		back_text_coords.lt.set		(0,768);back_text_coords.rb.add(back_text_coords.lt,back_size);
-		back_coords.lt.set			(379 ,726);back_coords.rb.add(back_coords.lt,back_size);
+		if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9) back_coords.lt.set (549 ,726);
+		else if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10) back_coords.lt.set (481 ,726);
+		else back_coords.lt.set		(379 ,726);
+		back_coords.rb.add(back_coords.lt,back_size);
 
 		back_coords.lt.mul			(k);back_coords.rb.mul(k);
 
@@ -1198,7 +1209,9 @@ void CApplication::load_draw_internal()
 //draw level-specific screenshot
 		if(hLevelLogo){
 			Frect						r;
-			r.lt.set					(257,369);
+			if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9) r.lt.set (426,368);
+			else if (ui_core::get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10) r.lt.set (358, 368);
+			else r.lt.set				(256,368);
 			r.lt.x						+= offs;
 			r.lt.y						+= offs;
 			r.rb.add					(r.lt,Fvector2().set(512,256));

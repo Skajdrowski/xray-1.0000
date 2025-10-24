@@ -70,7 +70,7 @@ void CUISequenceVideoItem::Load(CUIXml* xml, int idx)
 		m_wnd->SetAlignment								(waCenter);
 		Frect texture_coords							= m_wnd->GetUIStaticItem().GetOriginalRect();
 
-		bool is_16_9									= UI()->is_16_9_mode();
+		bool is_16_9									= UI()->get_aspect_mode() == ui_core::EAspectMode::Aspect_16_9 || UI()->get_aspect_mode() == ui_core::EAspectMode::Aspect_16_10;
 		float kw_image									= UI_BASE_WIDTH / texture_coords.width();
 
 		Fvector2										wnd_size;

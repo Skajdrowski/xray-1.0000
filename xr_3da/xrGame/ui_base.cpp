@@ -238,15 +238,10 @@ void ui_core::RenderFont()
 	Font()->Render();
 }
 
-bool ui_core::is_16_9_mode()
-{
-	return (Device.dwWidth)/float(Device.dwHeight) > (UI_BASE_WIDTH/UI_BASE_HEIGHT +0.01f);
-}
-
 shared_str	ui_core::get_xml_name(LPCSTR fn)
 {
 	string_path				str;
-	if(!is_16_9_mode()){
+	if(get_aspect_mode() != EAspectMode::Aspect_16_9 || get_aspect_mode() != EAspectMode::Aspect_16_10){
 		sprintf(str, "%s", fn);
 		if ( NULL==strext(fn) ) strcat(str, ".xml");
 	}else{
