@@ -1,0 +1,15 @@
+    <timer_display x="515" y="670" width="1" height="1">
+        <text font="graffiti32" r="240" g="217" b="182" a="255" align="c"/>
+    </timer_display>
+
+    <get_ready x="490" y="355" width="50" height="50">
+        <text font="graffiti50" r="240" g="217" b="182" a="255" align="c"/>
+    </get_ready>
+
+    <timer_start x="485" y="200" width="50" height="50">
+        <text font="graffiti50" r="240" g="217" b="182" a="255" align="c"/>
+    </timer_start>
+
+    <speedometer x="135" y="635" width="250" height="250" complex_mode="1">
+        <text font="graffiti22" r="240" g="217" b="182" a="255"/>
+    </speedometer>
