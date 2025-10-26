@@ -290,13 +290,13 @@ bool is_level_present()
 	return (!!g_pGameLevel);
 }
 
-void add_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+CPHCall* add_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
 {
 	luabind::functor<bool>		_condition = condition;
 	luabind::functor<void>		_action = action;
 	CPHScriptCondition	* c=xr_new<CPHScriptCondition>(_condition);
 	CPHScriptAction		* a=xr_new<CPHScriptAction>(_action);
-	Level().ph_commander_scripts().add_call(c,a);
+	return Level().ph_commander_scripts().add_call(c,a);
 }
 
 void remove_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
@@ -306,7 +306,7 @@ void remove_call(const luabind::functor<bool> &condition,const luabind::functor<
 	Level().ph_commander_scripts().remove_call(&c,&a);
 }
 
-void add_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR action)
+CPHCall* add_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR action)
 {
 //	try{	
 //		CPHScriptObjectCondition	*c=xr_new<CPHScriptObjectCondition>(lua_object,condition);
@@ -315,7 +315,7 @@ void add_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR action)
 		luabind::functor<void>		_action = object_cast<luabind::functor<void> >(lua_object[action]);
 		CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,_condition);
 		CPHScriptObjectActionN		*a=xr_new<CPHScriptObjectActionN>(lua_object,_action);
-		Level().ph_commander_scripts().add_call_unique(c,c,a,a);
+		return Level().ph_commander_scripts().add_call_unique(c,c,a,a);
 //	}
 //	catch(...)
 //	{
@@ -330,12 +330,12 @@ void remove_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR acti
 	Level().ph_commander_scripts().remove_call(&c,&a);
 }
 
-void add_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+CPHCall* add_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)
 {
 
 	CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,condition);
 	CPHScriptObjectActionN		*a=xr_new<CPHScriptObjectActionN>(lua_object,action);
-	Level().ph_commander_scripts().add_call(c,a);
+	return Level().ph_commander_scripts().add_call(c,a);
 }
 
 void remove_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)
@@ -588,15 +588,17 @@ void CLevel::script_register(lua_State *L)
 		def("map_has_object_spot",				map_has_object_spot),
 		def("map_change_spot_hint",				map_change_spot_hint),
 
+		class_<CPHCall>("CPHCall").def("set_pause", &CPHCall::setPause),
+
 		def("start_stop_menu",					start_stop_menu),
 		def("add_dialog_to_render",				add_dialog_to_render),
 		def("remove_dialog_to_render",			remove_dialog_to_render),
 		def("main_input_receiver",				main_input_receiver),
 		def("hide_indicators",					hide_indicators),
 		def("show_indicators",					show_indicators),
-		def("add_call",							((void (*) (const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
-		def("add_call",							((void (*) (const luabind::object &,const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
-		def("add_call",							((void (*) (const luabind::object &, LPCSTR, LPCSTR)) &add_call)),
+		def("add_call",							((CPHCall* (*) (const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
+		def("add_call",							((CPHCall* (*) (const luabind::object &,const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
+		def("add_call",							((CPHCall* (*) (const luabind::object &, LPCSTR, LPCSTR)) &add_call)),
 		def("remove_call",						((void (*) (const luabind::functor<bool> &,const luabind::functor<void> &)) &remove_call)),
 		def("remove_call",						((void (*) (const luabind::object &,const luabind::functor<bool> &,const luabind::functor<void> &)) &remove_call)),
 		def("remove_call",						((void (*) (const luabind::object &, LPCSTR, LPCSTR)) &remove_call)),
