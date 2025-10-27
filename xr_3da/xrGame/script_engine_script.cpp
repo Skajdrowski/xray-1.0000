@@ -179,11 +179,11 @@ IC	std::ostream& operator<<(std::ostream &stream, profile_timer_script &timer)
 
 #ifdef XRGAME_EXPORTS
 ICF	u32	script_time_global() { return Device.dwTimeGlobal; }
-ICF	int	script_get_timerSwitch	()	{ return ai().script_engine().get_timerSwitch(); }
+ICF	u32	script_get_timerSwitch	()	{ return ai().script_engine().get_timerSwitch(); }
 ICF	void script_set_timerSwitch	(int value) { ai().script_engine().set_timerSwitch(value); }
 #else
 ICF	u32	script_time_global() { return 0; }
-ICF	int	script_get_timerSwitch	()	{ return 0; }
+ICF	u32	script_get_timerSwitch	()	{ return 0; }
 ICF	void script_set_timerSwitch	(int value) { }
 #endif
 
