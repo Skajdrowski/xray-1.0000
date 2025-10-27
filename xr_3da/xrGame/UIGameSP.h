@@ -22,16 +22,6 @@ class CUIGameSP : public CUIGameCustom
 private:
 	game_cl_Single*		m_game;
 	typedef CUIGameCustom inherited;
-
-	bool				m_speedometerInitialized;
-
-	shared_str			m_speedometerUpsId;
-
-	Fvector				m_lastActorPosition;
-	float				m_lastUpdateTimeSec;
-	float				m_totalPlanarDistance;
-	float				m_totalTimeSec;
-	int			        m_previousTimerSwitch;
 public:
 	CUIGameSP									();
 	virtual				~CUIGameSP				();

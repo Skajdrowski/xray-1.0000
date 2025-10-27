@@ -22,6 +22,16 @@
 #include "script_engine.h"
 #include "ai_space.h"
 
+// Speedometer variables
+SDrawStaticStruct* speedometer;
+bool m_speedometerInitialized;
+const char* m_speedometerId = "speedometer";
+
+Fvector currentPos, m_lastActorPosition;
+float m_lastUpdateTimeSec, m_totalPlanarDistance, m_totalTimeSec;
+u32 currentTimerSwitch, m_previousTimerSwitch;
+static char Upsline[48];
+
 CUIGameSP::CUIGameSP()
 {
 	m_game			= NULL;
@@ -31,16 +41,6 @@ CUIGameSP::CUIGameSP()
 	TalkMenu		= xr_new<CUITalkWnd>		();
 	UICarBodyMenu	= xr_new<CUICarBodyWnd>		();
 	UIChangeLevelWnd= xr_new<CChangeLevelWnd>		();
-
-	m_speedometerInitialized = false;
-
-	m_speedometerUpsId = "speedometer";
-
-	m_lastActorPosition.set(0,0,0);
-	m_lastUpdateTimeSec = 0.0f;
-	m_totalPlanarDistance = 0.0f;
-	m_totalTimeSec = 0.0f;
-	m_previousTimerSwitch = 0;
 }
 
 CUIGameSP::~CUIGameSP() 
@@ -84,45 +84,26 @@ void CUIGameSP::OnFrame()
 {
 	inherited::OnFrame();
 
-	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
-	if (!actor) return;
+	if (!g_actor) return;
+	currentPos = g_actor->Position();
 
-	int currentTimerSwitch = ai().script_engine().get_timerSwitch();
-
-	SDrawStaticStruct* s;
-
-	if (m_speedometerInitialized && GetCustomStatic(*m_speedometerUpsId) == NULL || m_speedometerInitialized && currentTimerSwitch != m_previousTimerSwitch)
-	{
-		m_totalPlanarDistance = m_totalTimeSec = 0.0f;
-		m_speedometerInitialized = false;
-		m_previousTimerSwitch = currentTimerSwitch;
-	}
-
-	if (!m_speedometerInitialized)
-	{
-		// Fetch static from XML
-		s = GetCustomStatic(*m_speedometerUpsId);
-		if (!s)
-			s = AddCustomStatic(*m_speedometerUpsId, true);
-		if (!s)
-			return;
-
-		s->m_static->m_pLines->SetUseNewLineMode(true); //Ensures "\\n" is treated as newline
-
-		m_lastActorPosition = actor->Position();
-		m_lastUpdateTimeSec = Device.fTimeGlobal;
-
-		m_speedometerInitialized = true;
-	}
-
-	Fvector currentPos = actor->Position();
 	float currentTime = Device.fTimeGlobal;
 	float dt = currentTime - m_lastUpdateTimeSec;
 
-	// Match framerate of the game
-	const float frame_dt = Device.fTimeDelta > 0.f ? Device.fTimeDelta : 0.0f;
+	const float frame_dt = Device.fTimeDelta <= 0.016666f ? 0.008333f : 0.016666f;
 	if (dt >= frame_dt)
 	{
+		if (!m_speedometerInitialized) {
+			speedometer = AddCustomStatic(m_speedometerId, true);
+
+			speedometer->m_static->m_pLines->SetUseNewLineMode(true);
+
+			m_lastActorPosition = currentPos;
+			m_lastUpdateTimeSec = Device.fTimeGlobal;
+			m_totalPlanarDistance = m_totalTimeSec = 0.0f;
+			m_speedometerInitialized = true;
+		}
+
 		float distance = currentPos.distance_to(m_lastActorPosition);
 
 		Fvector planarDelta = currentPos; planarDelta.sub(m_lastActorPosition); planarDelta.y = 0.0f;
@@ -130,16 +111,21 @@ void CUIGameSP::OnFrame()
 		m_totalPlanarDistance += planarDistance;
 		m_totalTimeSec += dt;
 
+		currentTimerSwitch = ai().script_engine().get_timerSwitch();
+		if (currentTimerSwitch != m_previousTimerSwitch)
+		{
+			m_totalPlanarDistance = m_totalTimeSec = planarDistance = 0.0f;
+			m_previousTimerSwitch = currentTimerSwitch;
+		}
+
 		float ups = (dt > 0.0f) ? distance / dt : 0.0f;
 		float vups = (dt > 0.0f) ? (currentPos.y - m_lastActorPosition.y) / dt : 0.0f;
 		float avg_ups = (m_totalTimeSec > 0.0f) ? (m_totalPlanarDistance / m_totalTimeSec) : 0.0f;
 
-		char Upsline[48];
-
 		sprintf(Upsline, "ups: %04.1f\\nvups: %+03.1f\\navg: %03.1f", ups, vups, avg_ups);
 
-		if (s = GetCustomStatic(*m_speedometerUpsId))
-			s->m_static->SetText(Upsline);
+		speedometer = GetCustomStatic(m_speedometerId);
+		speedometer->m_static->SetText(Upsline);
 
 		m_lastActorPosition = currentPos;
 		m_lastUpdateTimeSec = currentTime;
@@ -256,6 +242,9 @@ void CUIGameSP::ChangeLevel				(GameGraph::_GRAPH_ID game_vert_id, u32 level_ver
 
 void CUIGameSP::reset_ui()
 {
+	speedometer = 0;
+	m_speedometerInitialized = false;
+
 	inherited::reset_ui				();
 	InventoryMenu->Reset			();
 	PdaMenu->Reset					();
