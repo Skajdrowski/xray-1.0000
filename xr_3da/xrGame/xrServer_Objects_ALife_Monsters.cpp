@@ -17,6 +17,8 @@
 #	include "ai_space.h"
 #	include "character_info.h"
 #	include "specific_character.h"
+#	include "patrol_path.h"
+#	include "patrol_path_manager.h"
 #endif
 
 #ifdef XRGAME_EXPORTS
@@ -1392,6 +1394,17 @@ void CSE_ALifeCreatureActor::UPDATE_Read	(NET_Packet	&tNetPacket)
 };
 void CSE_ALifeCreatureActor::UPDATE_Write	(NET_Packet	&tNetPacket)
 {
+	o_Position = ai().patrol_paths().path("platform_point")->vertex(0)->data().position();
+
+	// calculate look direction
+	Fvector look_dir;
+	look_dir.sub( ai().patrol_paths().path("platform_look")->vertex(0)->data().position(),
+		o_Position); look_dir.normalize();
+	o_torso.pitch = -atan2f(look_dir.y, _sqrt(look_dir.x * look_dir.x + look_dir.z * look_dir.z));
+	o_torso.yaw = atan2f(look_dir.x, look_dir.z);
+	o_torso.roll = 0.0f;
+	o_model = o_torso.yaw; // correct player model rotation
+
 	inherited1::UPDATE_Write	(tNetPacket);
 	inherited2::UPDATE_Write	(tNetPacket);
 	tNetPacket.w_u16			(mstate		);
