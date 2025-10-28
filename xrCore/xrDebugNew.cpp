@@ -23,6 +23,7 @@ extern bool shared_str_initialized;
 #else
 #	define DEBUG_INVOKE	__asm int 3
 	static BOOL			bException	= FALSE;
+#	define USE_OWN_ERROR_MESSAGE_WINDOW
 #endif
 
 #ifndef _M_AMD64
@@ -33,47 +34,14 @@ extern bool shared_str_initialized;
 
 #include <dbghelp.h>						// MiniDump flags
 
-#define USE_BUG_TRAP
-
-#ifdef USE_BUG_TRAP
-#	include "BugTrap.h"						// for BugTrap functionality
-#	pragma comment(lib,"BugTrap.lib")		// Link to ANSI DLL
-#endif // USE_BUG_TRAP
 
 #include <new.h>
 
-#ifdef DEBUG
-#	define USE_OWN_ERROR_MESSAGE_WINDOW
-#endif // DEBUG
 
 
 XRCORE_API	xrDebug		Debug;
 
 static bool	error_after_dialog = false;
-
-extern void copy_to_clipboard	(const char *string);
-
-void copy_to_clipboard	(const char *string)
-{
-	if (IsDebuggerPresent())
-		return;
-
-	if (!OpenClipboard(0))
-		return;
-
-	HGLOBAL				handle = GlobalAlloc(GHND | GMEM_DDESHARE,(strlen(string) + 1)*sizeof(char));
-	if (!handle) {
-		CloseClipboard	();
-		return;
-	}
-
-	char				*memory = (char*)GlobalLock(handle);
-	strcpy				(memory,string);
-	GlobalUnlock		(handle);
-	EmptyClipboard		();
-	SetClipboardData	(CF_TEXT,handle);
-	CloseClipboard		();
-}
 
 void update_clipboard	(const char *string)
 {
@@ -179,9 +147,7 @@ void gather_info		(const char *expression, const char *description, const char *
 		if (shared_str_initialized)
 			Msg			("stack trace:\n");
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 		buffer			+= sprintf(buffer,"stack trace:%s%s",endline,endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
 		BuildStackTrace	();		
 
@@ -189,15 +155,11 @@ void gather_info		(const char *expression, const char *description, const char *
 			if (shared_str_initialized)
 				Msg		("%s",g_stackTrace[i]);
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 			buffer		+= sprintf(buffer,"%s%s",g_stackTrace[i],endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
 		}
 
 		if (shared_str_initialized)
 			FlushLog	();
-
-		copy_to_clipboard	(assertion_info);
 	}
 }
 
@@ -216,13 +178,13 @@ void xrDebug::backend	(const char *expression, const char *description, const ch
 	string4096			assertion_info;
 	gather_info			(expression, description, argument0, argument1, file, line, function, assertion_info);
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	LPCSTR				endline = "\r\n";
-	LPSTR				buffer = assertion_info + xr_strlen(assertion_info);
-	buffer				+= sprintf(buffer,"%sPress ABORT to abort execution%s",endline,endline);
-	buffer				+= sprintf(buffer,"Press RETRY to continue execution%s",endline);
-	buffer				+= sprintf(buffer,"Press IGNORE to continue execution and ignore all the errors of this type%s%s",endline,endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
+	if (IsDebuggerPresent()) {
+		LPCSTR				endline = "\r\n";
+		LPSTR				buffer = assertion_info + xr_strlen(assertion_info);
+		buffer				+= sprintf(buffer,"%sPress ABORT to abort execution%s",endline,endline);
+		buffer				+= sprintf(buffer,"Press RETRY to continue execution%s",endline);
+		buffer				+= sprintf(buffer,"Press IGNORE to continue execution and ignore all the errors of this type%s%s",endline,endline);
+	}
 
 	if (handler)
 		handler			();
@@ -233,37 +195,45 @@ void xrDebug::backend	(const char *expression, const char *description, const ch
 #ifdef XRCORE_STATIC
 	MessageBox			(NULL,tmp,"X-Ray error",MB_OK|MB_ICONERROR|MB_SYSTEMMODAL);
 #else
-#	ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-		int					result = 
-			MessageBox(
-				GetTopWindow(NULL),
-				assertion_info,
-				"Fatal Error",
-				MB_CANCELTRYCONTINUE|MB_ICONERROR|MB_SYSTEMMODAL
-			);
+	if (IsDebuggerPresent()) {
+		int result = MessageBox(
+			nullptr, assertion_info, "Fatal Error",
+			MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
 
 		switch (result) {
-			case IDABORT : {
+			case IDCANCEL : {
 				DEBUG_INVOKE;
 				break;
 			}
-			case IDRETRY : {
+			case IDTRYAGAIN : {
 				error_after_dialog	= false;
 				break;
 			}
-			case IDIGNORE : {
+			case IDCONTINUE : {
 				error_after_dialog	= false;
 				ignore_always	= true;
 				break;
 			}
-			default : NODEFAULT;
+			default: {
+				::MessageBox(NULL,
+					"noDefault reached",
+					"Fatal Error",
+					MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
+			}
 		}
-#	else // USE_OWN_ERROR_MESSAGE_WINDOW
-#		ifdef USE_BUG_TRAP
-			BT_SetUserMessage	(assertion_info);
-#		endif // USE_BUG_TRAP
 		DEBUG_INVOKE;
-#	endif // USE_OWN_ERROR_MESSAGE_WINDOW
+	}
+	else {
+		int result = MessageBox(
+			nullptr, assertion_info, "Fatal Error",
+			MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
+		
+		switch (result) {
+			case IDOK : {
+				DEBUG_INVOKE;
+			}
+		}
+	}
 #endif
 
 	if (get_on_dialog())
@@ -385,73 +355,6 @@ void __cdecl _terminate		()
 }
 
 extern LPCSTR log_name();
-
-void CALLBACK PreErrorHandler	(INT_PTR)
-{
-#ifdef USE_BUG_TRAP
-	if (!xr_FS || !FS.m_Flags.test(CLocatorAPI::flReady))
-		return;
-
-	string256				log_folder;
-
-	__try {
-		FS.update_path		(log_folder,"$logs$","");
-		if ((log_folder[0] != '\\') && (log_folder[1] != ':')) {
-			string256		current_folder;
-			_getcwd			(current_folder,sizeof(current_folder));
-			
-			string256		relative_path;
-			strcpy			(relative_path,log_folder);
-			strconcat		(log_folder,current_folder,"\\",relative_path);
-		}
-	}
-	__except(EXCEPTION_EXECUTE_HANDLER) {
-		strcpy				(log_folder,"logs");
-	}
-
-	BT_SetReportFilePath	(log_folder);
-	BT_AddLogFile			(log_name());
-#endif // USE_BUG_TRAP
-}
-
-#ifdef USE_BUG_TRAP
-void SetupExceptionHandler	()
-{
-#ifndef USE_OWN_ERROR_MESSAGE_WINDOW
-	if (!strstr(GetCommandLine(),"-silent_error_mode"))
-		BT_SetActivityType	(BTA_SHOWUI);
-	else
-		BT_SetActivityType	(BTA_SAVEREPORT);
-#else
-	BT_SetActivityType		(BTA_SAVEREPORT);
-#endif
-
-	BT_SetPreErrHandler		(PreErrorHandler,0);
-	BT_SetAppName			("XRay Engine");
-	BT_SetReportFormat		(BTRF_XML);//BTRF_TEXT);
-	BT_SetFlags				(BTF_DETAILEDMODE | /**/BTF_EDIETMAIL | /**/BTF_ATTACHREPORT /**| BTF_LISTPROCESSES /**| BTF_SHOWADVANCEDUI /**| BTF_SCREENCAPTURE/**/);
-	BT_SetDumpType			(
-		MiniDumpWithDataSegs |
-//		MiniDumpWithFullMemory |
-//		MiniDumpWithHandleData |
-//		MiniDumpFilterMemory |
-//		MiniDumpScanMemory |
-//		MiniDumpWithUnloadedModules |
-		MiniDumpWithIndirectlyReferencedMemory |
-//		MiniDumpFilterModulePaths |
-//		MiniDumpWithProcessThreadData |
-//		MiniDumpWithPrivateReadWriteMemory |
-//		MiniDumpWithoutOptionalData |
-//		MiniDumpWithFullMemoryInfo |
-//		MiniDumpWithThreadInfo |
-//		MiniDumpWithCodeSegs |
-		0
-	);
-	BT_SetSupportEMail		("crash-report@stalker-game.com");
-//	BT_SetSupportServer		("localhost", 9999);
-//	BT_SetSupportURL		("www.gsc-game.com");
-}
-#endif // USE_BUG_TRAP
 
 #if 1
 extern void BuildStackTrace(struct _EXCEPTION_POINTERS *pExceptionInfo);
@@ -608,7 +511,6 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 
 		if (shared_str_initialized)
 			Msg				("stack trace:\n");
-		copy_to_clipboard	("stack trace:\r\n\r\n");
 
 		string4096			buffer;
 		for (int i=0; i<g_stackTraceCount; ++i) {
@@ -642,20 +544,16 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 #endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
 	if (!previous_filter) {
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 		if (Debug.get_on_dialog())
 			Debug.get_on_dialog()	(false);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
 		return				(EXCEPTION_CONTINUE_SEARCH) ;
 	}
 
 	previous_filter			(pExceptionInfo);
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 	if (Debug.get_on_dialog())
 		Debug.get_on_dialog()		(false);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
 	return					(EXCEPTION_CONTINUE_SEARCH) ;
 }
@@ -690,9 +588,6 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
         _set_new_mode					(1);					// gen exception if can't allocate memory
         _set_new_handler				(_out_of_memory	);		// exception-handler for 'out of memory' condition
 		std::set_terminate				(_terminate);
-#ifdef USE_BUG_TRAP
-		SetupExceptionHandler			();
-#endif // USE_BUG_TRAP
 //		SetCrashHandlerFilter			(UnhandledFilter);
 		previous_filter					= ::SetUnhandledExceptionFilter(UnhandledFilter);	// exception handler to all "unhandled" exceptions
 

@@ -21,6 +21,15 @@ void on_error_dialog			(bool before)
 	if (!pInput || !g_exclusive)
 		return;
 
+	if(before)
+		Device.Destroy();
+
+	if (!psDeviceFlags.test(rsFullscreen)) {
+		HWND const gameWindow = FindWindow("_XRAY_", nullptr);
+		DestroyWindow(gameWindow);
+		ShowCursor(TRUE);
+	}
+
 	pInput->exclusive_mode		(!before);
 }
 
