@@ -56,6 +56,8 @@
 #endif
 #	include "hudmanager.h"
 
+#include "PHCommander.h"
+
 extern void show_smart_cast_stats		();
 extern void clear_smart_cast_stats		();
 extern void release_smart_cast_stats	();
@@ -653,6 +655,12 @@ public:
 		if (ai().script_engine().get_timerSwitch() == 1)
 		{
 			Msg("You can't save the game, while timer is running.");
+			return;
+		}
+
+		if (Level().ph_commander_scripts().has_pending_calls())
+		{
+			Msg("You can't save the game, while there's a pending level call.");
 			return;
 		}
 

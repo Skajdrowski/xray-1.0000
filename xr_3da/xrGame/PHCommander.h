@@ -93,6 +93,7 @@ public:
 	void				update_as  					()																;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void				clear						()																;
+	bool				has_pending_calls			()const{return !m_calls.empty() || !m_calls_as_add_buffer.empty();}
 private:
 
 IC	CPHCall*			add_call_unique				(CPHCondition* condition,CPHReqComparerV* cmp_condition,CPHAction* action,CPHReqComparerV* cmp_action,PHCALL_STORAGE& cs);
