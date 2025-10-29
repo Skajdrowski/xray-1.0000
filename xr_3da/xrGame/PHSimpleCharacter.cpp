@@ -21,6 +21,10 @@
 #include "CalculateTriangle.h"
 //#include "phvalide.h"
 
+#include "Actor.h"
+#include "script_engine.h"
+#include "ai_space.h"
+const char* elevator_info = "elevator";
 
 
 IC		bool	PhOutOfBoundaries			(const Fvector& v)
@@ -729,6 +733,14 @@ void CPHSimpleCharacter::PhTune(dReal step){
 				dReal vmag=chVel[0]*chVel[0]+chVel[2]*chVel[2];
 				dBodyAddForce(m_body,chVel[0]/vmag/amag*proj*3000.f,0,chVel[2]/vmag/amag*proj*3000.f);
 			}
+
+		if(!fis_zero(dif[1]) && dif[1] >= 1.0f && proj < 0.f)
+		{
+			if(!g_actor->HasInfo(elevator_info) && ai().script_engine().get_timerSwitch() == 1)
+			{
+				g_actor->TransferInfo(elevator_info, true);
+			}
+		}
 	}
 	//else
 	//dBodyAddForce(m_body,-chVel[0]*10.f,-20.f*70.f*(!is_contact),-chVel[2]*10.f);
