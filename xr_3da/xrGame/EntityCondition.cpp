@@ -495,6 +495,7 @@ void CEntityCondition::save	(NET_Packet &output_packet)
 	output_packet.w_u8	(is_alive);
 	if(is_alive)
 	{
+		save_data						(health(),output_packet);
 		save_data						(m_fPower,output_packet);
 		save_data						(m_fRadiation,output_packet);
 		save_data						(m_fEntityMorale,output_packet);
@@ -513,6 +514,7 @@ void CEntityCondition::load	(IReader &input_packet)
 	u8 is_alive				= input_packet.r_u8	();
 	if(is_alive)
 	{
+		load_data						(health(),input_packet);
 		load_data						(m_fPower,input_packet);
 		load_data						(m_fRadiation,input_packet);
 		load_data						(m_fEntityMorale,input_packet);
