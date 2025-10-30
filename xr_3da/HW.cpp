@@ -39,7 +39,7 @@ void CHW::Reset		(HWND hwnd)
 	// Windoze
 	DevPP.SwapEffect			= bWindowed?D3DSWAPEFFECT_COPY:D3DSWAPEFFECT_DISCARD;
 	DevPP.Windowed				= bWindowed;
-	DevPP.PresentationInterval	= D3DPRESENT_INTERVAL_IMMEDIATE;
+	DevPP.PresentationInterval	= selectPresentInterval();
 	if( !bWindowed )		DevPP.FullScreen_RefreshRateInHz	= selectRefresh	(DevPP.BackBufferWidth,DevPP.BackBufferHeight,Caps.fTarget);
 	else					DevPP.FullScreen_RefreshRateInHz	= D3DPRESENT_RATE_DEFAULT;
 #endif
@@ -287,7 +287,7 @@ void		CHW::CreateDevice		(HWND m_hWnd)
 	P.Flags					= 0;	//. D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL;
 
 	// Refresh rate
-	P.PresentationInterval	= D3DPRESENT_INTERVAL_IMMEDIATE;
+	P.PresentationInterval	= selectPresentInterval();
     if( !bWindowed )		P.FullScreen_RefreshRateInHz	= selectRefresh	(P.BackBufferWidth, P.BackBufferHeight,fTarget);
     else					P.FullScreen_RefreshRateInHz	= D3DPRESENT_RATE_DEFAULT;
 
@@ -384,10 +384,11 @@ u32 CHW::selectGPU ()
 
 u32 CHW::selectRefresh(u32 dwWidth, u32 dwHeight, D3DFORMAT fmt)
 {
-	if (psDeviceFlags.is(rsRefresh60hz))	return D3DPRESENT_RATE_DEFAULT;
+	if (!psDeviceFlags.is(rsRefresh60hz))	return D3DPRESENT_RATE_DEFAULT;
 	else
 	{
 		u32 selected	= D3DPRESENT_RATE_DEFAULT;
+		u32 target		= 60;
 		u32 count		= pD3D->GetAdapterModeCount(DevAdapter,fmt);
 		for (u32 I=0; I<count; I++)
 		{
@@ -395,7 +396,7 @@ u32 CHW::selectRefresh(u32 dwWidth, u32 dwHeight, D3DFORMAT fmt)
 			pD3D->EnumAdapterModes(DevAdapter,fmt,I,&Mode);
 			if (Mode.Width==dwWidth && Mode.Height==dwHeight)
 			{
-				if (Mode.RefreshRate>selected) selected = Mode.RefreshRate;
+				if (Mode.RefreshRate>selected && Mode.RefreshRate<=target) selected = Mode.RefreshRate;
 			}
 		}
 		return selected;
