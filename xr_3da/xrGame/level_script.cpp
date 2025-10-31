@@ -24,6 +24,7 @@
 #include "PHScriptCall.h"
 #include "HUDManager.h"
 #include "script_engine.h"
+#include "script_thread.h"
 #include "game_cl_single.h"
 
 #include "map_manager.h"
@@ -37,6 +38,58 @@ LPCSTR command_line	()
 {
 	return		(Core.Params);
 }
+
+namespace
+{
+	shared_str level_collect_lua_call_origin()
+	{
+		lua_State* L = nullptr;
+		if (ai().script_engine().current_thread())
+			L = ai().script_engine().current_thread()->lua();
+		if (!L)
+			L = ai().script_engine().lua();
+		if (!L)
+			return shared_str("<lua-null>");
+
+		lua_Debug dbg{};
+		int level = 1;
+		if (!lua_getstack(L, level, &dbg))
+		{
+			lua_Debug dbg_top{};
+			if (!lua_getstack(L, 0, &dbg_top))
+				return shared_str("<lua-no-stack>");
+			dbg = dbg_top;
+		}
+		if (!lua_getinfo(L, "Sln", &dbg))
+			return shared_str("<lua-no-info>");
+
+		const char* source = dbg.source ? dbg.source : "";
+		if (source[0] == '@')
+			++source;
+		if (!source[0])
+			source = "<chunk>";
+
+		const bool has_line = dbg.currentline > 0;
+		const char* func = (dbg.name && dbg.name[0]) ? dbg.name : nullptr;
+
+		shared_str origin;
+		if (has_line)
+		{
+			if (func)
+				origin.sprintf("%s:%d (%s)", source, dbg.currentline, func);
+			else
+				origin.sprintf("%s:%d", source, dbg.currentline);
+		}
+		else
+		{
+			if (func)
+				origin.sprintf("%s (%s)", source, func);
+			else
+				origin = source;
+		}
+		return origin;
+	}
+} // namespace (makes it local)
 
 #ifdef DEBUG
 void check_object(CScriptGameObject *object)
@@ -296,7 +349,10 @@ CPHCall* add_call(const luabind::functor<bool> &condition,const luabind::functor
 	luabind::functor<void>		_action = action;
 	CPHScriptCondition	* c=xr_new<CPHScriptCondition>(_condition);
 	CPHScriptAction		* a=xr_new<CPHScriptAction>(_action);
-	return Level().ph_commander_scripts().add_call(c,a);
+	CPHCall* call = Level().ph_commander_scripts().add_call(c,a);
+	if (call)
+		call->set_debug_origin(level_collect_lua_call_origin());
+	return call;
 }
 
 void remove_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
@@ -315,7 +371,10 @@ CPHCall* add_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR act
 		luabind::functor<void>		_action = object_cast<luabind::functor<void> >(lua_object[action]);
 		CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,_condition);
 		CPHScriptObjectActionN		*a=xr_new<CPHScriptObjectActionN>(lua_object,_action);
-		return Level().ph_commander_scripts().add_call_unique(c,c,a,a);
+		CPHCall* call = Level().ph_commander_scripts().add_call_unique(c,c,a,a);
+		if (call)
+			call->set_debug_origin(level_collect_lua_call_origin());
+		return call;
 //	}
 //	catch(...)
 //	{
@@ -335,7 +394,10 @@ CPHCall* add_call(const luabind::object &lua_object, const luabind::functor<bool
 
 	CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,condition);
 	CPHScriptObjectActionN		*a=xr_new<CPHScriptObjectActionN>(lua_object,action);
-	return Level().ph_commander_scripts().add_call(c,a);
+	CPHCall* call = Level().ph_commander_scripts().add_call(c,a);
+	if (call)
+		call->set_debug_origin(level_collect_lua_call_origin());
+	return call;
 }
 
 void remove_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)

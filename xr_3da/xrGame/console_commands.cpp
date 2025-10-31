@@ -354,6 +354,49 @@ public:
 	}
 };
 
+class CCC_PhCommanderDump : public IConsole_Command
+{
+public:
+	CCC_PhCommanderDump(LPCSTR N) : IConsole_Command(N)
+	{
+		bEmptyArgsHandled = TRUE;
+		bLowerCaseArgs = FALSE;
+	}
+
+	virtual void Execute(LPCSTR args)
+	{
+		if (!g_pGameLevel)
+		{
+			Msg("! dbg_level_calls: No active level");
+			return;
+		}
+
+		LPCSTR trimmed = args ? args : "";
+		while (*trimmed == ' ')
+			++trimmed;
+
+		char token[64];
+		u32 token_len = 0;
+		while (trimmed[token_len] && trimmed[token_len] != ' ' && token_len < (sizeof(token) - 1))
+		{
+			token[token_len] = trimmed[token_len];
+			++token_len;
+		}
+		token[token_len] = 0;
+
+		CPHCommander* commander = &Level().ph_commander();
+		if (token_len && (0 == stricmp(token, "scripts") || 0 == stricmp(token, "script")))
+			commander = &Level().ph_commander_scripts();
+
+		commander->dump_calls();
+	}
+
+	virtual void Info(TInfo& I)
+	{
+		strcpy(I, "[scripts]");
+	}
+};
+
 #ifdef DEBUG
 class CCC_Dbg_NumObjects : public IConsole_Command {
 public:
@@ -2535,6 +2578,7 @@ void CCC_RegisterCommands()
 #endif // MASTER_GOLD
 
 	CMD1(CCC_Name,			"name");
+	CMD1(CCC_PhCommanderDump, "dbg_level_calls");
 	
 #ifdef DEBUG
 	CMD4(CCC_Integer,		"dbg_dump_physics_step", &g_bDebugDumpPhysicsStep, 0, 1);

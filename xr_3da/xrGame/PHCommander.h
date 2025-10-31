@@ -51,6 +51,7 @@ class CPHCall
 	CPHAction*		m_action			;
 	CPHCondition*	m_condition			;
 	u32				paused				;
+	shared_str		m_debug_origin		;
 public:
 					CPHCall							(CPHCondition* condition,CPHAction* action)					;
 					~CPHCall						()															;
@@ -59,7 +60,9 @@ public:
 	bool			equal							(CPHReqComparerV* cmp_condition,CPHReqComparerV* cmp_action);
 	bool			is_any							(CPHReqComparerV* v)										;
 	void			setPause						(u32 ms)													;
-	bool			isPaused						()															;
+	bool			isPaused						()const														;
+	void			set_debug_origin				(const shared_str& origin)									;
+	void			debug_dump						(u32 index, const char* queue_name) const					;
 };
 
 DEFINE_VECTOR(CPHCall*,PHCALL_STORAGE,PHCALL_I);
@@ -94,6 +97,7 @@ public:
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void				clear						()																;
 	bool				has_pending_calls			()const{return !m_calls.empty() || !m_calls_as_add_buffer.empty();}
+	void				dump_calls					()const															;
 private:
 
 IC	CPHCall*			add_call_unique				(CPHCondition* condition,CPHReqComparerV* cmp_condition,CPHAction* action,CPHReqComparerV* cmp_action,PHCALL_STORAGE& cs);

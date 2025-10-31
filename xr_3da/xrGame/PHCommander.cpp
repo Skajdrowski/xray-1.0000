@@ -34,7 +34,24 @@ bool CPHCall::is_any(CPHReqComparerV* v)
 }
 
 void CPHCall::setPause(u32 ms) { paused = Device.dwTimeGlobal + ms; }
-bool CPHCall::isPaused() { return paused > Device.dwTimeGlobal; }
+bool CPHCall::isPaused() const { return paused > Device.dwTimeGlobal; }
+
+void CPHCall::set_debug_origin(const shared_str& origin)
+{
+	m_debug_origin = origin;
+}
+void CPHCall::debug_dump(u32 index, const char* queue_name) const
+{
+	const char* origin = m_debug_origin.size() ? m_debug_origin.c_str() : "<unknown>";
+
+	Msg(
+		"[%s][%u] paused=%s origin=%s",
+		queue_name && *queue_name ? queue_name : "queue",
+		index,
+		isPaused() ? "yes" : "no",
+		origin
+	);
+}
 
 void delete_call(CPHCall* &call)
 {
@@ -238,4 +255,42 @@ void		CPHCommander::		remove_calls_as				(CPHReqComparerV* cmp_object)
 void		CPHCommander::		update_as  					()
 {
 
+}
+
+void CPHCommander::dump_calls() const
+{
+	Msg("---- level call dump ----");
+
+	struct queue_descriptor
+	{
+		const PHCALL_STORAGE* storage;
+		const char*           name;
+	};
+
+	const queue_descriptor descriptors[] = {
+		{ &m_calls,                 "Active" },
+		{ &m_calls_as_add_buffer,   "Queued" },
+		{ &m_calls_as_remove_buffer,"Pending removal" }
+	};
+
+	bool has_calls = false;
+	const u32 descriptor_count = sizeof(descriptors) / sizeof(descriptors[0]);
+	for (u32 i = 0; i < descriptor_count; ++i)
+	{
+		const PHCALL_STORAGE& storage = *descriptors[i].storage;
+		for (u32 idx = 0; idx < storage.size(); ++idx)
+		{
+			CPHCall* call = storage[idx];
+			if (call)
+			{
+				has_calls = true;
+				call->debug_dump(idx, descriptors[i].name);
+			}
+		}
+	}
+
+	if (!has_calls)
+		Msg("No level calls active or queued");
+
+	Msg("---- end of level call dump ----");
 }
