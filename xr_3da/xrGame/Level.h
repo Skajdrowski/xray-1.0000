@@ -14,6 +14,12 @@
 #include "alife_space.h"
 #include "xrDebug.h"
 
+namespace luabind
+{
+	template <typename Signature> class functor;
+	class object;
+}
+
 class	CHUDManager;
 class	CParticlesObject;
 class	xrServer;
@@ -252,6 +258,8 @@ public:
 	
 			int					get_RPID				(LPCSTR name);
 
+	void						register_script_dik_callback(int dik, const luabind::functor<void>& functor);
+	void						clear_script_dik_callbacks();
 
 	// Game
 	void						InitializeClientGame	(NET_Packet& P);

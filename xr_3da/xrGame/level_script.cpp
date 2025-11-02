@@ -436,6 +436,15 @@ void enable_input()
 	g_bDisableAllInput = false;
 }
 
+void register_dik_callback_lua(int dik, const luabind::functor<void>& functor)
+{
+	Level().register_script_dik_callback(dik, functor);
+}
+void clear_dik_callbacks_lua()
+{
+	Level().clear_script_dik_callbacks();
+}
+
 void spawn_phantom(const Fvector &position)
 {
 	Level().spawn_item("m_phantom", position, u32(-1), u16(-1), false);
@@ -632,6 +641,9 @@ void CLevel::script_register(lua_State *L)
 		def("get_time_hours",					get_time_hours),
 		def("get_time_minutes",					get_time_minutes),
 
+		def("register_dik",						register_dik_callback_lua),
+		def("clear_diks",						clear_dik_callbacks_lua),
+
 		def("cover_in_direction",				cover_in_direction),
 		def("vertex_in_direction",				vertex_in_direction),
 		def("rain_factor",						rain_factor),
@@ -639,8 +651,8 @@ void CLevel::script_register(lua_State *L)
 		def("vertex_position",					vertex_position),
 		def("name",								get_name),
 		def("prefetch_sound",					prefetch_sound),
-		def("clear_ground_items",               static_cast<void (*)()>(&clear_ground_items)),
-		def("clear_ground_items",               static_cast<void (*)(bool)>(&clear_ground_items)),
+		def("clear_ground_items",               static_cast<void (*)()>(clear_ground_items)),
+		def("clear_ground_items",               static_cast<void (*)(bool)>(clear_ground_items)),
 
 		def("client_spawn_manager",				get_client_spawn_manager),
 

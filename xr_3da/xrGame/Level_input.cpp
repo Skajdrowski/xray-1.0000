@@ -23,6 +23,8 @@
 #include "clsid_game.h"
 #include "../xr_input.h"
 #include "saved_game_wrapper.h"
+#include "script_callback_ex.h"
+#include "script_space.h"
 
 #ifdef DEBUG
 #	include "ai/monsters/BaseMonster/base_monster.h"
@@ -35,6 +37,19 @@ bool g_bDisableAllInput = false;
 extern	float	g_fTimeFactor;
 
 #define CURRENT_ENTITY()	(game?((GameID() == GAME_SINGLE) ? CurrentEntity() : CurrentControlEntity()):NULL)
+
+namespace
+{
+	using script_key_callback_map = std::unordered_map<int, CScriptCallbackEx<void>>;
+	static script_key_callback_map script_key_callbacks;
+
+	void invoke_script_key_callback(int dik)
+	{
+		script_key_callback_map::iterator it = script_key_callbacks.find(dik);
+		if (it != script_key_callbacks.end())
+			it->second(dik);
+	}
+} //local
 
 void CLevel::IR_OnMouseWheel( int direction )
 {
@@ -98,6 +113,7 @@ void CLevel::IR_OnKeyboardPress	(int key)
 	if (DIK_F10 == key)		vtune.enable();
 	if (DIK_F11 == key)		vtune.disable();
 
+	invoke_script_key_callback(key);
 	switch (get_binded_action(key)) 
 	{
 
@@ -405,6 +421,21 @@ void CLevel::IR_OnKeyboardHold(int key)
 		IInputReceiver*		IR	= smart_cast<IInputReceiver*>	(smart_cast<CGameObject*>(CURRENT_ENTITY()));
 		if (IR)				IR->IR_OnKeyboardHold				(get_binded_action(key));
 	}
+}
+
+void CLevel::clear_script_dik_callbacks()
+{
+	script_key_callbacks.clear();
+}
+
+void CLevel::register_script_dik_callback(int dik, const luabind::functor<void>& functor)
+{
+	if (!functor.is_valid())
+	{
+		clear_script_dik_callbacks();
+		return;
+	}
+	script_key_callbacks[dik].set(functor);
 }
 
 void CLevel::IR_OnMouseStop( int /**axis/**/, int /**value/**/)
