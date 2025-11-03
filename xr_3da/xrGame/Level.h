@@ -259,6 +259,7 @@ public:
 			int					get_RPID				(LPCSTR name);
 
 	void						register_script_dik_callback(int dik, const luabind::functor<void>& functor);
+	void						unregister_script_dik_callback(int dik);
 	void						clear_script_dik_callbacks();
 
 	// Game

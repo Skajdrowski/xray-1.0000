@@ -440,6 +440,10 @@ void register_dik_callback_lua(int dik, const luabind::functor<void>& functor)
 {
 	Level().register_script_dik_callback(dik, functor);
 }
+void unregister_dik_callback_lua(int dik)
+{
+	Level().unregister_script_dik_callback(dik);
+}
 void clear_dik_callbacks_lua()
 {
 	Level().clear_script_dik_callbacks();
@@ -642,6 +646,7 @@ void CLevel::script_register(lua_State *L)
 		def("get_time_minutes",					get_time_minutes),
 
 		def("register_dik",						register_dik_callback_lua),
+		def("unregister_dik",					unregister_dik_callback_lua),
 		def("clear_diks",						clear_dik_callbacks_lua),
 
 		def("cover_in_direction",				cover_in_direction),

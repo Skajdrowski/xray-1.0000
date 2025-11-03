@@ -427,7 +427,6 @@ void CLevel::clear_script_dik_callbacks()
 {
 	script_key_callbacks.clear();
 }
-
 void CLevel::register_script_dik_callback(int dik, const luabind::functor<void>& functor)
 {
 	if (!functor.is_valid())
@@ -436,6 +435,12 @@ void CLevel::register_script_dik_callback(int dik, const luabind::functor<void>&
 		return;
 	}
 	script_key_callbacks[dik].set(functor);
+}
+void CLevel::unregister_script_dik_callback(int dik)
+{
+	script_key_callback_map::iterator it = script_key_callbacks.find(dik);
+	if (it != script_key_callbacks.end())
+		script_key_callbacks.erase(it);
 }
 
 void CLevel::IR_OnMouseStop( int /**axis/**/, int /**value/**/)
