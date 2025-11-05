@@ -296,6 +296,23 @@ void CScriptGameObject::DropItemAndTeleport	(CScriptGameObject* pItem, Fvector p
 	CGameObject::u_EventSend		(PP);
 }
 
+bool CScriptGameObject::MoveToBelt()
+{
+	CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+	if (!inventory_item) {
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CScriptGameObject::move_to_belt non-CInventoryItem object !!!");
+		return false;
+	}
+
+	CInventory* inventory = inventory_item->m_pInventory;
+	if (!inventory) {
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CScriptGameObject::move_to_belt item has no inventory !!!");
+		return false;
+	}
+
+	return inventory->Belt(inventory_item);
+}
+
 //передаче вещи из своего инвентаря в инвентарь партнера
 void CScriptGameObject::TransferItem(CScriptGameObject* pItem, CScriptGameObject* pForWho)
 {

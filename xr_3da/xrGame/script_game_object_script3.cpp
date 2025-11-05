@@ -262,6 +262,7 @@ class_<CScriptGameObject> script_register_game_object2(class_<CScriptGameObject>
 		.def("mark_item_dropped",			&CScriptGameObject::MarkItemDropped)
 		.def("marked_dropped",				&CScriptGameObject::MarkedDropped)
 		.def("unload_magazine",				&CScriptGameObject::UnloadMagazine)
+		.def("move_to_belt",				&CScriptGameObject::MoveToBelt)
 
 		.def("sight_params",				&CScriptGameObject::sight_params)
 
