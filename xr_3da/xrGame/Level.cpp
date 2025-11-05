@@ -446,11 +446,8 @@ void CLevel::ClearGroundItems(bool remove_quest_items)
 	for (xr_vector<u16>::const_iterator it = items_to_destroy.begin(), it_end = items_to_destroy.end(); it != it_end; ++it)
 	{
 		NET_Packet packet;
-		packet.w_begin(M_EVENT);
-		packet.w_u32(timeServer());
-		packet.w_u16(GE_DESTROY);
-		packet.w_u16(*it);
-		game_events->insert(packet);
+		Game().u_EventGen(packet, GE_DESTROY, *it);
+		Game().u_EventSend(packet);
 	}
 
 	ProcessGameEvents();
