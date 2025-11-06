@@ -18,7 +18,6 @@ extern float			g_fHudAdjustValue;
 
 class					CUIPdaMsgListItem;
 class					CLAItem;
-class					CUIZoneMap;
 class					CUIArtefactPanel;
 class					CUIScrollView;
 struct					GAME_NEWS_DATA;
@@ -49,7 +48,6 @@ protected:
 	CUIProgressBar		UIArmorBar;
 	CUICarPanel			UICarPanel;
 	CUIMotionIcon		UIMotionIcon;	
-	CUIZoneMap*			UIZoneMap;
 
 	//������, ������������ ���������� �������� PDA
 	CUIStatic			UIPdaOnline;
@@ -120,9 +118,6 @@ public:
 	};
 	
 	void				SetFlashIconState_				(EFlashingIcons type, bool enable);
-
-	void				AnimateContacts					(bool b_snd);
-	HUD_SOUND			m_contactSnd;
 
 	void				ReceiveNews						(GAME_NEWS_DATA* news);
 	

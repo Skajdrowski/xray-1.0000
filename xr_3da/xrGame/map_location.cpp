@@ -30,11 +30,8 @@ CMapLocation::CMapLocation(LPCSTR type, u16 object_id)
 	m_flags.zero			();
 	m_level_spot			= NULL;
 	m_level_spot_pointer	= NULL;
-	m_minimap_spot			= NULL;
-	m_minimap_spot_pointer	= NULL;
 
 	m_level_map_spot_border	= NULL;
-	m_mini_map_spot_border	= NULL;
 
 	m_objectID				= object_id;
 	m_actual_time			= 0;
@@ -56,10 +53,7 @@ void CMapLocation::destroy()
 {
 	delete_data(m_level_spot);
 	delete_data(m_level_spot_pointer);
-	delete_data(m_minimap_spot);
-	delete_data(m_minimap_spot_pointer);
 	delete_data(m_level_map_spot_border);
-	delete_data(m_mini_map_spot_border);
 }
 
 CUIXml*	g_uiSpotXml=NULL;
@@ -120,28 +114,7 @@ void CMapLocation::LoadSpot(LPCSTR type, bool bReload)
 		}
 	};
 
-	strconcat(path,path_base,":mini_map");
-	node = g_uiSpotXml->NavigateToNode(path,0);
-	if(node){
-		LPCSTR str = g_uiSpotXml->ReadAttrib(path, 0, "spot", "");
-		if( xr_strlen(str) ){
-			if(!bReload)
-				m_minimap_spot = xr_new<CMiniMapSpot>(this);
-			m_minimap_spot->Load(g_uiSpotXml,str);
-		}else{
-			VERIFY( !(bReload&&m_minimap_spot) );
-		}
-
-		str = g_uiSpotXml->ReadAttrib(path, 0, "pointer", "");
-		if( xr_strlen(str) ){
-			if(!bReload)
-				m_minimap_spot_pointer = xr_new<CMapSpotPointer>(this);
-			m_minimap_spot_pointer->Load(g_uiSpotXml,str);
-		}else{
-			VERIFY( !(bReload&&m_minimap_spot_pointer) );
-		}
-	};
-	if(NULL==m_minimap_spot && NULL==m_level_spot)
+	if(NULL==m_level_spot)
 		DisableSpot	();
 }
 
@@ -454,16 +427,6 @@ void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp )
 		map->SetPointerDistance	(dist_to_target);
 	}
 }
-
-void CMapLocation::UpdateMiniMap(CUICustomMap* map)
-{
-	CMapSpot* sp = m_minimap_spot;
-	if(!sp) return;
-	if(SpotEnabled())
-		UpdateSpot(map, sp);
-
-}
-
 void CMapLocation::UpdateLevelMap(CUICustomMap* map)
 {
 	CMapSpot* sp = m_level_spot;
@@ -516,9 +479,6 @@ CMapSpotPointer* CMapLocation::GetSpotPointer(CMapSpot* sp)
 	if(!PointerEnabled()) return NULL;
 	if(sp==m_level_spot)
 		return m_level_spot_pointer;
-	else
-	if(sp==m_minimap_spot)
-		return m_minimap_spot_pointer;
 
 	return NULL;
 }
@@ -532,12 +492,6 @@ CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
 			m_level_map_spot_border	= xr_new<CMapSpot>(this);
 			m_level_map_spot_border->Load(g_uiSpotXml,"level_map_spot_border");
 		}return m_level_map_spot_border;
-	}else
-		if(sp==m_minimap_spot){
-		if(NULL==m_mini_map_spot_border){
-			m_mini_map_spot_border	= xr_new<CMapSpot>(this);
-			m_mini_map_spot_border->Load(g_uiSpotXml,"mini_map_spot_border");
-		}return m_mini_map_spot_border;
 	}
 	return NULL;
 }
@@ -616,19 +570,9 @@ bool CRelationMapLocation::IsVisible	()
 		else
 			res = false;
 	}
-	if(m_b_was_visible_last_frame==false && res == true)
-	{
-		m_minimap_spot->ResetXformAnimation();
-	}
 
 	m_b_was_visible_last_frame = res;	
 	return res;
-}
-
-void CRelationMapLocation::UpdateMiniMap(CUICustomMap* map)
-{
-	if(IsVisible())
-		inherited::UpdateMiniMap		(map);
 }
 
 void CRelationMapLocation::UpdateLevelMap(CUICustomMap* map)

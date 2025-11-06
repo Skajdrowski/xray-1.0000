@@ -84,7 +84,6 @@ CUIMainIngameWnd::CUIMainIngameWnd()
 	m_pWeapon					= NULL;
 	m_pGrenade					= NULL;
 	m_pItem						= NULL;
-	UIZoneMap					= xr_new<CUIZoneMap>();
 	m_pPickUpItem				= NULL;
 	m_artefactPanel				= xr_new<CUIArtefactPanel>();
 	m_pMPChatWnd				= NULL;
@@ -97,9 +96,7 @@ extern CUIProgressShape* g_MissileForceShape;
 CUIMainIngameWnd::~CUIMainIngameWnd()
 {
 	DestroyFlashingIcons		();
-	xr_delete					(UIZoneMap);
 	xr_delete					(m_artefactPanel);
-	HUD_SOUND::DestroySound		(m_contactSnd);
 	xr_delete					(g_MissileForceShape);
 }
 
@@ -145,16 +142,6 @@ void CUIMainIngameWnd::Init()
 
 
 	UIWeaponIcon.Enable			(false);
-
-	//индикаторы 
-	UIZoneMap->Init				();
-	UIZoneMap->SetScale			(DEFAULT_MAP_SCALE);
-
-	if(IsGameTypeSingle())
-	{
-		xml_init.InitStatic					(uiXml, "static_pda_online", 0, &UIPdaOnline);
-		UIZoneMap->Background().AttachChild	(&UIPdaOnline);
-	}
 
 
 	//Полоса прогресса здоровья
@@ -263,9 +250,6 @@ void CUIMainIngameWnd::Init()
 	UIStaticDiskIO.InitTexture				("ui\\ui_disk_io");
 	UIStaticDiskIO.SetOriginalRect			(0,0,32,32);
 	UIStaticDiskIO.SetStretchTexture		(TRUE);
-
-
-	HUD_SOUND::LoadSound					("maingame_ui", "snd_new_contact"		, m_contactSnd		, SOUND_TYPE_IDLE);
 }
 
 float UIStaticDiskIO_start_time = 0.0f;
@@ -300,7 +284,6 @@ void CUIMainIngameWnd::Draw()
 
 	UIMotionIcon.SetNoise		((s16)(0xffff&iFloor(m_pActor->m_snd_noise*100.0f)));
 	CUIWindow::Draw				();
-	UIZoneMap->Render			();			
 
 	RenderQuickInfos			();		
 
@@ -483,11 +466,6 @@ void CUIMainIngameWnd::Update()
 	// health&armor
 	UIHealthBar.SetProgressPos		(m_pActor->GetfHealth()*100.0f);
 	UIMotionIcon.SetPower			(m_pActor->conditions().GetPower()*100.0f);
-
-	UIZoneMap->UpdateRadar			(Device.vCameraPosition);
-	float h,p;
-	Device.vCameraDirection.getHP	(h,p);
-	UIZoneMap->SetHeading			(-h);
 
 	UpdatePickUpItem				();
 	CUIWindow::Update				();
@@ -875,20 +853,6 @@ bool CUIMainIngameWnd::OnKeyboardPress(int dik)
 		switch(dik)
 		{
 		case DIK_NUMPADMINUS:
-			UIZoneMap->ZoomOut();
-			return true;
-			break;
-		case DIK_NUMPADPLUS:
-			UIZoneMap->ZoomIn();
-			return true;
-			break;
-		}
-	}
-	else
-	{
-		switch(dik)
-		{
-		case DIK_NUMPADMINUS:
 			//.HideAll();
 			HUD().GetUI()->HideGameIndicators();
 			return true;
@@ -1054,16 +1018,6 @@ void CUIMainIngameWnd::UpdateFlashingIcons()
 	}
 }
 
-void CUIMainIngameWnd::AnimateContacts(bool b_snd)
-{
-	UIPdaOnline.ResetClrAnimation	();
-
-	if(b_snd)
-		HUD_SOUND::PlaySound	(m_contactSnd, Fvector().set(0,0,0), 0, true );
-
-}
-
-
 void CUIMainIngameWnd::SetPickUpItem	(CInventoryItem* PickUpItem)
 {
 	m_pPickUpItem = PickUpItem;
@@ -1144,10 +1098,7 @@ void CUIMainIngameWnd::UpdateActiveItemInfo()
 	}
 }
 
-void CUIMainIngameWnd::OnConnected()
-{
-	UIZoneMap->SetupCurrentMap		();
-}
+void CUIMainIngameWnd::OnConnected() {}
 
 void CUIMainIngameWnd::reset_ui()
 {

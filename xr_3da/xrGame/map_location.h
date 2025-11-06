@@ -5,7 +5,6 @@
 #include "game_graph_space.h"
 
 class CMapSpot;
-class CMiniMapSpot;
 class CMapSpotPointer;
 class CUICustomMap;
 class CInventoryOwner;
@@ -29,11 +28,8 @@ protected:
 	shared_str				m_hint;
 	CMapSpot*				m_level_spot;
 	CMapSpotPointer*		m_level_spot_pointer;
-	CMiniMapSpot*			m_minimap_spot;
-	CMapSpotPointer*		m_minimap_spot_pointer;
 
 	CMapSpot*				m_level_map_spot_border;
-	CMapSpot*				m_mini_map_spot_border;
 
 	u16						m_objectID;
 	u16						m_refCount;
@@ -73,7 +69,6 @@ public:
 	void					EnableSpot						()					{m_flags.set(eSpotEnabled,TRUE);};
 	void					DisableSpot						()					{m_flags.set(eSpotEnabled,FALSE);};
 	bool					IsUserDefined					() const			{return !!m_flags.test(eUserDefined);}
-	virtual void			UpdateMiniMap					(CUICustomMap* map);
 	virtual void			UpdateLevelMap					(CUICustomMap* map);
 
 	virtual Fvector2		Position						();
@@ -115,8 +110,7 @@ public:
 	virtual					~CRelationMapLocation			();
 	virtual bool			Update							(); //returns actual
 
-	virtual void			UpdateMiniMap					(CUICustomMap* map);
-	virtual void			UpdateLevelMap					(CUICustomMap* map);
+	virtual void            UpdateLevelMap                  (CUICustomMap* map);
 
 #ifdef DEBUG
 	virtual void			Dump							();
