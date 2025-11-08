@@ -437,6 +437,16 @@ void CLevel::ClearGroundItems(bool remove_quest_items)
 		if (inventory_item->m_pInventory)
 			continue;
 
+		LPCSTR section = *object->cNameSect();
+		if (section &&
+			(!xr_strcmp(section, "explosive_barrel") ||
+			 !xr_strcmp(section, "explosive_barrel_low") ||
+			 !xr_strcmp(section, "explosive_dinamit") ||
+			 !xr_strcmp(section, "explosive_fuelcan") ||
+			 !xr_strcmp(section, "explosive_mobiltank") ||
+			 !xr_strcmp(section, "explosive_tank")))
+			continue;
+
 		items_to_destroy.push_back(static_cast<u16>(object->ID()));
 	}
 
